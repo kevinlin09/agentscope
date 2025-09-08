@@ -280,9 +280,9 @@ Specifically, the agents within the same ``MsgHub`` will receive messages from o
 
  .. code-block:: none
 
-    Alice: Hi there! I'm Alice, a student who's always eager to learn new things and engage in interesting conversations. Nice to meet you! Could you tell me a bit about yourself?
-    Bob: Hi Alice, I'm Bob. It's great to meet you! I'm also a student and I enjoy diving into new topics and sharing ideas. What kind of things are you interested in?
-    Charlie: Alice: I'm really into technology and how it's shaping our future. I also love reading, especially science fiction and fantasy. How about you, Bob? What are your interests?
+    Alice: Hello! I'm Alice, a student who's always eager to learn and explore new things. It's nice to meet you! Could you tell me a bit about yourself?
+    Bob: Hello Alice! I'm Bob, and just like you, I'm a student. I have a keen interest in technology and science. It's great to meet someone who is also enthusiastic about learning. What kind of things do you like to explore?
+    Charlie: Alice: That's really cool, Bob! I love diving into a variety of topics, but I'm particularly interested in environmental science and sustainability. It's fascinating to learn how we can use our knowledge to protect the planet. What about you, what area of technology or science are you most passionate about?
 
 
 
@@ -319,9 +319,9 @@ Now we print the memory of Alice to check if her memory is updated correctly.
     system: Now you meet each other with a brief self-introduction.
     Alice: None
     system: None
-    Alice: Hi there! I'm Alice, a student who's always eager to learn new things and engage in interesting conversations. Nice to meet you! Could you tell me a bit about yourself?
-    Bob: Hi Alice, I'm Bob. It's great to meet you! I'm also a student and I enjoy diving into new topics and sharing ideas. What kind of things are you interested in?
-    Charlie: Alice: I'm really into technology and how it's shaping our future. I also love reading, especially science fiction and fantasy. How about you, Bob? What are your interests?
+    Alice: Hello! I'm Alice, a student who's always eager to learn and explore new things. It's nice to meet you! Could you tell me a bit about yourself?
+    Bob: Hello Alice! I'm Bob, and just like you, I'm a student. I have a keen interest in technology and science. It's great to meet someone who is also enthusiastic about learning. What kind of things do you like to explore?
+    Charlie: Alice: That's really cool, Bob! I love diving into a variety of topics, but I'm particularly interested in environmental science and sustainability. It's fascinating to learn how we can use our knowledge to protect the planet. What about you, what area of technology or science are you most passionate about?
 
 
 
@@ -338,7 +338,7 @@ Further Reading
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 10.351 seconds)
+   **Total running time of the script:** (0 minutes 13.712 seconds)
 
 
 .. _sphx_glr_download_tutorial_workflow_conversation.py:
