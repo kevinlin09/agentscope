@@ -110,11 +110,11 @@ Initialize a routing agent
 
  .. code-block:: none
 
-    Router: Of course, I can help you with that. Could you please tell me more about the theme or any specific elements you would like to include in your poem?
+    Router: Sure, I can help you with that. Could you give me a theme or some elements you'd like to include in your poem?
     The structured output:
     {
         "your_choice": "Content Generation",
-        "task_description": "The user has requested assistance in writing a poem, and we need more details to proceed."
+        "task_description": null
     }
 
 
@@ -247,72 +247,68 @@ After that, we define a routing agent and equip it with the above tool functions
         "input": {
             "demand": "a quick sort function"
         },
-        "id": "call_e45f8bfc6cb743638a6a48"
+        "id": "call_e8c219e0ffae4c0e8e2d86"
     }
-    PythonAgent: Here is a simple implementation of the quick sort algorithm in Python. This version chooses the last element as the pivot.
+    PythonAgent: Here is a Python implementation of the quick sort algorithm. This function sorts an array in place using the Lomuto partition scheme.
 
     ```python
-    def quick_sort(arr):
-        if len(arr) <= 1:
-            return arr
-        else:
-            pivot = arr.pop()
-            greater = []
-            lower = []
-            for item in arr:
-                if item > pivot:
-                    greater.append(item)
-                else:
-                    lower.append(item)
-            return quick_sort(lower) + [pivot] + quick_sort(greater)
+    def quick_sort(arr, low, high):
+        if low < high:
+            # Partition the array
+            pi = partition(arr, low, high)
+        
+            # Recursively sort elements before and after partition
+            quick_sort(arr, low, pi - 1)
+            quick_sort(arr, pi + 1, high)
 
-    # Example usage:
-    # sorted_array = quick_sort([3, 6, 8, 10, 1, 2, 1])
-    # print(sorted_array)  # Output will be [1, 1, 2, 3, 6, 8, 10]
+
+    def partition(arr, low, high):
+        pivot = arr[high]
+        i = low - 1
+        for j in range(low, high):
+            if arr[j] <= pivot:
+                i += 1
+                arr[i], arr[j] = arr[j], arr[i]
+        arr[i+1], arr[high] = arr[high], arr[i+1]
+        return i + 1
     ```
 
-    You can use this function to sort a list of numbers. If you want an in-place version or a version that uses a different method for choosing a pivot, let me know and I'll provide that for you.
+    To use this quick sort function, you can call it with the array and the indices like this: `quick_sort(your_array, 0, len(your_array) - 1)`.
     system: {
         "type": "tool_result",
-        "id": "call_e45f8bfc6cb743638a6a48",
+        "id": "call_e8c219e0ffae4c0e8e2d86",
         "name": "generate_python",
         "output": [
             {
                 "type": "text",
-                "text": "Here is a simple implementation of the quick sort algorithm in Python. This version chooses the last element as the pivot.\n\n```python\ndef quick_sort(arr):\n    if len(arr) <= 1:\n        return arr\n    else:\n        pivot = arr.pop()\n        greater = []\n        lower = []\n        for item in arr:\n            if item > pivot:\n                greater.append(item)\n            else:\n                lower.append(item)\n        return quick_sort(lower) + [pivot] + quick_sort(greater)\n\n# Example usage:\n# sorted_array = quick_sort([3, 6, 8, 10, 1, 2, 1])\n# print(sorted_array)  # Output will be [1, 1, 2, 3, 6, 8, 10]\n```\n\nYou can use this function to sort a list of numbers. If you want an in-place version or a version that uses a different method for choosing a pivot, let me know and I'll provide that for you."
+                "text": "Here is a Python implementation of the quick sort algorithm. This function sorts an array in place using the Lomuto partition scheme.\n\n```python\ndef quick_sort(arr, low, high):\n    if low < high:\n        # Partition the array\n        pi = partition(arr, low, high)\n        \n        # Recursively sort elements before and after partition\n        quick_sort(arr, low, pi - 1)\n        quick_sort(arr, pi + 1, high)\n\n\ndef partition(arr, low, high):\n    pivot = arr[high]\n    i = low - 1\n    for j in range(low, high):\n        if arr[j] <= pivot:\n            i += 1\n            arr[i], arr[j] = arr[j], arr[i]\n    arr[i+1], arr[high] = arr[high], arr[i+1]\n    return i + 1\n```\n\nTo use this quick sort function, you can call it with the array and the indices like this: `quick_sort(your_array, 0, len(your_array) - 1)`."
             }
         ]
     }
-    Router: The Python quick sort function has been generated for you. Below is the simple implementation of the quick sort algorithm which chooses the last element as the pivot:
+    Router: The quick sort function in Python has been generated for you. Here's the code:
 
     ```python
-    def quick_sort(arr):
-        if len(arr) <= 1:
-            return arr
-        else:
-            pivot = arr.pop()
-            greater = []
-            lower = []
-            for item in arr:
-                if item > pivot:
-                    greater.append(item)
-                else:
-                    lower.append(item)
-            return quick_sort(lower) + [pivot] + quick_sort(greater)
+    def quick_sort(arr, low, high):
+        if low < high:
+            # Partition the array
+            pi = partition(arr, low, high)
+        
+            # Recursively sort elements before and after partition
+            quick_sort(arr, low, pi - 1)
+            quick_sort(arr, pi + 1, high)
 
-    # Example usage:
-    # sorted_array = quick_sort([3, 6, 8, 10, 1, 2, 1])
-    # print(sorted_array)  # Output will be [1, 1, 2, 3, 6, 8, 10]
+    def partition(arr, low, high):
+        pivot = arr[high]
+        i = low - 1
+        for j in range(low, high):
+            if arr[j] <= pivot:
+                i += 1
+                arr[i], arr[j] = arr[j], arr[i]
+        arr[i+1], arr[high] = arr[high], arr[i+1]
+        return i + 1
     ```
 
-    You can use this function to sort a list of numbers. If you need an in-place version or a different method for choosing a pivot, feel free to ask.
-    Router: The Python quick sort function has been generated for you. Below is the simple implementation of the quick sort algorithm which chooses the last element as the pivot:
-
-    ```python
-    ...
-    ```
-
-    You can use this function to sort a list of numbers. If you need an in-place version or a different method for choosing a pivot, feel free to ask.
+    You can use this quick sort function by calling it with your array and the indices, like so: `quick_sort(your_array, 0, len(your_array) - 1)`.
 
 
 
@@ -320,7 +316,7 @@ After that, we define a routing agent and equip it with the above tool functions
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 39.607 seconds)
+   **Total running time of the script:** (0 minutes 41.762 seconds)
 
 
 .. _sphx_glr_download_tutorial_workflow_routing.py:
