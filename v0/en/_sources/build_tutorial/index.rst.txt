@@ -11,40 +11,6 @@
 
 .. raw:: html
 
-    <div class="sphx-glr-thumbcontainer" tooltip="This tutorial introduces how to build multi-agent application with drag-and-drop interface in AgentScope Workstation.">
-
-.. only:: html
-
-  .. image:: /build_tutorial/images/thumb/sphx_glr_low_code_thumb.png
-    :alt:
-
-  :ref:`sphx_glr_build_tutorial_low_code.py`
-
-.. raw:: html
-
-      <div class="sphx-glr-thumbnail-title">Low-code Development</div>
-    </div>
-
-
-.. raw:: html
-
-    <div class="sphx-glr-thumbcontainer" tooltip="This section introduces the usage of the distributed mode of AgentScope. AgentScope natively provides a distributed mode based on gRPC. In this mode, multiple agents in one application can be deployed to different processes or even different machines, thereby fully utilizing computational resources and improving efficiency.">
-
-.. only:: html
-
-  .. image:: /build_tutorial/images/thumb/sphx_glr_distribution_thumb.png
-    :alt:
-
-  :ref:`sphx_glr_build_tutorial_distribution.py`
-
-.. raw:: html
-
-      <div class="sphx-glr-thumbnail-title">Distribution</div>
-    </div>
-
-
-.. raw:: html
-
     <div class="sphx-glr-thumbcontainer" tooltip="This section is redirected to the conversation_with_web_browser_agent/README.md.">
 
 .. only:: html
@@ -62,6 +28,23 @@
 
 .. raw:: html
 
+    <div class="sphx-glr-thumbcontainer" tooltip="This tutorial introduces how to build multi-agent application with drag-and-drop interface in AgentScope Workstation.">
+
+.. only:: html
+
+  .. image:: /build_tutorial/images/thumb/sphx_glr_low_code_thumb.png
+    :alt:
+
+  :ref:`sphx_glr_build_tutorial_low_code.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Low-code Development</div>
+    </div>
+
+
+.. raw:: html
+
     <div class="sphx-glr-thumbcontainer" tooltip="Configuration ------------------------">
 
 .. only:: html
@@ -74,6 +57,23 @@
 .. raw:: html
 
       <div class="sphx-glr-thumbnail-title">Examples</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="This section introduces the usage of the distributed mode of AgentScope. AgentScope natively provides a distributed mode based on gRPC. In this mode, multiple agents in one application can be deployed to different processes or even different machines, thereby fully utilizing computational resources and improving efficiency.">
+
+.. only:: html
+
+  .. image:: /build_tutorial/images/thumb/sphx_glr_distribution_thumb.png
+    :alt:
+
+  :ref:`sphx_glr_build_tutorial_distribution.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Distribution</div>
     </div>
 
 
@@ -376,10 +376,10 @@
 .. toctree::
    :hidden:
 
-   /build_tutorial/low_code
-   /build_tutorial/distribution
    /build_tutorial/web_browser
+   /build_tutorial/low_code
    /build_tutorial/examples
+   /build_tutorial/distribution
    /build_tutorial/quickstart
    /build_tutorial/streaming
    /build_tutorial/multimodality

@@ -85,7 +85,7 @@ As usual, we initialize AgentScope with the above configuration, and create a ne
 
  .. code-block:: none
 
-    2025-08-19 09:26:38 | INFO     | agentscope.manager._model:load_model_configs:138 - Load configs for model wrapper: my-qwen-vl
+    2025-09-09 06:16:54 | INFO     | agentscope.manager._model:load_model_configs:138 - Load configs for model wrapper: my-qwen-vl
 
 
 
@@ -168,17 +168,16 @@ After that, we can send the message to the vision agent and get the response.
 
  .. code-block:: none
 
-    2025-08-19 09:26:38 | ERROR    | agentscope.message.msg:__init__:112 - The url argument will be deprecated in the future. Consider using the ContentBlock instead to attach files to the message
-    Monday: The image is a bar chart titled **"The Apples Each Person Has in 2023"**. It displays the number of apples three individuals—Alice, Bob, and Charlie—possess. Here's a detailed description:
+    Monday: The image is a bar chart titled **"The Apples Each Person Has in 2023"**. It displays the number of apples three individuals—Alice, Bob, and Charlie—have. Here's a detailed description:
 
-    - **X-axis**: Represents the names of the individuals: Alice, Bob, and Charlie.
-    - **Y-axis**: Represents the "Number of Apples," ranging from 0 to 4.
+    - **X-axis**: Labeled as "Number of Apples," it represents the names of the individuals: Alice, Bob, and Charlie.
+    - **Y-axis**: Represents the quantity of apples, ranging from 0 to 4.
     - **Bars**:
-      - **Alice** has **2 apples**, as indicated by the height of her bar reaching up to 2 on the y-axis.
-      - **Bob** has **1 apple**, with his bar reaching up to 1 on the y-axis.
-      - **Charlie** has **4 apples**, which is the highest among the three, with his bar reaching up to 4 on the y-axis.
+      - **Alice** has 2 apples (the bar reaches up to 2 on the Y-axis).
+      - **Bob** has 1 apple (the bar reaches up to 1 on the Y-axis).
+      - **Charlie** has 4 apples (the bar reaches up to 4 on the Y-axis).
 
-    The bars are colored in a solid blue shade, and the chart provides a clear visual comparison of the number of apples each person has.
+    The bars are colored in blue, and the chart clearly shows that Charlie has the most apples, followed by Alice, and then Bob.
 
 
 
@@ -186,7 +185,7 @@ After that, we can send the message to the vision agent and get the response.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 10.855 seconds)
+   **Total running time of the script:** (0 minutes 10.273 seconds)
 
 
 .. _sphx_glr_download_build_tutorial_multimodality.py:

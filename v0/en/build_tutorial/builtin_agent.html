@@ -404,7 +404,7 @@ configurations.</p>
 <span class="n">response</span> <span class="o">=</span> <span class="n">alice</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Alice: Hello! My name is Alice. It&#39;s nice to meet you, Bob. How can I assist you today?
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Alice: Hello, Bob! My name is Alice. It&#39;s nice to meet you. How can I assist you today?
 </pre></div>
 </div>
 </section>
@@ -432,7 +432,7 @@ dialog agent <cite>alice</cite>.</p>
 </pre></div>
 </div>
 <div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>User Input: Bob: Do you know me?
-Alice: I&#39;m an AI assistant, so I don&#39;t have the ability to know specific individuals unless you&#39;ve interacted with me before and shared some information. I just noticed your name from your message. How can I help you today, Bob?
+Alice: Hello Bob! I don&#39;t have any specific information about you other than what you&#39;ve shared in this conversation. I&#39;m here to help with any questions or tasks you might have. Is there something in particular you&#39;d like to know or discuss?
 </pre></div>
 </div>
 </section>
@@ -470,7 +470,7 @@ Alice: I&#39;m an AI assistant, so I don&#39;t have the ability to know specific
 </pre></div>
 </div>
 <div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Charles: ```json
-{&quot;thought&quot;: &quot;Going out in the rain can be enjoyable for some, but it also depends on the reason for going out and if one is properly equipped with rain gear. It&#39;s important to consider safety and comfort.&quot;, &quot;speak&quot;: &quot;It can be nice to go out in the rain, especially if you have the right gear like an umbrella or a raincoat. However, it also depends on why you&#39;re going out and how heavy the rain is. Make sure you stay safe and comfortable!&quot;, &quot;decision&quot;: &quot;true&quot;}
+{&quot;thought&quot;: &quot;Going out in the rain can be refreshing and fun, but it also depends on the temperature, if one has proper gear, and personal health conditions. It&#39;s important to consider these factors.&quot;, &quot;speak&quot;: &quot;It can be nice to go out in the rain, especially if you have the right gear like an umbrella or a raincoat. However, make sure it&#39;s not too cold and that you&#39;re feeling well. What do you think?&quot;, &quot;decision&quot;: &quot;true&quot;}
 ```
 The metadata field: true
 The type of metadata field: &lt;class &#39;str&#39;&gt;
@@ -495,9 +495,9 @@ The type of metadata field: &lt;class &#39;str&#39;&gt;
 </pre></div>
 </div>
 <div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Charles: ```json
-{&quot;thought&quot;: &quot;I need to pick a random number between 1 and 10. Let&#39;s go with 7.&quot;, &quot;speak&quot;: &quot;I picked the number 7. How about you, do you have a lucky number?&quot;, &quot;number&quot;: &quot;7&quot;}
+{&quot;thought&quot;: &quot;I need to pick a random number between 1 and 10. Let&#39;s go with 7, as it&#39;s often considered a lucky number.&quot;, &quot;speak&quot;: &quot;Sure, I&#39;ll pick a number. How about 7?&quot;, &quot;number&quot;: &quot;7&quot;}
 ```
-The content of the response message: I picked the number 7. How about you, do you have a lucky number?
+The content of the response message: Sure, I&#39;ll pick a number. How about 7?
 The metadata of the response message: 7
 </pre></div>
 </div>
@@ -528,12 +528,12 @@ while the <cite>speak</cite> field should be displayed to the user, and the <cit
 </pre></div>
 </div>
 <div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Charles: ```json
-{&quot;thought&quot;: &quot;I need to pick a random number between 20 and 30. Let&#39;s go with 27.&quot;, &quot;speak&quot;: &quot;I picked the number 27. Do you have a favorite number in this range?&quot;, &quot;number&quot;: &quot;27&quot;}
+{&quot;thought&quot;: &quot;I need to pick a random number between 20 and 30. Let&#39;s choose 25, as it is right in the middle of the range.&quot;, &quot;speak&quot;: &quot;Sure, I&#39;ll pick a number. How about 25?&quot;, &quot;number&quot;: &quot;25&quot;}
 ```
-The content field: I picked the number 27. Do you have a favorite number in this range?
+The content field: Sure, I&#39;ll pick a number. How about 25?
 The type of content field: &lt;class &#39;str&#39;&gt;
 
-The metadata field: 27
+The metadata field: 25
 The type of metadata field: &lt;class &#39;str&#39;&gt;
 </pre></div>
 </div>
@@ -583,7 +583,7 @@ loop manner.</p>
 &lt;{argument name}&gt;{argument value}&lt;/{argument name}&gt;
 &lt;{argument name}&gt;{argument value}&lt;/{argument name}&gt;
 ...
-David: &lt;thought&gt;I need to use the execute_python_code function to calculate the multiplication of these two large numbers.&lt;/thought&gt;
+David: &lt;thought&gt;I need to use the execute_python_code function to perform the multiplication of the two numbers and print the result.&lt;/thought&gt;
 &lt;function&gt;execute_python_code&lt;/function&gt;
 &lt;code&gt;print(151513434*54353453453)&lt;/code&gt;
 system: 1. Execute function execute_python_code
@@ -600,20 +600,20 @@ system: Respond with specific tags as outlined below:
 &lt;{argument name}&gt;{argument value}&lt;/{argument name}&gt;
 &lt;{argument name}&gt;{argument value}&lt;/{argument name}&gt;
 ...
-David: &lt;thought&gt;The multiplication of 151513434 and 54353453453 is 8235278382423187602. I can now provide the result to Bob.&lt;/thought&gt;
+David: &lt;thought&gt;The multiplication has been calculated successfully, and the result is 8235278382423187602. I can now inform Bob of the result.&lt;/thought&gt;
 &lt;function&gt;finish&lt;/function&gt;
-&lt;response&gt;The result of 151513434*54353453453 is 8235278382423187602.&lt;/response&gt;
+&lt;response&gt;The result of multiplying 151513434 by 54353453453 is 8235278382423187602.&lt;/response&gt;
 system: 1. Execute function finish
    [ARGUMENTS]:
-       {&quot;response&quot;: &quot;The result of 151513434*54353453453 is 8235278382423187602.&quot;}
-   [RESULT]: The result of 151513434*54353453453 is 8235278382423187602.
+       {&quot;response&quot;: &quot;The result of multiplying 151513434 by 54353453453 is 8235278382423187602.&quot;}
+   [RESULT]: The result of multiplying 151513434 by 54353453453 is 8235278382423187602.
 </pre></div>
 </div>
 </section>
 <section id="llamaindexagent">
 <h2>LlamaIndexAgent<a class="headerlink" href="#llamaindexagent" title="Link to this heading">¶</a></h2>
 <p>Refer to the RAG Section for more details.</p>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 32.643 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 34.364 seconds)</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-build-tutorial-builtin-agent-py">
 <div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
 <p><a class="reference download internal" download="" href="../_downloads/46ed2b57b0b63e420edd471093498f41/builtin_agent.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">builtin_agent.ipynb</span></code></a></p>
