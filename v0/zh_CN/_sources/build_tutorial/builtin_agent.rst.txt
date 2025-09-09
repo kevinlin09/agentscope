@@ -137,7 +137,7 @@ DialogAgent 是 AgentScope 中最基本的智能体，可以以对话的方式�
 
  .. code-block:: none
 
-    Alice: 嗨！我叫 Alice，是你的助手。有什么可以帮助你的吗？
+    Alice: 嗨！我叫Alice，是你的助手。有什么我可以帮你的吗？
 
 
 
@@ -181,7 +181,7 @@ UserAgent
  .. code-block:: none
 
     User Input: Bob: 你认识我吗？
-    Alice: 我们之前没有交流过，所以我并不直接认识你。不过，现在我已经知道了你的名字是 Bob！有什么我可以帮到你的吗？
+    Alice: 作为助手，我之前没有和你交流过，所以严格来说我不“认识”你。但我很高兴现在能与你交谈并提供帮助！你可以告诉我更多关于你自己的信息，这样我们就能更好地聊天了。
 
 
 
@@ -237,10 +237,10 @@ DictDialogAgent
  .. code-block:: none
 
     Charles: ```json
-    {"thought": "下雨天外出可能会让人感到不舒服，还可能淋湿衣服或感冒。但如果有必要外出，或者有人喜欢雨中的氛围，那也可以考虑。", "speak": "在下雨天外出通常不是一个好主意，因为可能会让你感到不舒服或是感冒。但如果你有特别的理由需要出门，或者你恰好喜欢雨中的散步，那么也是可以的。记得带上雨伞和穿防水鞋哦！","decision": "false"}
+    {"thought": "下雨天外出可能不太方便，因为天气湿冷且路面湿滑，不过如果有必要或者喜欢雨中散步的话，也是可以的。", "speak": "下雨天外出可能会有些不便，如果你有防水装备并且不介意湿漉漉的感觉，那也未尝不可。但如果只是随意出门，或许可以选择等雨停后再外出。", "decision": false}
     ```
-    metadata字段: false
-    metadata字段的类型: <class 'str'>
+    metadata字段: False
+    metadata字段的类型: <class 'bool'>
 
 
 
@@ -280,10 +280,10 @@ DictDialogAgent
  .. code-block:: none
 
     Charles: ```json
-    {"thought": "Bob 可能是在玩一个需要随机数字的游戏或者只是想要一个随机的选择。我将从1到10中随机选取一个数字来回应他。", "speak": "我选的数字是7。希望这是你想要的那个幸运数字！", "number": "7"}
+    {"thought": "Bob可能是在玩一个猜数字的游戏，或者只是单纯地让我选择一个随机数。我会给他一个随机的数字。", "speak": "我选5。", "number": "5"}
     ```
-    响应消息的content字段: 我选的数字是7。希望这是你想要的那个幸运数字！
-    响应消息的metadata字段: 7
+    响应消息的content字段: 我选5。
+    响应消息的metadata字段: 5
 
 
 
@@ -332,12 +332,12 @@ DictDialogAgent
  .. code-block:: none
 
     Charles: ```json
-    {"thought": "Bob 可能是在玩一个需要随机数字的游戏，或者他只是想要我从这个新的范围内给他一个随机选择。我会从20到30之间随机选取一个数字来回应他。", "speak": "这次我选的数字是23。希望它对你有用！如果你在玩游戏的话，祝你好运！", "number": "23"}
+    {"thought": "Bob似乎在继续玩猜数字游戏，或者需要一个在这个范围内的随机数。我将从20到30之间选择一个数字。", "speak": "我选27。", "number": "27"}
     ```
-    内容字段: 这次我选的数字是23。希望它对你有用！如果你在玩游戏的话，祝你好运！
+    内容字段: 我选27。
     内容字段的类型: <class 'str'>
 
-    元数据字段: 23
+    元数据字段: 27
     元数据字段的类型: <class 'str'>
 
 
@@ -420,7 +420,7 @@ ReActAgent
     <{argument name}>{argument value}</{argument name}>
     <{argument name}>{argument value}</{argument name}>
     ...
-    David: <thought>我需要使用execute_python_code函数来执行这个乘法运算。</thought>
+    David: <thought>我需要使用execute_python_code函数来计算这个乘法表达式的结果。</thought>
     <function>execute_python_code</function>
     <code>print(151513434*54353453453)</code>
     system: 1. Execute function execute_python_code
@@ -437,13 +437,13 @@ ReActAgent
     <{argument name}>{argument value}</{argument name}>
     <{argument name}>{argument value}</{argument name}>
     ...
-    David: <thought>我已经得到了计算的结果，现在可以回复Bob了。</thought>
+    David: <thought>我已经得到了计算结果，现在可以告诉Bob了。</thought>
     <function>finish</function>
-    <response>计算结果是 8235278382423187602。</response>
+    <response>151513434*54353453453的结果是8235278382423187602。</response>
     system: 1. Execute function finish
        [ARGUMENTS]:
-           {"response": "计算结果是 8235278382423187602。"}
-       [RESULT]: 计算结果是 8235278382423187602。
+           {"response": "151513434*54353453453的结果是8235278382423187602。"}
+       [RESULT]: 151513434*54353453453的结果是8235278382423187602。
 
 
 
@@ -459,7 +459,7 @@ LlamaIndexAgent
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 33.515 seconds)
+   **Total running time of the script:** (0 minutes 39.223 seconds)
 
 
 .. _sphx_glr_download_build_tutorial_builtin_agent.py:

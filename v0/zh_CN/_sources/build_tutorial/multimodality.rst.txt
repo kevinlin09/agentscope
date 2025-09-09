@@ -83,7 +83,7 @@
 
  .. code-block:: none
 
-    2025-08-19 09:32:32 | INFO     | agentscope.manager._model:load_model_configs:138 - Load configs for model wrapper: my-qwen-vl
+    2025-09-09 06:23:18 | INFO     | agentscope.manager._model:load_model_configs:138 - Load configs for model wrapper: my-qwen-vl
 
 
 
@@ -168,34 +168,36 @@
 
  .. code-block:: none
 
-    2025-08-19 09:32:32 | ERROR    | agentscope.message.msg:__init__:112 - The url argument will be deprecated in the future. Consider using the ContentBlock instead to attach files to the message
+    2025-09-09 06:23:18 | ERROR    | agentscope.message.msg:__init__:112 - The url argument will be deprecated in the future. Consider using the ContentBlock instead to attach files to the message
     Monday: 这张图片是一个条形图，标题为 **"The Apples Each Person Has in 2023"**（2023年每个人拥有的苹果数量）。以下是该图表的详细描述：
 
     ### 1. **标题**
-       - 图表的标题是 "The Apples Each Person Has in 2023"，表明该图表展示的是在2023年三个人各自拥有的苹果数量。
+       - 图表的标题是 "The Apples Each Person Has in 2023"，表明该图表展示的是在2023年三个人（Alice、Bob 和 Charlie）各自拥有的苹果数量。
 
     ### 2. **X轴（横轴）**
-       - X轴的标签为 **"Number of Apples"**（苹果数量）。
-       - X轴上有三个分类标签，分别是 **Alice**、**Bob** 和 **Charlie**，代表三个人的名字。
+       - X轴标签为 **"Number of Apples"**（苹果数量）。
+       - X轴上有三个分类标签：**Alice**、**Bob** 和 **Charlie**，分别代表三个人的名字。
 
     ### 3. **Y轴（纵轴）**
        - Y轴表示苹果的数量，范围从 **0.0** 到 **4.0**，以 **0.5** 为单位进行标记。
 
-    ### 4. **条形图内容**
-       - **Alice**：对应的条形高度为 **2.0**，表示 Alice 拥有 2 个苹果。
-       - **Bob**：对应的条形高度为 **1.0**，表示 Bob 拥有 1 个苹果。
-       - **Charlie**：对应的条形高度为 **4.0**，表示 Charlie 拥有 4 个苹果。
+    ### 4. **条形图细节**
+       - **Alice**：
+         - 对应的条形高度为 **2.0**，表示 Alice 拥有 2 个苹果。
+       - **Bob**：
+         - 对应的条形高度为 **1.0**，表示 Bob 拥有 1 个苹果。
+       - **Charlie**：
+         - 对应的条形高度为 **4.0**，表示 Charlie 拥有 4 个苹果。
 
     ### 5. **颜色**
        - 所有条形均使用相同的深蓝色进行填充。
 
     ### 6. **总结**
-       - 该图表清晰地展示了 Alice、Bob 和 Charlie 在 2023 年各自拥有的苹果数量：
-         - **Alice** 拥有 2 个苹果。
-         - **Bob** 拥有 1 个苹果。
-         - **Charlie** 拥有 4 个苹果，是三人中拥有苹果数量最多的人。
+       - **Charlie** 拥有的苹果最多，为 4 个。
+       - **Alice** 拥有 2 个苹果，数量居中。
+       - **Bob** 拥有的苹果最少，为 1 个。
 
-    这个条形图简洁明了，易于理解每个人在指定年份拥有的苹果数量。
+    这个条形图简洁明了地展示了三个人在2023年各自拥有的苹果数量。
 
 
 
@@ -203,7 +205,7 @@
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 22.380 seconds)
+   **Total running time of the script:** (0 minutes 18.213 seconds)
 
 
 .. _sphx_glr_download_build_tutorial_multimodality.py:

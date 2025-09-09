@@ -152,10 +152,10 @@ AgentScope 中，可以通过继承基类`agentscope.agents.AgentBase`来构建�
 
  .. code-block:: none
 
-    Jarvis: 你好！有什么可以帮助你的吗？
+    Jarvis: 您好！有什么可以帮助您的吗？
     消息的发送者: Jarvis
     发送者的角色: assistant
-    消息的内容: 你好！有什么可以帮助你的吗？
+    消息的内容: 您好！有什么可以帮助您的吗？
 
 
 
@@ -205,7 +205,7 @@ AgentScope 中，可以通过继承基类`agentscope.agents.AgentBase`来构建�
 
  .. code-block:: none
 
-    当前记忆: [Msg(id='4d6f5fd10ef7451a90bdf023c73100d4', name='system', role='system', content='你是一个名为Jarvis的助手。', metadata=None, timestamp='2025-08-19 09:34:52'), Msg(id='881a491309d24ca9bdcd35a0a760ae13', name='Stank', role='user', content='嗨!', metadata=None, timestamp='2025-08-19 09:34:52'), Msg(id='87584ac8fa6943938bde991ad52d3c2c', name='Jarvis', role='assistant', content='我能为您做些什么吗?', metadata=None, timestamp='2025-08-19 09:34:52')]
+    当前记忆: [Msg(id='b533347b8f73433e8ce834d995aa067f', name='system', role='system', content='你是一个名为Jarvis的助手。', metadata=None, timestamp='2025-09-09 06:25:27'), Msg(id='974bc47ffd0a44f796b9b01e1561496e', name='Stank', role='user', content='嗨!', metadata=None, timestamp='2025-09-09 06:25:27'), Msg(id='e19cb5ac9868458fa3798a0aad0ec58a', name='Jarvis', role='assistant', content='我能为您做些什么吗?', metadata=None, timestamp='2025-09-09 06:25:27')]
     当前大小: 3
 
 
@@ -265,7 +265,7 @@ AgentScope 中，可以通过继承基类`agentscope.agents.AgentBase`来构建�
 
  .. code-block:: none
 
-    删除后的记忆: [Msg(id='881a491309d24ca9bdcd35a0a760ae13', name='Stank', role='user', content='嗨!', metadata=None, timestamp='2025-08-19 09:34:52'), Msg(id='87584ac8fa6943938bde991ad52d3c2c', name='Jarvis', role='assistant', content='我能为您做些什么吗?', metadata=None, timestamp='2025-08-19 09:34:52')]
+    删除后的记忆: [Msg(id='974bc47ffd0a44f796b9b01e1561496e', name='Stank', role='user', content='嗨!', metadata=None, timestamp='2025-09-09 06:25:27'), Msg(id='e19cb5ac9868458fa3798a0aad0ec58a', name='Jarvis', role='assistant', content='我能为您做些什么吗?', metadata=None, timestamp='2025-09-09 06:25:27')]
     删除后的大小: 2
 
 
@@ -338,7 +338,7 @@ AgentScope 中，可以通过继承基类`agentscope.agents.AgentBase`来构建�
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 1.288 seconds)
+   **Total running time of the script:** (0 minutes 1.169 seconds)
 
 
 .. _sphx_glr_download_build_tutorial_agent.py:

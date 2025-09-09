@@ -738,13 +738,31 @@ error within &lt;returncode&gt;&lt;/returncode&gt;, &lt;stdout&gt;&lt;/stdout&gt
 &lt;{argument name}&gt;{argument value}&lt;/{argument name}&gt;
 &lt;{argument name}&gt;{argument value}&lt;/{argument name}&gt;
 ...
-Friday: &lt;thought&gt;用户想要计算一个乘法表达式的结果。我可以直接帮助他计算这个结果，而无需使用任何工具函数。&lt;/thought&gt;
+Friday: &lt;thought&gt;用户需要计算一个大数乘法的结果，我将使用execute_shell_command函数来执行这个计算。&lt;/thought&gt;
+&lt;function&gt;execute_shell_command&lt;/function&gt;
+&lt;command&gt;expr 1615114134 \* 4343434343&lt;/command&gt;
+&lt;timeout&gt;60&lt;/timeout&gt;
+system: 1. Execute function execute_shell_command
+   [ARGUMENTS]:
+       {&quot;command&quot;: &quot;expr 1615114134 \\* 4343434343&quot;, &quot;timeout&quot;: 60}
+   [RESULT]: &lt;returncode&gt;0&lt;/returncode&gt;
+&lt;stdout&gt;7015142197480303962
+&lt;/stdout&gt;
+&lt;stderr&gt;&lt;/stderr&gt;
+
+system: Respond with specific tags as outlined below:
+&lt;thought&gt;{what you thought}&lt;/thought&gt;
+&lt;function&gt;{the function name you want to call}&lt;/function&gt;
+&lt;{argument name}&gt;{argument value}&lt;/{argument name}&gt;
+&lt;{argument name}&gt;{argument value}&lt;/{argument name}&gt;
+...
+Friday: &lt;thought&gt;我已经得到了计算结果，现在可以告诉用户了。&lt;/thought&gt;
 &lt;function&gt;finish&lt;/function&gt;
-&lt;response&gt;1615114134 * 4343434343 的结果是 7000299987712775622。&lt;/response&gt;
+&lt;response&gt;1615114134乘以4343434343的结果是7015142197480303962。&lt;/response&gt;
 system: 1. Execute function finish
    [ARGUMENTS]:
-       {&quot;response&quot;: &quot;1615114134 * 4343434343 的结果是 7000299987712775622。&quot;}
-   [RESULT]: 1615114134 * 4343434343 的结果是 7000299987712775622。
+       {&quot;response&quot;: &quot;1615114134乘以4343434343的结果是7015142197480303962。&quot;}
+   [RESULT]: 1615114134乘以4343434343的结果是7015142197480303962。
 </pre></div>
 </div>
 </section>
@@ -817,7 +835,7 @@ system: 1. Execute function finish
 <div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>tool_calls: [
     {
         &quot;type&quot;: &quot;tool_use&quot;,
-        &quot;id&quot;: &quot;call_7f3114e94acd498698b738&quot;,
+        &quot;id&quot;: &quot;call_e73283554c52413881e7e0&quot;,
         &quot;name&quot;: &quot;execute_shell_command&quot;,
         &quot;input&quot;: {
             &quot;command&quot;: &quot;whoami&quot;,
@@ -846,7 +864,7 @@ system: 1. Execute function finish
 <div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>assistant: [
     {
         &quot;type&quot;: &quot;tool_use&quot;,
-        &quot;id&quot;: &quot;call_7f3114e94acd498698b738&quot;,
+        &quot;id&quot;: &quot;call_e73283554c52413881e7e0&quot;,
         &quot;name&quot;: &quot;execute_shell_command&quot;,
         &quot;input&quot;: {
             &quot;command&quot;: &quot;whoami&quot;,
@@ -879,7 +897,7 @@ system: 1. Execute function finish
         &quot;content&quot;: null,
         &quot;tool_calls&quot;: [
             {
-                &quot;id&quot;: &quot;call_7f3114e94acd498698b738&quot;,
+                &quot;id&quot;: &quot;call_e73283554c52413881e7e0&quot;,
                 &quot;type&quot;: &quot;function&quot;,
                 &quot;function&quot;: {
                     &quot;name&quot;: &quot;execute_shell_command&quot;,
@@ -890,7 +908,7 @@ system: 1. Execute function finish
     },
     {
         &quot;role&quot;: &quot;tool&quot;,
-        &quot;tool_call_id&quot;: &quot;call_7f3114e94acd498698b738&quot;,
+        &quot;tool_call_id&quot;: &quot;call_e73283554c52413881e7e0&quot;,
         &quot;content&quot;: &quot;&lt;returncode&gt;0&lt;/returncode&gt;\n&lt;stdout&gt;runner\n&lt;/stdout&gt;\n&lt;stderr&gt;&lt;/stderr&gt;&quot;,
         &quot;name&quot;: &quot;execute_shell_command&quot;
     }
@@ -941,7 +959,7 @@ system: 1. Execute function finish
     <span class="p">)</span>
 </pre></div>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 8.546 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 12.770 seconds)</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-build-tutorial-tool-py">
 <div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
 <p><a class="reference download internal" download="" href="../_downloads/9682e4a38fd7e8b6971e1afe68e967ff/tool.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">tool.ipynb</span></code></a></p>
