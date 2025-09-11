@@ -126,7 +126,7 @@ AgentScope 为长期记忆提供了一个基类 ``LongTermMemoryBase`` 和一个
 与 ReAct 智能体集成
 ----------------------------------------
 AgentScope 中的 ``ReActAgent`` 在构造函数中包含 ``long_term_memory`` 和 ``long_term_memory_mode`` 两个参数，
-其中 ``long_term_memory`` 用于指定长期记忆实例，``long_term_memory_mode``的取值为 ``"agent_control"``, ``"static_control"`` 或 ``"both"``。
+其中 ``long_term_memory`` 用于指定长期记忆实例，``long_term_memory_mode`` 的取值为 ``"agent_control"``, ``"static_control"`` 或 ``"both"``。
 
 当 ``long_term_memory_mode`` 设置为 ``"agent_control"`` 或 ``both`` 时，在 ``ReActAgent`` 的构造函数中将
 注册两个工具函数：``record_to_memory`` 和 ``retrieve_from_memory``。
@@ -173,7 +173,9 @@ AgentScope 中的 ``ReActAgent`` 在构造函数中包含 ``long_term_memory`` �
 
  .. code-block:: none
 
-    Friday: 很高兴听到你喜欢住民宿！杭州是一个美丽的城市，有许多独特的民宿可以提供更加亲切和个性化的住宿体验。我建议你可以尝试在西湖附近或是龙井茶园周边寻找民宿，这样不仅环境优美，而且方便游览周边景点。如果你需要具体的推荐或帮助预订，请告诉我你的具体需求，例如价格范围、设施要求等，我会尽力帮你找到满意的住处。希望你在杭州有一个愉快的旅行体验！
+    Friday: 我知道您在旅行时喜欢住民宿。杭州有很多具有地方特色的民宿，可以给您提供非常舒适的住宿体验和家的感觉。您可以选择西湖附近的民宿，这样方便您游览西湖及其周边的景点。如果您对历史文化感兴趣，也可以选择靠近宋城或河坊街的民宿，这样您可以更好地感受杭州的历史韵味。
+
+    如果您需要帮助预订或者想要了解一些具体的推荐，我可以帮到您。您有什么特别的需求吗？比如价格范围、风格偏好或者是位置要求？
 
 
 
@@ -233,7 +235,7 @@ AgentScope 提供了 ``LongTermMemoryBase`` 基类，它定义了长期记忆的
         | ``retrieve``
         | ``record_to_memory``
         | ``retrieve_from_memory``
-      - - 如果想支持 “static_control” 模式，必须实现``record` 和 `retrieve` 方法。
+      - - 如果想支持 “static_control” 模式，必须实现 ``record`` 和 ``retrieve`` 方法。
         - 想要支持 “agent_control” 模式，必须实现 ``record_to_memory`` 和 ``retrieve_from_memory`` 方法。
     * - ``Mem0LongTermMemory``
       - \-
@@ -249,7 +251,7 @@ AgentScope 提供了 ``LongTermMemoryBase`` 基类，它定义了长期记忆的
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 30.570 seconds)
+   **Total running time of the script:** (0 minutes 31.633 seconds)
 
 
 .. _sphx_glr_download_tutorial_task_long_term_memory.py:

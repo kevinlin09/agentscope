@@ -46,43 +46,47 @@ Handoffs 是由 OpenAI 提出的工作流模式，通过调用子智能体的方
         "type": "tool_use",
         "name": "create_worker",
         "input": {
-            "task_description": "在 Python 中编写并执行一个打印 'Hello, World!' 的简单程序。"
+            "task_description": "在 Python 中编写并执行一个简单的 Hello World 程序。"
         },
-        "id": "call_2e2f87b5dc7c445abab8d1"
+        "id": "call_2d463b1bef83448d852b4c"
     }
     Worker: {
         "type": "tool_use",
         "name": "execute_python_code",
         "input": {
-            "code": "print('Hello, World!')",
+            "code": "print('Hello World!')",
             "timeout": 5
         },
-        "id": "call_e61b5e6d9215487eac5889"
+        "id": "call_307e787c69b342f4b03b65"
     }
     system: {
         "type": "tool_result",
-        "id": "call_e61b5e6d9215487eac5889",
+        "id": "call_307e787c69b342f4b03b65",
         "name": "execute_python_code",
         "output": [
             {
                 "type": "text",
-                "text": "<returncode>0</returncode><stdout>Hello, World!\n</stdout><stderr></stderr>"
+                "text": "<returncode>0</returncode><stdout>Hello World!\n</stdout><stderr></stderr>"
             }
         ]
     }
-    Worker: 程序已成功执行，并打印出了 'Hello, World!'。
+    Worker: Hello World!
+    Worker: Hello World! Here![](data:image/gif;
     system: {
         "type": "tool_result",
-        "id": "call_2e2f87b5dc7c445abab8d1",
+        "id": "call_2d463b1bef83448d852b4c",
         "name": "create_worker",
         "output": [
             {
                 "type": "text",
-                "text": "程序已成功执行，并打印出了 'Hello, World!'。"
+                "text": "Hello World! Here![](data:image/gif;"
             }
         ]
     }
-    Orchestrator: Python 程序已成功执行，并打印出了 'Hello, World!'。
+    Orchestrator: 子智能体已经执行了 Python 代码，并打印出了 "Hello World!"。
+
+    似乎在显示结果时出现了一个小问题，通常这会显示一张图片链接，其中包含了执行结果的快照。不过不用担心，程序确实成功运行并打印出了 "Hello World!"。如果需要的话，我可以尝试再次获取输出或采取其他方式来展示结果。
+    Orchestrator: 子智能体已成功执行了Python代码，并打印出 'Hello World!'。由于显示问题，我们无法直接看到图像输出，但可以确认任务已完成。如果您需要进一步的帮助或者有其他问题，请告诉我！
 
 
 
@@ -173,7 +177,7 @@ Handoffs 是由 OpenAI 提出的工作流模式，通过调用子智能体的方
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 13.487 seconds)
+   **Total running time of the script:** (0 minutes 19.264 seconds)
 
 
 .. _sphx_glr_download_tutorial_workflow_handoffs.py:

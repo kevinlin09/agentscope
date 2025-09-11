@@ -395,7 +395,7 @@ to download the full example code.</p>
 <section id="react">
 <h3>与 ReAct 智能体集成<a class="headerlink" href="#react" title="Link to this heading">¶</a></h3>
 <p>AgentScope 中的 <code class="docutils literal notranslate"><span class="pre">ReActAgent</span></code> 在构造函数中包含 <code class="docutils literal notranslate"><span class="pre">long_term_memory</span></code> 和 <code class="docutils literal notranslate"><span class="pre">long_term_memory_mode</span></code> 两个参数，
-其中 <code class="docutils literal notranslate"><span class="pre">long_term_memory</span></code> 用于指定长期记忆实例，<code class="docutils literal notranslate"><span class="pre">long_term_memory_mode``的取值为</span> <span class="pre">``&quot;agent_control&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;static_control&quot;</span></code> 或 <code class="docutils literal notranslate"><span class="pre">&quot;both&quot;</span></code>。</p>
+其中 <code class="docutils literal notranslate"><span class="pre">long_term_memory</span></code> 用于指定长期记忆实例，<code class="docutils literal notranslate"><span class="pre">long_term_memory_mode</span></code> 的取值为 <code class="docutils literal notranslate"><span class="pre">&quot;agent_control&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;static_control&quot;</span></code> 或 <code class="docutils literal notranslate"><span class="pre">&quot;both&quot;</span></code>。</p>
 <p>当 <code class="docutils literal notranslate"><span class="pre">long_term_memory_mode</span></code> 设置为 <code class="docutils literal notranslate"><span class="pre">&quot;agent_control&quot;</span></code> 或 <code class="docutils literal notranslate"><span class="pre">both</span></code> 时，在 <code class="docutils literal notranslate"><span class="pre">ReActAgent</span></code> 的构造函数中将
 注册两个工具函数：<code class="docutils literal notranslate"><span class="pre">record_to_memory</span></code> 和 <code class="docutils literal notranslate"><span class="pre">retrieve_from_memory</span></code>。
 从而使智能体能够自主的管理长期记忆。</p>
@@ -429,7 +429,9 @@ to download the full example code.</p>
 <span class="n">asyncio</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">record_preferences</span><span class="p">())</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Friday: 很高兴听到你喜欢住民宿！杭州是一个美丽的城市，有许多独特的民宿可以提供更加亲切和个性化的住宿体验。我建议你可以尝试在西湖附近或是龙井茶园周边寻找民宿，这样不仅环境优美，而且方便游览周边景点。如果你需要具体的推荐或帮助预订，请告诉我你的具体需求，例如价格范围、设施要求等，我会尽力帮你找到满意的住处。希望你在杭州有一个愉快的旅行体验！
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Friday: 我知道您在旅行时喜欢住民宿。杭州有很多具有地方特色的民宿，可以给您提供非常舒适的住宿体验和家的感觉。您可以选择西湖附近的民宿，这样方便您游览西湖及其周边的景点。如果您对历史文化感兴趣，也可以选择靠近宋城或河坊街的民宿，这样您可以更好地感受杭州的历史韵味。
+
+如果您需要帮助预订或者想要了解一些具体的推荐，我可以帮到您。您有什么特别的需求吗？比如价格范围、风格偏好或者是位置要求？
 </pre></div>
 </div>
 <p>然后我们清空智能体的短期记忆，以避免造成干扰，并测试智能体是否会记住之前的对话。</p>
@@ -474,7 +476,7 @@ to download the full example code.</p>
 </div>
 </td>
 <td><ul class="simple">
-<li><p>如果想支持 “static_control” 模式，必须实现``record` 和 <cite>retrieve</cite> 方法。</p></li>
+<li><p>如果想支持 “static_control” 模式，必须实现 <code class="docutils literal notranslate"><span class="pre">record</span></code> 和 <code class="docutils literal notranslate"><span class="pre">retrieve</span></code> 方法。</p></li>
 <li><p>想要支持 “agent_control” 模式，必须实现 <code class="docutils literal notranslate"><span class="pre">record_to_memory</span></code> 和 <code class="docutils literal notranslate"><span class="pre">retrieve_from_memory</span></code> 方法。</p></li>
 </ul>
 </td>
@@ -494,7 +496,7 @@ to download the full example code.</p>
 <li><p><a class="reference internal" href="task_agent.html#agent"><span class="std std-ref">智能体</span></a> - ReAct 智能体</p></li>
 <li><p><a class="reference internal" href="task_tool.html#tool"><span class="std std-ref">工具</span></a> - 工具系统</p></li>
 </ul>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 30.570 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 31.633 seconds)</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-tutorial-task-long-term-memory-py">
 <div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
 <p><a class="reference download internal" download="" href="../_downloads/cf2bfcc46b2b3d58d3df8c98a6a13f87/task_long_term_memory.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">task_long_term_memory.ipynb</span></code></a></p>
