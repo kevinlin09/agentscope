@@ -185,7 +185,7 @@ manage long-term memory through tool calls.
 
  .. code-block:: none
 
-    Friday: Staying in homestays can be a wonderful way to experience the local culture and lifestyle when you travel. Homestays often provide a more personal and immersive environment compared to hotels, allowing you to connect with locals and gain deeper insights into the area's customs and traditions. If you enjoy a cozy and homey atmosphere with personalized touches, homestays are definitely a great choice for your trips to Hangzhou.
+    Friday: That's great! Staying in homestays can be a wonderful way to experience the local culture and hospitality when you're in Hangzhou. Homestays often provide a more personal touch than hotels, and hosts can offer valuable insights into the area’s hidden gems and local customs. If you need recommendations for homestays or things to do in Hangzhou, feel free to ask!
 
 
 
@@ -264,7 +264,7 @@ Further Reading
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 31.247 seconds)
+   **Total running time of the script:** (0 minutes 28.583 seconds)
 
 
 .. _sphx_glr_download_tutorial_task_long_term_memory.py:
