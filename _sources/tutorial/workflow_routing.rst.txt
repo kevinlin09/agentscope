@@ -110,11 +110,11 @@ Initialize a routing agent
 
  .. code-block:: none
 
-    Router: Sure, I can help you with that. Could you please tell me more about the theme or any specific elements you would like to include in your poem?
+    Router: Of course, I can help you with that. Could you please provide me with a bit more information? Such as the theme or subject of the poem, the style you prefer, and any specific elements or words you'd like to include?
     The structured output:
     {
         "your_choice": "Content Generation",
-        "task_description": "Help the user to write a poem"
+        "task_description": "To write a poem based on the user's preferences."
     }
 
 
@@ -247,7 +247,7 @@ After that, we define a routing agent and equip it with the above tool functions
         "input": {
             "demand": "a quick sort function"
         },
-        "id": "call_92c95e5ca6e2427d83ec25"
+        "id": "call_8105eb851f31491794efeb"
     }
     PythonAgent: Here is a quick sort function implemented in Python:
     ```python
@@ -261,19 +261,26 @@ After that, we define a routing agent and equip it with the above tool functions
             right = [x for x in arr if x > pivot]
             return quick_sort(left) + middle + quick_sort(right)
     ```
-    You can use this function to sort a list of numbers. For example, `quick_sort([3, 6, 8, 10, 1, 2, 1])` will return `[1, 1, 2, 3, 6, 8, 10]`. Would you like to see an example with a specific list of numbers or do you need further explanation on how it works?
+    You can use this function to sort a list of numbers. For example:
+    ```python
+    numbers = [3, 6, 8, 10, 1, 2, 1]
+    sorted_numbers = quick_sort(numbers)
+    print(sorted_numbers)  # Output will be [1, 1, 2, 3, 6, 8, 10]
+    ```
+    Would you like to see an example with a different data set or do you have any other questions about the quick sort algorithm?
     system: {
         "type": "tool_result",
-        "id": "call_92c95e5ca6e2427d83ec25",
+        "id": "call_8105eb851f31491794efeb",
         "name": "generate_python",
         "output": [
             {
                 "type": "text",
-                "text": "Here is a quick sort function implemented in Python:\n```python\ndef quick_sort(arr):\n    if len(arr) <= 1:\n        return arr\n    else:\n        pivot = arr[len(arr) // 2]\n        left = [x for x in arr if x < pivot]\n        middle = [x for x in arr if x == pivot]\n        right = [x for x in arr if x > pivot]\n        return quick_sort(left) + middle + quick_sort(right)\n```\nYou can use this function to sort a list of numbers. For example, `quick_sort([3, 6, 8, 10, 1, 2, 1])` will return `[1, 1, 2, 3, 6, 8, 10]`. Would you like to see an example with a specific list of numbers or do you need further explanation on how it works?"
+                "text": "Here is a quick sort function implemented in Python:\n```python\ndef quick_sort(arr):\n    if len(arr) <= 1:\n        return arr\n    else:\n        pivot = arr[len(arr) // 2]\n        left = [x for x in arr if x < pivot]\n        middle = [x for x in arr if x == pivot]\n        right = [x for x in arr if x > pivot]\n        return quick_sort(left) + middle + quick_sort(right)\n```\nYou can use this function to sort a list of numbers. For example:\n```python\nnumbers = [3, 6, 8, 10, 1, 2, 1]\nsorted_numbers = quick_sort(numbers)\nprint(sorted_numbers)  # Output will be [1, 1, 2, 3, 6, 8, 10]\n```\nWould you like to see an example with a different data set or do you have any other questions about the quick sort algorithm?"
             }
         ]
     }
     Router: Here is a quick sort function implemented in Python:
+
     ```python
     def quick_sort(arr):
         if len(arr) <= 1:
@@ -285,7 +292,16 @@ After that, we define a routing agent and equip it with the above tool functions
             right = [x for x in arr if x > pivot]
             return quick_sort(left) + middle + quick_sort(right)
     ```
-    You can use this function to sort a list of numbers. For example, `quick_sort([3, 6, 8, 10, 1, 2, 1])` will return `[1, 1, 2, 3, 6, 8, 10]`. Would you like to see an example with a specific list of numbers or do you need further explanation on how it works?
+
+    You can use this function to sort a list of numbers. For example:
+
+    ```python
+    numbers = [3, 6, 8, 10, 1, 2, 1]
+    sorted_numbers = quick_sort(numbers)
+    print(sorted_numbers)  # Output will be [1, 1, 2, 3, 6, 8, 10]
+    ```
+
+    Would you like to see an example with a different data set or do you have any other questions about the quick sort algorithm?
 
 
 
@@ -293,7 +309,7 @@ After that, we define a routing agent and equip it with the above tool functions
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 26.602 seconds)
+   **Total running time of the script:** (0 minutes 33.444 seconds)
 
 
 .. _sphx_glr_download_tutorial_workflow_routing.py:
