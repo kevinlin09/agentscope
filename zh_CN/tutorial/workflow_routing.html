@@ -401,11 +401,11 @@ to download the full example code.</p>
 <span class="n">asyncio</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">example_router_explicit</span><span class="p">())</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Router: 好的，我将为您创作一首诗。
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Router: 好的，我将帮您创作一首诗。
 结构化输出：
 {
     &quot;your_choice&quot;: &quot;Content Generation&quot;,
-    &quot;task_description&quot;: null
+    &quot;task_description&quot;: &quot;用户请求写一首诗&quot;
 }
 </pre></div>
 </div>
@@ -502,78 +502,54 @@ to download the full example code.</p>
     &quot;type&quot;: &quot;tool_use&quot;,
     &quot;name&quot;: &quot;generate_python&quot;,
     &quot;input&quot;: {
-        &quot;demand&quot;: &quot;生成一个快速排序函数&quot;
+        &quot;demand&quot;: &quot;需要一个快速排序函数。&quot;
     },
-    &quot;id&quot;: &quot;call_535cd2d5fe254f398dad8a&quot;
+    &quot;id&quot;: &quot;call_1c20c3812fbe4d17b039a9&quot;
 }
-PythonAgent: 以下是一个使用 Python 编写的快速排序函数。该实现采用递归方法，选取列表中的最后一个元素作为基准值来进行排序。
+PythonAgent: 这是一个使用Python实现的快速排序函数。快速排序是一种高效的排序算法，它使用分治策略来递归地将列表划分为子列表并进行排序。
 
 ```python
-def quick_sort(arr):
+def quicksort(arr):
     if len(arr) &lt;= 1:
         return arr
     else:
-        pivot = arr.pop()
-        greater = []
-        lesser = []
-        for item in arr:
-            if item &gt; pivot:
-                greater.append(item)
-            else:
-                lesser.append(item)
-        return quick_sort(lesser) + [pivot] + quick_sort(greater)
+        pivot = arr[len(arr) // 2]
+        left = [x for x in arr if x &lt; pivot]
+        middle = [x for x in arr if x == pivot]
+        right = [x for x in arr if x &gt; pivot]
+        return quicksort(left) + middle + quicksort(right)
 ```
 
-你可以通过调用 `quick_sort` 函数并传入一个整数或浮点数的列表来对其进行排序。例如：
-
-```python
-unsorted_list = [3, 6, 8, 10, 1, 2, 1]
-sorted_list = quick_sort(unsorted_list)
-print(sorted_list)
-```
-
-这段代码会输出排序后的列表 `[1, 1, 2, 3, 6, 8, 10]`。
+这个`quicksort`函数接受一个列表`arr`作为输入，并返回一个新的已排序列表。你可以用任何列表来调用这个函数来进行排序。如果你需要原地排序，请告诉我，我可以提供一个不同的实现。
 system: {
     &quot;type&quot;: &quot;tool_result&quot;,
-    &quot;id&quot;: &quot;call_535cd2d5fe254f398dad8a&quot;,
+    &quot;id&quot;: &quot;call_1c20c3812fbe4d17b039a9&quot;,
     &quot;name&quot;: &quot;generate_python&quot;,
     &quot;output&quot;: [
         {
             &quot;type&quot;: &quot;text&quot;,
-            &quot;text&quot;: &quot;以下是一个使用 Python 编写的快速排序函数。该实现采用递归方法，选取列表中的最后一个元素作为基准值来进行排序。\n\n```python\ndef quick_sort(arr):\n    if len(arr) &lt;= 1:\n        return arr\n    else:\n        pivot = arr.pop()\n        greater = []\n        lesser = []\n        for item in arr:\n            if item &gt; pivot:\n                greater.append(item)\n            else:\n                lesser.append(item)\n        return quick_sort(lesser) + [pivot] + quick_sort(greater)\n```\n\n你可以通过调用 `quick_sort` 函数并传入一个整数或浮点数的列表来对其进行排序。例如：\n\n```python\nunsorted_list = [3, 6, 8, 10, 1, 2, 1]\nsorted_list = quick_sort(unsorted_list)\nprint(sorted_list)\n```\n\n这段代码会输出排序后的列表 `[1, 1, 2, 3, 6, 8, 10]`。&quot;
+            &quot;text&quot;: &quot;这是一个使用Python实现的快速排序函数。快速排序是一种高效的排序算法，它使用分治策略来递归地将列表划分为子列表并进行排序。\n\n```python\ndef quicksort(arr):\n    if len(arr) &lt;= 1:\n        return arr\n    else:\n        pivot = arr[len(arr) // 2]\n        left = [x for x in arr if x &lt; pivot]\n        middle = [x for x in arr if x == pivot]\n        right = [x for x in arr if x &gt; pivot]\n        return quicksort(left) + middle + quicksort(right)\n```\n\n这个`quicksort`函数接受一个列表`arr`作为输入，并返回一个新的已排序列表。你可以用任何列表来调用这个函数来进行排序。如果你需要原地排序，请告诉我，我可以提供一个不同的实现。&quot;
         }
     ]
 }
-Router: 生成的快速排序函数如下：
+Router: 这是一个使用 Python 实现的快速排序函数。快速排序是一种高效的排序算法，它使用分治策略来递归地将列表划分为子列表并进行排序。
 
 ```python
-def quick_sort(arr):
+def quicksort(arr):
     if len(arr) &lt;= 1:
         return arr
     else:
-        pivot = arr.pop()
-        greater = []
-        lesser = []
-        for item in arr:
-            if item &gt; pivot:
-                greater.append(item)
-            else:
-                lesser.append(item)
-        return quick_sort(lesser) + [pivot] + quick_sort(greater)
+        pivot = arr[len(arr) // 2]
+        left = [x for x in arr if x &lt; pivot]
+        middle = [x for x in arr if x == pivot]
+        right = [x for x in arr if x &gt; pivot]
+        return quicksort(left) + middle + quicksort(right)
 ```
 
-你可以通过调用 `quick_sort` 函数并传入一个整数或浮点数的列表来对其进行排序。例如：
-
-```python
-unsorted_list = [3, 6, 8, 10, 1, 2, 1]
-sorted_list = quick_sort(unsorted_list)
-print(sorted_list)
-```
-
-执行这段代码会输出排序后的列表 `[1, 1, 2, 3, 6, 8, 10]`。这就是使用 Python 实现的快速排序算法。
+这个 `quicksort` 函数接受一个列表 `arr` 作为输入，并返回一个新的已排序列表。你可以用任何列表来调用这个函数来进行排序。如果你需要原地排序，请告诉我，我可以提供一个不同的实现。
 </pre></div>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 23.385 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 22.782 seconds)</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-tutorial-workflow-routing-py">
 <div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
 <p><a class="reference download internal" download="" href="../_downloads/3266c75280f96697c4cc46d7d55a3ac8/workflow_routing.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">workflow_routing.ipynb</span></code></a></p>
