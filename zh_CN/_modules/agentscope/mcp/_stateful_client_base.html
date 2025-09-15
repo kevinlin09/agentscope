@@ -246,6 +246,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../tutorial/task_long_term_memory.html">长期记忆</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../tutorial/task_agent.html">智能体</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../tutorial/task_pipeline.html">管道 (Pipeline)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tutorial/task_plan.html">计划</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../tutorial/task_state.html">状态/会话管理</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../tutorial/task_hook.html">智能体钩子函数</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../tutorial/task_mcp.html">MCP</a></li>
@@ -402,10 +403,10 @@
             <span class="p">)</span>
 
         <span class="k">try</span><span class="p">:</span>
-            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">stack</span><span class="p">:</span>
-                <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">stack</span><span class="o">.</span><span class="n">aclose</span><span class="p">()</span>
-
+            <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">stack</span><span class="o">.</span><span class="n">aclose</span><span class="p">()</span>
             <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;MCP client closed.&quot;</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;Error during MCP client cleanup: </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">e</span><span class="p">)</span>
         <span class="k">finally</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">stack</span> <span class="o">=</span> <span class="kc">None</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">session</span> <span class="o">=</span> <span class="kc">None</span>

@@ -247,6 +247,7 @@
 <li class="toctree-l1"><a class="reference internal" href="task_long_term_memory.html">长期记忆</a></li>
 <li class="toctree-l1"><a class="reference internal" href="task_agent.html">智能体</a></li>
 <li class="toctree-l1"><a class="reference internal" href="task_pipeline.html">管道 (Pipeline)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="task_plan.html">计划</a></li>
 <li class="toctree-l1"><a class="reference internal" href="task_state.html">状态/会话管理</a></li>
 <li class="toctree-l1"><a class="reference internal" href="task_hook.html">智能体钩子函数</a></li>
 <li class="toctree-l1"><a class="reference internal" href="task_mcp.html">MCP</a></li>
@@ -506,9 +507,10 @@ Charlie: 我也是！顺便说一下，我是 Charlie。
 <span class="n">asyncio</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">example_msghub</span><span class="p">())</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Alice: 大家好，我叫Alice，是一名学生。我喜欢阅读、学习新知识还有和朋友们一起度过愉快的时光。很高兴认识大家！你们呢？可以分享一些关于你们自己的事情吗？
-Bob: 大家好，我叫Bob，同样也是一名学生。我对科学和技术特别感兴趣，平时喜欢捣鼓一些小发明。我也很爱音乐，会弹吉他来放松自己。很高兴遇见各位！
-Charlie: 大家好，我叫Charlie，也是一名学生。我对历史和文化非常感兴趣，喜欢参观博物馆和历史遗址。我还热爱运动，尤其是篮球，经常和朋友们一起打比赛。很高兴认识大家！
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Alice: 大家好，我叫Alice，是一名学生。很高兴认识大家！我对很多事物都充满好奇，喜欢学习新知识，平时也喜欢阅读和旅行。希望我们能成为好朋友！
+Alice: Hi everyone, my name is Alice and I&#39;m a student. It&#39;s a pleasure to meet you all! I&#39;m very curious about many things and enjoy learning new knowledge. In my free time, I like to read and travel. I hope we can become good friends!
+Bob: Hi Alice, it&#39;s nice to meet you! I&#39;m Bob, also a student. I have a strong interest in technology and science, and I like to spend my free time exploring the latest developments in these fields. When I&#39;m not studying, I enjoy playing video games and watching sci-fi movies. I look forward to getting to know all of you better and sharing our experiences.
+Charlie: Hi Alice and Bob, I&#39;m Charlie and I&#39;m also a student. I have a passion for sports and outdoor activities, and you can often find me playing soccer or going for a hike in my free time. I&#39;m also really into music and play the guitar. I&#39;m excited to meet all of you and hope we can share our diverse interests and learn from each other!
 </pre></div>
 </div>
 <p>现在我们打印 Alice 的记忆，检查她的记忆是否正确更新。</p>
@@ -528,18 +530,22 @@ Charlie: 大家好，我叫Charlie，也是一名学生。我对历史和文化�
 system: &quot;现在大家互相认识一下，简单自我介绍。&quot;
 Alice: [
     {
-        &quot;id&quot;: &quot;HCYofv627syXN4SS7pAkTJ&quot;,
+        &quot;type&quot;: &quot;text&quot;,
+        &quot;text&quot;: &quot;大家好，我叫Alice，是一名学生。很高兴认识大家！我对很多事物都充满好奇，喜欢学习新知识，平时也喜欢阅读和旅行。希望我们能成为好朋友！&quot;
+    },
+    {
         &quot;type&quot;: &quot;tool_use&quot;,
+        &quot;id&quot;: &quot;call_98e2797400bb44f8b4ef5d&quot;,
         &quot;name&quot;: &quot;generate_response&quot;,
         &quot;input&quot;: {
-            &quot;response&quot;: &quot;大家好，我叫Alice，是一名学生。我喜欢阅读、学习新知识还有和朋友们一起度过愉快的时光。很高兴认识大家！你们呢？可以分享一些关于你们自己的事情吗？&quot;
+            &quot;response&quot;: &quot;Hi everyone, my name is Alice and I&#39;m a student. It&#39;s a pleasure to meet you all! I&#39;m very curious about many things and enjoy learning new knowledge. In my free time, I like to read and travel. I hope we can become good friends!&quot;
         }
     }
 ]
 system: [
     {
         &quot;type&quot;: &quot;tool_result&quot;,
-        &quot;id&quot;: &quot;HCYofv627syXN4SS7pAkTJ&quot;,
+        &quot;id&quot;: &quot;call_98e2797400bb44f8b4ef5d&quot;,
         &quot;name&quot;: &quot;generate_response&quot;,
         &quot;output&quot;: [
             {
@@ -549,9 +555,9 @@ system: [
         ]
     }
 ]
-Alice: &quot;大家好，我叫Alice，是一名学生。我喜欢阅读、学习新知识还有和朋友们一起度过愉快的时光。很高兴认识大家！你们呢？可以分享一些关于你们自己的事情吗？&quot;
-Bob: &quot;大家好，我叫Bob，同样也是一名学生。我对科学和技术特别感兴趣，平时喜欢捣鼓一些小发明。我也很爱音乐，会弹吉他来放松自己。很高兴遇见各位！&quot;
-Charlie: &quot;大家好，我叫Charlie，也是一名学生。我对历史和文化非常感兴趣，喜欢参观博物馆和历史遗址。我还热爱运动，尤其是篮球，经常和朋友们一起打比赛。很高兴认识大家！&quot;
+Alice: &quot;Hi everyone, my name is Alice and I&#39;m a student. It&#39;s a pleasure to meet you all! I&#39;m very curious about many things and enjoy learning new knowledge. In my free time, I like to read and travel. I hope we can become good friends!&quot;
+Bob: &quot;Hi Alice, it&#39;s nice to meet you! I&#39;m Bob, also a student. I have a strong interest in technology and science, and I like to spend my free time exploring the latest developments in these fields. When I&#39;m not studying, I enjoy playing video games and watching sci-fi movies. I look forward to getting to know all of you better and sharing our experiences.&quot;
+Charlie: &quot;Hi Alice and Bob, I&#39;m Charlie and I&#39;m also a student. I have a passion for sports and outdoor activities, and you can often find me playing soccer or going for a hike in my free time. I&#39;m also really into music and play the guitar. I&#39;m excited to meet all of you and hope we can share our diverse interests and learn from each other!&quot;
 </pre></div>
 </div>
 </section>
@@ -562,7 +568,7 @@ Charlie: &quot;大家好，我叫Charlie，也是一名学生。我对历史和�
 <li><p><a class="reference internal" href="task_prompt.html#prompt"><span class="std std-ref">提示词格式化</span></a></p></li>
 <li><p><a class="reference internal" href="task_pipeline.html#pipeline"><span class="std std-ref">管道 (Pipeline)</span></a></p></li>
 </ul>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 9.508 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 15.033 seconds)</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-tutorial-workflow-conversation-py">
 <div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
 <p><a class="reference download internal" download="" href="../_downloads/6fc2f5ac2a455c83476d717ce963aa17/workflow_conversation.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">workflow_conversation.ipynb</span></code></a></p>

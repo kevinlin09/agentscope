@@ -247,6 +247,7 @@
 <li class="toctree-l1"><a class="reference internal" href="task_long_term_memory.html">长期记忆</a></li>
 <li class="toctree-l1"><a class="reference internal" href="task_agent.html">智能体</a></li>
 <li class="toctree-l1"><a class="reference internal" href="task_pipeline.html">管道 (Pipeline)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="task_plan.html">计划</a></li>
 <li class="toctree-l1"><a class="reference internal" href="task_state.html">状态/会话管理</a></li>
 <li class="toctree-l1"><a class="reference internal" href="task_hook.html">智能体钩子函数</a></li>
 <li class="toctree-l1"><a class="reference internal" href="task_mcp.html">MCP</a></li>
@@ -337,9 +338,9 @@ to download the full example code.</p>
     &quot;type&quot;: &quot;tool_use&quot;,
     &quot;name&quot;: &quot;create_worker&quot;,
     &quot;input&quot;: {
-        &quot;task_description&quot;: &quot;在 Python 中打印 &#39;Hello, world!&#39; 并返回执行结果&quot;
+        &quot;task_description&quot;: &quot;在 Python 中打印 &#39;Hello, world!&#39; 并返回执行结果。&quot;
     },
-    &quot;id&quot;: &quot;call_e60ce6f0b6aa4a1a90d863&quot;
+    &quot;id&quot;: &quot;call_a568dfa168c64c7dbcdd75&quot;
 }
 Worker: {
     &quot;type&quot;: &quot;tool_use&quot;,
@@ -348,11 +349,11 @@ Worker: {
         &quot;code&quot;: &quot;print(&#39;Hello, world!&#39;)&quot;,
         &quot;timeout&quot;: 5
     },
-    &quot;id&quot;: &quot;call_b80eacfcaef443b190bf08&quot;
+    &quot;id&quot;: &quot;call_4b83148b2187460083d2ce&quot;
 }
 system: {
     &quot;type&quot;: &quot;tool_result&quot;,
-    &quot;id&quot;: &quot;call_b80eacfcaef443b190bf08&quot;,
+    &quot;id&quot;: &quot;call_4b83148b2187460083d2ce&quot;,
     &quot;name&quot;: &quot;execute_python_code&quot;,
     &quot;output&quot;: [
         {
@@ -361,23 +362,23 @@ system: {
         }
     ]
 }
-Worker: Python 代码已成功执行，并打印出了 &#39;Hello, world!&#39;。下面是执行结果：
+Worker: Python 代码已成功执行，并打印出了 &#39;Hello, world!&#39;。以下是执行结果：
 
 ```
 Hello, world!
 ```
 system: {
     &quot;type&quot;: &quot;tool_result&quot;,
-    &quot;id&quot;: &quot;call_e60ce6f0b6aa4a1a90d863&quot;,
+    &quot;id&quot;: &quot;call_a568dfa168c64c7dbcdd75&quot;,
     &quot;name&quot;: &quot;create_worker&quot;,
     &quot;output&quot;: [
         {
             &quot;type&quot;: &quot;text&quot;,
-            &quot;text&quot;: &quot;Python 代码已成功执行，并打印出了 &#39;Hello, world!&#39;。下面是执行结果：\n\n```\nHello, world!\n```&quot;
+            &quot;text&quot;: &quot;Python 代码已成功执行，并打印出了 &#39;Hello, world!&#39;。以下是执行结果：\n\n```\nHello, world!\n```&quot;
         }
     ]
 }
-Orchestrator: 子智能体已在 Python 中成功执行了 &quot;Hello, world!&quot; 的打印任务。下面是执行结果：
+Orchestrator: 子智能体已成功在 Python 中执行了 &quot;Hello, world!&quot; 的打印任务。以下是执行结果：
 
 ```
 Hello, world!
@@ -464,7 +465,7 @@ Hello, world!
 <span class="n">asyncio</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">run_handoffs</span><span class="p">())</span>
 </pre></div>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 8.294 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 10.640 seconds)</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-tutorial-workflow-handoffs-py">
 <div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
 <p><a class="reference download internal" download="" href="../_downloads/91c90a0c5fa0aaee5502046f62e97d67/workflow_handoffs.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">workflow_handoffs.ipynb</span></code></a></p>

@@ -351,6 +351,23 @@
 
 .. raw:: html
 
+    <div class="sphx-glr-thumbcontainer" tooltip="AgentScope 中的计划（Plan）模块使智能体能够正式地将复杂任务分解为可管理的子任务并系统地执行它们。主要功能包括：">
+
+.. only:: html
+
+  .. image:: /tutorial/images/thumb/sphx_glr_task_plan_thumb.png
+    :alt:
+
+  :ref:`sphx_glr_tutorial_task_plan.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">计划</div>
+    </div>
+
+
+.. raw:: html
+
     <div class="sphx-glr-thumbcontainer" tooltip="在 AgentScope 中，&quot;状态&quot; 是指智能体在运行中某一时刻的数据快照，包括其当前的系统提示、记忆、上下文、装备的工具以及其他 随时间变化 的信息。">
 
 .. only:: html
@@ -464,6 +481,7 @@
    /tutorial/workflow_multiagent_debate
    /tutorial/task_model
    /tutorial/quickstart_agent
+   /tutorial/task_plan
    /tutorial/task_state
    /tutorial/workflow_routing
    /tutorial/task_prompt

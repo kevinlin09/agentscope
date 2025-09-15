@@ -3,7 +3,7 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="index" title="索引" href="../genindex.html" /><link rel="search" title="搜索" href="../search.html" /><link rel="next" title="状态/会话管理" href="task_state.html" /><link rel="prev" title="智能体" href="task_agent.html" />
+<link rel="index" title="索引" href="../genindex.html" /><link rel="search" title="搜索" href="../search.html" /><link rel="next" title="计划" href="task_plan.html" /><link rel="prev" title="智能体" href="task_agent.html" />
         <link rel="prefetch" href="../_static/logo.svg" as="image" />
 
     <!-- Generated with Sphinx 8.1.3 and Furo 2025.07.19 -->
@@ -247,6 +247,7 @@
 <li class="toctree-l1"><a class="reference internal" href="task_long_term_memory.html">长期记忆</a></li>
 <li class="toctree-l1"><a class="reference internal" href="task_agent.html">智能体</a></li>
 <li class="toctree-l1 current current-page"><a class="current reference internal" href="#">管道 (Pipeline)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="task_plan.html">计划</a></li>
 <li class="toctree-l1"><a class="reference internal" href="task_state.html">状态/会话管理</a></li>
 <li class="toctree-l1"><a class="reference internal" href="task_hook.html">智能体钩子函数</a></li>
 <li class="toctree-l1"><a class="reference internal" href="task_mcp.html">MCP</a></li>
@@ -392,9 +393,10 @@ to download the full example code.</p>
 <span class="n">asyncio</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">example_broadcast_message</span><span class="p">())</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Alice: 您好，我叫Alice，今年50岁了，是一名教师。很高兴认识您！
-Bob: 您好，Alice！很高兴认识您。我叫Bob，今年35岁，是一名工程师。我们都有教育相关的背景呢，虽然我的角色是技术方面的。希望我们能有更多交流的机会。
-Charlie: 大家好，我叫Charlie，今年28岁，是一名设计师。虽然我的专业领域与你们的有所不同，但我相信我们可以从彼此的经验中学习到很多。期待和各位的交流！
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Alice: 您好，我叫Alice，今年50岁，是一名教师。很高兴认识您！如果您有任何问题或者需要帮助的地方，请随时告诉我。
+Alice: 您好，我叫Alice，今年50岁，是一名教师。很高兴认识您！如果您有任何问题或者需要帮助的地方，请随时告诉我。
+Bob: 您好，Alice！很高兴认识您。我叫Bob，今年35岁，是一名工程师。如果您对工程或者技术方面有任何问题，也许我能帮上忙。
+Charlie: 您好，Alice和Bob！我是Charlie，今年28岁，从事设计师工作。如果你们在设计或者创意方面需要任何帮助的话，请随时联系我。很高兴认识大家！
 </pre></div>
 </div>
 <p>现在让我们检查 Bob、Charlie 和 David 是否收到了 Alice 的消息。</p>
@@ -414,9 +416,9 @@ Charlie: 大家好，我叫Charlie，今年28岁，是一名设计师。虽然�
 <span class="n">asyncio</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">check_broadcast_message</span><span class="p">())</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Bob: Alice是一位50岁的教师。她是我们对话中的一员，刚刚已经介绍了自己。如果您想了解更多关于她的信息，我可以帮您询问。
-Charlie: Alice 是一位50岁的教师。她在我们的对话中介绍了自己。如果你想要了解更多关于她的信息，我可以试着询问她更详细的情况。
-David: Alice 这个名字非常普遍，没有更多的信息很难确定你指的是哪一位 Alice。你可以提供一些额外的信息吗？比如她的职业、她所在的国家或者她在哪个领域比较出名等。这样我可能能帮你找到更多关于她的信息。
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Bob: Alice 是一位50岁的教师。我们在之前的对话中已经互相介绍过了。如果你需要更多关于Alice的信息，我可以帮你问她。
+Charlie: Alice 是一位50岁的教师。如果我没记错的话，她是我们之前对话中介绍过自己的。如果您有关于教育方面的问题，Alice应该会是很好的求助对象。
+David: Alice 可能指很多人，如果你能提供更多信息，比如她的全名或者她工作的领域，我就能更准确地回答你的问题。不然的话，我就无法确定你指的是哪位 Alice。
 </pre></div>
 </div>
 <p>现在我们观察到 Bob 和 Charlie 知道 Alice 和她的职业，而 David 对
@@ -561,7 +563,7 @@ Alice 一无所知，因为他没有包含在 <code class="docutils literal notr
 </pre></div>
 </div>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 15.368 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 22.901 seconds)</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-tutorial-task-pipeline-py">
 <div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
 <p><a class="reference download internal" download="" href="../_downloads/a841049f564cf5f9c0fea523e59490f5/task_pipeline.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">task_pipeline.ipynb</span></code></a></p>
@@ -582,12 +584,12 @@ Alice 一无所知，因为他没有包含在 <code class="docutils literal notr
       <footer>
         
         <div class="related-pages">
-          <a class="next-page" href="task_state.html">
+          <a class="next-page" href="task_plan.html">
               <div class="page-info">
                 <div class="context">
                   <span>Next</span>
                 </div>
-                <div class="title">状态/会话管理</div>
+                <div class="title">计划</div>
               </div>
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
             </a>

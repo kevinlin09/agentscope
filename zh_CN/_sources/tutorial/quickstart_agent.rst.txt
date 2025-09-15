@@ -68,7 +68,7 @@ AgentScope 在 ``agentscope.agent`` 模块下提供了开箱即用的 ReAct 智�
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 44-93
+.. GENERATED FROM PYTHON SOURCE LINES 44-99
 
 创建 ReAct 智能体
 ------------------------------
@@ -117,10 +117,16 @@ AgentScope 在 ``agentscope.agent`` 模块下提供了开箱即用的 ReAct 智�
   * - ``max_iters``
     -
     - 智能体生成响应的最大迭代次数
+  * - ``plan_notebook``
+    - :ref:`plan`
+    - 计划模块，允许智能体制定和管理计划与子任务
+  * - ``print_hint_msg``
+    -
+    - 是否在终端打印 ``plan_notebook`` 生成的提示消息
 
 以 DashScope API 为例，我们创建一个智能体对象如下：
 
-.. GENERATED FROM PYTHON SOURCE LINES 93-126
+.. GENERATED FROM PYTHON SOURCE LINES 99-132
 
 .. code-block:: Python
 
@@ -167,16 +173,16 @@ AgentScope 在 ``agentscope.agent`` 模块下提供了开箱即用的 ReAct 智�
 
     Jarvis: {
         "type": "tool_use",
-        "id": "call_a875d55dc35e4debb30a96",
+        "id": "call_81034beafcda49a39a36e9",
         "name": "execute_python_code",
         "input": {
             "code": "print('Hello World')",
-            "timeout": 300
+            "timeout": 30
         }
     }
     system: {
         "type": "tool_result",
-        "id": "call_a875d55dc35e4debb30a96",
+        "id": "call_81034beafcda49a39a36e9",
         "name": "execute_python_code",
         "output": [
             {
@@ -185,12 +191,12 @@ AgentScope 在 ``agentscope.agent`` 模块下提供了开箱即用的 ReAct 智�
             }
         ]
     }
-    Jarvis: 您的 Python 代码已成功运行，并输出了 "Hello World"。
+    Jarvis: 你的 Python 代码已经成功运行，并打印出了 "Hello World"。
 
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 127-154
+.. GENERATED FROM PYTHON SOURCE LINES 133-160
 
 从零开始创建
 --------------------------------
@@ -220,7 +226,7 @@ AgentScope 在 ``agentscope.agent`` 模块下提供了开箱即用的 ReAct 智�
 
 以 ``AgentBase`` 类为例，我们可以通过继承它并实现 ``reply`` 方法来创建自定义智能体类。
 
-.. GENERATED FROM PYTHON SOURCE LINES 154-229
+.. GENERATED FROM PYTHON SOURCE LINES 160-235
 
 .. code-block:: Python
 
@@ -307,12 +313,12 @@ AgentScope 在 ``agentscope.agent`` 模块下提供了开箱即用的 ReAct 智�
 
  .. code-block:: none
 
-    Friday: 我是Friday，一个虚拟助手，旨在帮助回答问题、提供信息和支持。有什么我可以帮您的吗？
+    Friday: 我是Friday，一个助手，旨在帮助回答问题、提供信息和支持。有什么我可以帮你的吗？
 
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 230-237
+.. GENERATED FROM PYTHON SOURCE LINES 236-243
 
 进一步阅读
 ---------------------
@@ -325,7 +331,7 @@ AgentScope 在 ``agentscope.agent`` 模块下提供了开箱即用的 ReAct 智�
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 5.470 seconds)
+   **Total running time of the script:** (0 minutes 7.546 seconds)
 
 
 .. _sphx_glr_download_tutorial_quickstart_agent.py:
