@@ -3,7 +3,7 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="State/Session Management" href="task_state.html" /><link rel="prev" title="Agent" href="task_agent.html" />
+<link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="Plan" href="task_plan.html" /><link rel="prev" title="Agent" href="task_agent.html" />
         <link rel="prefetch" href="../_static/logo.svg" as="image" />
 
     <!-- Generated with Sphinx 8.1.3 and Furo 2025.07.19 -->
@@ -247,6 +247,7 @@
 <li class="toctree-l1"><a class="reference internal" href="task_long_term_memory.html">Long-Term Memory</a></li>
 <li class="toctree-l1"><a class="reference internal" href="task_agent.html">Agent</a></li>
 <li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Pipeline</a></li>
+<li class="toctree-l1"><a class="reference internal" href="task_plan.html">Plan</a></li>
 <li class="toctree-l1"><a class="reference internal" href="task_state.html">State/Session Management</a></li>
 <li class="toctree-l1"><a class="reference internal" href="task_hook.html">Agent Hooks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="task_mcp.html">MCP</a></li>
@@ -395,8 +396,8 @@ Note David is not included in this meeting.</p>
 </pre></div>
 </div>
 <div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Alice: Hello, I&#39;m Alice, a 50-year-old teacher with a passion for literature and fostering young minds.
-Bob: Hello, I&#39;m Bob, a 35-year-old engineer who enjoys solving complex problems and designing innovative solutions.
-Charlie: Hello, I&#39;m Charlie, a 28-year-old designer with a knack for creating visually appealing and user-friendly experiences.
+Bob: Hello, I&#39;m Bob, a 35-year-old engineer with a keen interest in solving complex technical challenges.
+Charlie: Hello, I&#39;m Charlie, a 28-year-old designer with a flair for creating innovative and user-friendly designs.
 </pre></div>
 </div>
 <p>Now let’s check if Bob, Charlie and David received Alice’s message.</p>
@@ -416,9 +417,9 @@ Charlie: Hello, I&#39;m Charlie, a 28-year-old designer with a knack for creatin
 <span class="n">asyncio</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">check_broadcast_message</span><span class="p">())</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Bob: Alice is a 50-year-old teacher who has a passion for literature and is dedicated to nurturing young minds.
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Bob: Alice is a 50-year-old teacher who has a passion for literature and fostering young minds.
 Charlie: Alice is a 50-year-old teacher who has a passion for literature and fostering young minds.
-David: I don&#39;t have specific information about an Alice without more context. Could you provide more details, such as where you heard of this Alice or in what context her name was mentioned?
+David: I don&#39;t have specific information about a particular Alice since it&#39;s a common name. Could you provide more details, such as her last name or the context in which you&#39;re asking?
 </pre></div>
 </div>
 <p>Now we observe that Bob and Charlie know Alice and her profession, while David has no idea
@@ -562,7 +563,7 @@ becomes the input of the next agent.</p>
 </pre></div>
 </div>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 14.034 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 15.664 seconds)</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-tutorial-task-pipeline-py">
 <div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
 <p><a class="reference download internal" download="" href="../_downloads/a841049f564cf5f9c0fea523e59490f5/task_pipeline.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">task_pipeline.ipynb</span></code></a></p>
@@ -583,12 +584,12 @@ becomes the input of the next agent.</p>
       <footer>
         
         <div class="related-pages">
-          <a class="next-page" href="task_state.html">
+          <a class="next-page" href="task_plan.html">
               <div class="page-info">
                 <div class="context">
                   <span>Next</span>
                 </div>
-                <div class="title">State/Session Management</div>
+                <div class="title">Plan</div>
               </div>
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
             </a>

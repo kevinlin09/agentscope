@@ -402,6 +402,23 @@
 
 .. raw:: html
 
+    <div class="sphx-glr-thumbcontainer" tooltip="The Plan Module enables agents to formally break down complex tasks into manageable sub-tasks and execute them systematically. Key features include:">
+
+.. only:: html
+
+  .. image:: /tutorial/images/thumb/sphx_glr_task_plan_thumb.png
+    :alt:
+
+  :ref:`sphx_glr_tutorial_task_plan.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Plan</div>
+    </div>
+
+
+.. raw:: html
+
     <div class="sphx-glr-thumbcontainer" tooltip="AgentScope provides a built-in evaluation framework for assessing agent performance across different tasks and benchmarks, featuring:">
 
 .. only:: html
@@ -467,6 +484,7 @@
    /tutorial/task_prompt
    /tutorial/workflow_routing
    /tutorial/workflow_multiagent_debate
+   /tutorial/task_plan
    /tutorial/task_eval
    /tutorial/task_tool
 

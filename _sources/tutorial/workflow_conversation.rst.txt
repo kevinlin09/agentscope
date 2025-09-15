@@ -280,9 +280,9 @@ Specifically, the agents within the same ``MsgHub`` will receive messages from o
 
  .. code-block:: none
 
-    Alice: Hi there! I'm Alice, a student with a passion for learning and exploring new things. Nice to meet you! Could you tell me a bit about yourself?
-    Bob: Hello Alice, I'm Bob. I'm also a student and I enjoy diving into the world of technology and science. It's great to meet someone who loves learning as much as I do. What kind of things are you interested in exploring?
-    Charlie: Alice: That's really cool, Bob! I'm actually quite interested in environmental science and sustainability. I think it's super important to understand how we can live more harmoniously with nature. What about you, what aspect of technology or science do you find the most intriguing?
+    Alice: Hello! I'm Alice, a student with a passion for learning and exploring new ideas. It's nice to meet you. Could you tell me a bit about yourself?
+    Bob: Hello Alice! I'm Bob, and just like you, I'm a student. I enjoy diving into new subjects and gaining knowledge. It's great to meet another curious mind. What kind of topics are you interested in?
+    Charlie: Hi Bob, it's great to meet you! I'm really into science and technology. I find the advancements in AI and robotics fascinating. What about you, what are your interests?
 
 
 
@@ -319,9 +319,9 @@ Now we print the memory of Alice to check if her memory is updated correctly.
     system: Now you meet each other with a brief self-introduction.
     Alice: None
     system: None
-    Alice: Hi there! I'm Alice, a student with a passion for learning and exploring new things. Nice to meet you! Could you tell me a bit about yourself?
-    Bob: Hello Alice, I'm Bob. I'm also a student and I enjoy diving into the world of technology and science. It's great to meet someone who loves learning as much as I do. What kind of things are you interested in exploring?
-    Charlie: Alice: That's really cool, Bob! I'm actually quite interested in environmental science and sustainability. I think it's super important to understand how we can live more harmoniously with nature. What about you, what aspect of technology or science do you find the most intriguing?
+    Alice: Hello! I'm Alice, a student with a passion for learning and exploring new ideas. It's nice to meet you. Could you tell me a bit about yourself?
+    Bob: Hello Alice! I'm Bob, and just like you, I'm a student. I enjoy diving into new subjects and gaining knowledge. It's great to meet another curious mind. What kind of topics are you interested in?
+    Charlie: Hi Bob, it's great to meet you! I'm really into science and technology. I find the advancements in AI and robotics fascinating. What about you, what are your interests?
 
 
 
@@ -338,7 +338,7 @@ Further Reading
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 6.926 seconds)
+   **Total running time of the script:** (0 minutes 15.643 seconds)
 
 
 .. _sphx_glr_download_tutorial_workflow_conversation.py:

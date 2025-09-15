@@ -3,7 +3,7 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="Agent Hooks" href="task_hook.html" /><link rel="prev" title="Pipeline" href="task_pipeline.html" />
+<link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="Agent Hooks" href="task_hook.html" /><link rel="prev" title="Plan" href="task_plan.html" />
         <link rel="prefetch" href="../_static/logo.svg" as="image" />
 
     <!-- Generated with Sphinx 8.1.3 and Furo 2025.07.19 -->
@@ -247,6 +247,7 @@
 <li class="toctree-l1"><a class="reference internal" href="task_long_term_memory.html">Long-Term Memory</a></li>
 <li class="toctree-l1"><a class="reference internal" href="task_agent.html">Agent</a></li>
 <li class="toctree-l1"><a class="reference internal" href="task_pipeline.html">Pipeline</a></li>
+<li class="toctree-l1"><a class="reference internal" href="task_plan.html">Plan</a></li>
 <li class="toctree-l1 current current-page"><a class="current reference internal" href="#">State/Session Management</a></li>
 <li class="toctree-l1"><a class="reference internal" href="task_hook.html">Agent Hooks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="task_mcp.html">MCP</a></li>
@@ -458,6 +459,9 @@ State of obj_b:
     &quot;toolkit&quot;: {
         &quot;active_groups&quot;: []
     },
+    &quot;_reasoning_hint_msgs&quot;: {
+        &quot;content&quot;: []
+    },
     &quot;name&quot;: &quot;Friday&quot;,
     &quot;_sys_prompt&quot;: &quot;You&#39;re a assistant named Friday.&quot;
 }
@@ -481,20 +485,20 @@ State of the agent after generating a reply:
     &quot;memory&quot;: {
         &quot;content&quot;: [
             {
-                &quot;id&quot;: &quot;Y5QyYEgjebRdm338xeCxHp&quot;,
+                &quot;id&quot;: &quot;Khy4PkCKynJWuEiTrRPnUN&quot;,
                 &quot;name&quot;: &quot;user&quot;,
                 &quot;role&quot;: &quot;user&quot;,
                 &quot;content&quot;: &quot;Hello, agent!&quot;,
                 &quot;metadata&quot;: null,
-                &quot;timestamp&quot;: &quot;2025-09-14 01:49:18.986&quot;
+                &quot;timestamp&quot;: &quot;2025-09-15 07:47:08.003&quot;
             },
             {
-                &quot;id&quot;: &quot;GKxGtB4AAC5HG2iPYLSsyp&quot;,
+                &quot;id&quot;: &quot;iCcxUJhQqyQk5n9mdAsGXx&quot;,
                 &quot;name&quot;: &quot;Friday&quot;,
                 &quot;role&quot;: &quot;assistant&quot;,
                 &quot;content&quot;: [
                     {
-                        &quot;id&quot;: &quot;fEY7fxwLoJWvm4oYQeQfta&quot;,
+                        &quot;id&quot;: &quot;WDeWuELtSoCxfcjxbRjQKQ&quot;,
                         &quot;type&quot;: &quot;tool_use&quot;,
                         &quot;name&quot;: &quot;generate_response&quot;,
                         &quot;input&quot;: {
@@ -503,16 +507,16 @@ State of the agent after generating a reply:
                     }
                 ],
                 &quot;metadata&quot;: null,
-                &quot;timestamp&quot;: &quot;2025-09-14 01:49:18.986&quot;
+                &quot;timestamp&quot;: &quot;2025-09-15 07:47:08.004&quot;
             },
             {
-                &quot;id&quot;: &quot;Fif9XMuHekdNrKHkK3k7Ys&quot;,
+                &quot;id&quot;: &quot;Au8rzJwz7RLHFmCxAn8Czo&quot;,
                 &quot;name&quot;: &quot;system&quot;,
                 &quot;role&quot;: &quot;system&quot;,
                 &quot;content&quot;: [
                     {
                         &quot;type&quot;: &quot;tool_result&quot;,
-                        &quot;id&quot;: &quot;fEY7fxwLoJWvm4oYQeQfta&quot;,
+                        &quot;id&quot;: &quot;WDeWuELtSoCxfcjxbRjQKQ&quot;,
                         &quot;name&quot;: &quot;generate_response&quot;,
                         &quot;output&quot;: [
                             {
@@ -523,20 +527,23 @@ State of the agent after generating a reply:
                     }
                 ],
                 &quot;metadata&quot;: null,
-                &quot;timestamp&quot;: &quot;2025-09-14 01:49:20.500&quot;
+                &quot;timestamp&quot;: &quot;2025-09-15 07:47:09.852&quot;
             },
             {
-                &quot;id&quot;: &quot;hTBiRcoqf4EDt9yahcFMaB&quot;,
+                &quot;id&quot;: &quot;kfipufr5WD6ejHZ2w99qUg&quot;,
                 &quot;name&quot;: &quot;Friday&quot;,
                 &quot;role&quot;: &quot;assistant&quot;,
                 &quot;content&quot;: &quot;Hello! How can I assist you today?&quot;,
                 &quot;metadata&quot;: null,
-                &quot;timestamp&quot;: &quot;2025-09-14 01:49:20.500&quot;
+                &quot;timestamp&quot;: &quot;2025-09-15 07:47:09.852&quot;
             }
         ]
     },
     &quot;toolkit&quot;: {
         &quot;active_groups&quot;: []
+    },
+    &quot;_reasoning_hint_msgs&quot;: {
+        &quot;content&quot;: []
     },
     &quot;name&quot;: &quot;Friday&quot;,
     &quot;_sys_prompt&quot;: &quot;You&#39;re a assistant named Friday.&quot;
@@ -557,6 +564,9 @@ State of the agent after generating a reply:
     },
     &quot;toolkit&quot;: {
         &quot;active_groups&quot;: []
+    },
+    &quot;_reasoning_hint_msgs&quot;: {
+        &quot;content&quot;: []
     },
     &quot;name&quot;: &quot;Friday&quot;,
     &quot;_sys_prompt&quot;: &quot;You&#39;re a assistant named Friday.&quot;
@@ -588,20 +598,20 @@ State of the agent after generating a reply:
     &quot;memory&quot;: {
         &quot;content&quot;: [
             {
-                &quot;id&quot;: &quot;CxicwYcjnxekzSLbgpp4Mj&quot;,
+                &quot;id&quot;: &quot;A2tNHQ5VTmjzNXwQsitJWK&quot;,
                 &quot;name&quot;: &quot;user&quot;,
                 &quot;role&quot;: &quot;user&quot;,
                 &quot;content&quot;: &quot;Hello, agent!&quot;,
                 &quot;metadata&quot;: null,
-                &quot;timestamp&quot;: &quot;2025-09-14 01:49:20.503&quot;
+                &quot;timestamp&quot;: &quot;2025-09-15 07:47:09.855&quot;
             },
             {
-                &quot;id&quot;: &quot;LZZa2EGJuynuctZnbVzdmy&quot;,
+                &quot;id&quot;: &quot;DNw8JZDaZvrQSLY47yFgrR&quot;,
                 &quot;name&quot;: &quot;Friday&quot;,
                 &quot;role&quot;: &quot;assistant&quot;,
                 &quot;content&quot;: [
                     {
-                        &quot;id&quot;: &quot;mXJ3DQkjpFSsBbmmBgxRrF&quot;,
+                        &quot;id&quot;: &quot;AHsohAued8MBpW9XYuoNxW&quot;,
                         &quot;type&quot;: &quot;tool_use&quot;,
                         &quot;name&quot;: &quot;generate_response&quot;,
                         &quot;input&quot;: {
@@ -610,16 +620,16 @@ State of the agent after generating a reply:
                     }
                 ],
                 &quot;metadata&quot;: null,
-                &quot;timestamp&quot;: &quot;2025-09-14 01:49:20.503&quot;
+                &quot;timestamp&quot;: &quot;2025-09-15 07:47:09.855&quot;
             },
             {
-                &quot;id&quot;: &quot;CDchTszuKXvQCMgfrEAbEa&quot;,
+                &quot;id&quot;: &quot;PpD23DAz2tyXEBhum2agxM&quot;,
                 &quot;name&quot;: &quot;system&quot;,
                 &quot;role&quot;: &quot;system&quot;,
                 &quot;content&quot;: [
                     {
                         &quot;type&quot;: &quot;tool_result&quot;,
-                        &quot;id&quot;: &quot;mXJ3DQkjpFSsBbmmBgxRrF&quot;,
+                        &quot;id&quot;: &quot;AHsohAued8MBpW9XYuoNxW&quot;,
                         &quot;name&quot;: &quot;generate_response&quot;,
                         &quot;output&quot;: [
                             {
@@ -630,20 +640,23 @@ State of the agent after generating a reply:
                     }
                 ],
                 &quot;metadata&quot;: null,
-                &quot;timestamp&quot;: &quot;2025-09-14 01:49:21.799&quot;
+                &quot;timestamp&quot;: &quot;2025-09-15 07:47:11.992&quot;
             },
             {
-                &quot;id&quot;: &quot;TyNdbd2N48BqmjL8W8gMUS&quot;,
+                &quot;id&quot;: &quot;6v9d7vhgsAh3QNDCcwxGmv&quot;,
                 &quot;name&quot;: &quot;Friday&quot;,
                 &quot;role&quot;: &quot;assistant&quot;,
                 &quot;content&quot;: &quot;Hello! How can I assist you today?&quot;,
                 &quot;metadata&quot;: null,
-                &quot;timestamp&quot;: &quot;2025-09-14 01:49:21.799&quot;
+                &quot;timestamp&quot;: &quot;2025-09-15 07:47:11.992&quot;
             }
         ]
     },
     &quot;toolkit&quot;: {
         &quot;active_groups&quot;: []
+    },
+    &quot;_reasoning_hint_msgs&quot;: {
+        &quot;content&quot;: []
     },
     &quot;name&quot;: &quot;Friday&quot;,
     &quot;_sys_prompt&quot;: &quot;You&#39;re a assistant named Friday.&quot;
@@ -654,20 +667,20 @@ State of agent:
     &quot;memory&quot;: {
         &quot;content&quot;: [
             {
-                &quot;id&quot;: &quot;CxicwYcjnxekzSLbgpp4Mj&quot;,
+                &quot;id&quot;: &quot;A2tNHQ5VTmjzNXwQsitJWK&quot;,
                 &quot;name&quot;: &quot;user&quot;,
                 &quot;role&quot;: &quot;user&quot;,
                 &quot;content&quot;: &quot;Hello, agent!&quot;,
                 &quot;metadata&quot;: null,
-                &quot;timestamp&quot;: &quot;2025-09-14 01:49:20.503&quot;
+                &quot;timestamp&quot;: &quot;2025-09-15 07:47:09.855&quot;
             },
             {
-                &quot;id&quot;: &quot;LZZa2EGJuynuctZnbVzdmy&quot;,
+                &quot;id&quot;: &quot;DNw8JZDaZvrQSLY47yFgrR&quot;,
                 &quot;name&quot;: &quot;Friday&quot;,
                 &quot;role&quot;: &quot;assistant&quot;,
                 &quot;content&quot;: [
                     {
-                        &quot;id&quot;: &quot;mXJ3DQkjpFSsBbmmBgxRrF&quot;,
+                        &quot;id&quot;: &quot;AHsohAued8MBpW9XYuoNxW&quot;,
                         &quot;type&quot;: &quot;tool_use&quot;,
                         &quot;name&quot;: &quot;generate_response&quot;,
                         &quot;input&quot;: {
@@ -676,16 +689,16 @@ State of agent:
                     }
                 ],
                 &quot;metadata&quot;: null,
-                &quot;timestamp&quot;: &quot;2025-09-14 01:49:20.503&quot;
+                &quot;timestamp&quot;: &quot;2025-09-15 07:47:09.855&quot;
             },
             {
-                &quot;id&quot;: &quot;CDchTszuKXvQCMgfrEAbEa&quot;,
+                &quot;id&quot;: &quot;PpD23DAz2tyXEBhum2agxM&quot;,
                 &quot;name&quot;: &quot;system&quot;,
                 &quot;role&quot;: &quot;system&quot;,
                 &quot;content&quot;: [
                     {
                         &quot;type&quot;: &quot;tool_result&quot;,
-                        &quot;id&quot;: &quot;mXJ3DQkjpFSsBbmmBgxRrF&quot;,
+                        &quot;id&quot;: &quot;AHsohAued8MBpW9XYuoNxW&quot;,
                         &quot;name&quot;: &quot;generate_response&quot;,
                         &quot;output&quot;: [
                             {
@@ -696,20 +709,23 @@ State of agent:
                     }
                 ],
                 &quot;metadata&quot;: null,
-                &quot;timestamp&quot;: &quot;2025-09-14 01:49:21.799&quot;
+                &quot;timestamp&quot;: &quot;2025-09-15 07:47:11.992&quot;
             },
             {
-                &quot;id&quot;: &quot;TyNdbd2N48BqmjL8W8gMUS&quot;,
+                &quot;id&quot;: &quot;6v9d7vhgsAh3QNDCcwxGmv&quot;,
                 &quot;name&quot;: &quot;Friday&quot;,
                 &quot;role&quot;: &quot;assistant&quot;,
                 &quot;content&quot;: &quot;Hello! How can I assist you today?&quot;,
                 &quot;metadata&quot;: null,
-                &quot;timestamp&quot;: &quot;2025-09-14 01:49:21.799&quot;
+                &quot;timestamp&quot;: &quot;2025-09-15 07:47:11.992&quot;
             }
         ]
     },
     &quot;toolkit&quot;: {
         &quot;active_groups&quot;: []
+    },
+    &quot;_reasoning_hint_msgs&quot;: {
+        &quot;content&quot;: []
     },
     &quot;name&quot;: &quot;Friday&quot;,
     &quot;_sys_prompt&quot;: &quot;You&#39;re a assistant named Friday.&quot;
@@ -743,20 +759,20 @@ State of agent:
         &quot;memory&quot;: {
             &quot;content&quot;: [
                 {
-                    &quot;id&quot;: &quot;CxicwYcjnxekzSLbgpp4Mj&quot;,
+                    &quot;id&quot;: &quot;A2tNHQ5VTmjzNXwQsitJWK&quot;,
                     &quot;name&quot;: &quot;user&quot;,
                     &quot;role&quot;: &quot;user&quot;,
                     &quot;content&quot;: &quot;Hello, agent!&quot;,
                     &quot;metadata&quot;: null,
-                    &quot;timestamp&quot;: &quot;2025-09-14 01:49:20.503&quot;
+                    &quot;timestamp&quot;: &quot;2025-09-15 07:47:09.855&quot;
                 },
                 {
-                    &quot;id&quot;: &quot;LZZa2EGJuynuctZnbVzdmy&quot;,
+                    &quot;id&quot;: &quot;DNw8JZDaZvrQSLY47yFgrR&quot;,
                     &quot;name&quot;: &quot;Friday&quot;,
                     &quot;role&quot;: &quot;assistant&quot;,
                     &quot;content&quot;: [
                         {
-                            &quot;id&quot;: &quot;mXJ3DQkjpFSsBbmmBgxRrF&quot;,
+                            &quot;id&quot;: &quot;AHsohAued8MBpW9XYuoNxW&quot;,
                             &quot;type&quot;: &quot;tool_use&quot;,
                             &quot;name&quot;: &quot;generate_response&quot;,
                             &quot;input&quot;: {
@@ -765,16 +781,16 @@ State of agent:
                         }
                     ],
                     &quot;metadata&quot;: null,
-                    &quot;timestamp&quot;: &quot;2025-09-14 01:49:20.503&quot;
+                    &quot;timestamp&quot;: &quot;2025-09-15 07:47:09.855&quot;
                 },
                 {
-                    &quot;id&quot;: &quot;CDchTszuKXvQCMgfrEAbEa&quot;,
+                    &quot;id&quot;: &quot;PpD23DAz2tyXEBhum2agxM&quot;,
                     &quot;name&quot;: &quot;system&quot;,
                     &quot;role&quot;: &quot;system&quot;,
                     &quot;content&quot;: [
                         {
                             &quot;type&quot;: &quot;tool_result&quot;,
-                            &quot;id&quot;: &quot;mXJ3DQkjpFSsBbmmBgxRrF&quot;,
+                            &quot;id&quot;: &quot;AHsohAued8MBpW9XYuoNxW&quot;,
                             &quot;name&quot;: &quot;generate_response&quot;,
                             &quot;output&quot;: [
                                 {
@@ -785,20 +801,23 @@ State of agent:
                         }
                     ],
                     &quot;metadata&quot;: null,
-                    &quot;timestamp&quot;: &quot;2025-09-14 01:49:21.799&quot;
+                    &quot;timestamp&quot;: &quot;2025-09-15 07:47:11.992&quot;
                 },
                 {
-                    &quot;id&quot;: &quot;TyNdbd2N48BqmjL8W8gMUS&quot;,
+                    &quot;id&quot;: &quot;6v9d7vhgsAh3QNDCcwxGmv&quot;,
                     &quot;name&quot;: &quot;Friday&quot;,
                     &quot;role&quot;: &quot;assistant&quot;,
                     &quot;content&quot;: &quot;Hello! How can I assist you today?&quot;,
                     &quot;metadata&quot;: null,
-                    &quot;timestamp&quot;: &quot;2025-09-14 01:49:21.799&quot;
+                    &quot;timestamp&quot;: &quot;2025-09-15 07:47:11.992&quot;
                 }
             ]
         },
         &quot;toolkit&quot;: {
             &quot;active_groups&quot;: []
+        },
+        &quot;_reasoning_hint_msgs&quot;: {
+            &quot;content&quot;: []
         },
         &quot;name&quot;: &quot;Friday&quot;,
         &quot;_sys_prompt&quot;: &quot;You&#39;re a assistant named Friday.&quot;
@@ -839,6 +858,9 @@ State of agent:
     &quot;toolkit&quot;: {
         &quot;active_groups&quot;: []
     },
+    &quot;_reasoning_hint_msgs&quot;: {
+        &quot;content&quot;: []
+    },
     &quot;name&quot;: &quot;Friday&quot;,
     &quot;_sys_prompt&quot;: &quot;You&#39;re a assistant named Friday.&quot;
 }
@@ -847,20 +869,20 @@ After loading the session state:
     &quot;memory&quot;: {
         &quot;content&quot;: [
             {
-                &quot;id&quot;: &quot;CxicwYcjnxekzSLbgpp4Mj&quot;,
+                &quot;id&quot;: &quot;A2tNHQ5VTmjzNXwQsitJWK&quot;,
                 &quot;name&quot;: &quot;user&quot;,
                 &quot;role&quot;: &quot;user&quot;,
                 &quot;content&quot;: &quot;Hello, agent!&quot;,
                 &quot;metadata&quot;: null,
-                &quot;timestamp&quot;: &quot;2025-09-14 01:49:20.503&quot;
+                &quot;timestamp&quot;: &quot;2025-09-15 07:47:09.855&quot;
             },
             {
-                &quot;id&quot;: &quot;LZZa2EGJuynuctZnbVzdmy&quot;,
+                &quot;id&quot;: &quot;DNw8JZDaZvrQSLY47yFgrR&quot;,
                 &quot;name&quot;: &quot;Friday&quot;,
                 &quot;role&quot;: &quot;assistant&quot;,
                 &quot;content&quot;: [
                     {
-                        &quot;id&quot;: &quot;mXJ3DQkjpFSsBbmmBgxRrF&quot;,
+                        &quot;id&quot;: &quot;AHsohAued8MBpW9XYuoNxW&quot;,
                         &quot;type&quot;: &quot;tool_use&quot;,
                         &quot;name&quot;: &quot;generate_response&quot;,
                         &quot;input&quot;: {
@@ -869,16 +891,16 @@ After loading the session state:
                     }
                 ],
                 &quot;metadata&quot;: null,
-                &quot;timestamp&quot;: &quot;2025-09-14 01:49:20.503&quot;
+                &quot;timestamp&quot;: &quot;2025-09-15 07:47:09.855&quot;
             },
             {
-                &quot;id&quot;: &quot;CDchTszuKXvQCMgfrEAbEa&quot;,
+                &quot;id&quot;: &quot;PpD23DAz2tyXEBhum2agxM&quot;,
                 &quot;name&quot;: &quot;system&quot;,
                 &quot;role&quot;: &quot;system&quot;,
                 &quot;content&quot;: [
                     {
                         &quot;type&quot;: &quot;tool_result&quot;,
-                        &quot;id&quot;: &quot;mXJ3DQkjpFSsBbmmBgxRrF&quot;,
+                        &quot;id&quot;: &quot;AHsohAued8MBpW9XYuoNxW&quot;,
                         &quot;name&quot;: &quot;generate_response&quot;,
                         &quot;output&quot;: [
                             {
@@ -889,20 +911,23 @@ After loading the session state:
                     }
                 ],
                 &quot;metadata&quot;: null,
-                &quot;timestamp&quot;: &quot;2025-09-14 01:49:21.799&quot;
+                &quot;timestamp&quot;: &quot;2025-09-15 07:47:11.992&quot;
             },
             {
-                &quot;id&quot;: &quot;TyNdbd2N48BqmjL8W8gMUS&quot;,
+                &quot;id&quot;: &quot;6v9d7vhgsAh3QNDCcwxGmv&quot;,
                 &quot;name&quot;: &quot;Friday&quot;,
                 &quot;role&quot;: &quot;assistant&quot;,
                 &quot;content&quot;: &quot;Hello! How can I assist you today?&quot;,
                 &quot;metadata&quot;: null,
-                &quot;timestamp&quot;: &quot;2025-09-14 01:49:21.799&quot;
+                &quot;timestamp&quot;: &quot;2025-09-15 07:47:11.992&quot;
             }
         ]
     },
     &quot;toolkit&quot;: {
         &quot;active_groups&quot;: []
+    },
+    &quot;_reasoning_hint_msgs&quot;: {
+        &quot;content&quot;: []
     },
     &quot;name&quot;: &quot;Friday&quot;,
     &quot;_sys_prompt&quot;: &quot;You&#39;re a assistant named Friday.&quot;
@@ -910,7 +935,7 @@ After loading the session state:
 </pre></div>
 </div>
 <p>Now we can see the agent state is restored to the saved state.</p>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 2.824 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 4.000 seconds)</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-tutorial-task-state-py">
 <div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
 <p><a class="reference download internal" download="" href="../_downloads/78801218992541b6da6586f399b20cbd/task_state.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">task_state.ipynb</span></code></a></p>
@@ -941,14 +966,14 @@ After loading the session state:
               </div>
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
             </a>
-          <a class="prev-page" href="task_pipeline.html">
+          <a class="prev-page" href="task_plan.html">
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
               <div class="page-info">
                 <div class="context">
                   <span>Previous</span>
                 </div>
                 
-                <div class="title">Pipeline</div>
+                <div class="title">Plan</div>
                 
               </div>
             </a>

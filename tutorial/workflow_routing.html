@@ -247,6 +247,7 @@
 <li class="toctree-l1"><a class="reference internal" href="task_long_term_memory.html">Long-Term Memory</a></li>
 <li class="toctree-l1"><a class="reference internal" href="task_agent.html">Agent</a></li>
 <li class="toctree-l1"><a class="reference internal" href="task_pipeline.html">Pipeline</a></li>
+<li class="toctree-l1"><a class="reference internal" href="task_plan.html">Plan</a></li>
 <li class="toctree-l1"><a class="reference internal" href="task_state.html">State/Session Management</a></li>
 <li class="toctree-l1"><a class="reference internal" href="task_hook.html">Agent Hooks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="task_mcp.html">MCP</a></li>
@@ -401,11 +402,11 @@ to download the full example code.</p>
 <span class="n">asyncio</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">example_router_explicit</span><span class="p">())</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Router: Of course, I can help you with that. Could you please tell me more about the theme or any specific elements you would like to include in your poem?
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Router: Of course, I can help with that. Could you please give me a theme or some elements you&#39;d like to include in the poem?
 The structured output:
 {
     &quot;your_choice&quot;: &quot;Content Generation&quot;,
-    &quot;task_description&quot;: &quot;Compose a poem based on user&#39;s provided theme or elements.&quot;
+    &quot;task_description&quot;: &quot;To write a poem based on the user&#39;s provided theme or elements.&quot;
 }
 </pre></div>
 </div>
@@ -504,73 +505,60 @@ The structured output:
     &quot;input&quot;: {
         &quot;demand&quot;: &quot;a quick sort function&quot;
     },
-    &quot;id&quot;: &quot;call_9e658dc3ce204bab8f6a6a&quot;
+    &quot;id&quot;: &quot;call_97b0e9769a9a41f68573d1&quot;
 }
-PythonAgent: Here is a Python implementation of the quick sort algorithm. This function sorts a list in-place using the Lomuto partition scheme.
+PythonAgent: Here is a quick sort function implemented in Python. This function sorts the elements of a list in ascending order using the Quick Sort algorithm.
 
 ```python
-def quick_sort(arr, low, high):
-    if low &lt; high:
-        # Partition the array
-        pi = partition(arr, low, high)
+def quick_sort(arr):
+    if len(arr) &lt;= 1:
+        return arr
+    else:
+        pivot = arr[len(arr) // 2]
+        left = [x for x in arr if x &lt; pivot]
+        middle = [x for x in arr if x == pivot]
+        right = [x for x in arr if x &gt; pivot]
+        return quick_sort(left) + middle + quick_sort(right)
 
-        # Recursively sort elements before and after partition
-        quick_sort(arr, low, pi - 1)
-        quick_sort(arr, pi + 1, high)
-
-
-def partition(arr, low, high):
-    pivot = arr[high]  # pivot
-    i = low - 1        # index of smaller element
-    for j in range(low, high):
-        # If current element is smaller than or equal to pivot
-        if arr[j] &lt;= pivot:
-            i = i + 1  # increment index of smaller element
-            arr[i], arr[j] = arr[j], arr[i]
-    arr[i + 1], arr[high] = arr[high], arr[i + 1]
-    return i + 1
+# Example usage:
+# sorted_list = quick_sort([3, 6, 8, 10, 1, 2, 1])
+# print(sorted_list)
 ```
 
-You can use this `quick_sort` function by passing the array you want to sort along with the starting and ending indices, like so: `quick_sort(your_array, 0, len(your_array) - 1)`.
+You can use the `quick_sort` function by passing an unsorted list to it, and it will return a new list with the elements sorted. If you want to test it out, just remove the `#` at the beginning of the example usage lines and run the code.
 system: {
     &quot;type&quot;: &quot;tool_result&quot;,
-    &quot;id&quot;: &quot;call_9e658dc3ce204bab8f6a6a&quot;,
+    &quot;id&quot;: &quot;call_97b0e9769a9a41f68573d1&quot;,
     &quot;name&quot;: &quot;generate_python&quot;,
     &quot;output&quot;: [
         {
             &quot;type&quot;: &quot;text&quot;,
-            &quot;text&quot;: &quot;Here is a Python implementation of the quick sort algorithm. This function sorts a list in-place using the Lomuto partition scheme.\n\n```python\ndef quick_sort(arr, low, high):\n    if low &lt; high:\n        # Partition the array\n        pi = partition(arr, low, high)\n        \n        # Recursively sort elements before and after partition\n        quick_sort(arr, low, pi - 1)\n        quick_sort(arr, pi + 1, high)\n\n\ndef partition(arr, low, high):\n    pivot = arr[high]  # pivot\n    i = low - 1        # index of smaller element\n    for j in range(low, high):\n        # If current element is smaller than or equal to pivot\n        if arr[j] &lt;= pivot:\n            i = i + 1  # increment index of smaller element\n            arr[i], arr[j] = arr[j], arr[i]\n    arr[i + 1], arr[high] = arr[high], arr[i + 1]\n    return i + 1\n```\n\nYou can use this `quick_sort` function by passing the array you want to sort along with the starting and ending indices, like so: `quick_sort(your_array, 0, len(your_array) - 1)`.&quot;
+            &quot;text&quot;: &quot;Here is a quick sort function implemented in Python. This function sorts the elements of a list in ascending order using the Quick Sort algorithm.\n\n```python\ndef quick_sort(arr):\n    if len(arr) &lt;= 1:\n        return arr\n    else:\n        pivot = arr[len(arr) // 2]\n        left = [x for x in arr if x &lt; pivot]\n        middle = [x for x in arr if x == pivot]\n        right = [x for x in arr if x &gt; pivot]\n        return quick_sort(left) + middle + quick_sort(right)\n\n# Example usage:\n# sorted_list = quick_sort([3, 6, 8, 10, 1, 2, 1])\n# print(sorted_list)\n```\n\nYou can use the `quick_sort` function by passing an unsorted list to it, and it will return a new list with the elements sorted. If you want to test it out, just remove the `#` at the beginning of the example usage lines and run the code.&quot;
         }
     ]
 }
-Router: Here is a Python implementation of the quick sort algorithm. This function sorts a list in-place using the Lomuto partition scheme.
+Router: Here is a quick sort function implemented in Python. This function sorts the elements of a list in ascending order using the Quick Sort algorithm.
 
 ```python
-def quick_sort(arr, low, high):
-    if low &lt; high:
-        # Partition the array
-        pi = partition(arr, low, high)
+def quick_sort(arr):
+    if len(arr) &lt;= 1:
+        return arr
+    else:
+        pivot = arr[len(arr) // 2]
+        left = [x for x in arr if x &lt; pivot]
+        middle = [x for x in arr if x == pivot]
+        right = [x for x in arr if x &gt; pivot]
+        return quick_sort(left) + middle + quick_sort(right)
 
-        # Recursively sort elements before and after partition
-        quick_sort(arr, low, pi - 1)
-        quick_sort(arr, pi + 1, high)
-
-def partition(arr, low, high):
-    pivot = arr[high]  # pivot
-    i = low - 1        # index of smaller element
-    for j in range(low, high):
-        # If current element is smaller than or equal to pivot
-        if arr[j] &lt;= pivot:
-            i = i + 1  # increment index of smaller element
-            arr[i], arr[j] = arr[j], arr[i]
-    arr[i + 1], arr[high] = arr[high], arr[i + 1]
-    return i + 1
+# Example usage:
+# sorted_list = quick_sort([3, 6, 8, 10, 1, 2, 1])
+# print(sorted_list)
 ```
 
-You can use this `quick_sort` function by passing the array you want to sort along with the starting and ending indices, like so: `quick_sort(your_array, 0, len(your_array) - 1)`.
+You can use the `quick_sort` function by passing an unsorted list to it, and it will return a new list with the elements sorted. If you want to test it out, just remove the `#` at the beginning of the example usage lines and run the code.
 </pre></div>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 19.070 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 32.325 seconds)</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-tutorial-workflow-routing-py">
 <div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
 <p><a class="reference download internal" download="" href="../_downloads/3266c75280f96697c4cc46d7d55a3ac8/workflow_routing.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">workflow_routing.ipynb</span></code></a></p>
