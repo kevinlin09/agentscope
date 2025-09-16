@@ -402,11 +402,11 @@ to download the full example code.</p>
 <span class="n">asyncio</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">example_router_explicit</span><span class="p">())</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Router: 好的，我来帮您创作一首诗。
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Router: 好的，我将为您创作一首诗。
 结构化输出：
 {
     &quot;your_choice&quot;: &quot;Content Generation&quot;,
-    &quot;task_description&quot;: &quot;用户请求帮助写一首诗&quot;
+    &quot;task_description&quot;: &quot;为用户写一首诗&quot;
 }
 </pre></div>
 </div>
@@ -503,11 +503,11 @@ to download the full example code.</p>
     &quot;type&quot;: &quot;tool_use&quot;,
     &quot;name&quot;: &quot;generate_python&quot;,
     &quot;input&quot;: {
-        &quot;demand&quot;: &quot;生成一个快速排序函数&quot;
+        &quot;demand&quot;: &quot;需要一个快速排序函数&quot;
     },
-    &quot;id&quot;: &quot;call_5a4e4c75900c46e08e691f&quot;
+    &quot;id&quot;: &quot;call_aa9f0bd806d245b6b71147&quot;
 }
-PythonAgent: 这是一个使用 Python 编写的快速排序算法的实现。快速排序是一种高效的排序算法，采用分治策略来把一个序列分为较小和较大的两个子序列，然后递归地排序两个子序列。
+PythonAgent: 这是一个使用 Python 实现的快速排序函数。快速排序是一种高效的排序算法，它使用分治法策略来把一个序列分为较小和较大的两个子序列，然后递归地排序两个子序列。
 ```python
 def quicksort(arr):
     if len(arr) &lt;= 1:
@@ -518,25 +518,19 @@ def quicksort(arr):
     right = [x for x in arr if x &gt; pivot]
     return quicksort(left) + middle + quicksort(right)
 ```
-你可以通过调用 `quicksort` 函数并传入一个列表来进行排序。例如：
-```python
-unsorted_list = [3, 6, 8, 10, 1, 2, 1]
-sorted_list = quicksort(unsorted_list)
-print(sorted_list)
-```
-这将会输出排序后的列表。
+你可以使用这个 `quicksort` 函数对一个整数列表进行排序。如果你需要对其他类型的数据排序，请确保数据是可以比较的。
 system: {
     &quot;type&quot;: &quot;tool_result&quot;,
-    &quot;id&quot;: &quot;call_5a4e4c75900c46e08e691f&quot;,
+    &quot;id&quot;: &quot;call_aa9f0bd806d245b6b71147&quot;,
     &quot;name&quot;: &quot;generate_python&quot;,
     &quot;output&quot;: [
         {
             &quot;type&quot;: &quot;text&quot;,
-            &quot;text&quot;: &quot;这是一个使用 Python 编写的快速排序算法的实现。快速排序是一种高效的排序算法，采用分治策略来把一个序列分为较小和较大的两个子序列，然后递归地排序两个子序列。\n```python\ndef quicksort(arr):\n    if len(arr) &lt;= 1:\n        return arr\n    pivot = arr[len(arr) // 2]\n    left = [x for x in arr if x &lt; pivot]\n    middle = [x for x in arr if x == pivot]\n    right = [x for x in arr if x &gt; pivot]\n    return quicksort(left) + middle + quicksort(right)\n```\n你可以通过调用 `quicksort` 函数并传入一个列表来进行排序。例如：\n```python\nunsorted_list = [3, 6, 8, 10, 1, 2, 1]\nsorted_list = quicksort(unsorted_list)\nprint(sorted_list)\n```\n这将会输出排序后的列表。&quot;
+            &quot;text&quot;: &quot;这是一个使用 Python 实现的快速排序函数。快速排序是一种高效的排序算法，它使用分治法策略来把一个序列分为较小和较大的两个子序列，然后递归地排序两个子序列。\n```python\ndef quicksort(arr):\n    if len(arr) &lt;= 1:\n        return arr\n    pivot = arr[len(arr) // 2]\n    left = [x for x in arr if x &lt; pivot]\n    middle = [x for x in arr if x == pivot]\n    right = [x for x in arr if x &gt; pivot]\n    return quicksort(left) + middle + quicksort(right)\n```\n你可以使用这个 `quicksort` 函数对一个整数列表进行排序。如果你需要对其他类型的数据排序，请确保数据是可以比较的。&quot;
         }
     ]
 }
-Router: 这是一个使用 Python 编写的快速排序算法的实现。快速排序是一种高效的排序算法，采用分治策略来把一个序列分为较小和较大的两个子序列，然后递归地排序两个子序列。
+Router: 这是一个使用 Python 实现的快速排序函数。快速排序是一种高效的排序算法，它使用分治法策略来把一个序列分为较小和较大的两个子序列，然后递归地排序两个子序列。
 
 ```python
 def quicksort(arr):
@@ -549,18 +543,10 @@ def quicksort(arr):
     return quicksort(left) + middle + quicksort(right)
 ```
 
-你可以通过调用 `quicksort` 函数并传入一个列表来进行排序。例如：
-
-```python
-unsorted_list = [3, 6, 8, 10, 1, 2, 1]
-sorted_list = quicksort(unsorted_list)
-print(sorted_list)
-```
-
-这将会输出排序后的列表。
+你可以使用这个 `quicksort` 函数对一个整数列表进行排序。如果你需要对其他类型的数据排序，请确保数据是可以比较的。
 </pre></div>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 34.409 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 20.193 seconds)</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-tutorial-workflow-routing-py">
 <div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
 <p><a class="reference download internal" download="" href="../_downloads/3266c75280f96697c4cc46d7d55a3ac8/workflow_routing.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">workflow_routing.ipynb</span></code></a></p>

@@ -334,7 +334,7 @@ AgentScope 在 ``agentscope.tool`` 模块下提供了几个内置工具函数，
  .. code-block:: none
 
     工具响应：
-    ToolResponse(content=[{'type': 'text', 'text': "正在使用 API 密钥 'xxx' 搜索 'AgentScope'"}], metadata=None, stream=False, is_last=True, is_interrupted=False, id='2025-09-15 07:54:33.489_8f2ffa')
+    ToolResponse(content=[{'type': 'text', 'text': "正在使用 API 密钥 'xxx' 搜索 'AgentScope'"}], metadata=None, stream=False, is_last=True, is_interrupted=False, id='2025-09-16 03:29:07.437_bcb65a')
 
 
 
@@ -499,7 +499,7 @@ Toolkit 允许通过调用 ``set_extended_model`` 方法动态扩展工具函数
  .. code-block:: none
 
     工具响应：
-    ToolResponse(content=[{'type': 'text', 'text': '<system-info>The tool call has been interrupted by the user.</system-info>'}], metadata=None, stream=True, is_last=True, is_interrupted=True, id='2025-09-15 07:54:34.493_8ef129')
+    ToolResponse(content=[{'type': 'text', 'text': '<system-info>The tool call has been interrupted by the user.</system-info>'}], metadata=None, stream=True, is_last=True, is_interrupted=True, id='2025-09-16 03:29:08.441_ff9a19')
     中断标志：
     True
 
@@ -579,11 +579,11 @@ Toolkit 允许通过调用 ``set_extended_model`` 方法动态扩展工具函数
  .. code-block:: none
 
     块 0：
-    ToolResponse(content=[{'type': 'text', 'text': '1234'}], metadata=None, stream=False, is_last=True, is_interrupted=False, id='2025-09-15 07:54:34.496_1ea007')
+    ToolResponse(content=[{'type': 'text', 'text': '1234'}], metadata=None, stream=False, is_last=True, is_interrupted=False, id='2025-09-16 03:29:08.443_7be0b2')
     中断标志： False 
 
     块 1：
-    ToolResponse(content=[{'type': 'text', 'text': '1234'}, {'type': 'text', 'text': '<system-info>The tool call has been interrupted by the user.</system-info>'}], metadata=None, stream=False, is_last=True, is_interrupted=True, id='2025-09-15 07:54:34.496_1ea007')
+    ToolResponse(content=[{'type': 'text', 'text': '1234'}, {'type': 'text', 'text': '<system-info>The tool call has been interrupted by the user.</system-info>'}], metadata=None, stream=False, is_last=True, is_interrupted=True, id='2025-09-16 03:29:08.443_7be0b2')
     中断标志： True 
 
 

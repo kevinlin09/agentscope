@@ -360,14 +360,14 @@
 
 <div class="viewcode-block" id="GeneralEvaluator.run_evaluation">
 <a class="viewcode-back" href="../../../../api/agentscope.evaluate.html#agentscope.evaluate.GeneralEvaluator.run_evaluation">[文档]</a>
-    <span class="k">def</span><span class="w"> </span><span class="nf">run_evaluation</span><span class="p">(</span>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">run_evaluation</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">task</span><span class="p">:</span> <span class="n">Task</span><span class="p">,</span>
         <span class="n">repeat_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
         <span class="n">solution_output</span><span class="p">:</span> <span class="n">SolutionOutput</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Run the evaluation for a task and solution result.&quot;&quot;&quot;</span>
-        <span class="n">evaluation_results</span> <span class="o">=</span> <span class="n">task</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">solution_output</span><span class="p">)</span>
+        <span class="n">evaluation_results</span> <span class="o">=</span> <span class="k">await</span> <span class="n">task</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">solution_output</span><span class="p">)</span>
         <span class="c1"># store the evaluation result</span>
         <span class="k">for</span> <span class="n">result</span> <span class="ow">in</span> <span class="n">evaluation_results</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">storage</span><span class="o">.</span><span class="n">save_evaluation_result</span><span class="p">(</span>
@@ -415,7 +415,7 @@
                 <span class="n">repeat_id</span><span class="p">,</span>
                 <span class="n">metric</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
             <span class="p">):</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">run_evaluation</span><span class="p">(</span>
+                <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">run_evaluation</span><span class="p">(</span>
                     <span class="n">task</span><span class="p">,</span>
                     <span class="n">repeat_id</span><span class="p">,</span>
                     <span class="n">solution_result</span><span class="p">,</span>
