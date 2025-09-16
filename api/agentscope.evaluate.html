@@ -439,16 +439,6 @@ evaluation.</p>
 </dl>
 </dd></dl>
 
-<dl class="py attribute">
-<dt class="sig sig-object py" id="agentscope.evaluate.RayEvaluator.run_evaluation">
-<span class="sig-name descname"><span class="pre">run_evaluation</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;ray.remote_function.RemoteFunction</span> <span class="pre">object&gt;</span></em><a class="headerlink" href="#agentscope.evaluate.RayEvaluator.run_evaluation" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="agentscope.evaluate.RayEvaluator.run_solution">
-<span class="sig-name descname"><span class="pre">run_solution</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;ray.remote_function.RemoteFunction</span> <span class="pre">object&gt;</span></em><a class="headerlink" href="#agentscope.evaluate.RayEvaluator.run_solution" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
-
 <dl class="py method">
 <dt class="sig sig-object py" id="agentscope.evaluate.RayEvaluator.run">
 <em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">run</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">solution</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/agentscope/evaluate/_evaluator/_ray_evaluator.html#RayEvaluator.run"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentscope.evaluate.RayEvaluator.run" title="Link to this definition">¶</a></dt>
@@ -494,7 +484,7 @@ and returns a <cite>SolutionOutput</cite> instance.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="agentscope.evaluate.GeneralEvaluator.run_evaluation">
-<span class="sig-name descname"><span class="pre">run_evaluation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">task</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">repeat_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">solution_output</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/agentscope/evaluate/_evaluator/_general_evaluator.html#GeneralEvaluator.run_evaluation"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentscope.evaluate.GeneralEvaluator.run_evaluation" title="Link to this definition">¶</a></dt>
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">run_evaluation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">task</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">repeat_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">solution_output</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/agentscope/evaluate/_evaluator/_general_evaluator.html#GeneralEvaluator.run_evaluation"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentscope.evaluate.GeneralEvaluator.run_evaluation" title="Link to this definition">¶</a></dt>
 <dd><p>Run the evaluation for a task and solution result.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -574,7 +564,7 @@ categories must be provided, otherwise it should be <cite>None</cite>.</p></li>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="agentscope.evaluate.MetricBase.__call__">
-<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">__call__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/agentscope/evaluate/_metric_base.html#MetricBase.__call__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentscope.evaluate.MetricBase.__call__" title="Link to this definition">¶</a></dt>
+<em class="property"><span class="pre">abstract</span><span class="w"> </span><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">__call__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/agentscope/evaluate/_metric_base.html#MetricBase.__call__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentscope.evaluate.MetricBase.__call__" title="Link to this definition">¶</a></dt>
 <dd><p>The call function to calculate the _metric result</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1233,7 +1223,7 @@ object.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="agentscope.evaluate.Task.evaluate">
-<span class="sig-name descname"><span class="pre">evaluate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">solution</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/agentscope/evaluate/_task.html#Task.evaluate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentscope.evaluate.Task.evaluate" title="Link to this definition">¶</a></dt>
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">evaluate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">solution</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/agentscope/evaluate/_task.html#Task.evaluate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentscope.evaluate.Task.evaluate" title="Link to this definition">¶</a></dt>
 <dd><p>Evaluate the task with the given solution.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1364,7 +1354,7 @@ solution raise exception, this should be set to False.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="agentscope.evaluate.ACEAccuracy.__call__">
-<span class="sig-name descname"><span class="pre">__call__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">solution</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/agentscope/evaluate/_ace_benchmark/_ace_metric.html#ACEAccuracy.__call__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentscope.evaluate.ACEAccuracy.__call__" title="Link to this definition">¶</a></dt>
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">__call__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">solution</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/agentscope/evaluate/_ace_benchmark/_ace_metric.html#ACEAccuracy.__call__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentscope.evaluate.ACEAccuracy.__call__" title="Link to this definition">¶</a></dt>
 <dd><p>Calculate the metric result.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1399,7 +1389,7 @@ solution raise exception, this should be set to False.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="agentscope.evaluate.ACEProcessAccuracy.__call__">
-<span class="sig-name descname"><span class="pre">__call__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">solution</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/agentscope/evaluate/_ace_benchmark/_ace_metric.html#ACEProcessAccuracy.__call__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentscope.evaluate.ACEProcessAccuracy.__call__" title="Link to this definition">¶</a></dt>
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">__call__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">solution</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/agentscope/evaluate/_ace_benchmark/_ace_metric.html#ACEProcessAccuracy.__call__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentscope.evaluate.ACEProcessAccuracy.__call__" title="Link to this definition">¶</a></dt>
 <dd><p>Calculate the metric result.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1548,8 +1538,6 @@ ACEBench. The code is implemented with reference to the
 </li>
 <li><a class="reference internal" href="#agentscope.evaluate.RayEvaluator"><code class="docutils literal notranslate"><span class="pre">RayEvaluator</span></code></a><ul>
 <li><a class="reference internal" href="#agentscope.evaluate.RayEvaluator.__init__"><code class="docutils literal notranslate"><span class="pre">RayEvaluator.__init__()</span></code></a></li>
-<li><a class="reference internal" href="#agentscope.evaluate.RayEvaluator.run_evaluation"><code class="docutils literal notranslate"><span class="pre">RayEvaluator.run_evaluation</span></code></a></li>
-<li><a class="reference internal" href="#agentscope.evaluate.RayEvaluator.run_solution"><code class="docutils literal notranslate"><span class="pre">RayEvaluator.run_solution</span></code></a></li>
 <li><a class="reference internal" href="#agentscope.evaluate.RayEvaluator.run"><code class="docutils literal notranslate"><span class="pre">RayEvaluator.run()</span></code></a></li>
 </ul>
 </li>

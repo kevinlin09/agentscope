@@ -446,7 +446,7 @@ how to use the AgentScope evaluation module.</p>
         <span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">ground_truth</span> <span class="o">=</span> <span class="n">ground_truth</span>
 
-    <span class="k">def</span><span class="w"> </span><span class="fm">__call__</span><span class="p">(</span>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="fm">__call__</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">solution</span><span class="p">:</span> <span class="n">SolutionOutput</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">MetricResult</span><span class="p">:</span>
@@ -581,7 +581,7 @@ as well.</p>
 
 <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
     <span class="n">evaluator</span> <span class="o">=</span> <span class="n">GeneralEvaluator</span><span class="p">(</span>
-        <span class="n">name</span><span class="o">=</span><span class="s2">&quot;ACEbench evaluation&quot;</span><span class="p">,</span>
+        <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Toy benchmark evaluation&quot;</span><span class="p">,</span>
         <span class="n">benchmark</span><span class="o">=</span><span class="n">ToyBenchmark</span><span class="p">(),</span>
         <span class="c1"># Repeat how many times</span>
         <span class="n">n_repeat</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
@@ -599,7 +599,7 @@ as well.</p>
 <span class="n">asyncio</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">main</span><span class="p">())</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Friday: The sum of 2 + 2 is 4.
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Friday: 2 + 2 equals 4.
 Friday: The sum of 12345, 54321, 6789, and 9876 is 83331.
 Repeat ID: 0
         Metric: math check number equal
@@ -614,7 +614,7 @@ Repeat ID: 0
                 }
 </pre></div>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 9.368 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 6.784 seconds)</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-tutorial-task-eval-py">
 <div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
 <p><a class="reference download internal" download="" href="../_downloads/c97c5fec6c05569e62f14d7f1ea7d164/task_eval.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">task_eval.ipynb</span></code></a></p>
