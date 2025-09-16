@@ -479,44 +479,44 @@ obj_b 的状态：
 <span class="n">asyncio</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">example_agent_state</span><span class="p">())</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Friday: 你好！有什么我能为你做的吗？
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Friday: 你好！有什么可以帮助您的吗？
 生成回复后智能体的状态：
 {
     &quot;memory&quot;: {
         &quot;content&quot;: [
             {
-                &quot;id&quot;: &quot;KWANtFXHkbRbYdp2rNwgRw&quot;,
+                &quot;id&quot;: &quot;ng8Goc3UoeffRjPoSYyW2z&quot;,
                 &quot;name&quot;: &quot;user&quot;,
                 &quot;role&quot;: &quot;user&quot;,
                 &quot;content&quot;: &quot;你好，智能体！&quot;,
                 &quot;metadata&quot;: null,
-                &quot;timestamp&quot;: &quot;2025-09-16 07:27:40.506&quot;
+                &quot;timestamp&quot;: &quot;2025-09-16 08:52:07.262&quot;
             },
             {
-                &quot;id&quot;: &quot;GXJhMCtAnzdxUcXyUVpcxY&quot;,
+                &quot;id&quot;: &quot;LRPRrV4BxEVTtTjFrgxTqA&quot;,
                 &quot;name&quot;: &quot;Friday&quot;,
                 &quot;role&quot;: &quot;assistant&quot;,
                 &quot;content&quot;: [
                     {
-                        &quot;id&quot;: &quot;AyvU7tphyDDGdyYvZXGNAD&quot;,
+                        &quot;id&quot;: &quot;WagHLBugqgwXDhNnLzjQEN&quot;,
                         &quot;type&quot;: &quot;tool_use&quot;,
                         &quot;name&quot;: &quot;generate_response&quot;,
                         &quot;input&quot;: {
-                            &quot;response&quot;: &quot;你好！有什么我能为你做的吗？&quot;
+                            &quot;response&quot;: &quot;你好！有什么可以帮助您的吗？&quot;
                         }
                     }
                 ],
                 &quot;metadata&quot;: null,
-                &quot;timestamp&quot;: &quot;2025-09-16 07:27:40.507&quot;
+                &quot;timestamp&quot;: &quot;2025-09-16 08:52:07.263&quot;
             },
             {
-                &quot;id&quot;: &quot;ez6SgrUMgCGLpG8ihiwE5V&quot;,
+                &quot;id&quot;: &quot;dcjwTU9wHE2eZvgPdDfiEq&quot;,
                 &quot;name&quot;: &quot;system&quot;,
                 &quot;role&quot;: &quot;system&quot;,
                 &quot;content&quot;: [
                     {
                         &quot;type&quot;: &quot;tool_result&quot;,
-                        &quot;id&quot;: &quot;AyvU7tphyDDGdyYvZXGNAD&quot;,
+                        &quot;id&quot;: &quot;WagHLBugqgwXDhNnLzjQEN&quot;,
                         &quot;name&quot;: &quot;generate_response&quot;,
                         &quot;output&quot;: [
                             {
@@ -527,15 +527,15 @@ obj_b 的状态：
                     }
                 ],
                 &quot;metadata&quot;: null,
-                &quot;timestamp&quot;: &quot;2025-09-16 07:27:42.121&quot;
+                &quot;timestamp&quot;: &quot;2025-09-16 08:52:08.621&quot;
             },
             {
-                &quot;id&quot;: &quot;YkRqVqfC4ts76tFPkHR7TY&quot;,
+                &quot;id&quot;: &quot;YsToiAMcyuBdFtb7qu8weB&quot;,
                 &quot;name&quot;: &quot;Friday&quot;,
                 &quot;role&quot;: &quot;assistant&quot;,
-                &quot;content&quot;: &quot;你好！有什么我能为你做的吗？&quot;,
+                &quot;content&quot;: &quot;你好！有什么可以帮助您的吗？&quot;,
                 &quot;metadata&quot;: null,
-                &quot;timestamp&quot;: &quot;2025-09-16 07:27:42.121&quot;
+                &quot;timestamp&quot;: &quot;2025-09-16 08:52:08.621&quot;
             }
         ]
     },
@@ -590,44 +590,44 @@ obj_b 的状态：
 <span class="nb">print</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">agent</span><span class="o">.</span><span class="n">state_dict</span><span class="p">(),</span> <span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">ensure_ascii</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Friday: 你好！有什么我能为你做的吗？
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Friday: 你好！有什么可以帮助你的吗？
 生成回复后智能体的状态：
 {
     &quot;memory&quot;: {
         &quot;content&quot;: [
             {
-                &quot;id&quot;: &quot;4wDAcPrPLGxtf5zo7snDLz&quot;,
+                &quot;id&quot;: &quot;DV3Giv3tPRcocB5Msfa92X&quot;,
                 &quot;name&quot;: &quot;user&quot;,
                 &quot;role&quot;: &quot;user&quot;,
                 &quot;content&quot;: &quot;你好，智能体！&quot;,
                 &quot;metadata&quot;: null,
-                &quot;timestamp&quot;: &quot;2025-09-16 07:27:42.124&quot;
+                &quot;timestamp&quot;: &quot;2025-09-16 08:52:08.624&quot;
             },
             {
-                &quot;id&quot;: &quot;b3HFsssGGmXcPgTctvuK9s&quot;,
+                &quot;id&quot;: &quot;h3jbiG9BSnDikRkpaAhntv&quot;,
                 &quot;name&quot;: &quot;Friday&quot;,
                 &quot;role&quot;: &quot;assistant&quot;,
                 &quot;content&quot;: [
                     {
-                        &quot;id&quot;: &quot;fL3raC97TXYVwRcpzRqJuo&quot;,
+                        &quot;id&quot;: &quot;X7ZDrJECNbiK2kfZoyPeyt&quot;,
                         &quot;type&quot;: &quot;tool_use&quot;,
                         &quot;name&quot;: &quot;generate_response&quot;,
                         &quot;input&quot;: {
-                            &quot;response&quot;: &quot;你好！有什么我能为你做的吗？&quot;
+                            &quot;response&quot;: &quot;你好！有什么可以帮助你的吗？&quot;
                         }
                     }
                 ],
                 &quot;metadata&quot;: null,
-                &quot;timestamp&quot;: &quot;2025-09-16 07:27:42.124&quot;
+                &quot;timestamp&quot;: &quot;2025-09-16 08:52:08.624&quot;
             },
             {
-                &quot;id&quot;: &quot;X82eqmJYkp2zsEMUvH3isn&quot;,
+                &quot;id&quot;: &quot;WfPbqVVap8H4tdNarLnQf7&quot;,
                 &quot;name&quot;: &quot;system&quot;,
                 &quot;role&quot;: &quot;system&quot;,
                 &quot;content&quot;: [
                     {
                         &quot;type&quot;: &quot;tool_result&quot;,
-                        &quot;id&quot;: &quot;fL3raC97TXYVwRcpzRqJuo&quot;,
+                        &quot;id&quot;: &quot;X7ZDrJECNbiK2kfZoyPeyt&quot;,
                         &quot;name&quot;: &quot;generate_response&quot;,
                         &quot;output&quot;: [
                             {
@@ -638,15 +638,15 @@ obj_b 的状态：
                     }
                 ],
                 &quot;metadata&quot;: null,
-                &quot;timestamp&quot;: &quot;2025-09-16 07:27:43.786&quot;
+                &quot;timestamp&quot;: &quot;2025-09-16 08:52:10.861&quot;
             },
             {
-                &quot;id&quot;: &quot;oKS4jDroDkBh6GDbRy6f5E&quot;,
+                &quot;id&quot;: &quot;W9AYwRDS78RBs2Bo3EHPpq&quot;,
                 &quot;name&quot;: &quot;Friday&quot;,
                 &quot;role&quot;: &quot;assistant&quot;,
-                &quot;content&quot;: &quot;你好！有什么我能为你做的吗？&quot;,
+                &quot;content&quot;: &quot;你好！有什么可以帮助你的吗？&quot;,
                 &quot;metadata&quot;: null,
-                &quot;timestamp&quot;: &quot;2025-09-16 07:27:43.786&quot;
+                &quot;timestamp&quot;: &quot;2025-09-16 08:52:10.861&quot;
             }
         ]
     },
@@ -665,38 +665,38 @@ obj_b 的状态：
     &quot;memory&quot;: {
         &quot;content&quot;: [
             {
-                &quot;id&quot;: &quot;4wDAcPrPLGxtf5zo7snDLz&quot;,
+                &quot;id&quot;: &quot;DV3Giv3tPRcocB5Msfa92X&quot;,
                 &quot;name&quot;: &quot;user&quot;,
                 &quot;role&quot;: &quot;user&quot;,
                 &quot;content&quot;: &quot;你好，智能体！&quot;,
                 &quot;metadata&quot;: null,
-                &quot;timestamp&quot;: &quot;2025-09-16 07:27:42.124&quot;
+                &quot;timestamp&quot;: &quot;2025-09-16 08:52:08.624&quot;
             },
             {
-                &quot;id&quot;: &quot;b3HFsssGGmXcPgTctvuK9s&quot;,
+                &quot;id&quot;: &quot;h3jbiG9BSnDikRkpaAhntv&quot;,
                 &quot;name&quot;: &quot;Friday&quot;,
                 &quot;role&quot;: &quot;assistant&quot;,
                 &quot;content&quot;: [
                     {
-                        &quot;id&quot;: &quot;fL3raC97TXYVwRcpzRqJuo&quot;,
+                        &quot;id&quot;: &quot;X7ZDrJECNbiK2kfZoyPeyt&quot;,
                         &quot;type&quot;: &quot;tool_use&quot;,
                         &quot;name&quot;: &quot;generate_response&quot;,
                         &quot;input&quot;: {
-                            &quot;response&quot;: &quot;你好！有什么我能为你做的吗？&quot;
+                            &quot;response&quot;: &quot;你好！有什么可以帮助你的吗？&quot;
                         }
                     }
                 ],
                 &quot;metadata&quot;: null,
-                &quot;timestamp&quot;: &quot;2025-09-16 07:27:42.124&quot;
+                &quot;timestamp&quot;: &quot;2025-09-16 08:52:08.624&quot;
             },
             {
-                &quot;id&quot;: &quot;X82eqmJYkp2zsEMUvH3isn&quot;,
+                &quot;id&quot;: &quot;WfPbqVVap8H4tdNarLnQf7&quot;,
                 &quot;name&quot;: &quot;system&quot;,
                 &quot;role&quot;: &quot;system&quot;,
                 &quot;content&quot;: [
                     {
                         &quot;type&quot;: &quot;tool_result&quot;,
-                        &quot;id&quot;: &quot;fL3raC97TXYVwRcpzRqJuo&quot;,
+                        &quot;id&quot;: &quot;X7ZDrJECNbiK2kfZoyPeyt&quot;,
                         &quot;name&quot;: &quot;generate_response&quot;,
                         &quot;output&quot;: [
                             {
@@ -707,15 +707,15 @@ obj_b 的状态：
                     }
                 ],
                 &quot;metadata&quot;: null,
-                &quot;timestamp&quot;: &quot;2025-09-16 07:27:43.786&quot;
+                &quot;timestamp&quot;: &quot;2025-09-16 08:52:10.861&quot;
             },
             {
-                &quot;id&quot;: &quot;oKS4jDroDkBh6GDbRy6f5E&quot;,
+                &quot;id&quot;: &quot;W9AYwRDS78RBs2Bo3EHPpq&quot;,
                 &quot;name&quot;: &quot;Friday&quot;,
                 &quot;role&quot;: &quot;assistant&quot;,
-                &quot;content&quot;: &quot;你好！有什么我能为你做的吗？&quot;,
+                &quot;content&quot;: &quot;你好！有什么可以帮助你的吗？&quot;,
                 &quot;metadata&quot;: null,
-                &quot;timestamp&quot;: &quot;2025-09-16 07:27:43.786&quot;
+                &quot;timestamp&quot;: &quot;2025-09-16 08:52:10.861&quot;
             }
         ]
     },
@@ -732,8 +732,7 @@ obj_b 的状态：
 </div>
 <p>然后我们将其保存到会话文件中：</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">session</span> <span class="o">=</span> <span class="n">JSONSession</span><span class="p">(</span>
-    <span class="n">session_id</span><span class="o">=</span><span class="s2">&quot;session_2025-08-08&quot;</span><span class="p">,</span>  <span class="c1"># 使用时间作为会话 ID</span>
-    <span class="n">save_dir</span><span class="o">=</span><span class="s2">&quot;./user-bob/&quot;</span><span class="p">,</span>  <span class="c1"># 使用用户名作为保存目录</span>
+    <span class="n">save_dir</span><span class="o">=</span><span class="s2">&quot;./&quot;</span><span class="p">,</span>  <span class="c1"># 保存所有session文件的目录</span>
 <span class="p">)</span>
 
 
@@ -742,11 +741,12 @@ obj_b 的状态：
 
     <span class="c1"># 可以保存多个状态，只需要输入的对象为 `StateModule` 的子类。</span>
     <span class="k">await</span> <span class="n">session</span><span class="o">.</span><span class="n">save_session_state</span><span class="p">(</span>
+        <span class="n">session_id</span><span class="o">=</span><span class="s2">&quot;user_bob&quot;</span><span class="p">,</span>
         <span class="n">agent</span><span class="o">=</span><span class="n">agent</span><span class="p">,</span>
     <span class="p">)</span>
 
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;保存的状态：&quot;</span><span class="p">)</span>
-    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">session</span><span class="o">.</span><span class="n">save_path</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;./user_bob.json&quot;</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
         <span class="nb">print</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">),</span> <span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">ensure_ascii</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span>
 
 
@@ -759,38 +759,38 @@ obj_b 的状态：
         &quot;memory&quot;: {
             &quot;content&quot;: [
                 {
-                    &quot;id&quot;: &quot;4wDAcPrPLGxtf5zo7snDLz&quot;,
+                    &quot;id&quot;: &quot;DV3Giv3tPRcocB5Msfa92X&quot;,
                     &quot;name&quot;: &quot;user&quot;,
                     &quot;role&quot;: &quot;user&quot;,
                     &quot;content&quot;: &quot;你好，智能体！&quot;,
                     &quot;metadata&quot;: null,
-                    &quot;timestamp&quot;: &quot;2025-09-16 07:27:42.124&quot;
+                    &quot;timestamp&quot;: &quot;2025-09-16 08:52:08.624&quot;
                 },
                 {
-                    &quot;id&quot;: &quot;b3HFsssGGmXcPgTctvuK9s&quot;,
+                    &quot;id&quot;: &quot;h3jbiG9BSnDikRkpaAhntv&quot;,
                     &quot;name&quot;: &quot;Friday&quot;,
                     &quot;role&quot;: &quot;assistant&quot;,
                     &quot;content&quot;: [
                         {
-                            &quot;id&quot;: &quot;fL3raC97TXYVwRcpzRqJuo&quot;,
+                            &quot;id&quot;: &quot;X7ZDrJECNbiK2kfZoyPeyt&quot;,
                             &quot;type&quot;: &quot;tool_use&quot;,
                             &quot;name&quot;: &quot;generate_response&quot;,
                             &quot;input&quot;: {
-                                &quot;response&quot;: &quot;你好！有什么我能为你做的吗？&quot;
+                                &quot;response&quot;: &quot;你好！有什么可以帮助你的吗？&quot;
                             }
                         }
                     ],
                     &quot;metadata&quot;: null,
-                    &quot;timestamp&quot;: &quot;2025-09-16 07:27:42.124&quot;
+                    &quot;timestamp&quot;: &quot;2025-09-16 08:52:08.624&quot;
                 },
                 {
-                    &quot;id&quot;: &quot;X82eqmJYkp2zsEMUvH3isn&quot;,
+                    &quot;id&quot;: &quot;WfPbqVVap8H4tdNarLnQf7&quot;,
                     &quot;name&quot;: &quot;system&quot;,
                     &quot;role&quot;: &quot;system&quot;,
                     &quot;content&quot;: [
                         {
                             &quot;type&quot;: &quot;tool_result&quot;,
-                            &quot;id&quot;: &quot;fL3raC97TXYVwRcpzRqJuo&quot;,
+                            &quot;id&quot;: &quot;X7ZDrJECNbiK2kfZoyPeyt&quot;,
                             &quot;name&quot;: &quot;generate_response&quot;,
                             &quot;output&quot;: [
                                 {
@@ -801,15 +801,15 @@ obj_b 的状态：
                         }
                     ],
                     &quot;metadata&quot;: null,
-                    &quot;timestamp&quot;: &quot;2025-09-16 07:27:43.786&quot;
+                    &quot;timestamp&quot;: &quot;2025-09-16 08:52:10.861&quot;
                 },
                 {
-                    &quot;id&quot;: &quot;oKS4jDroDkBh6GDbRy6f5E&quot;,
+                    &quot;id&quot;: &quot;W9AYwRDS78RBs2Bo3EHPpq&quot;,
                     &quot;name&quot;: &quot;Friday&quot;,
                     &quot;role&quot;: &quot;assistant&quot;,
-                    &quot;content&quot;: &quot;你好！有什么我能为你做的吗？&quot;,
+                    &quot;content&quot;: &quot;你好！有什么可以帮助你的吗？&quot;,
                     &quot;metadata&quot;: null,
-                    &quot;timestamp&quot;: &quot;2025-09-16 07:27:43.786&quot;
+                    &quot;timestamp&quot;: &quot;2025-09-16 08:52:10.861&quot;
                 }
             ]
         },
@@ -840,15 +840,103 @@ obj_b 的状态：
 
     <span class="c1"># 从会话文件中加载状态</span>
     <span class="k">await</span> <span class="n">session</span><span class="o">.</span><span class="n">load_session_state</span><span class="p">(</span>
+        <span class="n">session_id</span><span class="o">=</span><span class="s2">&quot;user_bob&quot;</span><span class="p">,</span>
         <span class="c1"># 这里使用的关键词参数必须与 `save_session_state` 中的参数一致</span>
         <span class="n">agent</span><span class="o">=</span><span class="n">agent</span><span class="p">,</span>
     <span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;加载会话状态后智能体的状态：&quot;</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">agent</span><span class="o">.</span><span class="n">state_dict</span><span class="p">(),</span> <span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">ensure_ascii</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span>
+
+
+<span class="n">asyncio</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">example_load_session</span><span class="p">())</span>
+</pre></div>
+</div>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>当前智能体状态：
+{
+    &quot;memory&quot;: {
+        &quot;content&quot;: []
+    },
+    &quot;toolkit&quot;: {
+        &quot;active_groups&quot;: []
+    },
+    &quot;_reasoning_hint_msgs&quot;: {
+        &quot;content&quot;: []
+    },
+    &quot;name&quot;: &quot;Friday&quot;,
+    &quot;_sys_prompt&quot;: &quot;你是一个名为 Friday 的助手。&quot;
+}
+加载会话状态后智能体的状态：
+{
+    &quot;memory&quot;: {
+        &quot;content&quot;: [
+            {
+                &quot;id&quot;: &quot;DV3Giv3tPRcocB5Msfa92X&quot;,
+                &quot;name&quot;: &quot;user&quot;,
+                &quot;role&quot;: &quot;user&quot;,
+                &quot;content&quot;: &quot;你好，智能体！&quot;,
+                &quot;metadata&quot;: null,
+                &quot;timestamp&quot;: &quot;2025-09-16 08:52:08.624&quot;
+            },
+            {
+                &quot;id&quot;: &quot;h3jbiG9BSnDikRkpaAhntv&quot;,
+                &quot;name&quot;: &quot;Friday&quot;,
+                &quot;role&quot;: &quot;assistant&quot;,
+                &quot;content&quot;: [
+                    {
+                        &quot;id&quot;: &quot;X7ZDrJECNbiK2kfZoyPeyt&quot;,
+                        &quot;type&quot;: &quot;tool_use&quot;,
+                        &quot;name&quot;: &quot;generate_response&quot;,
+                        &quot;input&quot;: {
+                            &quot;response&quot;: &quot;你好！有什么可以帮助你的吗？&quot;
+                        }
+                    }
+                ],
+                &quot;metadata&quot;: null,
+                &quot;timestamp&quot;: &quot;2025-09-16 08:52:08.624&quot;
+            },
+            {
+                &quot;id&quot;: &quot;WfPbqVVap8H4tdNarLnQf7&quot;,
+                &quot;name&quot;: &quot;system&quot;,
+                &quot;role&quot;: &quot;system&quot;,
+                &quot;content&quot;: [
+                    {
+                        &quot;type&quot;: &quot;tool_result&quot;,
+                        &quot;id&quot;: &quot;X7ZDrJECNbiK2kfZoyPeyt&quot;,
+                        &quot;name&quot;: &quot;generate_response&quot;,
+                        &quot;output&quot;: [
+                            {
+                                &quot;type&quot;: &quot;text&quot;,
+                                &quot;text&quot;: &quot;Successfully generated response.&quot;
+                            }
+                        ]
+                    }
+                ],
+                &quot;metadata&quot;: null,
+                &quot;timestamp&quot;: &quot;2025-09-16 08:52:10.861&quot;
+            },
+            {
+                &quot;id&quot;: &quot;W9AYwRDS78RBs2Bo3EHPpq&quot;,
+                &quot;name&quot;: &quot;Friday&quot;,
+                &quot;role&quot;: &quot;assistant&quot;,
+                &quot;content&quot;: &quot;你好！有什么可以帮助你的吗？&quot;,
+                &quot;metadata&quot;: null,
+                &quot;timestamp&quot;: &quot;2025-09-16 08:52:10.861&quot;
+            }
+        ]
+    },
+    &quot;toolkit&quot;: {
+        &quot;active_groups&quot;: []
+    },
+    &quot;_reasoning_hint_msgs&quot;: {
+        &quot;content&quot;: []
+    },
+    &quot;name&quot;: &quot;Friday&quot;,
+    &quot;_sys_prompt&quot;: &quot;你是一个名为 Friday 的助手。&quot;
+}
 </pre></div>
 </div>
 <p>此时我们可以观察到智能体的状态已经恢复到之前保存的状态。</p>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 3.289 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 3.610 seconds)</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-tutorial-task-state-py">
 <div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
 <p><a class="reference download internal" download="" href="../_downloads/78801218992541b6da6586f399b20cbd/task_state.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">task_state.ipynb</span></code></a></p>
