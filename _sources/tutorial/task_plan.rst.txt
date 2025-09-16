@@ -167,7 +167,7 @@ The ``list_tools`` method is a quick way to obtain all tool functions, so that y
     async def list_tools() -> None:
         """List the tool functions provided by PlanNotebook."""
         print("The tools provided by PlanNotebook:")
-        for tool in await plan_notebook.list_tools():
+        for tool in plan_notebook.list_tools():
             print(tool.__name__)
 
 
@@ -292,7 +292,7 @@ The following is an example of manually creating a plan to conduct a comprehensi
     **Description**: Conduct a comprehensive research on the LLM-empowered agent.
     **Expected Outcome**: A Markdown format report answer three questions: 1. What's agent? 2. What's the current state of the art of agent? 3. What's the future trend of agent?
     **State**: todo
-    **Created At**: 2025-09-16 04:23:25.129
+    **Created At**: 2025-09-16 07:21:25.902
     ## Subtasks
     - [ ] Search agent-related survey papers
     - [ ] Read and summarize the papers
