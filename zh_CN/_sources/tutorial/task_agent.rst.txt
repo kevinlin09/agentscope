@@ -208,7 +208,7 @@ ReAct 智能体
 
     Jarvis: {
         "type": "tool_use",
-        "id": "call_980ae5a88160429ab05bb4",
+        "id": "call_52527794af864937877784",
         "name": "example_tool_function",
         "input": {
             "tag": "tag1"
@@ -216,18 +216,18 @@ ReAct 智能体
     }
     system: {
         "type": "tool_result",
-        "id": "call_980ae5a88160429ab05bb4",
+        "id": "call_52527794af864937877784",
         "name": "example_tool_function",
         "output": [
             {
                 "type": "text",
-                "text": "标签 tag1 开始于 03:26:19.969033，结束于 03:26:22.972103。"
+                "text": "标签 tag1 开始于 04:26:16.616587，结束于 04:26:19.619653。"
             }
         ]
     }
     Jarvis: {
         "type": "tool_use",
-        "id": "call_138d0da460e94663adb11b",
+        "id": "call_6849d7281acc4d2597d280",
         "name": "example_tool_function",
         "input": {
             "tag": "tag2"
@@ -235,16 +235,16 @@ ReAct 智能体
     }
     system: {
         "type": "tool_result",
-        "id": "call_138d0da460e94663adb11b",
+        "id": "call_6849d7281acc4d2597d280",
         "name": "example_tool_function",
         "output": [
             {
                 "type": "text",
-                "text": "标签 tag2 开始于 03:26:25.122764，结束于 03:26:28.125824。"
+                "text": "标签 tag2 开始于 04:26:21.199999，结束于 04:26:24.203075。"
             }
         ]
     }
-    Jarvis: 两个函数调用已经并行执行完毕。第一个使用标签 'tag1' 的 `example_tool_function` 函数从 03:26:19.969033 开始，在 03:26:22.972103 结束。第二个使用标签 'tag2' 的 `example_tool_function` 函数则从 03:26:25.122764 开始，并在 03:26:28.125824 完成。
+    Jarvis: 两个函数调用已经并行执行完成。一个是带有标签 'tag1' 的函数，它从 04:26:16.616587 开始，在 04:26:19.619653 结束。另一个是带有标签 'tag2' 的函数，它从 04:26:21.199999 开始，在 04:26:24.203075 结束。
 
 
 
@@ -309,15 +309,15 @@ AgentScope 中的结构化输出是与工具调用紧密结合的。具体来说
 
  .. code-block:: none
 
-    Jarvis: 阿尔伯特·爱因斯坦（Albert Einstein），是20世纪最伟大的理论物理学家之一，以其相对论闻名于世。他出生于1879年，并在1955年去世，享年76岁。爱因斯坦因为在光电效应方面的研究而获得了1921年的诺贝尔物理学奖。
+    Jarvis: 阿尔伯特·爱因斯坦是一位著名的理论物理学家，他最出名的贡献是相对论。爱因斯坦出生于1879年，并在1955年去世，享年76岁。在他的一生中，他荣获了包括诺贝尔物理学奖在内的诸多荣誉。
 
     结构化输出：
     {
         "name": "阿尔伯特·爱因斯坦",
-        "description": "20世纪最伟大的理论物理学家之一",
+        "description": "著名的理论物理学家，以相对论闻名于世。",
         "age": 76,
         "honor": [
-            "1921年诺贝尔物理学奖"
+            "诺贝尔物理学奖"
         ]
     }
 
@@ -387,7 +387,7 @@ AgentScope 提供了两个基类：``AgentBase`` 和 ``ReActAgentBase``，它们
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 23.509 seconds)
+   **Total running time of the script:** (0 minutes 20.632 seconds)
 
 
 .. _sphx_glr_download_tutorial_task_agent.py:
