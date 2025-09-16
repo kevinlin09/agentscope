@@ -110,11 +110,11 @@ Initialize a routing agent
 
  .. code-block:: none
 
-    Router: Sure, I can help with that. Could you please provide me with a theme or some key elements you'd like to include in the poem?
+    Router: Of course, I can help you with that. Could you please tell me what the poem should be about and if there's a specific style or length you have in mind?
     The structured output:
     {
         "your_choice": "Content Generation",
-        "task_description": "Write a poem based on the user's provided theme or key elements."
+        "task_description": "Write a poem based on user's preferences."
     }
 
 
@@ -247,9 +247,10 @@ After that, we define a routing agent and equip it with the above tool functions
         "input": {
             "demand": "a quick sort function"
         },
-        "id": "call_5da08bf792e14190b9960a"
+        "id": "call_dcc7ade078044ddc89e632"
     }
-    PythonAgent: Here is a simple implementation of the quick sort algorithm in Python:
+    PythonAgent: Here is a simple implementation of the Quick Sort algorithm in Python. This function sorts an array in-place.
+
     ```python
     def quick_sort(arr):
         if len(arr) <= 1:
@@ -260,23 +261,28 @@ After that, we define a routing agent and equip it with the above tool functions
             middle = [x for x in arr if x == pivot]
             right = [x for x in arr if x > pivot]
             return quick_sort(left) + middle + quick_sort(right)
+
+    # Example usage:
+    arr = [3, 6, 8, 10, 1, 2, 1]
+    sorted_arr = quick_sort(arr)
+    print(sorted_arr)
     ```
-    You can use this function to sort a list of numbers. For example, `quick_sort([3, 6, 8, 10, 1, 2, 1])` will return a sorted list `[1, 1, 2, 3, 6, 8, 10]`.
+
+    This version of quick sort does not sort the array in place; it creates new lists for the left, middle, and right partitions. If you want an in-place version that modifies the original list, let me know, and I can provide that as well.
     system: {
         "type": "tool_result",
-        "id": "call_5da08bf792e14190b9960a",
+        "id": "call_dcc7ade078044ddc89e632",
         "name": "generate_python",
         "output": [
             {
                 "type": "text",
-                "text": "Here is a simple implementation of the quick sort algorithm in Python:\n```python\ndef quick_sort(arr):\n    if len(arr) <= 1:\n        return arr\n    else:\n        pivot = arr[len(arr) // 2]\n        left = [x for x in arr if x < pivot]\n        middle = [x for x in arr if x == pivot]\n        right = [x for x in arr if x > pivot]\n        return quick_sort(left) + middle + quick_sort(right)\n```\nYou can use this function to sort a list of numbers. For example, `quick_sort([3, 6, 8, 10, 1, 2, 1])` will return a sorted list `[1, 1, 2, 3, 6, 8, 10]`."
+                "text": "Here is a simple implementation of the Quick Sort algorithm in Python. This function sorts an array in-place.\n\n```python\ndef quick_sort(arr):\n    if len(arr) <= 1:\n        return arr\n    else:\n        pivot = arr[len(arr) // 2]\n        left = [x for x in arr if x < pivot]\n        middle = [x for x in arr if x == pivot]\n        right = [x for x in arr if x > pivot]\n        return quick_sort(left) + middle + quick_sort(right)\n\n# Example usage:\narr = [3, 6, 8, 10, 1, 2, 1]\nsorted_arr = quick_sort(arr)\nprint(sorted_arr)\n```\n\nThis version of quick sort does not sort the array in place; it creates new lists for the left, middle, and right partitions. If you want an in-place version that modifies the original list, let me know, and I can provide that as well."
             }
         ]
     }
-    Router: Here is a simple implementation of the quick sort algorithm in Python, you can use this function to sort a list of numbers. For example, `quick_sort([3, 6, 8, 10, 1, 2, 1])` will return a sorted list `[1, 1, 2, 3, 6, 8, 10]`.
+    Router: Here is a simple implementation of the Quick Sort algorithm in Python. This function sorts an array by creating new lists for the left, middle, and right partitions, and it does not sort the array in place.
 
     ```python
-
     def quick_sort(arr):
         if len(arr) <= 1:
             return arr
@@ -286,7 +292,14 @@ After that, we define a routing agent and equip it with the above tool functions
             middle = [x for x in arr if x == pivot]
             right = [x for x in arr if x > pivot]
             return quick_sort(left) + middle + quick_sort(right)
+
+    # Example usage:
+    arr = [3, 6, 8, 10, 1, 2, 1]
+    sorted_arr = quick_sort(arr)
+    print(sorted_arr)
     ```
+
+    If you need an in-place version that modifies the original list, please let me know, and I can provide that as well.
 
 
 
@@ -294,7 +307,7 @@ After that, we define a routing agent and equip it with the above tool functions
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 27.425 seconds)
+   **Total running time of the script:** (0 minutes 28.451 seconds)
 
 
 .. _sphx_glr_download_tutorial_workflow_routing.py:
