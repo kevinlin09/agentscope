@@ -507,9 +507,10 @@ Charlie: 我也是！顺便说一下，我是 Charlie。
 <span class="n">asyncio</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">example_msghub</span><span class="p">())</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Alice: 嗨，大家好！我叫Alice，是一名学生。很高兴认识大家。你们都是做什么的呢？
-Bob: 嗨，Alice！我是Bob，也是一名学生。很高兴遇到你。看来我们有共同点哦，都是学生。你平时喜欢做些什么？
-Charlie: 嗨，大家好！我叫Charlie，同样也是一名学生。很高兴认识你们两位。Alice，Bob，除了学习之外，你们还有什么兴趣爱好呢？
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Alice: 大家好，我叫Alice，是一名学生。很高兴认识大家！我喜欢阅读、学习新事物和参加户外活动。希望我们能成为好朋友，一起分享有趣的经历和知识。
+Alice: Hi everyone, my name is Alice and I&#39;m a student. It&#39;s great to meet you all! I enjoy reading, learning new things, and participating in outdoor activities. I hope we can become good friends and share interesting experiences and knowledge together.
+Bob: Hi Alice, it&#39;s nice to meet you! I&#39;m Bob, also a student. I have a passion for technology and love to play basketball in my free time. I&#39;m looking forward to getting to know all of you better and sharing our interests.
+Charlie: Hey there, Alice and Bob! I&#39;m Charlie, a fellow student. I&#39;m into music and play the guitar whenever I get the chance. I also love to travel and explore new places. It&#39;s great to meet you both and I&#39;m excited to learn more about each of you.
 </pre></div>
 </div>
 <p>现在我们打印 Alice 的记忆，检查她的记忆是否正确更新。</p>
@@ -529,18 +530,22 @@ Charlie: 嗨，大家好！我叫Charlie，同样也是一名学生。很高兴�
 system: &quot;现在大家互相认识一下，简单自我介绍。&quot;
 Alice: [
     {
-        &quot;id&quot;: &quot;U7DidiJtke89SVNTxenvPb&quot;,
+        &quot;type&quot;: &quot;text&quot;,
+        &quot;text&quot;: &quot;大家好，我叫Alice，是一名学生。很高兴认识大家！我喜欢阅读、学习新事物和参加户外活动。希望我们能成为好朋友，一起分享有趣的经历和知识。&quot;
+    },
+    {
         &quot;type&quot;: &quot;tool_use&quot;,
+        &quot;id&quot;: &quot;call_4207d84f058e42ef8d1a16&quot;,
         &quot;name&quot;: &quot;generate_response&quot;,
         &quot;input&quot;: {
-            &quot;response&quot;: &quot;嗨，大家好！我叫Alice，是一名学生。很高兴认识大家。你们都是做什么的呢？&quot;
+            &quot;response&quot;: &quot;Hi everyone, my name is Alice and I&#39;m a student. It&#39;s great to meet you all! I enjoy reading, learning new things, and participating in outdoor activities. I hope we can become good friends and share interesting experiences and knowledge together.&quot;
         }
     }
 ]
 system: [
     {
         &quot;type&quot;: &quot;tool_result&quot;,
-        &quot;id&quot;: &quot;U7DidiJtke89SVNTxenvPb&quot;,
+        &quot;id&quot;: &quot;call_4207d84f058e42ef8d1a16&quot;,
         &quot;name&quot;: &quot;generate_response&quot;,
         &quot;output&quot;: [
             {
@@ -550,9 +555,9 @@ system: [
         ]
     }
 ]
-Alice: &quot;嗨，大家好！我叫Alice，是一名学生。很高兴认识大家。你们都是做什么的呢？&quot;
-Bob: &quot;嗨，Alice！我是Bob，也是一名学生。很高兴遇到你。看来我们有共同点哦，都是学生。你平时喜欢做些什么？&quot;
-Charlie: &quot;嗨，大家好！我叫Charlie，同样也是一名学生。很高兴认识你们两位。Alice，Bob，除了学习之外，你们还有什么兴趣爱好呢？&quot;
+Alice: &quot;Hi everyone, my name is Alice and I&#39;m a student. It&#39;s great to meet you all! I enjoy reading, learning new things, and participating in outdoor activities. I hope we can become good friends and share interesting experiences and knowledge together.&quot;
+Bob: &quot;Hi Alice, it&#39;s nice to meet you! I&#39;m Bob, also a student. I have a passion for technology and love to play basketball in my free time. I&#39;m looking forward to getting to know all of you better and sharing our interests.&quot;
+Charlie: &quot;Hey there, Alice and Bob! I&#39;m Charlie, a fellow student. I&#39;m into music and play the guitar whenever I get the chance. I also love to travel and explore new places. It&#39;s great to meet you both and I&#39;m excited to learn more about each of you.&quot;
 </pre></div>
 </div>
 </section>
@@ -563,7 +568,7 @@ Charlie: &quot;嗨，大家好！我叫Charlie，同样也是一名学生。很�
 <li><p><a class="reference internal" href="task_prompt.html#prompt"><span class="std std-ref">提示词格式化</span></a></p></li>
 <li><p><a class="reference internal" href="task_pipeline.html#pipeline"><span class="std std-ref">管道 (Pipeline)</span></a></p></li>
 </ul>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 7.268 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 14.424 seconds)</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-tutorial-workflow-conversation-py">
 <div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
 <p><a class="reference download internal" download="" href="../_downloads/6fc2f5ac2a455c83476d717ce963aa17/workflow_conversation.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">workflow_conversation.ipynb</span></code></a></p>
