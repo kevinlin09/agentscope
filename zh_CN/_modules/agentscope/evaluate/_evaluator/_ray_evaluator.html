@@ -317,11 +317,6 @@
 <span class="kn">import</span><span class="w"> </span><span class="nn">asyncio</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Callable</span><span class="p">,</span> <span class="n">Awaitable</span><span class="p">,</span> <span class="n">Coroutine</span><span class="p">,</span> <span class="n">Any</span>
 
-<span class="k">try</span><span class="p">:</span>
-    <span class="kn">import</span><span class="w"> </span><span class="nn">ray</span>
-<span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
-    <span class="n">ray</span> <span class="o">=</span> <span class="kc">None</span>
-
 <span class="kn">from</span><span class="w"> </span><span class="nn">.._benchmark_base</span><span class="w"> </span><span class="kn">import</span> <span class="n">BenchmarkBase</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">.._evaluator._evaluator_base</span><span class="w"> </span><span class="kn">import</span> <span class="n">EvaluatorBase</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">.._solution</span><span class="w"> </span><span class="kn">import</span> <span class="n">SolutionOutput</span>
@@ -329,7 +324,31 @@
 <span class="kn">from</span><span class="w"> </span><span class="nn">.._evaluator_storage</span><span class="w"> </span><span class="kn">import</span> <span class="n">EvaluatorStorageBase</span>
 
 
-<span class="nd">@ray</span><span class="o">.</span><span class="n">remote</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">_check_ray_available</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Check if ray is available and raise ImportError if not.&quot;&quot;&quot;</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="kn">import</span><span class="w"> </span><span class="nn">ray</span>  <span class="c1"># noqa  # pylint: disable=unused-import</span>
+    <span class="k">except</span> <span class="ne">ImportError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ImportError</span><span class="p">(</span>
+            <span class="s2">&quot;Ray is not installed. Please install it with `pip install ray` &quot;</span>
+            <span class="s2">&quot;to use the RayEvaluator.&quot;</span><span class="p">,</span>
+        <span class="p">)</span> <span class="kn">from</span><span class="w"> </span><span class="nn">e</span>
+
+
+<span class="c1"># Create a conditional decorator for ray.remote</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">_ray_remote_decorator</span><span class="p">(</span><span class="bp">cls</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Conditional ray.remote decorator that only applies when ray is available.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="kn">import</span><span class="w"> </span><span class="nn">ray</span>
+
+        <span class="k">return</span> <span class="n">ray</span><span class="o">.</span><span class="n">remote</span><span class="p">(</span><span class="bp">cls</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">cls</span>
+
+
+<span class="nd">@_ray_remote_decorator</span>
 <span class="k">class</span><span class="w"> </span><span class="nc">RayEvaluationActor</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Actor class for running evaluation with ray remote.</span>
@@ -361,7 +380,7 @@
             <span class="p">)</span>
 
 
-<span class="nd">@ray</span><span class="o">.</span><span class="n">remote</span>
+<span class="nd">@_ray_remote_decorator</span>
 <span class="k">class</span><span class="w"> </span><span class="nc">RaySolutionActor</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Actor class for running agent solutions with ray remote.</span>
@@ -458,6 +477,9 @@
             <span class="n">n_repeat</span><span class="o">=</span><span class="n">n_repeat</span><span class="p">,</span>
             <span class="n">storage</span><span class="o">=</span><span class="n">storage</span><span class="p">,</span>
         <span class="p">)</span>
+
+        <span class="c1"># Check ray availability early</span>
+        <span class="n">_check_ray_available</span><span class="p">()</span>
 
         <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">benchmark</span><span class="p">,</span> <span class="n">BenchmarkBase</span><span class="p">)</span>
 
