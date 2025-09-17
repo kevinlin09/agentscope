@@ -218,7 +218,7 @@ they will be executed in parallel by the ``asyncio.gather`` function.
 
     Jarvis: {
         "type": "tool_use",
-        "id": "call_7ca232e87ab8401cadfb72",
+        "id": "call_6fc3b21d03e8401f935db7",
         "name": "example_tool_function",
         "input": {
             "tag": "tag1"
@@ -226,18 +226,18 @@ they will be executed in parallel by the ``asyncio.gather`` function.
     }
     system: {
         "type": "tool_result",
-        "id": "call_7ca232e87ab8401cadfb72",
+        "id": "call_6fc3b21d03e8401f935db7",
         "name": "example_tool_function",
         "output": [
             {
                 "type": "text",
-                "text": "Tag tag1 started at 08:56:21.224438 and ended at 08:56:24.227507. "
+                "text": "Tag tag1 started at 09:20:27.601077 and ended at 09:20:30.604139. "
             }
         ]
     }
     Jarvis: {
         "type": "tool_use",
-        "id": "call_35ff01039ded4eefb3a5e4",
+        "id": "call_eac046b035f84394b848b8",
         "name": "example_tool_function",
         "input": {
             "tag": "tag2"
@@ -245,21 +245,21 @@ they will be executed in parallel by the ``asyncio.gather`` function.
     }
     system: {
         "type": "tool_result",
-        "id": "call_35ff01039ded4eefb3a5e4",
+        "id": "call_eac046b035f84394b848b8",
         "name": "example_tool_function",
         "output": [
             {
                 "type": "text",
-                "text": "Tag tag2 started at 08:56:26.232485 and ended at 08:56:29.235547. "
+                "text": "Tag tag2 started at 09:20:32.764233 and ended at 09:20:35.767290. "
             }
         ]
     }
-    Jarvis: The 'example_tool_function' has been called twice with the tags 'tag1' and 'tag2'. Here are the results for each call:
+    Jarvis: The 'example_tool_function' has been called with two different tags, 'tag1' and 'tag2', to execute in parallel. Here are the results:
 
-    - For 'tag1': It started at 08:56:21.224438 and ended at 08:56:24.227507.
-    - For 'tag2': It started at 08:56:26.232485 and ended at 08:56:29.235547.
+    - For 'tag1': It started at 09:20:27.601077 and ended at 09:20:30.604139.
+    - For 'tag2': It started at 09:20:32.764233 and ended at 09:20:35.767290.
 
-    Both function calls executed in parallel as requested.
+    Please note that the actual parallel execution is dependent on the system's capability to run these tasks concurrently. In this case, the timestamps indicate that the functions were called one after the other. If you have control over the environment, you could use threading or asynchronous programming to achieve true parallelism.
 
 
 
@@ -334,17 +334,15 @@ Taking introducing Einstein as an example:
 
  .. code-block:: none
 
-    Jarvis: Albert Einstein was a renowned physicist who developed the theory of relativity, one of the two pillars of modern physics. He is best known for his mass–energy equivalence formula E=mc^2.
+    Jarvis: Albert Einstein was a German-born theoretical physicist, widely acknowledged to be one of the greatest and most influential physicists of all time. He is best known for developing the theory of relativity, but he also made important contributions to the development of the theory of quantum mechanics. He was awarded the Nobel Prize in Physics in 1921 for his services to theoretical physics, and especially for his discovery of the law of the photoelectric effect.
 
     The structured output:
     {
         "name": "Albert Einstein",
-        "description": "A theoretical physicist who is famous for his contributions to the field of theoretical physics and for developing the theory of relativity.",
+        "description": "Theoretical physicist who developed the theory of relativity",
         "age": 76,
         "honor": [
-            "Nobel Prize in Physics (1921)",
-            "Copley Medal (1925)",
-            "Max Planck Medal (1929)"
+            "Nobel Prize in Physics (1921)"
         ]
     }
 
@@ -416,7 +414,7 @@ Further Reading
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 37.681 seconds)
+   **Total running time of the script:** (1 minutes 10.402 seconds)
 
 
 .. _sphx_glr_download_tutorial_task_agent.py:
