@@ -402,11 +402,11 @@ to download the full example code.</p>
 <span class="n">asyncio</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">example_router_explicit</span><span class="p">())</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Router: Of course, I can help you with that. Could you please tell me what the poem should be about and if there&#39;s a specific style or length you have in mind?
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Router: Sure, I can help with that. Could you please give me a theme or some keywords to include in the poem?
 The structured output:
 {
     &quot;your_choice&quot;: &quot;Content Generation&quot;,
-    &quot;task_description&quot;: &quot;Write a poem based on user&#39;s preferences.&quot;
+    &quot;task_description&quot;: null
 }
 </pre></div>
 </div>
@@ -505,9 +505,9 @@ The structured output:
     &quot;input&quot;: {
         &quot;demand&quot;: &quot;a quick sort function&quot;
     },
-    &quot;id&quot;: &quot;call_dcc7ade078044ddc89e632&quot;
+    &quot;id&quot;: &quot;call_a6ea0752e80b416ab12596&quot;
 }
-PythonAgent: Here is a simple implementation of the Quick Sort algorithm in Python. This function sorts an array in-place.
+PythonAgent: Here is a simple implementation of the quick sort algorithm in Python. This function sorts a list in ascending order:
 
 ```python
 def quick_sort(arr):
@@ -519,26 +519,26 @@ def quick_sort(arr):
         middle = [x for x in arr if x == pivot]
         right = [x for x in arr if x &gt; pivot]
         return quick_sort(left) + middle + quick_sort(right)
-
-# Example usage:
-arr = [3, 6, 8, 10, 1, 2, 1]
-sorted_arr = quick_sort(arr)
-print(sorted_arr)
 ```
 
-This version of quick sort does not sort the array in place; it creates new lists for the left, middle, and right partitions. If you want an in-place version that modifies the original list, let me know, and I can provide that as well.
+You can use this function by passing a list to it, like so:
+```python
+sorted_list = quick_sort([3, 6, 8, 10, 1, 2, 1])
+print(sorted_list)
+```
+This will output the sorted list.
 system: {
     &quot;type&quot;: &quot;tool_result&quot;,
-    &quot;id&quot;: &quot;call_dcc7ade078044ddc89e632&quot;,
+    &quot;id&quot;: &quot;call_a6ea0752e80b416ab12596&quot;,
     &quot;name&quot;: &quot;generate_python&quot;,
     &quot;output&quot;: [
         {
             &quot;type&quot;: &quot;text&quot;,
-            &quot;text&quot;: &quot;Here is a simple implementation of the Quick Sort algorithm in Python. This function sorts an array in-place.\n\n```python\ndef quick_sort(arr):\n    if len(arr) &lt;= 1:\n        return arr\n    else:\n        pivot = arr[len(arr) // 2]\n        left = [x for x in arr if x &lt; pivot]\n        middle = [x for x in arr if x == pivot]\n        right = [x for x in arr if x &gt; pivot]\n        return quick_sort(left) + middle + quick_sort(right)\n\n# Example usage:\narr = [3, 6, 8, 10, 1, 2, 1]\nsorted_arr = quick_sort(arr)\nprint(sorted_arr)\n```\n\nThis version of quick sort does not sort the array in place; it creates new lists for the left, middle, and right partitions. If you want an in-place version that modifies the original list, let me know, and I can provide that as well.&quot;
+            &quot;text&quot;: &quot;Here is a simple implementation of the quick sort algorithm in Python. This function sorts a list in ascending order:\n\n```python\ndef quick_sort(arr):\n    if len(arr) &lt;= 1:\n        return arr\n    else:\n        pivot = arr[len(arr) // 2]\n        left = [x for x in arr if x &lt; pivot]\n        middle = [x for x in arr if x == pivot]\n        right = [x for x in arr if x &gt; pivot]\n        return quick_sort(left) + middle + quick_sort(right)\n```\n\nYou can use this function by passing a list to it, like so:\n```python\nsorted_list = quick_sort([3, 6, 8, 10, 1, 2, 1])\nprint(sorted_list)\n```\nThis will output the sorted list.&quot;
         }
     ]
 }
-Router: Here is a simple implementation of the Quick Sort algorithm in Python. This function sorts an array by creating new lists for the left, middle, and right partitions, and it does not sort the array in place.
+Router: Here is a simple implementation of the quick sort algorithm in Python. This function sorts a list in ascending order:
 
 ```python
 def quick_sort(arr):
@@ -550,17 +550,17 @@ def quick_sort(arr):
         middle = [x for x in arr if x == pivot]
         right = [x for x in arr if x &gt; pivot]
         return quick_sort(left) + middle + quick_sort(right)
-
-# Example usage:
-arr = [3, 6, 8, 10, 1, 2, 1]
-sorted_arr = quick_sort(arr)
-print(sorted_arr)
 ```
 
-If you need an in-place version that modifies the original list, please let me know, and I can provide that as well.
+You can use this function by passing a list to it, like so:
+```python
+sorted_list = quick_sort([3, 6, 8, 10, 1, 2, 1])
+print(sorted_list)
+```
+This will output the sorted list.
 </pre></div>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 28.451 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 33.553 seconds)</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-tutorial-workflow-routing-py">
 <div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
 <p><a class="reference download internal" download="" href="../_downloads/3266c75280f96697c4cc46d7d55a3ac8/workflow_routing.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">workflow_routing.ipynb</span></code></a></p>
