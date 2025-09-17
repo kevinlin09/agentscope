@@ -110,11 +110,11 @@ Initialize a routing agent
 
  .. code-block:: none
 
-    Router: Sure, I can help with that. Could you please give me a theme or some keywords to include in the poem?
+    Router: Of course, I can help you with that. Could you tell me a bit more about what you'd like the poem to be about? For example, do you have a specific theme, mood, or style in mind?
     The structured output:
     {
         "your_choice": "Content Generation",
-        "task_description": null
+        "task_description": "Write a poem based on user's preferences."
     }
 
 
@@ -247,10 +247,9 @@ After that, we define a routing agent and equip it with the above tool functions
         "input": {
             "demand": "a quick sort function"
         },
-        "id": "call_a6ea0752e80b416ab12596"
+        "id": "call_2112b700ae644b0a9d1537"
     }
-    PythonAgent: Here is a simple implementation of the quick sort algorithm in Python. This function sorts a list in ascending order:
-
+    PythonAgent: Here is a Python implementation of the quick sort algorithm:
     ```python
     def quick_sort(arr):
         if len(arr) <= 1:
@@ -262,25 +261,25 @@ After that, we define a routing agent and equip it with the above tool functions
             right = [x for x in arr if x > pivot]
             return quick_sort(left) + middle + quick_sort(right)
     ```
-
-    You can use this function by passing a list to it, like so:
+    You can use this function to sort a list of numbers. For example:
     ```python
-    sorted_list = quick_sort([3, 6, 8, 10, 1, 2, 1])
-    print(sorted_list)
+    unsorted_list = [3, 6, 8, 10, 1, 2, 1]
+    sorted_list = quick_sort(unsorted_list)
+    print(sorted_list)  # Output will be [1, 1, 2, 3, 6, 8, 10]
     ```
-    This will output the sorted list.
+    This is a simple and clear version of quicksort that uses list comprehensions to create the left, middle, and right sublists. Note that this version is not in-place and may require additional memory for large lists.
     system: {
         "type": "tool_result",
-        "id": "call_a6ea0752e80b416ab12596",
+        "id": "call_2112b700ae644b0a9d1537",
         "name": "generate_python",
         "output": [
             {
                 "type": "text",
-                "text": "Here is a simple implementation of the quick sort algorithm in Python. This function sorts a list in ascending order:\n\n```python\ndef quick_sort(arr):\n    if len(arr) <= 1:\n        return arr\n    else:\n        pivot = arr[len(arr) // 2]\n        left = [x for x in arr if x < pivot]\n        middle = [x for x in arr if x == pivot]\n        right = [x for x in arr if x > pivot]\n        return quick_sort(left) + middle + quick_sort(right)\n```\n\nYou can use this function by passing a list to it, like so:\n```python\nsorted_list = quick_sort([3, 6, 8, 10, 1, 2, 1])\nprint(sorted_list)\n```\nThis will output the sorted list."
+                "text": "Here is a Python implementation of the quick sort algorithm:\n```python\ndef quick_sort(arr):\n    if len(arr) <= 1:\n        return arr\n    else:\n        pivot = arr[len(arr) // 2]\n        left = [x for x in arr if x < pivot]\n        middle = [x for x in arr if x == pivot]\n        right = [x for x in arr if x > pivot]\n        return quick_sort(left) + middle + quick_sort(right)\n```\nYou can use this function to sort a list of numbers. For example:\n```python\nunsorted_list = [3, 6, 8, 10, 1, 2, 1]\nsorted_list = quick_sort(unsorted_list)\nprint(sorted_list)  # Output will be [1, 1, 2, 3, 6, 8, 10]\n```\nThis is a simple and clear version of quicksort that uses list comprehensions to create the left, middle, and right sublists. Note that this version is not in-place and may require additional memory for large lists."
             }
         ]
     }
-    Router: Here is a simple implementation of the quick sort algorithm in Python. This function sorts a list in ascending order:
+    Router: The Python code for a quick sort function has been generated. You can use this function to sort a list of numbers:
 
     ```python
     def quick_sort(arr):
@@ -292,14 +291,14 @@ After that, we define a routing agent and equip it with the above tool functions
             middle = [x for x in arr if x == pivot]
             right = [x for x in arr if x > pivot]
             return quick_sort(left) + middle + quick_sort(right)
+
+    # Example usage:
+    unsorted_list = [3, 6, 8, 10, 1, 2, 1]
+    sorted_list = quick_sort(unsorted_list)
+    print(sorted_list)  # Output will be [1, 1, 2, 3, 6, 8, 10]
     ```
 
-    You can use this function by passing a list to it, like so:
-    ```python
-    sorted_list = quick_sort([3, 6, 8, 10, 1, 2, 1])
-    print(sorted_list)
-    ```
-    This will output the sorted list.
+    This is a clear and simple version of the quicksort algorithm that uses list comprehensions to create the left, middle, and right sublists. Keep in mind that this implementation is not in-place and may require additional memory for large lists.
 
 
 
@@ -307,7 +306,7 @@ After that, we define a routing agent and equip it with the above tool functions
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 33.553 seconds)
+   **Total running time of the script:** (0 minutes 32.077 seconds)
 
 
 .. _sphx_glr_download_tutorial_workflow_routing.py:

@@ -340,7 +340,7 @@ First, we create a function to allow the orchestrator to create workers dynamica
     &quot;input&quot;: {
         &quot;task_description&quot;: &quot;Print &#39;Hello, world!&#39; using Python.&quot;
     },
-    &quot;id&quot;: &quot;call_b9bc162b4bc44f03a39eaf&quot;
+    &quot;id&quot;: &quot;call_a9a402ab070c4b36b525a0&quot;
 }
 Worker: {
     &quot;type&quot;: &quot;tool_use&quot;,
@@ -348,11 +348,11 @@ Worker: {
     &quot;input&quot;: {
         &quot;code&quot;: &quot;print(&#39;Hello, world!&#39;)&quot;
     },
-    &quot;id&quot;: &quot;call_fd8f0ee6a282470dbb949c&quot;
+    &quot;id&quot;: &quot;call_70fc8bdb7aa349fa85051a&quot;
 }
 system: {
     &quot;type&quot;: &quot;tool_result&quot;,
-    &quot;id&quot;: &quot;call_fd8f0ee6a282470dbb949c&quot;,
+    &quot;id&quot;: &quot;call_70fc8bdb7aa349fa85051a&quot;,
     &quot;name&quot;: &quot;execute_python_code&quot;,
     &quot;output&quot;: [
         {
@@ -368,7 +368,7 @@ Hello, world!
 ```
 system: {
     &quot;type&quot;: &quot;tool_result&quot;,
-    &quot;id&quot;: &quot;call_b9bc162b4bc44f03a39eaf&quot;,
+    &quot;id&quot;: &quot;call_a9a402ab070c4b36b525a0&quot;,
     &quot;name&quot;: &quot;create_worker&quot;,
     &quot;output&quot;: [
         {
@@ -377,7 +377,8 @@ system: {
         }
     ]
 }
-Orchestrator: The Python code &#39;print(&quot;Hello, world!&quot;)&#39; has been successfully executed and the output is:
+Orchestrator: The Python code has been successfully executed and it printed:
+
 ```
 Hello, world!
 ```
@@ -463,7 +464,7 @@ Hello, world!
 <span class="n">asyncio</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">run_handoffs</span><span class="p">())</span>
 </pre></div>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 10.257 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 8.167 seconds)</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-tutorial-workflow-handoffs-py">
 <div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
 <p><a class="reference download internal" download="" href="../_downloads/91c90a0c5fa0aaee5502046f62e97d67/workflow_handoffs.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">workflow_handoffs.ipynb</span></code></a></p>
