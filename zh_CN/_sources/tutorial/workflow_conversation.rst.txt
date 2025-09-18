@@ -272,9 +272,9 @@ User-assistant 对话，也称为聊天机器人（chatbot），是最常见的�
 
  .. code-block:: none
 
-    Alice: 大家好，我叫Alice，是一名学生。我喜欢阅读、学习新知识和与朋友们一起度过愉快的时光。很高兴认识大家！你们呢？可以分享一下关于你们自己的事情吗？
-    Bob: 大家好，我叫Bob，也是一名学生。我对科学和技术特别感兴趣，平时喜欢自己动手做一些小项目。我也很享受户外活动，比如徒步和露营。非常高兴遇见你们！
-    Charlie: 大家好，我叫Charlie，同样也是一名学生。我对音乐充满了热情，喜欢弹吉他和创作歌曲。另外我也热衷于体育运动，特别是篮球。很高兴能够认识你们！
+    Alice: 大家好，我叫Alice，是一名学生。很高兴认识大家！
+    Bob: 大家好，我叫Bob，也是一名学生。很高兴见到你们！
+    Charlie: 大家好，我叫Charlie，同样也是一名学生。非常高兴能够认识你们！
 
 
 
@@ -313,18 +313,18 @@ User-assistant 对话，也称为聊天机器人（chatbot），是最常见的�
     system: "现在大家互相认识一下，简单自我介绍。"
     Alice: [
         {
-            "id": "ZZqQ9PQ6mywXAaZu3tAHno",
+            "id": "34rCeV53fBeGJAg3ndvCTY",
             "type": "tool_use",
             "name": "generate_response",
             "input": {
-                "response": "大家好，我叫Alice，是一名学生。我喜欢阅读、学习新知识和与朋友们一起度过愉快的时光。很高兴认识大家！你们呢？可以分享一下关于你们自己的事情吗？"
+                "response": "大家好，我叫Alice，是一名学生。很高兴认识大家！"
             }
         }
     ]
     system: [
         {
             "type": "tool_result",
-            "id": "ZZqQ9PQ6mywXAaZu3tAHno",
+            "id": "34rCeV53fBeGJAg3ndvCTY",
             "name": "generate_response",
             "output": [
                 {
@@ -334,9 +334,9 @@ User-assistant 对话，也称为聊天机器人（chatbot），是最常见的�
             ]
         }
     ]
-    Alice: "大家好，我叫Alice，是一名学生。我喜欢阅读、学习新知识和与朋友们一起度过愉快的时光。很高兴认识大家！你们呢？可以分享一下关于你们自己的事情吗？"
-    Bob: "大家好，我叫Bob，也是一名学生。我对科学和技术特别感兴趣，平时喜欢自己动手做一些小项目。我也很享受户外活动，比如徒步和露营。非常高兴遇见你们！"
-    Charlie: "大家好，我叫Charlie，同样也是一名学生。我对音乐充满了热情，喜欢弹吉他和创作歌曲。另外我也热衷于体育运动，特别是篮球。很高兴能够认识你们！"
+    Alice: "大家好，我叫Alice，是一名学生。很高兴认识大家！"
+    Bob: "大家好，我叫Bob，也是一名学生。很高兴见到你们！"
+    Charlie: "大家好，我叫Charlie，同样也是一名学生。非常高兴能够认识你们！"
 
 
 
@@ -353,7 +353,7 @@ User-assistant 对话，也称为聊天机器人（chatbot），是最常见的�
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 10.959 seconds)
+   **Total running time of the script:** (0 minutes 5.754 seconds)
 
 
 .. _sphx_glr_download_tutorial_workflow_conversation.py:
