@@ -430,13 +430,21 @@ to download the full example code.</p>
 <p><code class="docutils literal notranslate"><span class="pre">ReActAgent</span></code> 通过在其构造函数中提供 <code class="docutils literal notranslate"><span class="pre">parallel_tool_calls</span></code> 参数来支持并行工具调用。
 当 LLM 生成多个工具调用且 <code class="docutils literal notranslate"><span class="pre">parallel_tool_calls</span></code> 设置为 <code class="docutils literal notranslate"><span class="pre">True</span></code> 时，
 它们将通过 <code class="docutils literal notranslate"><span class="pre">asyncio.gather</span></code> 函数并行执行。</p>
+<div class="admonition note">
+<p class="admonition-title">备注</p>
+<p><code class="docutils literal notranslate"><span class="pre">ReActAgent</span></code> 中的工具并行调用是基于异步 <code class="docutils literal notranslate"><span class="pre">asyncio.gather</span></code> 实现的，因此，只有当工具函数是异步函数，同时工具函数内也为异步逻辑时，才能最大程度发挥工具并行执行的效果</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">备注</p>
+<p>运行时请确保模型层面支持工具并行调用，并且相应参数设置正确（可以通过 <code class="docutils literal notranslate"><span class="pre">generate_kwargs</span></code> 传入），例如对于DashScope API，需要设置 <code class="docutils literal notranslate"><span class="pre">parallel_tool_calls</span></code> 为 <code class="docutils literal notranslate"><span class="pre">True</span></code>，否则将无法进行并行工具调用。</p>
+</div>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 准备一个工具函数</span>
-<span class="k">def</span><span class="w"> </span><span class="nf">example_tool_function</span><span class="p">(</span><span class="n">tag</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ToolResponse</span><span class="p">:</span>
+<span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">example_tool_function</span><span class="p">(</span><span class="n">tag</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ToolResponse</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;一个示例工具函数&quot;&quot;&quot;</span>
     <span class="n">start_time</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&quot;%H:%M:%S.</span><span class="si">%f</span><span class="s2">&quot;</span><span class="p">)</span>
 
     <span class="c1"># 休眠 3 秒以模拟长时间运行的任务</span>
-    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+    <span class="k">await</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
 
     <span class="n">end_time</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&quot;%H:%M:%S.</span><span class="si">%f</span><span class="s2">&quot;</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">ToolResponse</span><span class="p">(</span>
@@ -459,6 +467,10 @@ to download the full example code.</p>
     <span class="n">model</span><span class="o">=</span><span class="n">DashScopeChatModel</span><span class="p">(</span>
         <span class="n">model_name</span><span class="o">=</span><span class="s2">&quot;qwen-max&quot;</span><span class="p">,</span>
         <span class="n">api_key</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;DASHSCOPE_API_KEY&quot;</span><span class="p">],</span>
+        <span class="c1"># 启用并行工具调用</span>
+        <span class="n">generate_kwargs</span><span class="o">=</span><span class="p">{</span>
+            <span class="s2">&quot;parallel_tool_calls&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+        <span class="p">},</span>
     <span class="p">),</span>
     <span class="n">memory</span><span class="o">=</span><span class="n">InMemoryMemory</span><span class="p">(),</span>
     <span class="n">formatter</span><span class="o">=</span><span class="n">DashScopeChatFormatter</span><span class="p">(),</span>
@@ -484,26 +496,15 @@ to download the full example code.</p>
 </div>
 <div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Jarvis: {
     &quot;type&quot;: &quot;tool_use&quot;,
-    &quot;id&quot;: &quot;call_348e07dcd29347c5babf76&quot;,
+    &quot;id&quot;: &quot;call_8c58c8362a6544f4aa9a8a&quot;,
     &quot;name&quot;: &quot;example_tool_function&quot;,
     &quot;input&quot;: {
         &quot;tag&quot;: &quot;tag1&quot;
     }
 }
-system: {
-    &quot;type&quot;: &quot;tool_result&quot;,
-    &quot;id&quot;: &quot;call_348e07dcd29347c5babf76&quot;,
-    &quot;name&quot;: &quot;example_tool_function&quot;,
-    &quot;output&quot;: [
-        {
-            &quot;type&quot;: &quot;text&quot;,
-            &quot;text&quot;: &quot;标签 tag1 开始于 10:10:17.705083，结束于 10:10:20.708150。&quot;
-        }
-    ]
-}
 Jarvis: {
     &quot;type&quot;: &quot;tool_use&quot;,
-    &quot;id&quot;: &quot;call_76049a2b7b2d4ca29bfb6c&quot;,
+    &quot;id&quot;: &quot;call_880933d9f6e34bcc9c8679&quot;,
     &quot;name&quot;: &quot;example_tool_function&quot;,
     &quot;input&quot;: {
         &quot;tag&quot;: &quot;tag2&quot;
@@ -511,21 +512,32 @@ Jarvis: {
 }
 system: {
     &quot;type&quot;: &quot;tool_result&quot;,
-    &quot;id&quot;: &quot;call_76049a2b7b2d4ca29bfb6c&quot;,
+    &quot;id&quot;: &quot;call_8c58c8362a6544f4aa9a8a&quot;,
     &quot;name&quot;: &quot;example_tool_function&quot;,
     &quot;output&quot;: [
         {
             &quot;type&quot;: &quot;text&quot;,
-            &quot;text&quot;: &quot;标签 tag2 开始于 10:10:22.530945，结束于 10:10:25.534006。&quot;
+            &quot;text&quot;: &quot;标签 tag1 开始于 04:31:41.836800，结束于 04:31:44.840036。&quot;
         }
     ]
 }
-Jarvis: 两个函数调用已经并行执行完成。下面是它们各自的运行时间：
+system: {
+    &quot;type&quot;: &quot;tool_result&quot;,
+    &quot;id&quot;: &quot;call_880933d9f6e34bcc9c8679&quot;,
+    &quot;name&quot;: &quot;example_tool_function&quot;,
+    &quot;output&quot;: [
+        {
+            &quot;type&quot;: &quot;text&quot;,
+            &quot;text&quot;: &quot;标签 tag2 开始于 04:31:41.836892，结束于 04:31:44.840717。&quot;
+        }
+    ]
+}
+Jarvis: 两个函数调用已经并行执行完毕。下面是它们的执行时间详情：
 
-- 标签为 &#39;tag1&#39; 的函数开始于 10:10:17.705083，结束于 10:10:20.708150。
-- 标签为 &#39;tag2&#39; 的函数开始于 10:10:22.530945，结束于 10:10:25.534006。
+- 标签为 &#39;tag1&#39; 的函数开始于 04:31:41.836800，结束于 04:31:44.840036。
+- 标签为 &#39;tag2&#39; 的函数开始于 04:31:41.836892，结束于 04:31:44.840717。
 
-请注意，由于这两个调用是并行发起的，实际运行中可能会有轻微的时间差，具体取决于系统处理并发请求的方式。不过从结果来看，两个标签的函数确实几乎同时开始和结束。
+这两个函数几乎是同时开始和结束的，表明它们确实是以并行的方式执行的。
 </pre></div>
 </div>
 </section>
@@ -572,17 +584,17 @@ Jarvis: 两个函数调用已经并行执行完成。下面是它们各自的运
 <span class="n">asyncio</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">example_structured_output</span><span class="p">())</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Jarvis: 阿尔伯特·爱因斯坦（Albert Einstein）是一位著名的理论物理学家，他最知名的是相对论的提出。他的质能方程E=mc²是20世纪科学最重要的发现之一。爱因斯坦的工作对现代物理学的发展有着深远的影响。
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Jarvis: 阿尔伯特·爱因斯坦（Albert Einstein, 1879-1955）是一位德裔瑞士籍美国理论物理学家，他最著名的贡献是相对论。他的质能方程E=mc²是核能和现代物理学的基础之一。爱因斯坦还对光电效应的研究做出了重要贡献，并因此获得了1921年的诺贝尔物理学奖。
 
 结构化输出：
 {
-    &quot;name&quot;: &quot;Albert Einstein&quot;,
-    &quot;description&quot;: &quot;一位杰出的理论物理学家，相对论之父&quot;,
+    &quot;name&quot;: &quot;阿尔伯特·爱因斯坦&quot;,
+    &quot;description&quot;: &quot;德国出生的理论物理学家，以其相对论闻名于世&quot;,
     &quot;age&quot;: 76,
     &quot;honor&quot;: [
         &quot;1921年诺贝尔物理学奖&quot;,
-        &quot;普朗克奖章&quot;,
-        &quot;科普利奖章&quot;
+        &quot;Copley 奖章 (1925)&quot;,
+        &quot;Max Planck奖章 (1929)&quot;
     ]
 }
 </pre></div>
@@ -669,7 +681,7 @@ Jarvis: 两个函数调用已经并行执行完成。下面是它们各自的运
 <li><p><a class="reference internal" href="task_tool.html#tool"><span class="std std-ref">工具</span></a></p></li>
 <li><p><a class="reference internal" href="task_hook.html#hook"><span class="std std-ref">智能体钩子函数</span></a></p></li>
 </ul>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 27.858 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 23.510 seconds)</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-tutorial-task-agent-py">
 <div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
 <p><a class="reference download internal" download="" href="../_downloads/7dec07e2c813e72e1dad091b3ac4913a/task_agent.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">task_agent.ipynb</span></code></a></p>

@@ -393,10 +393,9 @@ to download the full example code.</p>
 <span class="n">asyncio</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">example_broadcast_message</span><span class="p">())</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Alice: 您好，我叫Alice，今年50岁，是一名教师。很高兴认识您！如果您有任何问题或者需要帮助的地方，请随时告诉我。
-Alice: 您好，我叫Alice，今年50岁，是一名教师。很高兴认识您！如果您有任何问题或者需要帮助的地方，请随时告诉我。
-Bob: 您好，我叫Bob，今年35岁，是一名工程师。很高兴认识您，Alice！如果您对科技或者工程方面有任何问题，我很乐意帮忙解答。
-Charlie: 您好，我叫Charlie，今年28岁，是一名设计师。很高兴认识你们两位！如果你们有关于设计或者创意方面的问题，我很乐意提供帮助。
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Alice: 您好，我叫Alice，今年50岁，是一名教师。很高兴认识您！
+Bob: 您好，Alice。我叫Bob，今年35岁，是一名工程师。很高兴认识您！请问您教哪一科目？
+Charlie: 您好，Alice和Bob。我叫Charlie，今年28岁，是一名设计师。很高兴认识你们两位！Alice，您主要教授哪一科目呢？
 </pre></div>
 </div>
 <p>现在让我们检查 Bob、Charlie 和 David 是否收到了 Alice 的消息。</p>
@@ -416,9 +415,9 @@ Charlie: 您好，我叫Charlie，今年28岁，是一名设计师。很高兴�
 <span class="n">asyncio</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">check_broadcast_message</span><span class="p">())</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Bob: Alice是一位50岁的教师。她在之前的对话中介绍过自己，说她很高兴认识我们，并且愿意提供帮助。如果你有关于教育方面的问题，她应该是个很好的求助对象。
-Charlie: Alice 是一位50岁的教师。如果您有关于教育方面的问题，她应该能够提供很好的帮助和见解。
-David: 你提到的Alice是指哪一位呢？因为有很多人都叫Alice，如果能提供更多的信息，比如她的职业或者她在哪个领域比较出名，我就能更准确地回答你的问题。
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Bob: Alice是一名50岁的教师。她之前提到过很高兴认识我们，但还没说她具体教授哪一科目。Charlie也问了同样的问题，我们还在等待她的回答。
+Charlie: Alice 是我们刚刚提到的一位50岁的教师。她在此前的对话中介绍过自己。您想知道她教授哪一科目吗？我正好也问了她这个问题。
+David: Alice 这个名字很常见，可能指很多人。如果您能提供更多的信息，比如她的职业或是在哪个领域比较出名，我就能更准确地回答您的问题。
 </pre></div>
 </div>
 <p>现在我们观察到 Bob 和 Charlie 知道 Alice 和她的职业，而 David 对
@@ -563,7 +562,7 @@ Alice 一无所知，因为他没有包含在 <code class="docutils literal notr
 </pre></div>
 </div>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 21.063 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 16.209 seconds)</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-tutorial-task-pipeline-py">
 <div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
 <p><a class="reference download internal" download="" href="../_downloads/a841049f564cf5f9c0fea523e59490f5/task_pipeline.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">task_pipeline.ipynb</span></code></a></p>
