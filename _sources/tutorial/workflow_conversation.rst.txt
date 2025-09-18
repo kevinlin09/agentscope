@@ -280,9 +280,9 @@ Specifically, the agents within the same ``MsgHub`` will receive messages from o
 
  .. code-block:: none
 
-    Alice: Hi there, I'm Alice. It's nice to meet you! Could you tell me a little about yourself?
-    Bob: Hello Alice, I'm Bob. It's great to meet you too! I'm a student currently studying computer science. What about you?
-    Charlie: Alice: I'm also a student, but I'm focusing on environmental science. It's really interesting to learn about how we can help preserve our planet. Do you have any particular area of interest in computer science, Bob?
+    Alice: Hello! My name is Alice, and I'm a student. It's nice to meet you. Could you tell me a bit about yourself?
+    Bob: Hi Alice, I'm Bob. I'm also a student and I enjoy playing basketball in my free time. It's great to meet you too!
+    Charlie: Nice to meet you both, Alice and Bob! I'm Charlie, and just like you, I'm a student. It's always exciting to make new friends who are also students. We can share our experiences and maybe even help each other out with studies. What subjects or hobbies are you into?
 
 
 
@@ -319,9 +319,9 @@ Now we print the memory of Alice to check if her memory is updated correctly.
     system: Now you meet each other with a brief self-introduction.
     Alice: None
     system: None
-    Alice: Hi there, I'm Alice. It's nice to meet you! Could you tell me a little about yourself?
-    Bob: Hello Alice, I'm Bob. It's great to meet you too! I'm a student currently studying computer science. What about you?
-    Charlie: Alice: I'm also a student, but I'm focusing on environmental science. It's really interesting to learn about how we can help preserve our planet. Do you have any particular area of interest in computer science, Bob?
+    Alice: Hello! My name is Alice, and I'm a student. It's nice to meet you. Could you tell me a bit about yourself?
+    Bob: Hi Alice, I'm Bob. I'm also a student and I enjoy playing basketball in my free time. It's great to meet you too!
+    Charlie: Nice to meet you both, Alice and Bob! I'm Charlie, and just like you, I'm a student. It's always exciting to make new friends who are also students. We can share our experiences and maybe even help each other out with studies. What subjects or hobbies are you into?
 
 
 
@@ -338,7 +338,7 @@ Further Reading
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 26.490 seconds)
+   **Total running time of the script:** (0 minutes 11.214 seconds)
 
 
 .. _sphx_glr_download_tutorial_workflow_conversation.py:

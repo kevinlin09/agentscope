@@ -300,23 +300,6 @@
 
 .. raw:: html
 
-    <div class="sphx-glr-thumbcontainer" tooltip="In this tutorial, we first focus on introducing the ReAct agent in AgentScope, then we briefly introduce how to customize your own agent from scratch.">
-
-.. only:: html
-
-  .. image:: /tutorial/images/thumb/sphx_glr_task_agent_thumb.png
-    :alt:
-
-  :ref:`sphx_glr_tutorial_task_agent.py`
-
-.. raw:: html
-
-      <div class="sphx-glr-thumbnail-title">Agent</div>
-    </div>
-
-
-.. raw:: html
-
     <div class="sphx-glr-thumbcontainer" tooltip="AgentScope provides out-of-the-box ReAct agent ReActAgent under agentscope.agent that can be used directly.">
 
 .. only:: html
@@ -346,6 +329,23 @@
 .. raw:: html
 
       <div class="sphx-glr-thumbnail-title">State/Session Management</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="In this tutorial, we first focus on introducing the ReAct agent in AgentScope, then we briefly introduce how to customize your own agent from scratch.">
+
+.. only:: html
+
+  .. image:: /tutorial/images/thumb/sphx_glr_task_agent_thumb.png
+    :alt:
+
+  :ref:`sphx_glr_tutorial_task_agent.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Agent</div>
     </div>
 
 
@@ -478,9 +478,9 @@
    /tutorial/task_embedding
    /tutorial/workflow_conversation
    /tutorial/task_model
-   /tutorial/task_agent
    /tutorial/quickstart_agent
    /tutorial/task_state
+   /tutorial/task_agent
    /tutorial/task_prompt
    /tutorial/workflow_routing
    /tutorial/workflow_multiagent_debate

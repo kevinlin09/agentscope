@@ -84,7 +84,7 @@ listed above.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 60-124
+.. GENERATED FROM PYTHON SOURCE LINES 60-127
 
 Realtime Steering
 ---------------------------------------
@@ -150,20 +150,23 @@ argument in its constructor.
 When multiple tool calls are generated, and ``parallel_tool_calls`` is set to ``True``,
 they will be executed in parallel by the ``asyncio.gather`` function.
 
+.. note:: The parallel tool execution in ``ReActAgent`` is implemented based on ``asyncio.gather``. Therefore, to maximize the effect of parallel tool execution, both the tool function itself and the logic within it must be asynchronous.
 
-.. GENERATED FROM PYTHON SOURCE LINES 124-177
+.. note:: When running, please ensure that parallel tool calling is supported at the model level and the corresponding parameters are set correctly (can be passed through ``generate_kwargs``). For example, for the DashScope API, you need to set ``parallel_tool_calls`` to ``True``, otherwise parallel tool calling will not be possible.
+
+.. GENERATED FROM PYTHON SOURCE LINES 127-184
 
 .. code-block:: Python
 
 
 
     # prepare a tool function
-    def example_tool_function(tag: str) -> ToolResponse:
+    async def example_tool_function(tag: str) -> ToolResponse:
         """A sample example tool function"""
         start_time = datetime.now().strftime("%H:%M:%S.%f")
 
         # Sleep for 3 seconds to simulate a long-running task
-        time.sleep(3)
+        await asyncio.sleep(3)
 
         end_time = datetime.now().strftime("%H:%M:%S.%f")
         return ToolResponse(
@@ -186,6 +189,10 @@ they will be executed in parallel by the ``asyncio.gather`` function.
         model=DashScopeChatModel(
             model_name="qwen-max",
             api_key=os.environ["DASHSCOPE_API_KEY"],
+            # Preset the generation kwargs to enable parallel tool calls
+            generate_kwargs={
+                "parallel_tool_calls": True,
+            },
         ),
         memory=InMemoryMemory(),
         formatter=DashScopeChatFormatter(),
@@ -218,26 +225,15 @@ they will be executed in parallel by the ``asyncio.gather`` function.
 
     Jarvis: {
         "type": "tool_use",
-        "id": "call_6fc3b21d03e8401f935db7",
+        "id": "call_fb8890ef55874f07aa9b28",
         "name": "example_tool_function",
         "input": {
             "tag": "tag1"
         }
     }
-    system: {
-        "type": "tool_result",
-        "id": "call_6fc3b21d03e8401f935db7",
-        "name": "example_tool_function",
-        "output": [
-            {
-                "type": "text",
-                "text": "Tag tag1 started at 09:20:27.601077 and ended at 09:20:30.604139. "
-            }
-        ]
-    }
     Jarvis: {
         "type": "tool_use",
-        "id": "call_eac046b035f84394b848b8",
+        "id": "call_649a4307d52f4e128910ba",
         "name": "example_tool_function",
         "input": {
             "tag": "tag2"
@@ -245,26 +241,35 @@ they will be executed in parallel by the ``asyncio.gather`` function.
     }
     system: {
         "type": "tool_result",
-        "id": "call_eac046b035f84394b848b8",
+        "id": "call_fb8890ef55874f07aa9b28",
         "name": "example_tool_function",
         "output": [
             {
                 "type": "text",
-                "text": "Tag tag2 started at 09:20:32.764233 and ended at 09:20:35.767290. "
+                "text": "Tag tag1 started at 04:27:34.571748 and ended at 04:27:37.575037. "
             }
         ]
     }
-    Jarvis: The 'example_tool_function' has been called with two different tags, 'tag1' and 'tag2', to execute in parallel. Here are the results:
+    system: {
+        "type": "tool_result",
+        "id": "call_649a4307d52f4e128910ba",
+        "name": "example_tool_function",
+        "output": [
+            {
+                "type": "text",
+                "text": "Tag tag2 started at 04:27:34.571838 and ended at 04:27:37.575722. "
+            }
+        ]
+    }
+    Jarvis: The 'example_tool_function' has been called in parallel with two different tags. Here are the details:
 
-    - For 'tag1': It started at 09:20:27.601077 and ended at 09:20:30.604139.
-    - For 'tag2': It started at 09:20:32.764233 and ended at 09:20:35.767290.
-
-    Please note that the actual parallel execution is dependent on the system's capability to run these tasks concurrently. In this case, the timestamps indicate that the functions were called one after the other. If you have control over the environment, you could use threading or asynchronous programming to achieve true parallelism.
+    - For tag1, the function started at 04:27:34.571748 and ended at 04:27:37.575037.
+    - For tag2, the function started at 04:27:34.571838 and ended at 04:27:37.575722.
 
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 178-187
+.. GENERATED FROM PYTHON SOURCE LINES 185-194
 
 Structured Output
 ----------------------------------------
@@ -276,7 +281,7 @@ Then we can get the structured output from the ``metadata`` field of the returne
 Taking introducing Einstein as an example:
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 187-233
+.. GENERATED FROM PYTHON SOURCE LINES 194-240
 
 .. code-block:: Python
 
@@ -334,22 +339,24 @@ Taking introducing Einstein as an example:
 
  .. code-block:: none
 
-    Jarvis: Albert Einstein was a German-born theoretical physicist, widely acknowledged to be one of the greatest and most influential physicists of all time. He is best known for developing the theory of relativity, but he also made important contributions to the development of the theory of quantum mechanics. He was awarded the Nobel Prize in Physics in 1921 for his services to theoretical physics, and especially for his discovery of the law of the photoelectric effect.
+    Jarvis: Albert Einstein was a renowned physicist who developed the theory of relativity, one of the two pillars of modern physics. He was born on March 14, 1879, and passed away on April 18, 1955. Einstein is best known for his mass–energy equivalence formula E=mc², which has been dubbed 'the world's most famous equation.'
 
     The structured output:
     {
         "name": "Albert Einstein",
-        "description": "Theoretical physicist who developed the theory of relativity",
+        "description": "A theoretical physicist who developed the theory of relativity.",
         "age": 76,
         "honor": [
-            "Nobel Prize in Physics (1921)"
+            "Nobel Prize in Physics (1921)",
+            "Copley Medal (1925)",
+            "Max Planck Medal (1929)"
         ]
     }
 
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 234-293
+.. GENERATED FROM PYTHON SOURCE LINES 241-300
 
 Customizing Agent
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -414,7 +421,7 @@ Further Reading
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (1 minutes 10.402 seconds)
+   **Total running time of the script:** (0 minutes 17.425 seconds)
 
 
 .. _sphx_glr_download_tutorial_task_agent.py:

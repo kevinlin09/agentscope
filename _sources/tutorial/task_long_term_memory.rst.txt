@@ -121,7 +121,7 @@ As an example, we first store a user preference and then retrieve related inform
 
  .. code-block:: none
 
-    Retrieval results: 喜欢住在民宿
+    Retrieval results: Likes staying in homestays
 
 
 
@@ -185,9 +185,7 @@ manage long-term memory through tool calls.
 
  .. code-block:: none
 
-    Friday: That's great! Staying in homestays can be a wonderful experience as it often allows you to immerse yourself more deeply in the local culture and lifestyle. Hangzhou, known for its beautiful West Lake and numerous historical attractions, has a variety of homestay options that cater to different tastes and budgets. Whether you're looking for a place with traditional Chinese decor or something more modern and chic, you're likely to find a homestay that suits your preferences. Additionally, many homestay hosts are very welcoming and can provide valuable insights into the best local attractions, dining spots, and hidden gems that you might not discover on your own.
-
-    If you need recommendations or help with booking a homestay in Hangzhou, feel free to ask!
+    Friday: Staying in homestays can be a wonderful experience as it allows you to immerse yourself in the local culture and lifestyle. Hangzhou, known for its beautiful West Lake and rich history, offers numerous homestay options that can enhance your travel experience. If you're interested, I can help you look for some highly recommended homestays in Hangzhou.
 
 
 
@@ -223,7 +221,7 @@ Then we clear the short-term memory and ask the agent about the user's preferenc
 
  .. code-block:: none
 
-    Friday: You prefer staying in homestays when traveling, such as your trips to Hangzhou.
+    Friday: You like staying in homestays.
 
 
 
@@ -266,7 +264,7 @@ Further Reading
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (1 minutes 39.011 seconds)
+   **Total running time of the script:** (0 minutes 28.493 seconds)
 
 
 .. _sphx_glr_download_tutorial_task_long_term_memory.py:
