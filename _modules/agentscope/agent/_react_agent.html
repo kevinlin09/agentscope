@@ -773,11 +773,13 @@
                     <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">print</span><span class="p">(</span><span class="n">tool_res_msg</span><span class="p">,</span> <span class="n">chunk</span><span class="o">.</span><span class="n">is_last</span><span class="p">)</span>
 
                 <span class="c1"># Return message if generate_response is called successfully</span>
-                <span class="k">if</span> <span class="n">tool_call</span><span class="p">[</span>
-                    <span class="s2">&quot;name&quot;</span>
-                <span class="p">]</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">finish_function_name</span> <span class="ow">and</span> <span class="n">chunk</span><span class="o">.</span><span class="n">metadata</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
-                    <span class="s2">&quot;success&quot;</span><span class="p">,</span>
-                    <span class="kc">True</span><span class="p">,</span>
+                <span class="k">if</span> <span class="p">(</span>
+                    <span class="n">tool_call</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">finish_function_name</span>
+                    <span class="ow">and</span> <span class="n">chunk</span><span class="o">.</span><span class="n">metadata</span>
+                    <span class="ow">and</span> <span class="n">chunk</span><span class="o">.</span><span class="n">metadata</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
+                        <span class="s2">&quot;success&quot;</span><span class="p">,</span>
+                        <span class="kc">True</span><span class="p">,</span>
+                    <span class="p">)</span>
                 <span class="p">):</span>
                     <span class="n">response_msg</span> <span class="o">=</span> <span class="n">chunk</span><span class="o">.</span><span class="n">metadata</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;response_msg&quot;</span><span class="p">)</span>
 
