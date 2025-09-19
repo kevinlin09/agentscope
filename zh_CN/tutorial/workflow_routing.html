@@ -406,7 +406,7 @@ to download the full example code.</p>
 结构化输出：
 {
     &quot;your_choice&quot;: &quot;Content Generation&quot;,
-    &quot;task_description&quot;: null
+    &quot;task_description&quot;: &quot;为用户写一首诗&quot;
 }
 </pre></div>
 </div>
@@ -503,62 +503,52 @@ to download the full example code.</p>
     &quot;type&quot;: &quot;tool_use&quot;,
     &quot;name&quot;: &quot;generate_python&quot;,
     &quot;input&quot;: {
-        &quot;demand&quot;: &quot;需要一个快速排序函数。&quot;
+        &quot;demand&quot;: &quot;需要一个快速排序函数&quot;
     },
-    &quot;id&quot;: &quot;call_9b9671b2c9a64fb0bc15fb&quot;
+    &quot;id&quot;: &quot;call_38ab8eac310f4453acb442&quot;
 }
-PythonAgent: 这是一个使用 Python 编写的快速排序函数。快速排序是一种高效的排序算法，它使用分治法策略来递归地将列表分为较小的子列表并进行排序。
+PythonAgent: 这是一个使用 Python 实现的快速排序函数。这个函数采用了递归的方式进行排序，选取了列表中的第一个元素作为基准值。
 
 ```python
 def quicksort(arr):
     if len(arr) &lt;= 1:
         return arr
     else:
-        pivot = arr[len(arr) // 2]
-        left = [x for x in arr if x &lt; pivot]
-        middle = [x for x in arr if x == pivot]
-        right = [x for x in arr if x &gt; pivot]
-        return quicksort(left) + middle + quicksort(right)
-
-# 使用示例
-print(quicksort([3,6,8,10,1,2,1]))
-# 输出: [1, 1, 2, 3, 6, 8, 10]
+        pivot = arr[0]
+        less = [x for x in arr[1:] if x &lt;= pivot]
+        greater = [x for x in arr[1:] if x &gt; pivot]
+        return quicksort(less) + [pivot] + quicksort(greater)
 ```
 
-这段代码定义了一个 `quicksort` 函数，它接受一个列表 `arr` 作为参数。如果列表长度小于或等于 1，则直接返回列表（因为长度为 0 或 1 的列表已经是有序的）。否则，选择列表中的一个元素作为基准点（这里选择了列表中间的元素），然后创建三个列表：包含所有小于基准点的元素的 `left` 列表、等于基准点的所有元素组成的 `middle` 列表、以及大于基准点的所有元素组成的 `right` 列表。最后，通过递归调用 `quicksort` 对 `left` 和 `right` 进行排序，并把结果连接起来。
+你可以使用这个函数对一个整数列表进行排序。如果你需要对其他类型的数据进行排序，或者需要自定义比较器，请告诉我！
 system: {
     &quot;type&quot;: &quot;tool_result&quot;,
-    &quot;id&quot;: &quot;call_9b9671b2c9a64fb0bc15fb&quot;,
+    &quot;id&quot;: &quot;call_38ab8eac310f4453acb442&quot;,
     &quot;name&quot;: &quot;generate_python&quot;,
     &quot;output&quot;: [
         {
             &quot;type&quot;: &quot;text&quot;,
-            &quot;text&quot;: &quot;这是一个使用 Python 编写的快速排序函数。快速排序是一种高效的排序算法，它使用分治法策略来递归地将列表分为较小的子列表并进行排序。\n\n```python\ndef quicksort(arr):\n    if len(arr) &lt;= 1:\n        return arr\n    else:\n        pivot = arr[len(arr) // 2]\n        left = [x for x in arr if x &lt; pivot]\n        middle = [x for x in arr if x == pivot]\n        right = [x for x in arr if x &gt; pivot]\n        return quicksort(left) + middle + quicksort(right)\n\n# 使用示例\nprint(quicksort([3,6,8,10,1,2,1]))\n# 输出: [1, 1, 2, 3, 6, 8, 10]\n```\n\n这段代码定义了一个 `quicksort` 函数，它接受一个列表 `arr` 作为参数。如果列表长度小于或等于 1，则直接返回列表（因为长度为 0 或 1 的列表已经是有序的）。否则，选择列表中的一个元素作为基准点（这里选择了列表中间的元素），然后创建三个列表：包含所有小于基准点的元素的 `left` 列表、等于基准点的所有元素组成的 `middle` 列表、以及大于基准点的所有元素组成的 `right` 列表。最后，通过递归调用 `quicksort` 对 `left` 和 `right` 进行排序，并把结果连接起来。&quot;
+            &quot;text&quot;: &quot;这是一个使用 Python 实现的快速排序函数。这个函数采用了递归的方式进行排序，选取了列表中的第一个元素作为基准值。\n\n```python\ndef quicksort(arr):\n    if len(arr) &lt;= 1:\n        return arr\n    else:\n        pivot = arr[0]\n        less = [x for x in arr[1:] if x &lt;= pivot]\n        greater = [x for x in arr[1:] if x &gt; pivot]\n        return quicksort(less) + [pivot] + quicksort(greater)\n```\n\n你可以使用这个函数对一个整数列表进行排序。如果你需要对其他类型的数据进行排序，或者需要自定义比较器，请告诉我！&quot;
         }
     ]
 }
-Router: 这是一个使用 Python 编写的快速排序函数。快速排序是一种高效的排序算法，它使用分治法策略来递归地将列表分为较小的子列表并进行排序。
+Router: 这是一个使用 Python 实现的快速排序函数。这个函数采用了递归的方式进行排序，选取了列表中的第一个元素作为基准值。
 
 ```python
 def quicksort(arr):
     if len(arr) &lt;= 1:
         return arr
     else:
-        pivot = arr[len(arr) // 2]
-        left = [x for x in arr if x &lt; pivot]
-        middle = [x for x in arr if x == pivot]
-        right = [x for x in arr if x &gt; pivot]
-        return quicksort(left) + middle + quicksort(right)
-
-# 使用示例
-print(quicksort([3,6,8,10,1,2,1]))
-# 输出: [1, 1, 2, 3, 6, 8, 10]
+        pivot = arr[0]
+        less = [x for x in arr[1:] if x &lt;= pivot]
+        greater = [x for x in arr[1:] if x &gt; pivot]
+        return quicksort(less) + [pivot] + quicksort(greater)
 ```
 
-这段代码定义了一个 `quicksort` 函数，您可以使用这个函数对整数列表进行排序。在提供的使用示例中，该函数被用来对一个包含重复元素的列表进行排序，并打印出排序后的结果。
+你可以使用这个函数对一个整数列表进行排序。如果你需要对其他类型的数据进行排序，或者需要自定义比较器，请告诉我！
 </pre></div>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 32.330 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 16.711 seconds)</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-tutorial-workflow-routing-py">
 <div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
 <p><a class="reference download internal" download="" href="../_downloads/3266c75280f96697c4cc46d7d55a3ac8/workflow_routing.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">workflow_routing.ipynb</span></code></a></p>
