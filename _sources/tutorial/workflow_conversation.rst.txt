@@ -280,9 +280,10 @@ Specifically, the agents within the same ``MsgHub`` will receive messages from o
 
  .. code-block:: none
 
-    Alice: Hi there, I'm Alice. Nice to meet you! Could you tell me a bit about yourself?
-    Bob: Hi Alice, I'm Bob. It's great to meet you too! I'm a student currently studying computer science and really passionate about technology and how it can be used to solve real-world problems. What about you? What are you interested in?
-    Charlie: Alice: That's really interesting, Bob! I'm actually working in marketing and I love how it combines creativity with strategy. It's always exciting to come up with new campaigns and see the impact they have. Do you have any particular area of computer science that you're most interested in?
+    Alice: Hi there! I'm Alice, a student with a passion for learning and exploring new things. Nice to meet you! Could you tell me a bit about yourself?
+    Bob: Hi Alice, I'm Bob. I'm also a student and I enjoy meeting new people and learning about different subjects. It's great to meet you too! What kind of things do you like to explore?
+    Charlie: Alice: I love diving into all sorts of topics, but I'm particularly interested in technology and how it can be used to solve real-world problems. I also enjoy reading and sometimes get lost in a good book. What about you, Bob? What are your interests?
+    Charlie: I'm really into sports and outdoor activities. There's something about being out in nature that just helps me clear my mind. I also like to tinker with gadgets and see how they work. It sounds like we both have a curiosity for how things function!
 
 
 
@@ -319,9 +320,9 @@ Now we print the memory of Alice to check if her memory is updated correctly.
     system: Now you meet each other with a brief self-introduction.
     Alice: None
     system: None
-    Alice: Hi there, I'm Alice. Nice to meet you! Could you tell me a bit about yourself?
-    Bob: Hi Alice, I'm Bob. It's great to meet you too! I'm a student currently studying computer science and really passionate about technology and how it can be used to solve real-world problems. What about you? What are you interested in?
-    Charlie: Alice: That's really interesting, Bob! I'm actually working in marketing and I love how it combines creativity with strategy. It's always exciting to come up with new campaigns and see the impact they have. Do you have any particular area of computer science that you're most interested in?
+    Alice: Hi there! I'm Alice, a student with a passion for learning and exploring new things. Nice to meet you! Could you tell me a bit about yourself?
+    Bob: Hi Alice, I'm Bob. I'm also a student and I enjoy meeting new people and learning about different subjects. It's great to meet you too! What kind of things do you like to explore?
+    Charlie: I'm really into sports and outdoor activities. There's something about being out in nature that just helps me clear my mind. I also like to tinker with gadgets and see how they work. It sounds like we both have a curiosity for how things function!
 
 
 
@@ -338,7 +339,7 @@ Further Reading
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 10.487 seconds)
+   **Total running time of the script:** (0 minutes 11.830 seconds)
 
 
 .. _sphx_glr_download_tutorial_workflow_conversation.py:

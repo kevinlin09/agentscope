@@ -402,11 +402,11 @@ to download the full example code.</p>
 <span class="n">asyncio</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">example_router_explicit</span><span class="p">())</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Router: Of course, I can help you with that. Could you please tell me more about the theme or any specific elements you would like to include in your poem?
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Router: Of course, I can help you with that. Could you please tell me more about the theme or the emotions you want to express in your poem?
 The structured output:
 {
     &quot;your_choice&quot;: &quot;Content Generation&quot;,
-    &quot;task_description&quot;: &quot;Write a poem based on the user&#39;s preferences.&quot;
+    &quot;task_description&quot;: &quot;Write a poem based on the user&#39;s requirements.&quot;
 }
 </pre></div>
 </div>
@@ -505,11 +505,11 @@ The structured output:
     &quot;input&quot;: {
         &quot;demand&quot;: &quot;a quick sort function&quot;
     },
-    &quot;id&quot;: &quot;call_c528e5c0b79b4040b17e39&quot;
+    &quot;id&quot;: &quot;call_55870e6febe54bb29dbac2&quot;
 }
-PythonAgent: Here is a quick sort function implemented in Python:
+PythonAgent: Here is a Python implementation of the quick sort algorithm:
 ```python
-def quicksort(arr):
+def quick_sort(arr):
     if len(arr) &lt;= 1:
         return arr
     else:
@@ -517,30 +517,23 @@ def quicksort(arr):
         left = [x for x in arr if x &lt; pivot]
         middle = [x for x in arr if x == pivot]
         right = [x for x in arr if x &gt; pivot]
-        return quicksort(left) + middle + quicksort(right)
+        return quick_sort(left) + middle + quick_sort(right)
 ```
-You can use this function to sort a list of numbers. For example:
-```python
-numbers = [3, 6, 8, 10, 1, 2, 1]
-sorted_numbers = quicksort(numbers)
-print(sorted_numbers)  # Output will be [1, 1, 2, 3, 6, 8, 10]
-```
-Would you like to see an alternative implementation or do you have any other questions about the quick sort algorithm?
+You can use this function to sort a list of numbers. For example, `quick_sort([3, 6, 8, 10, 1, 2, 1])` will return `[1, 1, 2, 3, 6, 8, 10]`.
 system: {
     &quot;type&quot;: &quot;tool_result&quot;,
-    &quot;id&quot;: &quot;call_c528e5c0b79b4040b17e39&quot;,
+    &quot;id&quot;: &quot;call_55870e6febe54bb29dbac2&quot;,
     &quot;name&quot;: &quot;generate_python&quot;,
     &quot;output&quot;: [
         {
             &quot;type&quot;: &quot;text&quot;,
-            &quot;text&quot;: &quot;Here is a quick sort function implemented in Python:\n```python\ndef quicksort(arr):\n    if len(arr) &lt;= 1:\n        return arr\n    else:\n        pivot = arr[len(arr) // 2]\n        left = [x for x in arr if x &lt; pivot]\n        middle = [x for x in arr if x == pivot]\n        right = [x for x in arr if x &gt; pivot]\n        return quicksort(left) + middle + quicksort(right)\n```\nYou can use this function to sort a list of numbers. For example:\n```python\nnumbers = [3, 6, 8, 10, 1, 2, 1]\nsorted_numbers = quicksort(numbers)\nprint(sorted_numbers)  # Output will be [1, 1, 2, 3, 6, 8, 10]\n```\nWould you like to see an alternative implementation or do you have any other questions about the quick sort algorithm?&quot;
+            &quot;text&quot;: &quot;Here is a Python implementation of the quick sort algorithm:\n```python\ndef quick_sort(arr):\n    if len(arr) &lt;= 1:\n        return arr\n    else:\n        pivot = arr[len(arr) // 2]\n        left = [x for x in arr if x &lt; pivot]\n        middle = [x for x in arr if x == pivot]\n        right = [x for x in arr if x &gt; pivot]\n        return quick_sort(left) + middle + quick_sort(right)\n```\nYou can use this function to sort a list of numbers. For example, `quick_sort([3, 6, 8, 10, 1, 2, 1])` will return `[1, 1, 2, 3, 6, 8, 10]`.&quot;
         }
     ]
 }
-Router: Here is a quick sort function implemented in Python:
-
+Router: Here is a Python implementation of the quick sort algorithm:
 ```python
-def quicksort(arr):
+def quick_sort(arr):
     if len(arr) &lt;= 1:
         return arr
     else:
@@ -548,21 +541,12 @@ def quicksort(arr):
         left = [x for x in arr if x &lt; pivot]
         middle = [x for x in arr if x == pivot]
         right = [x for x in arr if x &gt; pivot]
-        return quicksort(left) + middle + quicksort(right)
+        return quick_sort(left) + middle + quick_sort(right)
 ```
-
-You can use this function to sort a list of numbers. For example:
-
-```python
-numbers = [3, 6, 8, 10, 1, 2, 1]
-sorted_numbers = quicksort(numbers)
-print(sorted_numbers)  # Output will be [1, 1, 2, 3, 6, 8, 10]
-```
-
-Would you like to see an alternative implementation or do you have any other questions about the quick sort algorithm?
+You can use this function to sort a list of numbers. For example, `quick_sort([3, 6, 8, 10, 1, 2, 1])` will return `[1, 1, 2, 3, 6, 8, 10]`.
 </pre></div>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 21.553 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 21.979 seconds)</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-tutorial-workflow-routing-py">
 <div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
 <p><a class="reference download internal" download="" href="../_downloads/3266c75280f96697c4cc46d7d55a3ac8/workflow_routing.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">workflow_routing.ipynb</span></code></a></p>
