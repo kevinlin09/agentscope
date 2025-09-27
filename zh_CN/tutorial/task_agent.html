@@ -1,15 +1,15 @@
 <!doctype html>
 <html class="no-js" lang="zh-CN" data-content_root="../">
-  <head><meta charset="utf-8"/>
-    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <head><meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="index" title="索引" href="../genindex.html" /><link rel="search" title="搜索" href="../search.html" /><link rel="next" title="管道 (Pipeline)" href="task_pipeline.html" /><link rel="prev" title="长期记忆" href="task_long_term_memory.html" />
-        <link rel="prefetch" href="../_static/logo.svg" as="image" />
+<link rel="index" title="索引" href="../genindex.html"><link rel="search" title="搜索" href="../search.html"><link rel="next" title="管道 (Pipeline)" href="task_pipeline.html"><link rel="prev" title="长期记忆" href="task_long_term_memory.html">
+        <link rel="prefetch" href="../_static/logo.svg" as="image">
 
-    <!-- Generated with Sphinx 8.1.3 and Furo 2025.07.19 -->
+    <!-- Generated with Sphinx 8.1.3 and Furo 2025.09.25 -->
         <title>智能体 - AgentScope</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=d111a655" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?v=25af2a20" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?v=580074bf" />
     <link rel="stylesheet" type="text/css" href="../_static/sg_gallery.css?v=d2d258e8" />
     <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-binder.css?v=f4aeca0c" />
     <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-dataframe.css?v=2082cf3c" />
@@ -28,14 +28,14 @@
   }
   @media not print {
     body[data-theme="dark"] {
-      --color-code-background: #2b2b2b;
-  --color-code-foreground: #f8f8f2;
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
   
     }
     @media (prefers-color-scheme: dark) {
       body:not([data-theme="light"]) {
-        --color-code-background: #2b2b2b;
-  --color-code-foreground: #f8f8f2;
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
   
       }
     }
@@ -248,6 +248,7 @@
 <li class="toctree-l1 current current-page"><a class="current reference internal" href="#">智能体</a></li>
 <li class="toctree-l1"><a class="reference internal" href="task_pipeline.html">管道 (Pipeline)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="task_plan.html">计划</a></li>
+<li class="toctree-l1"><a class="reference internal" href="task_rag.html">RAG</a></li>
 <li class="toctree-l1"><a class="reference internal" href="task_state.html">状态/会话管理</a></li>
 <li class="toctree-l1"><a class="reference internal" href="task_hook.html">智能体钩子函数</a></li>
 <li class="toctree-l1"><a class="reference internal" href="task_mcp.html">MCP</a></li>
@@ -496,7 +497,7 @@ to download the full example code.</p>
 </div>
 <div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Jarvis: {
     &quot;type&quot;: &quot;tool_use&quot;,
-    &quot;id&quot;: &quot;call_a48c73466785433082a804&quot;,
+    &quot;id&quot;: &quot;call_4caeb146d6944963837e48&quot;,
     &quot;name&quot;: &quot;example_tool_function&quot;,
     &quot;input&quot;: {
         &quot;tag&quot;: &quot;tag1&quot;
@@ -504,7 +505,7 @@ to download the full example code.</p>
 }
 Jarvis: {
     &quot;type&quot;: &quot;tool_use&quot;,
-    &quot;id&quot;: &quot;call_83900c7722fe45ccad77ba&quot;,
+    &quot;id&quot;: &quot;call_1caf4341d8774d2893bc6e&quot;,
     &quot;name&quot;: &quot;example_tool_function&quot;,
     &quot;input&quot;: {
         &quot;tag&quot;: &quot;tag2&quot;
@@ -512,30 +513,32 @@ Jarvis: {
 }
 system: {
     &quot;type&quot;: &quot;tool_result&quot;,
-    &quot;id&quot;: &quot;call_a48c73466785433082a804&quot;,
+    &quot;id&quot;: &quot;call_4caeb146d6944963837e48&quot;,
     &quot;name&quot;: &quot;example_tool_function&quot;,
     &quot;output&quot;: [
         {
             &quot;type&quot;: &quot;text&quot;,
-            &quot;text&quot;: &quot;标签 tag1 开始于 01:30:20.536379，结束于 01:30:23.539593。&quot;
+            &quot;text&quot;: &quot;标签 tag1 开始于 13:39:15.714480，结束于 13:39:18.717743。&quot;
         }
     ]
 }
 system: {
     &quot;type&quot;: &quot;tool_result&quot;,
-    &quot;id&quot;: &quot;call_83900c7722fe45ccad77ba&quot;,
+    &quot;id&quot;: &quot;call_1caf4341d8774d2893bc6e&quot;,
     &quot;name&quot;: &quot;example_tool_function&quot;,
     &quot;output&quot;: [
         {
             &quot;type&quot;: &quot;text&quot;,
-            &quot;text&quot;: &quot;标签 tag2 开始于 01:30:20.536470，结束于 01:30:23.540190。&quot;
+            &quot;text&quot;: &quot;标签 tag2 开始于 13:39:15.714571，结束于 13:39:18.718414。&quot;
         }
     ]
 }
 Jarvis: 两个 `example_tool_function` 函数已经并行执行完成。下面是它们各自的运行时间：
 
-- 标签为 &#39;tag1&#39; 的函数从 01:30:20.536379 开始，在 01:30:23.539593 结束。
-- 标签为 &#39;tag2&#39; 的函数从 01:30:20.536470 开始，在 01:30:23.540190 结束。
+- 标签为 &#39;tag1&#39; 的函数开始于 13:39:15.714480，结束于 13:39:18.717743。
+- 标签为 &#39;tag2&#39; 的函数开始于 13:39:15.714571，结束于 13:39:18.718414。
+
+两个函数几乎同时启动，并且几乎是同时完成的。
 </pre></div>
 </div>
 </section>
@@ -582,7 +585,7 @@ Jarvis: 两个 `example_tool_function` 函数已经并行执行完成。下面�
 <span class="n">asyncio</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">example_structured_output</span><span class="p">())</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Jarvis: 阿尔伯特·爱因斯坦（Albert Einstein）是一位著名的理论物理学家，以相对论而闻名。他出生于1879年，逝世于1955年，享年76岁。爱因斯坦是20世纪最伟大的科学家之一，他的工作对现代物理学产生了深远的影响。
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Jarvis: 阿尔伯特·爱因斯坦（1879-1955），20世纪最伟大的理论物理学家之一，以其相对论闻名于世。他享年76岁，在其一生中荣获了诸多荣誉，包括1921年的诺贝尔物理学奖、成为美国哲学会会员以及英国皇家学会的外籍会员等。
 
 结构化输出：
 {
@@ -590,7 +593,9 @@ Jarvis: 两个 `example_tool_function` 函数已经并行执行完成。下面�
     &quot;description&quot;: &quot;20世纪最伟大的理论物理学家之一&quot;,
     &quot;age&quot;: 76,
     &quot;honor&quot;: [
-        &quot;诺贝尔物理学奖&quot;
+        &quot;1921年诺贝尔物理学奖&quot;,
+        &quot;美国哲学会会员&quot;,
+        &quot;英国皇家学会外籍会员&quot;
     ]
 }
 </pre></div>
@@ -677,7 +682,7 @@ Jarvis: 两个 `example_tool_function` 函数已经并行执行完成。下面�
 <li><p><a class="reference internal" href="task_tool.html#tool"><span class="std std-ref">工具</span></a></p></li>
 <li><p><a class="reference internal" href="task_hook.html#hook"><span class="std std-ref">智能体钩子函数</span></a></p></li>
 </ul>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 22.203 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 22.073 seconds)</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-tutorial-task-agent-py">
 <div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
 <p><a class="reference download internal" download="" href="../_downloads/7dec07e2c813e72e1dad091b3ac4913a/task_agent.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">task_agent.ipynb</span></code></a></p>

@@ -1,15 +1,15 @@
 <!doctype html>
 <html class="no-js" lang="zh-CN" data-content_root="../">
-  <head><meta charset="utf-8"/>
-    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <head><meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="index" title="索引" href="../genindex.html" /><link rel="search" title="搜索" href="../search.html" /><link rel="next" title="Handoffs" href="workflow_handoffs.html" /><link rel="prev" title="Concurrent Agents" href="workflow_concurrent_agents.html" />
-        <link rel="prefetch" href="../_static/logo.svg" as="image" />
+<link rel="index" title="索引" href="../genindex.html"><link rel="search" title="搜索" href="../search.html"><link rel="next" title="Handoffs" href="workflow_handoffs.html"><link rel="prev" title="Concurrent Agents" href="workflow_concurrent_agents.html">
+        <link rel="prefetch" href="../_static/logo.svg" as="image">
 
-    <!-- Generated with Sphinx 8.1.3 and Furo 2025.07.19 -->
+    <!-- Generated with Sphinx 8.1.3 and Furo 2025.09.25 -->
         <title>Routing - AgentScope</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=d111a655" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?v=25af2a20" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?v=580074bf" />
     <link rel="stylesheet" type="text/css" href="../_static/sg_gallery.css?v=d2d258e8" />
     <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-binder.css?v=f4aeca0c" />
     <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-dataframe.css?v=2082cf3c" />
@@ -28,14 +28,14 @@
   }
   @media not print {
     body[data-theme="dark"] {
-      --color-code-background: #2b2b2b;
-  --color-code-foreground: #f8f8f2;
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
   
     }
     @media (prefers-color-scheme: dark) {
       body:not([data-theme="light"]) {
-        --color-code-background: #2b2b2b;
-  --color-code-foreground: #f8f8f2;
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
   
       }
     }
@@ -248,6 +248,7 @@
 <li class="toctree-l1"><a class="reference internal" href="task_agent.html">智能体</a></li>
 <li class="toctree-l1"><a class="reference internal" href="task_pipeline.html">管道 (Pipeline)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="task_plan.html">计划</a></li>
+<li class="toctree-l1"><a class="reference internal" href="task_rag.html">RAG</a></li>
 <li class="toctree-l1"><a class="reference internal" href="task_state.html">状态/会话管理</a></li>
 <li class="toctree-l1"><a class="reference internal" href="task_hook.html">智能体钩子函数</a></li>
 <li class="toctree-l1"><a class="reference internal" href="task_mcp.html">MCP</a></li>
@@ -402,7 +403,7 @@ to download the full example code.</p>
 <span class="n">asyncio</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">example_router_explicit</span><span class="p">())</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Router: 好的，我来为你创作一首诗。
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Router: 好的，我将帮您创作一首诗。
 结构化输出：
 {
     &quot;your_choice&quot;: &quot;Content Generation&quot;,
@@ -505,9 +506,10 @@ to download the full example code.</p>
     &quot;input&quot;: {
         &quot;demand&quot;: &quot;需要一个快速排序函数&quot;
     },
-    &quot;id&quot;: &quot;call_af6cf105ecb3465da237fc&quot;
+    &quot;id&quot;: &quot;call_91e52d2db1674bd19b47ce&quot;
 }
-PythonAgent: 这是一个使用 Python 编写的快速排序函数。快速排序是一种高效的排序算法，它使用分治策略来递归地将列表划分为更小的子列表并进行排序。
+PythonAgent: 这是一个使用 Python 编写的快速排序函数。快速排序是一种高效的排序算法，它使用了分而治之的策略来递归地把数组分成更小的部分来进行排序。
+
 ```python
 def quicksort(arr):
     if len(arr) &lt;= 1:
@@ -518,26 +520,25 @@ def quicksort(arr):
         middle = [x for x in arr if x == pivot]
         right = [x for x in arr if x &gt; pivot]
         return quicksort(left) + middle + quicksort(right)
+
+# 示例
+print(quicksort([3,6,8,10,1,2,1]))
+# 输出: [1, 1, 2, 3, 6, 8, 10]
 ```
-你可以使用这个函数来对一个整数列表或者任何其他可比较元素的列表进行排序。例如：
-```python
-numbers = [3, 6, 8, 10, 1, 2, 1]
-sorted_numbers = quicksort(numbers)
-print(sorted_numbers)  # 输出应该是 [1, 1, 2, 3, 6, 8, 10]
-```
-如果你需要对一个特定类型的数据进行排序，或者需要在排序过程中处理一些特殊情况，请告诉我，我可以帮助你调整这个函数。
+
+这个函数首先检查输入数组 `arr` 的长度。如果长度小于等于 1，那么就直接返回数组，因为它已经是排好序的（或者为空）。然后选择一个基准值 `pivot`，通常选择数组中间位置的元素。接着创建两个列表，一个用来存储所有比 `pivot` 小的元素，另一个用来存储所有比 `pivot` 大的元素。最后，对这两个列表进行递归排序，并将结果与包含所有等于 `pivot` 的元素的列表连接起来。
 system: {
     &quot;type&quot;: &quot;tool_result&quot;,
-    &quot;id&quot;: &quot;call_af6cf105ecb3465da237fc&quot;,
+    &quot;id&quot;: &quot;call_91e52d2db1674bd19b47ce&quot;,
     &quot;name&quot;: &quot;generate_python&quot;,
     &quot;output&quot;: [
         {
             &quot;type&quot;: &quot;text&quot;,
-            &quot;text&quot;: &quot;这是一个使用 Python 编写的快速排序函数。快速排序是一种高效的排序算法，它使用分治策略来递归地将列表划分为更小的子列表并进行排序。\n```python\ndef quicksort(arr):\n    if len(arr) &lt;= 1:\n        return arr\n    else:\n        pivot = arr[len(arr) // 2]\n        left = [x for x in arr if x &lt; pivot]\n        middle = [x for x in arr if x == pivot]\n        right = [x for x in arr if x &gt; pivot]\n        return quicksort(left) + middle + quicksort(right)\n```\n你可以使用这个函数来对一个整数列表或者任何其他可比较元素的列表进行排序。例如：\n```python\nnumbers = [3, 6, 8, 10, 1, 2, 1]\nsorted_numbers = quicksort(numbers)\nprint(sorted_numbers)  # 输出应该是 [1, 1, 2, 3, 6, 8, 10]\n```\n如果你需要对一个特定类型的数据进行排序，或者需要在排序过程中处理一些特殊情况，请告诉我，我可以帮助你调整这个函数。&quot;
+            &quot;text&quot;: &quot;这是一个使用 Python 编写的快速排序函数。快速排序是一种高效的排序算法，它使用了分而治之的策略来递归地把数组分成更小的部分来进行排序。\n\n```python\ndef quicksort(arr):\n    if len(arr) &lt;= 1:\n        return arr\n    else:\n        pivot = arr[len(arr) // 2]\n        left = [x for x in arr if x &lt; pivot]\n        middle = [x for x in arr if x == pivot]\n        right = [x for x in arr if x &gt; pivot]\n        return quicksort(left) + middle + quicksort(right)\n\n# 示例\nprint(quicksort([3,6,8,10,1,2,1]))\n# 输出: [1, 1, 2, 3, 6, 8, 10]\n```\n\n这个函数首先检查输入数组 `arr` 的长度。如果长度小于等于 1，那么就直接返回数组，因为它已经是排好序的（或者为空）。然后选择一个基准值 `pivot`，通常选择数组中间位置的元素。接着创建两个列表，一个用来存储所有比 `pivot` 小的元素，另一个用来存储所有比 `pivot` 大的元素。最后，对这两个列表进行递归排序，并将结果与包含所有等于 `pivot` 的元素的列表连接起来。&quot;
         }
     ]
 }
-Router: 这是一个使用 Python 编写的快速排序函数。快速排序是一种高效的排序算法，它使用分治策略来递归地将列表划分为更小的子列表并进行排序。
+Router: 这是一个使用 Python 编写的快速排序函数。快速排序是一种高效的排序算法，它采用了分而治之的策略来递归地将数组分成更小的部分来进行排序。
 
 ```python
 def quicksort(arr):
@@ -549,20 +550,16 @@ def quicksort(arr):
         middle = [x for x in arr if x == pivot]
         right = [x for x in arr if x &gt; pivot]
         return quicksort(left) + middle + quicksort(right)
+
+# 示例
+print(quicksort([3,6,8,10,1,2,1]))
+# 输出: [1, 1, 2, 3, 6, 8, 10]
 ```
 
-你可以使用这个函数来对一个整数列表或者任何其他可比较元素的列表进行排序。例如：
-
-```python
-numbers = [3, 6, 8, 10, 1, 2, 1]
-sorted_numbers = quicksort(numbers)
-print(sorted_numbers)  # 输出应该是 [1, 1, 2, 3, 6, 8, 10]
-```
-
-如果你需要对特定类型的数据进行排序，或是需要在排序过程中处理一些特殊情况，请告诉我，我可以帮助你调整这个函数。
+这个函数首先检查输入数组 `arr` 的长度。如果长度小于等于 1，则直接返回数组，因为它已经是排好序的（或者为空）。然后选择一个基准值 `pivot`，通常选取数组中间位置的元素。接着创建两个列表，一个用来存储所有比 `pivot` 小的元素，另一个用来存储所有比 `pivot` 大的元素。最后，对这两个列表进行递归排序，并将结果与包含所有等于 `pivot` 的元素的列表连接起来。你可以使用这个函数对你自己的数据进行排序。
 </pre></div>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 31.153 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 24.353 seconds)</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-tutorial-workflow-routing-py">
 <div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
 <p><a class="reference download internal" download="" href="../_downloads/3266c75280f96697c4cc46d7d55a3ac8/workflow_routing.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">workflow_routing.ipynb</span></code></a></p>

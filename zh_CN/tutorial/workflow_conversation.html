@@ -1,15 +1,15 @@
 <!doctype html>
 <html class="no-js" lang="zh-CN" data-content_root="../">
-  <head><meta charset="utf-8"/>
-    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <head><meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="index" title="索引" href="../genindex.html" /><link rel="search" title="搜索" href="../search.html" /><link rel="next" title="Multi-Agent Debate" href="workflow_multiagent_debate.html" /><link rel="prev" title="创建 ReAct 智能体" href="quickstart_agent.html" />
-        <link rel="prefetch" href="../_static/logo.svg" as="image" />
+<link rel="index" title="索引" href="../genindex.html"><link rel="search" title="搜索" href="../search.html"><link rel="next" title="Multi-Agent Debate" href="workflow_multiagent_debate.html"><link rel="prev" title="创建 ReAct 智能体" href="quickstart_agent.html">
+        <link rel="prefetch" href="../_static/logo.svg" as="image">
 
-    <!-- Generated with Sphinx 8.1.3 and Furo 2025.07.19 -->
+    <!-- Generated with Sphinx 8.1.3 and Furo 2025.09.25 -->
         <title>Conversation - AgentScope</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=d111a655" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?v=25af2a20" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?v=580074bf" />
     <link rel="stylesheet" type="text/css" href="../_static/sg_gallery.css?v=d2d258e8" />
     <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-binder.css?v=f4aeca0c" />
     <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-dataframe.css?v=2082cf3c" />
@@ -28,14 +28,14 @@
   }
   @media not print {
     body[data-theme="dark"] {
-      --color-code-background: #2b2b2b;
-  --color-code-foreground: #f8f8f2;
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
   
     }
     @media (prefers-color-scheme: dark) {
       body:not([data-theme="light"]) {
-        --color-code-background: #2b2b2b;
-  --color-code-foreground: #f8f8f2;
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
   
       }
     }
@@ -248,6 +248,7 @@
 <li class="toctree-l1"><a class="reference internal" href="task_agent.html">智能体</a></li>
 <li class="toctree-l1"><a class="reference internal" href="task_pipeline.html">管道 (Pipeline)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="task_plan.html">计划</a></li>
+<li class="toctree-l1"><a class="reference internal" href="task_rag.html">RAG</a></li>
 <li class="toctree-l1"><a class="reference internal" href="task_state.html">状态/会话管理</a></li>
 <li class="toctree-l1"><a class="reference internal" href="task_hook.html">智能体钩子函数</a></li>
 <li class="toctree-l1"><a class="reference internal" href="task_mcp.html">MCP</a></li>
@@ -507,9 +508,10 @@ Charlie: 我也是！顺便说一下，我是 Charlie。
 <span class="n">asyncio</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">example_msghub</span><span class="p">())</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Alice: 大家好，我叫Alice，是一名学生。很高兴认识大家！我对很多事物都充满好奇，喜欢学习新的知识，也热爱阅读和旅行。希望我们能够友好相处，一起度过美好的时光。你们呢？可以跟我分享一些关于你们的事情吗？
-Bob: 大家好，我叫Bob，同样也是一名学生。我对科技和编程特别感兴趣，平时喜欢捣鼓一些小项目，也热爱打篮球来放松自己。我也很期待能够跟大家一起学习成长。希望我们能成为好朋友！
-Charlie: 大家好，我叫Charlie，也是学生。我对音乐和艺术很感兴趣，平时喜欢弹吉他，也热衷于画画。我也非常喜欢户外活动，尤其是徒步和露营。很高兴遇见你们，希望我们能一起探索更多有趣的事物，也希望我们的友谊能够长存！
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Alice: 大家好，我叫Alice，是一名学生。很高兴认识大家！我对很多事物都充满好奇，喜欢学习新知识。平时我喜欢阅读、旅行和尝试各种美食。希望我们能成为好朋友！
+Alice: Hi, I&#39;m Alice, and I&#39;m a student. It&#39;s nice to meet you all! I&#39;m curious about many things and love learning new stuff. In my free time, I enjoy reading, traveling, and trying out different kinds of food. I hope we can be good friends!
+Bob: Hi, I&#39;m Bob, and I&#39;m also a student. It&#39;s great to meet everyone! I have a passion for technology and spend a lot of my free time tinkering with gadgets and coding. Apart from that, I enjoy playing video games and watching sci-fi movies. Looking forward to getting to know all of you better!
+Charlie: Hey there, I&#39;m Charlie, and like both of you, I&#39;m a student as well. It&#39;s awesome to meet new people who are into learning and tech! I&#39;m a big fan of sports and play basketball every chance I get. I also enjoy listening to music and playing the guitar. Let&#39;s have a great time together and learn from each other!
 </pre></div>
 </div>
 <p>现在我们打印 Alice 的记忆，检查她的记忆是否正确更新。</p>
@@ -529,18 +531,22 @@ Charlie: 大家好，我叫Charlie，也是学生。我对音乐和艺术很感�
 system: &quot;现在大家互相认识一下，简单自我介绍。&quot;
 Alice: [
     {
-        &quot;id&quot;: &quot;4AAy2NnVxm2emwQ8MukkrJ&quot;,
+        &quot;type&quot;: &quot;text&quot;,
+        &quot;text&quot;: &quot;大家好，我叫Alice，是一名学生。很高兴认识大家！我对很多事物都充满好奇，喜欢学习新知识。平时我喜欢阅读、旅行和尝试各种美食。希望我们能成为好朋友！&quot;
+    },
+    {
         &quot;type&quot;: &quot;tool_use&quot;,
+        &quot;id&quot;: &quot;call_72a6508d8e704368a8dc0b&quot;,
         &quot;name&quot;: &quot;generate_response&quot;,
         &quot;input&quot;: {
-            &quot;response&quot;: &quot;大家好，我叫Alice，是一名学生。很高兴认识大家！我对很多事物都充满好奇，喜欢学习新的知识，也热爱阅读和旅行。希望我们能够友好相处，一起度过美好的时光。你们呢？可以跟我分享一些关于你们的事情吗？&quot;
+            &quot;response&quot;: &quot;Hi, I&#39;m Alice, and I&#39;m a student. It&#39;s nice to meet you all! I&#39;m curious about many things and love learning new stuff. In my free time, I enjoy reading, traveling, and trying out different kinds of food. I hope we can be good friends!&quot;
         }
     }
 ]
 system: [
     {
         &quot;type&quot;: &quot;tool_result&quot;,
-        &quot;id&quot;: &quot;4AAy2NnVxm2emwQ8MukkrJ&quot;,
+        &quot;id&quot;: &quot;call_72a6508d8e704368a8dc0b&quot;,
         &quot;name&quot;: &quot;generate_response&quot;,
         &quot;output&quot;: [
             {
@@ -550,9 +556,9 @@ system: [
         ]
     }
 ]
-Alice: &quot;大家好，我叫Alice，是一名学生。很高兴认识大家！我对很多事物都充满好奇，喜欢学习新的知识，也热爱阅读和旅行。希望我们能够友好相处，一起度过美好的时光。你们呢？可以跟我分享一些关于你们的事情吗？&quot;
-Bob: &quot;大家好，我叫Bob，同样也是一名学生。我对科技和编程特别感兴趣，平时喜欢捣鼓一些小项目，也热爱打篮球来放松自己。我也很期待能够跟大家一起学习成长。希望我们能成为好朋友！&quot;
-Charlie: &quot;大家好，我叫Charlie，也是学生。我对音乐和艺术很感兴趣，平时喜欢弹吉他，也热衷于画画。我也非常喜欢户外活动，尤其是徒步和露营。很高兴遇见你们，希望我们能一起探索更多有趣的事物，也希望我们的友谊能够长存！&quot;
+Alice: &quot;Hi, I&#39;m Alice, and I&#39;m a student. It&#39;s nice to meet you all! I&#39;m curious about many things and love learning new stuff. In my free time, I enjoy reading, traveling, and trying out different kinds of food. I hope we can be good friends!&quot;
+Bob: &quot;Hi, I&#39;m Bob, and I&#39;m also a student. It&#39;s great to meet everyone! I have a passion for technology and spend a lot of my free time tinkering with gadgets and coding. Apart from that, I enjoy playing video games and watching sci-fi movies. Looking forward to getting to know all of you better!&quot;
+Charlie: &quot;Hey there, I&#39;m Charlie, and like both of you, I&#39;m a student as well. It&#39;s awesome to meet new people who are into learning and tech! I&#39;m a big fan of sports and play basketball every chance I get. I also enjoy listening to music and playing the guitar. Let&#39;s have a great time together and learn from each other!&quot;
 </pre></div>
 </div>
 </section>
@@ -563,7 +569,7 @@ Charlie: &quot;大家好，我叫Charlie，也是学生。我对音乐和艺术�
 <li><p><a class="reference internal" href="task_prompt.html#prompt"><span class="std std-ref">提示词格式化</span></a></p></li>
 <li><p><a class="reference internal" href="task_pipeline.html#pipeline"><span class="std std-ref">管道 (Pipeline)</span></a></p></li>
 </ul>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 12.887 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 13.928 seconds)</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-tutorial-workflow-conversation-py">
 <div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
 <p><a class="reference download internal" download="" href="../_downloads/6fc2f5ac2a455c83476d717ce963aa17/workflow_conversation.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">workflow_conversation.ipynb</span></code></a></p>
