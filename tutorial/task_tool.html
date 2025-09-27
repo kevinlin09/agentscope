@@ -1,15 +1,15 @@
 <!doctype html>
 <html class="no-js" lang="en" data-content_root="../">
-  <head><meta charset="utf-8"/>
-    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <head><meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="Memory" href="task_memory.html" /><link rel="prev" title="Prompt Formatter" href="task_prompt.html" />
-        <link rel="prefetch" href="../_static/logo.svg" as="image" />
+<link rel="index" title="Index" href="../genindex.html"><link rel="search" title="Search" href="../search.html"><link rel="next" title="Memory" href="task_memory.html"><link rel="prev" title="Prompt Formatter" href="task_prompt.html">
+        <link rel="prefetch" href="../_static/logo.svg" as="image">
 
-    <!-- Generated with Sphinx 8.1.3 and Furo 2025.07.19 -->
+    <!-- Generated with Sphinx 8.1.3 and Furo 2025.09.25 -->
         <title>Tool - AgentScope</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=d111a655" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?v=25af2a20" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?v=580074bf" />
     <link rel="stylesheet" type="text/css" href="../_static/sg_gallery.css?v=d2d258e8" />
     <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-binder.css?v=f4aeca0c" />
     <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-dataframe.css?v=2082cf3c" />
@@ -28,14 +28,14 @@
   }
   @media not print {
     body[data-theme="dark"] {
-      --color-code-background: #2b2b2b;
-  --color-code-foreground: #f8f8f2;
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
   
     }
     @media (prefers-color-scheme: dark) {
       body:not([data-theme="light"]) {
-        --color-code-background: #2b2b2b;
-  --color-code-foreground: #f8f8f2;
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
   
       }
     }
@@ -248,6 +248,7 @@
 <li class="toctree-l1"><a class="reference internal" href="task_agent.html">Agent</a></li>
 <li class="toctree-l1"><a class="reference internal" href="task_pipeline.html">Pipeline</a></li>
 <li class="toctree-l1"><a class="reference internal" href="task_plan.html">Plan</a></li>
+<li class="toctree-l1"><a class="reference internal" href="task_rag.html">RAG</a></li>
 <li class="toctree-l1"><a class="reference internal" href="task_state.html">State/Session Management</a></li>
 <li class="toctree-l1"><a class="reference internal" href="task_hook.html">Agent Hooks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="task_mcp.html">MCP</a></li>
@@ -521,7 +522,7 @@ openai_audio_to_text
 </pre></div>
 </div>
 <div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Tool Response:
-ToolResponse(content=[{&#39;type&#39;: &#39;text&#39;, &#39;text&#39;: &quot;Searching for &#39;AgentScope&#39; with API key &#39;xxx&#39;&quot;}], metadata=None, stream=False, is_last=True, is_interrupted=False, id=&#39;2025-09-20 01:27:26.043_e9b4a6&#39;)
+ToolResponse(content=[{&#39;type&#39;: &#39;text&#39;, &#39;text&#39;: &quot;Searching for &#39;AgentScope&#39; with API key &#39;xxx&#39;&quot;}], metadata=None, stream=False, is_last=True, is_interrupted=False, id=&#39;2025-09-27 13:36:35.152_97ba78&#39;)
 </pre></div>
 </div>
 </section>
@@ -652,7 +653,7 @@ Besides, a flag <code class="docutils literal notranslate"><span class="pre">is_
 </pre></div>
 </div>
 <div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Tool Response:
-ToolResponse(content=[{&#39;type&#39;: &#39;text&#39;, &#39;text&#39;: &#39;&lt;system-info&gt;The tool call has been interrupted by the user.&lt;/system-info&gt;&#39;}], metadata=None, stream=True, is_last=True, is_interrupted=True, id=&#39;2025-09-20 01:27:27.047_e9cfda&#39;)
+ToolResponse(content=[{&#39;type&#39;: &#39;text&#39;, &#39;text&#39;: &#39;&lt;system-info&gt;The tool call has been interrupted by the user.&lt;/system-info&gt;&#39;}], metadata=None, stream=True, is_last=True, is_interrupted=True, id=&#39;2025-09-27 13:36:36.157_1f8a1c&#39;)
 The interrupted flag:
 True
 </pre></div>
@@ -712,11 +713,11 @@ By this way, the agent can observe what the tool has returned before the interru
 </pre></div>
 </div>
 <div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Chunk 0:
-ToolResponse(content=[{&#39;type&#39;: &#39;text&#39;, &#39;text&#39;: &#39;1234&#39;}], metadata=None, stream=False, is_last=True, is_interrupted=False, id=&#39;2025-09-20 01:27:27.049_1dadf1&#39;)
+ToolResponse(content=[{&#39;type&#39;: &#39;text&#39;, &#39;text&#39;: &#39;1234&#39;}], metadata=None, stream=False, is_last=True, is_interrupted=False, id=&#39;2025-09-27 13:36:36.159_58ed25&#39;)
 The interrupted flag:  False
 
 Chunk 1:
-ToolResponse(content=[{&#39;type&#39;: &#39;text&#39;, &#39;text&#39;: &#39;1234&#39;}, {&#39;type&#39;: &#39;text&#39;, &#39;text&#39;: &#39;&lt;system-info&gt;The tool call has been interrupted by the user.&lt;/system-info&gt;&#39;}], metadata=None, stream=False, is_last=True, is_interrupted=True, id=&#39;2025-09-20 01:27:27.049_1dadf1&#39;)
+ToolResponse(content=[{&#39;type&#39;: &#39;text&#39;, &#39;text&#39;: &#39;1234&#39;}, {&#39;type&#39;: &#39;text&#39;, &#39;text&#39;: &#39;&lt;system-info&gt;The tool call has been interrupted by the user.&lt;/system-info&gt;&#39;}], metadata=None, stream=False, is_last=True, is_interrupted=True, id=&#39;2025-09-27 13:36:36.159_58ed25&#39;)
 The interrupted flag:  True
 </pre></div>
 </div>
@@ -950,7 +951,7 @@ contain the notes of the activated tool groups.</p>
 </pre></div>
 </div>
 <div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Text content in tool Response:
-ToolResponse(content=[{&#39;type&#39;: &#39;text&#39;, &#39;text&#39;: &quot;Active tool groups successfully: [&#39;browser_user&#39;]. You MUST follow these notes to use the tools:\n&lt;notes&gt;## About browser_use Tools\n1. Use ``navigate`` to open a web page.\n2. When requiring user authentication, ask the user for the credentials\n3. ...&lt;/notes&gt;&quot;}], metadata=None, stream=False, is_last=True, is_interrupted=False, id=&#39;2025-09-20 01:27:27.058_bc72f7&#39;)
+ToolResponse(content=[{&#39;type&#39;: &#39;text&#39;, &#39;text&#39;: &quot;Active tool groups successfully: [&#39;browser_user&#39;]. You MUST follow these notes to use the tools:\n&lt;notes&gt;## About browser_use Tools\n1. Use ``navigate`` to open a web page.\n2. When requiring user authentication, ask the user for the credentials\n3. ...&lt;/notes&gt;&quot;}], metadata=None, stream=False, is_last=True, is_interrupted=False, id=&#39;2025-09-27 13:36:36.168_4be4a4&#39;)
 </pre></div>
 </div>
 <p>The toolkit also provides a method to gather the notes of the activated tool groups, and you can assemble it into your agent’s system prompt.</p>
@@ -989,7 +990,7 @@ ToolResponse(content=[{&#39;type&#39;: &#39;text&#39;, &#39;text&#39;: &quot;Act
 <li><p><a class="reference internal" href="task_state.html#state"><span class="std std-ref">State/Session Management</span></a></p></li>
 <li><p><a class="reference internal" href="task_mcp.html#mcp"><span class="std std-ref">MCP</span></a></p></li>
 </ul>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 1.021 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 1.022 seconds)</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-tutorial-task-tool-py">
 <div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
 <p><a class="reference download internal" download="" href="../_downloads/c814d0f0885573dcc616fd38c752cf4e/task_tool.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">task_tool.ipynb</span></code></a></p>

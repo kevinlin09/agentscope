@@ -11,35 +11,18 @@
 
 .. raw:: html
 
-    <div class="sphx-glr-thumbcontainer" tooltip="AgentScope Studio is a local-deployed web application that">
+    <div class="sphx-glr-thumbcontainer" tooltip="About AgentScope ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ What is AgentScope?     AgentScope is a multi-agent framework, aiming to provide a simple yet efficient way to build LLM-empowered agent applications.">
 
 .. only:: html
 
-  .. image:: /tutorial/images/thumb/sphx_glr_task_studio_thumb.png
+  .. image:: /tutorial/images/thumb/sphx_glr_faq_thumb.png
     :alt:
 
-  :ref:`sphx_glr_tutorial_task_studio.py`
+  :ref:`sphx_glr_tutorial_faq.py`
 
 .. raw:: html
 
-      <div class="sphx-glr-thumbnail-title">AgentScope Studio</div>
-    </div>
-
-
-.. raw:: html
-
-    <div class="sphx-glr-thumbcontainer" tooltip="This chapter establishes key concepts from an engineering perspective to introduce AgentScope&#x27;s design.">
-
-.. only:: html
-
-  .. image:: /tutorial/images/thumb/sphx_glr_quickstart_key_concept_thumb.png
-    :alt:
-
-  :ref:`sphx_glr_tutorial_quickstart_key_concept.py`
-
-.. raw:: html
-
-      <div class="sphx-glr-thumbnail-title">Key Concepts</div>
+      <div class="sphx-glr-thumbnail-title">FAQ</div>
     </div>
 
 
@@ -62,18 +45,18 @@
 
 .. raw:: html
 
-    <div class="sphx-glr-thumbcontainer" tooltip="About AgentScope ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ What is AgentScope?     AgentScope is a multi-agent framework, aiming to provide a simple yet efficient way to build LLM-empowered agent applications.">
+    <div class="sphx-glr-thumbcontainer" tooltip="This chapter establishes key concepts from an engineering perspective to introduce AgentScope&#x27;s design.">
 
 .. only:: html
 
-  .. image:: /tutorial/images/thumb/sphx_glr_faq_thumb.png
+  .. image:: /tutorial/images/thumb/sphx_glr_quickstart_key_concept_thumb.png
     :alt:
 
-  :ref:`sphx_glr_tutorial_faq.py`
+  :ref:`sphx_glr_tutorial_quickstart_key_concept.py`
 
 .. raw:: html
 
-      <div class="sphx-glr-thumbnail-title">FAQ</div>
+      <div class="sphx-glr-thumbnail-title">Key Concepts</div>
     </div>
 
 
@@ -91,6 +74,23 @@
 .. raw:: html
 
       <div class="sphx-glr-thumbnail-title">Memory</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="AgentScope Studio is a local-deployed web application that">
+
+.. only:: html
+
+  .. image:: /tutorial/images/thumb/sphx_glr_task_studio_thumb.png
+    :alt:
+
+  :ref:`sphx_glr_tutorial_task_studio.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">AgentScope Studio</div>
     </div>
 
 
@@ -436,6 +436,23 @@
 
 .. raw:: html
 
+    <div class="sphx-glr-thumbcontainer" tooltip="AgentScope provides built-in support for Retrieval-Augmented Generation (RAG) tasks. This tutorial demonstrates">
+
+.. only:: html
+
+  .. image:: /tutorial/images/thumb/sphx_glr_task_rag_thumb.png
+    :alt:
+
+  :ref:`sphx_glr_tutorial_task_rag.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">RAG</div>
+    </div>
+
+
+.. raw:: html
+
     <div class="sphx-glr-thumbcontainer" tooltip="To ensure accurate and reliable tool parsing, AgentScope fully embraces the use of tools API with the following features:">
 
 .. only:: html
@@ -461,11 +478,11 @@
 .. toctree::
    :hidden:
 
-   /tutorial/task_studio
-   /tutorial/quickstart_key_concept
-   /tutorial/task_tracing
    /tutorial/faq
+   /tutorial/task_tracing
+   /tutorial/quickstart_key_concept
    /tutorial/task_memory
+   /tutorial/task_studio
    /tutorial/quickstart_installation
    /tutorial/task_token
    /tutorial/workflow_concurrent_agents
@@ -486,6 +503,7 @@
    /tutorial/workflow_multiagent_debate
    /tutorial/task_plan
    /tutorial/task_eval
+   /tutorial/task_rag
    /tutorial/task_tool
 
 

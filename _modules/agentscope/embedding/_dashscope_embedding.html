@@ -1,14 +1,14 @@
 <!doctype html>
 <html class="no-js" lang="en" data-content_root="../../../">
-  <head><meta charset="utf-8"/>
-    <meta name="viewport" content="width=device-width,initial-scale=1"/>
-    <meta name="color-scheme" content="light dark"><link rel="index" title="Index" href="../../../genindex.html" /><link rel="search" title="Search" href="../../../search.html" />
-        <link rel="prefetch" href="../../../_static/logo.svg" as="image" />
+  <head><meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="color-scheme" content="light dark"><link rel="index" title="Index" href="../../../genindex.html"><link rel="search" title="Search" href="../../../search.html">
+        <link rel="prefetch" href="../../../_static/logo.svg" as="image">
 
-    <!-- Generated with Sphinx 8.1.3 and Furo 2025.07.19 -->
+    <!-- Generated with Sphinx 8.1.3 and Furo 2025.09.25 -->
         <title>agentscope.embedding._dashscope_embedding - AgentScope</title>
       <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=d111a655" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo.css?v=25af2a20" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo.css?v=580074bf" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery.css?v=d2d258e8" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery-binder.css?v=f4aeca0c" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery-dataframe.css?v=2082cf3c" />
@@ -27,14 +27,14 @@
   }
   @media not print {
     body[data-theme="dark"] {
-      --color-code-background: #2b2b2b;
-  --color-code-foreground: #f8f8f2;
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
   
     }
     @media (prefers-color-scheme: dark) {
       body:not([data-theme="light"]) {
-        --color-code-background: #2b2b2b;
-  --color-code-foreground: #f8f8f2;
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
   
       }
     }
@@ -247,6 +247,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../tutorial/task_agent.html">Agent</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../tutorial/task_pipeline.html">Pipeline</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../tutorial/task_plan.html">Plan</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tutorial/task_rag.html">RAG</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../tutorial/task_state.html">State/Session Management</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../tutorial/task_hook.html">Agent Hooks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../tutorial/task_mcp.html">MCP</a></li>
@@ -315,18 +316,34 @@
 <span></span><span class="c1"># -*- coding: utf-8 -*-</span>
 <span class="sd">&quot;&quot;&quot;The dashscope embedding module in agentscope.&quot;&quot;&quot;</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">datetime</span><span class="w"> </span><span class="kn">import</span> <span class="n">datetime</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Any</span><span class="p">,</span> <span class="n">List</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Any</span><span class="p">,</span> <span class="n">List</span><span class="p">,</span> <span class="n">Literal</span>
 
 <span class="kn">from</span><span class="w"> </span><span class="nn">._cache_base</span><span class="w"> </span><span class="kn">import</span> <span class="n">EmbeddingCacheBase</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">._embedding_response</span><span class="w"> </span><span class="kn">import</span> <span class="n">EmbeddingResponse</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">._embedding_usage</span><span class="w"> </span><span class="kn">import</span> <span class="n">EmbeddingUsage</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">._embedding_base</span><span class="w"> </span><span class="kn">import</span> <span class="n">EmbeddingModelBase</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">.._logging</span><span class="w"> </span><span class="kn">import</span> <span class="n">logger</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">..message</span><span class="w"> </span><span class="kn">import</span> <span class="n">TextBlock</span>
 
 
 <div class="viewcode-block" id="DashScopeTextEmbedding">
 <a class="viewcode-back" href="../../../api/agentscope.embedding.html#agentscope.embedding.DashScopeTextEmbedding">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">DashScopeTextEmbedding</span><span class="p">(</span><span class="n">EmbeddingModelBase</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;DashScope text embedding model class&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;DashScope text embedding API class.</span>
+
+<span class="sd">    .. note:: From the `official documentation</span>
+<span class="sd">    &lt;https://bailian.console.aliyun.com/?tab=api#/api/?type=model&amp;url=2712515&gt;`_:</span>
+
+<span class="sd">     - The max batch size that DashScope text embedding API</span>
+<span class="sd">     supports is 10 for `text-embedding-v4` and `text-embedding-v3` models, and</span>
+<span class="sd">     25 for `text-embedding-v2` and `text-embedding-v1` models.</span>
+<span class="sd">     - The max token limit for a single input is 8192 tokens for `v4` and `v3`</span>
+<span class="sd">     models, and 2048 tokens for `v2` and `v1` models.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">supported_modalities</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;text&quot;</span><span class="p">]</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;This class only supports text input.&quot;&quot;&quot;</span>
 
 <div class="viewcode-block" id="DashScopeTextEmbedding.__init__">
 <a class="viewcode-back" href="../../../api/agentscope.embedding.html#agentscope.embedding.DashScopeTextEmbedding.__init__">[docs]</a>
@@ -334,6 +351,7 @@
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">api_key</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
         <span class="n">model_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">dimensions</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1024</span><span class="p">,</span>
         <span class="n">embedding_cache</span><span class="p">:</span> <span class="n">EmbeddingCacheBase</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Initialize the DashScope text embedding model class.</span>
@@ -343,35 +361,24 @@
 <span class="sd">                The dashscope API key.</span>
 <span class="sd">            model_name (`str`):</span>
 <span class="sd">                The name of the embedding model.</span>
+<span class="sd">            dimensions (`int`, defaults to 1024):</span>
+<span class="sd">                The dimension of the embedding vector, refer to the</span>
+<span class="sd">                `official documentation</span>
+<span class="sd">                &lt;https://bailian.console.aliyun.com/?tab=api#/api/?type=model&amp;url=2712515&gt;`_</span>
+<span class="sd">                for more details.</span>
 <span class="sd">            embedding_cache (`EmbeddingCacheBase`):</span>
 <span class="sd">                The embedding cache class instance, used to cache the</span>
 <span class="sd">                embedding results to avoid repeated API calls.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">model_name</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">model_name</span><span class="p">,</span> <span class="n">dimensions</span><span class="p">)</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">api_key</span> <span class="o">=</span> <span class="n">api_key</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">embedding_cache</span> <span class="o">=</span> <span class="n">embedding_cache</span></div>
+        <span class="bp">self</span><span class="o">.</span><span class="n">embedding_cache</span> <span class="o">=</span> <span class="n">embedding_cache</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">batch_size_limit</span> <span class="o">=</span> <span class="mi">10</span></div>
 
 
-<div class="viewcode-block" id="DashScopeTextEmbedding.__call__">
-<a class="viewcode-back" href="../../../api/agentscope.embedding.html#agentscope.embedding.DashScopeTextEmbedding.__call__">[docs]</a>
-    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="fm">__call__</span><span class="p">(</span>
-        <span class="bp">self</span><span class="p">,</span>
-        <span class="n">text</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span>
-        <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span>
-    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">EmbeddingResponse</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Call the DashScope embedding API.</span>
-
-<span class="sd">        Args:</span>
-<span class="sd">            text (`List[str]`):</span>
-<span class="sd">                The input text to be embedded. It can be a list of strings.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-
-        <span class="n">kwargs</span> <span class="o">=</span> <span class="p">{</span>
-            <span class="s2">&quot;input&quot;</span><span class="p">:</span> <span class="n">text</span><span class="p">,</span>
-            <span class="s2">&quot;model&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">model_name</span><span class="p">,</span>
-            <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
-        <span class="p">}</span>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">_call_api</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">EmbeddingResponse</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Call the DashScope embedding API by the given keyword arguments.&quot;&quot;&quot;</span>
 
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">embedding_cache</span><span class="p">:</span>
             <span class="n">cached_embeddings</span> <span class="o">=</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">embedding_cache</span><span class="o">.</span><span class="n">retrieve</span><span class="p">(</span>
@@ -409,7 +416,7 @@
                 <span class="p">],</span>
             <span class="p">)</span>
 
-        <span class="n">embedding_response</span> <span class="o">=</span> <span class="n">EmbeddingResponse</span><span class="p">(</span>
+        <span class="k">return</span> <span class="n">EmbeddingResponse</span><span class="p">(</span>
             <span class="n">embeddings</span><span class="o">=</span><span class="p">[</span><span class="n">_</span><span class="p">[</span><span class="s2">&quot;embedding&quot;</span><span class="p">]</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="n">response</span><span class="o">.</span><span class="n">output</span><span class="p">[</span><span class="s2">&quot;embeddings&quot;</span><span class="p">]],</span>
             <span class="n">usage</span><span class="o">=</span><span class="n">EmbeddingUsage</span><span class="p">(</span>
                 <span class="n">tokens</span><span class="o">=</span><span class="n">response</span><span class="o">.</span><span class="n">usage</span><span class="p">[</span><span class="s2">&quot;total_tokens&quot;</span><span class="p">],</span>
@@ -417,7 +424,71 @@
             <span class="p">),</span>
         <span class="p">)</span>
 
-        <span class="k">return</span> <span class="n">embedding_response</span></div>
+<div class="viewcode-block" id="DashScopeTextEmbedding.__call__">
+<a class="viewcode-back" href="../../../api/agentscope.embedding.html#agentscope.embedding.DashScopeTextEmbedding.__call__">[docs]</a>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="fm">__call__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">text</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span> <span class="o">|</span> <span class="n">TextBlock</span><span class="p">],</span>
+        <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">EmbeddingResponse</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Call the DashScope embedding API.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            text (`List[str | TextBlock]`):</span>
+<span class="sd">                The input text to be embedded. It can be a list of strings.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">gather_text</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="n">text</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">_</span><span class="p">,</span> <span class="nb">dict</span><span class="p">)</span> <span class="ow">and</span> <span class="s2">&quot;text&quot;</span> <span class="ow">in</span> <span class="n">_</span><span class="p">:</span>
+                <span class="n">gather_text</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">_</span><span class="p">[</span><span class="s2">&quot;text&quot;</span><span class="p">])</span>
+            <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">_</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+                <span class="n">gather_text</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">_</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                    <span class="s2">&quot;Input text must be a list of strings or TextBlock dicts.&quot;</span><span class="p">,</span>
+                <span class="p">)</span>
+
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">gather_text</span><span class="p">)</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">batch_size_limit</span><span class="p">:</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
+                <span class="s2">&quot;The input texts (</span><span class="si">%d</span><span class="s2">) will be embedded with </span><span class="si">%d</span><span class="s2"> API calls due &quot;</span>
+                <span class="sa">f</span><span class="s2">&quot;to the batch size limit of </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">batch_size_limit</span><span class="si">}</span><span class="s2"> for &quot;</span>
+                <span class="sa">f</span><span class="s2">&quot;DashScope embedding API.&quot;</span><span class="p">,</span>
+                <span class="nb">len</span><span class="p">(</span><span class="n">gather_text</span><span class="p">),</span>
+                <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">gather_text</span><span class="p">)</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">batch_size_limit</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+                <span class="o">//</span> <span class="bp">self</span><span class="o">.</span><span class="n">batch_size_limit</span><span class="p">,</span>
+            <span class="p">)</span>
+
+        <span class="c1"># Handle the batch size limit for DashScope embedding API</span>
+        <span class="n">collected_embeddings</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">collected_time</span> <span class="o">=</span> <span class="mf">0.0</span>
+        <span class="n">collected_tokens</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">collected_source</span><span class="p">:</span> <span class="n">Literal</span><span class="p">[</span><span class="s2">&quot;cache&quot;</span><span class="p">,</span> <span class="s2">&quot;api&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;cache&quot;</span>
+        <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">gather_text</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">batch_size_limit</span><span class="p">):</span>
+            <span class="n">batch_texts</span> <span class="o">=</span> <span class="n">gather_text</span><span class="p">[</span><span class="n">_</span> <span class="p">:</span> <span class="n">_</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">batch_size_limit</span><span class="p">]</span>
+            <span class="n">batch_kwargs</span> <span class="o">=</span> <span class="p">{</span>
+                <span class="s2">&quot;input&quot;</span><span class="p">:</span> <span class="n">batch_texts</span><span class="p">,</span>
+                <span class="s2">&quot;model&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">model_name</span><span class="p">,</span>
+                <span class="s2">&quot;dimensions&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">dimensions</span><span class="p">,</span>
+                <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
+            <span class="p">}</span>
+
+            <span class="n">res</span> <span class="o">=</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_call_api</span><span class="p">(</span><span class="n">batch_kwargs</span><span class="p">)</span>
+
+            <span class="n">collected_embeddings</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">res</span><span class="o">.</span><span class="n">embeddings</span><span class="p">)</span>
+            <span class="n">collected_time</span> <span class="o">+=</span> <span class="n">res</span><span class="o">.</span><span class="n">usage</span><span class="o">.</span><span class="n">time</span>
+            <span class="k">if</span> <span class="n">res</span><span class="o">.</span><span class="n">usage</span><span class="o">.</span><span class="n">tokens</span><span class="p">:</span>
+                <span class="n">collected_tokens</span> <span class="o">+=</span> <span class="n">res</span><span class="o">.</span><span class="n">usage</span><span class="o">.</span><span class="n">tokens</span>
+            <span class="k">if</span> <span class="n">res</span><span class="o">.</span><span class="n">source</span> <span class="o">==</span> <span class="s2">&quot;api&quot;</span><span class="p">:</span>
+                <span class="n">collected_source</span> <span class="o">=</span> <span class="s2">&quot;api&quot;</span>
+
+        <span class="k">return</span> <span class="n">EmbeddingResponse</span><span class="p">(</span>
+            <span class="n">embeddings</span><span class="o">=</span><span class="n">collected_embeddings</span><span class="p">,</span>
+            <span class="n">usage</span><span class="o">=</span><span class="n">EmbeddingUsage</span><span class="p">(</span>
+                <span class="n">tokens</span><span class="o">=</span><span class="n">collected_tokens</span><span class="p">,</span>
+                <span class="n">time</span><span class="o">=</span><span class="n">collected_time</span><span class="p">,</span>
+            <span class="p">),</span>
+            <span class="n">source</span><span class="o">=</span><span class="n">collected_source</span><span class="p">,</span>
+        <span class="p">)</span></div>
 </div>
 
 </pre></div>

@@ -1,15 +1,15 @@
 <!doctype html>
 <html class="no-js" lang="en" data-content_root="../">
-  <head><meta charset="utf-8"/>
-    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <head><meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="AgentScope Studio" href="task_studio.html" /><link rel="prev" title="Agent Hooks" href="task_hook.html" />
-        <link rel="prefetch" href="../_static/logo.svg" as="image" />
+<link rel="index" title="Index" href="../genindex.html"><link rel="search" title="Search" href="../search.html"><link rel="next" title="AgentScope Studio" href="task_studio.html"><link rel="prev" title="Agent Hooks" href="task_hook.html">
+        <link rel="prefetch" href="../_static/logo.svg" as="image">
 
-    <!-- Generated with Sphinx 8.1.3 and Furo 2025.07.19 -->
+    <!-- Generated with Sphinx 8.1.3 and Furo 2025.09.25 -->
         <title>MCP - AgentScope</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=d111a655" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?v=25af2a20" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?v=580074bf" />
     <link rel="stylesheet" type="text/css" href="../_static/sg_gallery.css?v=d2d258e8" />
     <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-binder.css?v=f4aeca0c" />
     <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-dataframe.css?v=2082cf3c" />
@@ -28,14 +28,14 @@
   }
   @media not print {
     body[data-theme="dark"] {
-      --color-code-background: #2b2b2b;
-  --color-code-foreground: #f8f8f2;
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
   
     }
     @media (prefers-color-scheme: dark) {
       body:not([data-theme="light"]) {
-        --color-code-background: #2b2b2b;
-  --color-code-foreground: #f8f8f2;
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
   
       }
     }
@@ -248,6 +248,7 @@
 <li class="toctree-l1"><a class="reference internal" href="task_agent.html">Agent</a></li>
 <li class="toctree-l1"><a class="reference internal" href="task_pipeline.html">Pipeline</a></li>
 <li class="toctree-l1"><a class="reference internal" href="task_plan.html">Plan</a></li>
+<li class="toctree-l1"><a class="reference internal" href="task_rag.html">RAG</a></li>
 <li class="toctree-l1"><a class="reference internal" href="task_state.html">State/Session Management</a></li>
 <li class="toctree-l1"><a class="reference internal" href="task_hook.html">Agent Hooks</a></li>
 <li class="toctree-l1 current current-page"><a class="current reference internal" href="#">MCP</a></li>
@@ -584,7 +585,7 @@ Function JSON schema: {
 }
 
 Function call result:
-ToolResponse(content=[{&#39;type&#39;: &#39;text&#39;, &#39;text&#39;: &#39;{&quot;results&quot;:[{&quot;country&quot;:&quot;中国&quot;,&quot;province&quot;:&quot;北京市&quot;,&quot;city&quot;:&quot;北京市&quot;,&quot;citycode&quot;:&quot;010&quot;,&quot;district&quot;:&quot;东城区&quot;,&quot;street&quot;:[],&quot;number&quot;:[],&quot;adcode&quot;:&quot;110101&quot;,&quot;location&quot;:&quot;116.397455,39.909187&quot;,&quot;level&quot;:&quot;兴趣点&quot;}]}&#39;}], metadata=None, stream=False, is_last=True, is_interrupted=False, id=&#39;2025-09-20 01:25:14.113_d42911&#39;)
+ToolResponse(content=[{&#39;type&#39;: &#39;text&#39;, &#39;text&#39;: &#39;{&quot;results&quot;:[{&quot;country&quot;:&quot;中国&quot;,&quot;province&quot;:&quot;北京市&quot;,&quot;city&quot;:&quot;北京市&quot;,&quot;citycode&quot;:&quot;010&quot;,&quot;district&quot;:&quot;东城区&quot;,&quot;street&quot;:[],&quot;number&quot;:[],&quot;adcode&quot;:&quot;110101&quot;,&quot;location&quot;:&quot;116.397455,39.909187&quot;,&quot;level&quot;:&quot;兴趣点&quot;}]}&#39;}], metadata=None, stream=False, is_last=True, is_interrupted=False, id=&#39;2025-09-27 13:33:45.750_37aa3c&#39;)
 </pre></div>
 </div>
 </section>
@@ -596,7 +597,7 @@ ToolResponse(content=[{&#39;type&#39;: &#39;text&#39;, &#39;text&#39;: &#39;{&qu
 <li><p><a class="reference internal" href="task_tool.html#tool"><span class="std std-ref">Tool</span></a></p></li>
 <li><p><a class="reference internal" href="task_agent.html#agent"><span class="std std-ref">Agent</span></a></p></li>
 </ul>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 8.775 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 6.492 seconds)</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-tutorial-task-mcp-py">
 <div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
 <p><a class="reference download internal" download="" href="../_downloads/da545788627514321d5d0429de9a0028/task_mcp.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">task_mcp.ipynb</span></code></a></p>

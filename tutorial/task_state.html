@@ -1,15 +1,15 @@
 <!doctype html>
 <html class="no-js" lang="en" data-content_root="../">
-  <head><meta charset="utf-8"/>
-    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <head><meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="Agent Hooks" href="task_hook.html" /><link rel="prev" title="Plan" href="task_plan.html" />
-        <link rel="prefetch" href="../_static/logo.svg" as="image" />
+<link rel="index" title="Index" href="../genindex.html"><link rel="search" title="Search" href="../search.html"><link rel="next" title="Agent Hooks" href="task_hook.html"><link rel="prev" title="RAG" href="task_rag.html">
+        <link rel="prefetch" href="../_static/logo.svg" as="image">
 
-    <!-- Generated with Sphinx 8.1.3 and Furo 2025.07.19 -->
+    <!-- Generated with Sphinx 8.1.3 and Furo 2025.09.25 -->
         <title>State/Session Management - AgentScope</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=d111a655" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?v=25af2a20" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?v=580074bf" />
     <link rel="stylesheet" type="text/css" href="../_static/sg_gallery.css?v=d2d258e8" />
     <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-binder.css?v=f4aeca0c" />
     <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-dataframe.css?v=2082cf3c" />
@@ -28,14 +28,14 @@
   }
   @media not print {
     body[data-theme="dark"] {
-      --color-code-background: #2b2b2b;
-  --color-code-foreground: #f8f8f2;
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
   
     }
     @media (prefers-color-scheme: dark) {
       body:not([data-theme="light"]) {
-        --color-code-background: #2b2b2b;
-  --color-code-foreground: #f8f8f2;
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
   
       }
     }
@@ -248,6 +248,7 @@
 <li class="toctree-l1"><a class="reference internal" href="task_agent.html">Agent</a></li>
 <li class="toctree-l1"><a class="reference internal" href="task_pipeline.html">Pipeline</a></li>
 <li class="toctree-l1"><a class="reference internal" href="task_plan.html">Plan</a></li>
+<li class="toctree-l1"><a class="reference internal" href="task_rag.html">RAG</a></li>
 <li class="toctree-l1 current current-page"><a class="current reference internal" href="#">State/Session Management</a></li>
 <li class="toctree-l1"><a class="reference internal" href="task_hook.html">Agent Hooks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="task_mcp.html">MCP</a></li>
@@ -485,20 +486,20 @@ State of the agent after generating a reply:
     &quot;memory&quot;: {
         &quot;content&quot;: [
             {
-                &quot;id&quot;: &quot;UegBgsTiM6Eg9iXj37g2h2&quot;,
+                &quot;id&quot;: &quot;asQJ247GG7VDLMsPeNMyoe&quot;,
                 &quot;name&quot;: &quot;user&quot;,
                 &quot;role&quot;: &quot;user&quot;,
                 &quot;content&quot;: &quot;Hello, agent!&quot;,
                 &quot;metadata&quot;: null,
-                &quot;timestamp&quot;: &quot;2025-09-20 01:25:46.844&quot;
+                &quot;timestamp&quot;: &quot;2025-09-27 13:34:20.294&quot;
             },
             {
-                &quot;id&quot;: &quot;MgLGjMTTejnLoUx6vDFTBz&quot;,
+                &quot;id&quot;: &quot;NqLm5NAndcq4NaPcxRZJvG&quot;,
                 &quot;name&quot;: &quot;Friday&quot;,
                 &quot;role&quot;: &quot;assistant&quot;,
                 &quot;content&quot;: [
                     {
-                        &quot;id&quot;: &quot;4mBeujVgaBSLgu9zKjZAS7&quot;,
+                        &quot;id&quot;: &quot;53YTAx8j8N9nzWVXLYMk6s&quot;,
                         &quot;type&quot;: &quot;tool_use&quot;,
                         &quot;name&quot;: &quot;generate_response&quot;,
                         &quot;input&quot;: {
@@ -507,16 +508,16 @@ State of the agent after generating a reply:
                     }
                 ],
                 &quot;metadata&quot;: null,
-                &quot;timestamp&quot;: &quot;2025-09-20 01:25:46.845&quot;
+                &quot;timestamp&quot;: &quot;2025-09-27 13:34:20.295&quot;
             },
             {
-                &quot;id&quot;: &quot;K5hx9rymQXANG9hi8oNRTn&quot;,
+                &quot;id&quot;: &quot;9A8MfNScHC5YTiZwu9J5VX&quot;,
                 &quot;name&quot;: &quot;system&quot;,
                 &quot;role&quot;: &quot;system&quot;,
                 &quot;content&quot;: [
                     {
                         &quot;type&quot;: &quot;tool_result&quot;,
-                        &quot;id&quot;: &quot;4mBeujVgaBSLgu9zKjZAS7&quot;,
+                        &quot;id&quot;: &quot;53YTAx8j8N9nzWVXLYMk6s&quot;,
                         &quot;name&quot;: &quot;generate_response&quot;,
                         &quot;output&quot;: [
                             {
@@ -527,15 +528,15 @@ State of the agent after generating a reply:
                     }
                 ],
                 &quot;metadata&quot;: null,
-                &quot;timestamp&quot;: &quot;2025-09-20 01:25:48.141&quot;
+                &quot;timestamp&quot;: &quot;2025-09-27 13:34:21.644&quot;
             },
             {
-                &quot;id&quot;: &quot;Mt28X3CDS8pgNHNsNCYf8E&quot;,
+                &quot;id&quot;: &quot;jfb3Du8nbXt94yg676RjAK&quot;,
                 &quot;name&quot;: &quot;Friday&quot;,
                 &quot;role&quot;: &quot;assistant&quot;,
                 &quot;content&quot;: &quot;Hello! How can I assist you today?&quot;,
                 &quot;metadata&quot;: null,
-                &quot;timestamp&quot;: &quot;2025-09-20 01:25:48.141&quot;
+                &quot;timestamp&quot;: &quot;2025-09-27 13:34:21.644&quot;
             }
         ]
     },
@@ -598,20 +599,20 @@ State of the agent after generating a reply:
     &quot;memory&quot;: {
         &quot;content&quot;: [
             {
-                &quot;id&quot;: &quot;Qvd8DsxGUHSWYwFCUdxWkW&quot;,
+                &quot;id&quot;: &quot;KWPniRQijBqE8XfYsws4V5&quot;,
                 &quot;name&quot;: &quot;user&quot;,
                 &quot;role&quot;: &quot;user&quot;,
                 &quot;content&quot;: &quot;Hello, agent!&quot;,
                 &quot;metadata&quot;: null,
-                &quot;timestamp&quot;: &quot;2025-09-20 01:25:48.143&quot;
+                &quot;timestamp&quot;: &quot;2025-09-27 13:34:21.646&quot;
             },
             {
-                &quot;id&quot;: &quot;kp8wtY6VEc467CZPZgzfiJ&quot;,
+                &quot;id&quot;: &quot;MbcsVuYNU9A3pfYYQzzBMi&quot;,
                 &quot;name&quot;: &quot;Friday&quot;,
                 &quot;role&quot;: &quot;assistant&quot;,
                 &quot;content&quot;: [
                     {
-                        &quot;id&quot;: &quot;HPRPMWzucmDzqNnju5GDKP&quot;,
+                        &quot;id&quot;: &quot;oJ7dppntgqxcKzdL2MkYtW&quot;,
                         &quot;type&quot;: &quot;tool_use&quot;,
                         &quot;name&quot;: &quot;generate_response&quot;,
                         &quot;input&quot;: {
@@ -620,16 +621,16 @@ State of the agent after generating a reply:
                     }
                 ],
                 &quot;metadata&quot;: null,
-                &quot;timestamp&quot;: &quot;2025-09-20 01:25:48.143&quot;
+                &quot;timestamp&quot;: &quot;2025-09-27 13:34:21.647&quot;
             },
             {
-                &quot;id&quot;: &quot;hHH8EyK33iAftSaFm7yDjU&quot;,
+                &quot;id&quot;: &quot;dXwwZsXZ5a4yQEVhFYGGay&quot;,
                 &quot;name&quot;: &quot;system&quot;,
                 &quot;role&quot;: &quot;system&quot;,
                 &quot;content&quot;: [
                     {
                         &quot;type&quot;: &quot;tool_result&quot;,
-                        &quot;id&quot;: &quot;HPRPMWzucmDzqNnju5GDKP&quot;,
+                        &quot;id&quot;: &quot;oJ7dppntgqxcKzdL2MkYtW&quot;,
                         &quot;name&quot;: &quot;generate_response&quot;,
                         &quot;output&quot;: [
                             {
@@ -640,15 +641,15 @@ State of the agent after generating a reply:
                     }
                 ],
                 &quot;metadata&quot;: null,
-                &quot;timestamp&quot;: &quot;2025-09-20 01:25:49.677&quot;
+                &quot;timestamp&quot;: &quot;2025-09-27 13:34:22.997&quot;
             },
             {
-                &quot;id&quot;: &quot;NSpDhzqa82BEnpfwGH9w8o&quot;,
+                &quot;id&quot;: &quot;XrLhWU98jkTq6qRwCJQbW2&quot;,
                 &quot;name&quot;: &quot;Friday&quot;,
                 &quot;role&quot;: &quot;assistant&quot;,
                 &quot;content&quot;: &quot;Hello! How can I assist you today?&quot;,
                 &quot;metadata&quot;: null,
-                &quot;timestamp&quot;: &quot;2025-09-20 01:25:49.677&quot;
+                &quot;timestamp&quot;: &quot;2025-09-27 13:34:22.997&quot;
             }
         ]
     },
@@ -667,20 +668,20 @@ State of agent:
     &quot;memory&quot;: {
         &quot;content&quot;: [
             {
-                &quot;id&quot;: &quot;Qvd8DsxGUHSWYwFCUdxWkW&quot;,
+                &quot;id&quot;: &quot;KWPniRQijBqE8XfYsws4V5&quot;,
                 &quot;name&quot;: &quot;user&quot;,
                 &quot;role&quot;: &quot;user&quot;,
                 &quot;content&quot;: &quot;Hello, agent!&quot;,
                 &quot;metadata&quot;: null,
-                &quot;timestamp&quot;: &quot;2025-09-20 01:25:48.143&quot;
+                &quot;timestamp&quot;: &quot;2025-09-27 13:34:21.646&quot;
             },
             {
-                &quot;id&quot;: &quot;kp8wtY6VEc467CZPZgzfiJ&quot;,
+                &quot;id&quot;: &quot;MbcsVuYNU9A3pfYYQzzBMi&quot;,
                 &quot;name&quot;: &quot;Friday&quot;,
                 &quot;role&quot;: &quot;assistant&quot;,
                 &quot;content&quot;: [
                     {
-                        &quot;id&quot;: &quot;HPRPMWzucmDzqNnju5GDKP&quot;,
+                        &quot;id&quot;: &quot;oJ7dppntgqxcKzdL2MkYtW&quot;,
                         &quot;type&quot;: &quot;tool_use&quot;,
                         &quot;name&quot;: &quot;generate_response&quot;,
                         &quot;input&quot;: {
@@ -689,16 +690,16 @@ State of agent:
                     }
                 ],
                 &quot;metadata&quot;: null,
-                &quot;timestamp&quot;: &quot;2025-09-20 01:25:48.143&quot;
+                &quot;timestamp&quot;: &quot;2025-09-27 13:34:21.647&quot;
             },
             {
-                &quot;id&quot;: &quot;hHH8EyK33iAftSaFm7yDjU&quot;,
+                &quot;id&quot;: &quot;dXwwZsXZ5a4yQEVhFYGGay&quot;,
                 &quot;name&quot;: &quot;system&quot;,
                 &quot;role&quot;: &quot;system&quot;,
                 &quot;content&quot;: [
                     {
                         &quot;type&quot;: &quot;tool_result&quot;,
-                        &quot;id&quot;: &quot;HPRPMWzucmDzqNnju5GDKP&quot;,
+                        &quot;id&quot;: &quot;oJ7dppntgqxcKzdL2MkYtW&quot;,
                         &quot;name&quot;: &quot;generate_response&quot;,
                         &quot;output&quot;: [
                             {
@@ -709,15 +710,15 @@ State of agent:
                     }
                 ],
                 &quot;metadata&quot;: null,
-                &quot;timestamp&quot;: &quot;2025-09-20 01:25:49.677&quot;
+                &quot;timestamp&quot;: &quot;2025-09-27 13:34:22.997&quot;
             },
             {
-                &quot;id&quot;: &quot;NSpDhzqa82BEnpfwGH9w8o&quot;,
+                &quot;id&quot;: &quot;XrLhWU98jkTq6qRwCJQbW2&quot;,
                 &quot;name&quot;: &quot;Friday&quot;,
                 &quot;role&quot;: &quot;assistant&quot;,
                 &quot;content&quot;: &quot;Hello! How can I assist you today?&quot;,
                 &quot;metadata&quot;: null,
-                &quot;timestamp&quot;: &quot;2025-09-20 01:25:49.677&quot;
+                &quot;timestamp&quot;: &quot;2025-09-27 13:34:22.997&quot;
             }
         ]
     },
@@ -759,20 +760,20 @@ State of agent:
         &quot;memory&quot;: {
             &quot;content&quot;: [
                 {
-                    &quot;id&quot;: &quot;Qvd8DsxGUHSWYwFCUdxWkW&quot;,
+                    &quot;id&quot;: &quot;KWPniRQijBqE8XfYsws4V5&quot;,
                     &quot;name&quot;: &quot;user&quot;,
                     &quot;role&quot;: &quot;user&quot;,
                     &quot;content&quot;: &quot;Hello, agent!&quot;,
                     &quot;metadata&quot;: null,
-                    &quot;timestamp&quot;: &quot;2025-09-20 01:25:48.143&quot;
+                    &quot;timestamp&quot;: &quot;2025-09-27 13:34:21.646&quot;
                 },
                 {
-                    &quot;id&quot;: &quot;kp8wtY6VEc467CZPZgzfiJ&quot;,
+                    &quot;id&quot;: &quot;MbcsVuYNU9A3pfYYQzzBMi&quot;,
                     &quot;name&quot;: &quot;Friday&quot;,
                     &quot;role&quot;: &quot;assistant&quot;,
                     &quot;content&quot;: [
                         {
-                            &quot;id&quot;: &quot;HPRPMWzucmDzqNnju5GDKP&quot;,
+                            &quot;id&quot;: &quot;oJ7dppntgqxcKzdL2MkYtW&quot;,
                             &quot;type&quot;: &quot;tool_use&quot;,
                             &quot;name&quot;: &quot;generate_response&quot;,
                             &quot;input&quot;: {
@@ -781,16 +782,16 @@ State of agent:
                         }
                     ],
                     &quot;metadata&quot;: null,
-                    &quot;timestamp&quot;: &quot;2025-09-20 01:25:48.143&quot;
+                    &quot;timestamp&quot;: &quot;2025-09-27 13:34:21.647&quot;
                 },
                 {
-                    &quot;id&quot;: &quot;hHH8EyK33iAftSaFm7yDjU&quot;,
+                    &quot;id&quot;: &quot;dXwwZsXZ5a4yQEVhFYGGay&quot;,
                     &quot;name&quot;: &quot;system&quot;,
                     &quot;role&quot;: &quot;system&quot;,
                     &quot;content&quot;: [
                         {
                             &quot;type&quot;: &quot;tool_result&quot;,
-                            &quot;id&quot;: &quot;HPRPMWzucmDzqNnju5GDKP&quot;,
+                            &quot;id&quot;: &quot;oJ7dppntgqxcKzdL2MkYtW&quot;,
                             &quot;name&quot;: &quot;generate_response&quot;,
                             &quot;output&quot;: [
                                 {
@@ -801,15 +802,15 @@ State of agent:
                         }
                     ],
                     &quot;metadata&quot;: null,
-                    &quot;timestamp&quot;: &quot;2025-09-20 01:25:49.677&quot;
+                    &quot;timestamp&quot;: &quot;2025-09-27 13:34:22.997&quot;
                 },
                 {
-                    &quot;id&quot;: &quot;NSpDhzqa82BEnpfwGH9w8o&quot;,
+                    &quot;id&quot;: &quot;XrLhWU98jkTq6qRwCJQbW2&quot;,
                     &quot;name&quot;: &quot;Friday&quot;,
                     &quot;role&quot;: &quot;assistant&quot;,
                     &quot;content&quot;: &quot;Hello! How can I assist you today?&quot;,
                     &quot;metadata&quot;: null,
-                    &quot;timestamp&quot;: &quot;2025-09-20 01:25:49.677&quot;
+                    &quot;timestamp&quot;: &quot;2025-09-27 13:34:22.997&quot;
                 }
             ]
         },
@@ -870,20 +871,20 @@ After loading the session state:
     &quot;memory&quot;: {
         &quot;content&quot;: [
             {
-                &quot;id&quot;: &quot;Qvd8DsxGUHSWYwFCUdxWkW&quot;,
+                &quot;id&quot;: &quot;KWPniRQijBqE8XfYsws4V5&quot;,
                 &quot;name&quot;: &quot;user&quot;,
                 &quot;role&quot;: &quot;user&quot;,
                 &quot;content&quot;: &quot;Hello, agent!&quot;,
                 &quot;metadata&quot;: null,
-                &quot;timestamp&quot;: &quot;2025-09-20 01:25:48.143&quot;
+                &quot;timestamp&quot;: &quot;2025-09-27 13:34:21.646&quot;
             },
             {
-                &quot;id&quot;: &quot;kp8wtY6VEc467CZPZgzfiJ&quot;,
+                &quot;id&quot;: &quot;MbcsVuYNU9A3pfYYQzzBMi&quot;,
                 &quot;name&quot;: &quot;Friday&quot;,
                 &quot;role&quot;: &quot;assistant&quot;,
                 &quot;content&quot;: [
                     {
-                        &quot;id&quot;: &quot;HPRPMWzucmDzqNnju5GDKP&quot;,
+                        &quot;id&quot;: &quot;oJ7dppntgqxcKzdL2MkYtW&quot;,
                         &quot;type&quot;: &quot;tool_use&quot;,
                         &quot;name&quot;: &quot;generate_response&quot;,
                         &quot;input&quot;: {
@@ -892,16 +893,16 @@ After loading the session state:
                     }
                 ],
                 &quot;metadata&quot;: null,
-                &quot;timestamp&quot;: &quot;2025-09-20 01:25:48.143&quot;
+                &quot;timestamp&quot;: &quot;2025-09-27 13:34:21.647&quot;
             },
             {
-                &quot;id&quot;: &quot;hHH8EyK33iAftSaFm7yDjU&quot;,
+                &quot;id&quot;: &quot;dXwwZsXZ5a4yQEVhFYGGay&quot;,
                 &quot;name&quot;: &quot;system&quot;,
                 &quot;role&quot;: &quot;system&quot;,
                 &quot;content&quot;: [
                     {
                         &quot;type&quot;: &quot;tool_result&quot;,
-                        &quot;id&quot;: &quot;HPRPMWzucmDzqNnju5GDKP&quot;,
+                        &quot;id&quot;: &quot;oJ7dppntgqxcKzdL2MkYtW&quot;,
                         &quot;name&quot;: &quot;generate_response&quot;,
                         &quot;output&quot;: [
                             {
@@ -912,15 +913,15 @@ After loading the session state:
                     }
                 ],
                 &quot;metadata&quot;: null,
-                &quot;timestamp&quot;: &quot;2025-09-20 01:25:49.677&quot;
+                &quot;timestamp&quot;: &quot;2025-09-27 13:34:22.997&quot;
             },
             {
-                &quot;id&quot;: &quot;NSpDhzqa82BEnpfwGH9w8o&quot;,
+                &quot;id&quot;: &quot;XrLhWU98jkTq6qRwCJQbW2&quot;,
                 &quot;name&quot;: &quot;Friday&quot;,
                 &quot;role&quot;: &quot;assistant&quot;,
                 &quot;content&quot;: &quot;Hello! How can I assist you today?&quot;,
                 &quot;metadata&quot;: null,
-                &quot;timestamp&quot;: &quot;2025-09-20 01:25:49.677&quot;
+                &quot;timestamp&quot;: &quot;2025-09-27 13:34:22.997&quot;
             }
         ]
     },
@@ -936,7 +937,7 @@ After loading the session state:
 </pre></div>
 </div>
 <p>Now we can see the agent state is restored to the saved state.</p>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 2.843 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 2.714 seconds)</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-tutorial-task-state-py">
 <div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
 <p><a class="reference download internal" download="" href="../_downloads/78801218992541b6da6586f399b20cbd/task_state.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">task_state.ipynb</span></code></a></p>
@@ -967,14 +968,14 @@ After loading the session state:
               </div>
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
             </a>
-          <a class="prev-page" href="task_plan.html">
+          <a class="prev-page" href="task_rag.html">
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
               <div class="page-info">
                 <div class="context">
                   <span>Previous</span>
                 </div>
                 
-                <div class="title">Plan</div>
+                <div class="title">RAG</div>
                 
               </div>
             </a>

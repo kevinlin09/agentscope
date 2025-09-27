@@ -1,14 +1,14 @@
 <!doctype html>
 <html class="no-js" lang="en" data-content_root="../../../">
-  <head><meta charset="utf-8"/>
-    <meta name="viewport" content="width=device-width,initial-scale=1"/>
-    <meta name="color-scheme" content="light dark"><link rel="index" title="Index" href="../../../genindex.html" /><link rel="search" title="Search" href="../../../search.html" />
-        <link rel="prefetch" href="../../../_static/logo.svg" as="image" />
+  <head><meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="color-scheme" content="light dark"><link rel="index" title="Index" href="../../../genindex.html"><link rel="search" title="Search" href="../../../search.html">
+        <link rel="prefetch" href="../../../_static/logo.svg" as="image">
 
-    <!-- Generated with Sphinx 8.1.3 and Furo 2025.07.19 -->
+    <!-- Generated with Sphinx 8.1.3 and Furo 2025.09.25 -->
         <title>agentscope.agent._react_agent - AgentScope</title>
       <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=d111a655" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo.css?v=25af2a20" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo.css?v=580074bf" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery.css?v=d2d258e8" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery-binder.css?v=f4aeca0c" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery-dataframe.css?v=2082cf3c" />
@@ -27,14 +27,14 @@
   }
   @media not print {
     body[data-theme="dark"] {
-      --color-code-background: #2b2b2b;
-  --color-code-foreground: #f8f8f2;
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
   
     }
     @media (prefers-color-scheme: dark) {
       body:not([data-theme="light"]) {
-        --color-code-background: #2b2b2b;
-  --color-code-foreground: #f8f8f2;
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
   
       }
     }
@@ -247,6 +247,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../tutorial/task_agent.html">Agent</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../tutorial/task_pipeline.html">Pipeline</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../tutorial/task_plan.html">Plan</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tutorial/task_rag.html">RAG</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../tutorial/task_state.html">State/Session Management</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../tutorial/task_hook.html">Agent Hooks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../tutorial/task_mcp.html">MCP</a></li>
@@ -320,16 +321,28 @@
 <span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Type</span><span class="p">,</span> <span class="n">Any</span><span class="p">,</span> <span class="n">AsyncGenerator</span><span class="p">,</span> <span class="n">Literal</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="nn">shortuuid</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">pydantic</span><span class="w"> </span><span class="kn">import</span> <span class="n">BaseModel</span><span class="p">,</span> <span class="n">ValidationError</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pydantic</span><span class="w"> </span><span class="kn">import</span> <span class="n">BaseModel</span><span class="p">,</span> <span class="n">ValidationError</span><span class="p">,</span> <span class="n">Field</span>
 
 <span class="kn">from</span><span class="w"> </span><span class="nn">._react_agent_base</span><span class="w"> </span><span class="kn">import</span> <span class="n">ReActAgentBase</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">.._logging</span><span class="w"> </span><span class="kn">import</span> <span class="n">logger</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">..formatter</span><span class="w"> </span><span class="kn">import</span> <span class="n">FormatterBase</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">..memory</span><span class="w"> </span><span class="kn">import</span> <span class="n">MemoryBase</span><span class="p">,</span> <span class="n">LongTermMemoryBase</span><span class="p">,</span> <span class="n">InMemoryMemory</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">..message</span><span class="w"> </span><span class="kn">import</span> <span class="n">Msg</span><span class="p">,</span> <span class="n">ToolUseBlock</span><span class="p">,</span> <span class="n">ToolResultBlock</span><span class="p">,</span> <span class="n">TextBlock</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">..model</span><span class="w"> </span><span class="kn">import</span> <span class="n">ChatModelBase</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">..rag</span><span class="w"> </span><span class="kn">import</span> <span class="n">KnowledgeBase</span><span class="p">,</span> <span class="n">Document</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">..plan</span><span class="w"> </span><span class="kn">import</span> <span class="n">PlanNotebook</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">..tool</span><span class="w"> </span><span class="kn">import</span> <span class="n">Toolkit</span><span class="p">,</span> <span class="n">ToolResponse</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">..tracing</span><span class="w"> </span><span class="kn">import</span> <span class="n">trace_reply</span>
+
+
+<span class="k">class</span><span class="w"> </span><span class="nc">_QueryRewriteModel</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;The structured model used for query rewriting.&quot;&quot;&quot;</span>
+
+    <span class="n">rewritten_query</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span>
+        <span class="n">description</span><span class="o">=</span><span class="p">(</span>
+            <span class="s2">&quot;The rewritten query, which should be specific and concise. &quot;</span>
+        <span class="p">),</span>
+    <span class="p">)</span>
 
 
 <span class="k">def</span><span class="w"> </span><span class="nf">finish_function_pre_print_hook</span><span class="p">(</span>
@@ -399,9 +412,11 @@
         <span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;both&quot;</span><span class="p">,</span>
         <span class="n">enable_meta_tool</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
         <span class="n">parallel_tool_calls</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-        <span class="n">max_iters</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span>
+        <span class="n">knowledge</span><span class="p">:</span> <span class="n">KnowledgeBase</span> <span class="o">|</span> <span class="nb">list</span><span class="p">[</span><span class="n">KnowledgeBase</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">enable_rewrite_query</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
         <span class="n">plan_notebook</span><span class="p">:</span> <span class="n">PlanNotebook</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">print_hint_msg</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+        <span class="n">max_iters</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Initialize the ReAct agent</span>
 
@@ -442,11 +457,23 @@
 <span class="sd">            parallel_tool_calls (`bool`, defaults to `False`):</span>
 <span class="sd">                When LLM generates multiple tool calls, whether to execute</span>
 <span class="sd">                them in parallel.</span>
+<span class="sd">            knowledge (`KnowledgeBase | list[KnowledgeBase] | None`, optional):</span>
+<span class="sd">                The knowledge object(s) used by the agent to retrieve</span>
+<span class="sd">                relevant documents at the beginning of each reply.</span>
+<span class="sd">            enable_rewrite_query (`bool`, defaults to `True`):</span>
+<span class="sd">                Whether ask the agent to rewrite the user input query before</span>
+<span class="sd">                retrieving from the knowledge base(s), e.g. rewrite &quot;Who am I&quot;</span>
+<span class="sd">                to &quot;{user&#39;s name}&quot; to get more relevant documents. Only works</span>
+<span class="sd">                when the knowledge base(s) is provided.</span>
+<span class="sd">            plan_notebook (`PlanNotebook | None`, optional):</span>
+<span class="sd">                The plan notebook instance, allow the agent to finish the</span>
+<span class="sd">                complex task by decomposing it into a sequence of subtasks.</span>
+<span class="sd">            print_hint_msg (`bool`, defaults to `False`):</span>
+<span class="sd">                Whether to print the hint messages, including the reasoning</span>
+<span class="sd">                hint from the plan notebook, the retrieved information from</span>
+<span class="sd">                the long-term memory and knowledge base(s).</span>
 <span class="sd">            max_iters (`int`, defaults to `10`):</span>
 <span class="sd">                The maximum number of iterations of the reasoning-acting loops.</span>
-<span class="sd">            print_hint_msg (`bool`, defaults to `False`):</span>
-<span class="sd">                Whether to print the reasoning hint messages before each</span>
-<span class="sd">                reasoning step.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
 
@@ -463,6 +490,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">model</span> <span class="o">=</span> <span class="n">model</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">formatter</span> <span class="o">=</span> <span class="n">formatter</span>
 
+        <span class="c1"># -------------- Memory management --------------</span>
         <span class="c1"># Record the dialogue history in the memory</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">memory</span> <span class="o">=</span> <span class="n">memory</span> <span class="ow">or</span> <span class="n">InMemoryMemory</span><span class="p">()</span>
         <span class="c1"># If provide the long-term memory, it will be used to retrieve info</span>
@@ -480,6 +508,7 @@
             <span class="s2">&quot;both&quot;</span><span class="p">,</span>
         <span class="p">]</span>
 
+        <span class="c1"># -------------- Tool management --------------</span>
         <span class="c1"># If None, a default Toolkit will be created</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">toolkit</span> <span class="o">=</span> <span class="n">toolkit</span> <span class="ow">or</span> <span class="n">Toolkit</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">toolkit</span><span class="o">.</span><span class="n">register_tool_function</span><span class="p">(</span>
@@ -500,8 +529,18 @@
             <span class="p">)</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">parallel_tool_calls</span> <span class="o">=</span> <span class="n">parallel_tool_calls</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">max_iters</span> <span class="o">=</span> <span class="n">max_iters</span>
 
+        <span class="c1"># -------------- RAG management --------------</span>
+        <span class="c1"># The knowledge base(s) used by the agent</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">knowledge</span><span class="p">,</span> <span class="n">KnowledgeBase</span><span class="p">):</span>
+            <span class="n">knowledge</span> <span class="o">=</span> <span class="p">[</span><span class="n">knowledge</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">knowledge</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">KnowledgeBase</span><span class="p">]</span> <span class="o">=</span> <span class="n">knowledge</span> <span class="ow">or</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">enable_rewrite_query</span> <span class="o">=</span> <span class="n">enable_rewrite_query</span>
+
+        <span class="c1"># -------------- Plan management --------------</span>
+        <span class="c1"># Equipped the plan-related tools provided by the plan notebook as</span>
+        <span class="c1"># a tool group named &quot;plan_related&quot;. So that the agent can activate</span>
+        <span class="c1"># the plan tools by the meta tool function</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">plan_notebook</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="k">if</span> <span class="n">plan_notebook</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">plan_notebook</span> <span class="o">=</span> <span class="n">plan_notebook</span>
@@ -515,7 +554,11 @@
                     <span class="n">group_name</span><span class="o">=</span><span class="s2">&quot;plan_related&quot;</span><span class="p">,</span>
                 <span class="p">)</span>
 
+        <span class="c1"># If print the reasoning hint messages</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">print_hint_msg</span> <span class="o">=</span> <span class="n">print_hint_msg</span>
+
+        <span class="c1"># The maximum number of iterations of the reasoning-acting loops</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">max_iters</span> <span class="o">=</span> <span class="n">max_iters</span>
 
         <span class="c1"># The hint messages that will be attached to the prompt to guide the</span>
         <span class="c1"># agent&#39;s behavior before each reasoning step, and cleared after</span>
@@ -528,6 +571,7 @@
         <span class="c1"># If required structured output model is provided</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_required_structured_model</span><span class="p">:</span> <span class="n">Type</span><span class="p">[</span><span class="n">BaseModel</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
 
+        <span class="c1"># -------------- State registration and hooks --------------</span>
         <span class="c1"># Register the status variables</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">register_state</span><span class="p">(</span><span class="s2">&quot;name&quot;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">register_state</span><span class="p">(</span><span class="s2">&quot;_sys_prompt&quot;</span><span class="p">)</span>
@@ -566,22 +610,13 @@
 <span class="sd">            `Msg`:</span>
 <span class="sd">                The output message generated by the agent.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># Record the input message(s) in the memory</span>
         <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">memory</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
 
-        <span class="c1"># Long-term memory retrieval</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_static_control</span><span class="p">:</span>
-            <span class="c1"># Retrieve information from the long-term memory if available</span>
-            <span class="n">retrieved_info</span> <span class="o">=</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">long_term_memory</span><span class="o">.</span><span class="n">retrieve</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
-            <span class="k">if</span> <span class="n">retrieved_info</span><span class="p">:</span>
-                <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">memory</span><span class="o">.</span><span class="n">add</span><span class="p">(</span>
-                    <span class="n">Msg</span><span class="p">(</span>
-                        <span class="n">name</span><span class="o">=</span><span class="s2">&quot;long_term_memory&quot;</span><span class="p">,</span>
-                        <span class="n">content</span><span class="o">=</span><span class="s2">&quot;&lt;long_term_memory&gt;The content below are &quot;</span>
-                        <span class="s2">&quot;retrieved from long-term memory, which maybe &quot;</span>
-                        <span class="sa">f</span><span class="s2">&quot;useful:</span><span class="se">\n</span><span class="si">{</span><span class="n">retrieved_info</span><span class="si">}</span><span class="s2">&lt;/long_term_memory&gt;&quot;</span><span class="p">,</span>
-                        <span class="n">role</span><span class="o">=</span><span class="s2">&quot;user&quot;</span><span class="p">,</span>
-                    <span class="p">),</span>
-                <span class="p">)</span>
+        <span class="c1"># Retrieve relevant records from the long-term memory if activated</span>
+        <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_retrieve_from_long_term_memory</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+        <span class="c1"># Retrieve relevant documents from the knowledge base(s) if any</span>
+        <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_retrieve_from_knowledge</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">_required_structured_model</span> <span class="o">=</span> <span class="n">structured_model</span>
         <span class="c1"># Record structured output model if provided</span>
@@ -918,7 +953,129 @@
             <span class="p">},</span>
             <span class="n">is_last</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
         <span class="p">)</span></div>
-</div>
+
+
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">_retrieve_from_long_term_memory</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">msg</span><span class="p">:</span> <span class="n">Msg</span> <span class="o">|</span> <span class="nb">list</span><span class="p">[</span><span class="n">Msg</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Insert the retrieved information from the long-term memory into</span>
+<span class="sd">        the short-term memory as a Msg object.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            msg (`Msg | list[Msg] | None`):</span>
+<span class="sd">                The input message to the agent.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_static_control</span> <span class="ow">and</span> <span class="n">msg</span><span class="p">:</span>
+            <span class="c1"># Retrieve information from the long-term memory if available</span>
+            <span class="n">retrieved_info</span> <span class="o">=</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">long_term_memory</span><span class="o">.</span><span class="n">retrieve</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">retrieved_info</span><span class="p">:</span>
+                <span class="n">retrieved_msg</span> <span class="o">=</span> <span class="n">Msg</span><span class="p">(</span>
+                    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;long_term_memory&quot;</span><span class="p">,</span>
+                    <span class="n">content</span><span class="o">=</span><span class="s2">&quot;&lt;long_term_memory&gt;The content below are &quot;</span>
+                    <span class="s2">&quot;retrieved from long-term memory, which maybe &quot;</span>
+                    <span class="sa">f</span><span class="s2">&quot;useful:</span><span class="se">\n</span><span class="si">{</span><span class="n">retrieved_info</span><span class="si">}</span><span class="s2">&lt;/long_term_memory&gt;&quot;</span><span class="p">,</span>
+                    <span class="n">role</span><span class="o">=</span><span class="s2">&quot;user&quot;</span><span class="p">,</span>
+                <span class="p">)</span>
+                <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">print_hint_msg</span><span class="p">:</span>
+                    <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">print</span><span class="p">(</span><span class="n">retrieved_msg</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
+                <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">memory</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">retrieved_msg</span><span class="p">)</span>
+
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">_retrieve_from_knowledge</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">msg</span><span class="p">:</span> <span class="n">Msg</span> <span class="o">|</span> <span class="nb">list</span><span class="p">[</span><span class="n">Msg</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Insert the retrieved documents from the RAG knowledge base(s) if</span>
+<span class="sd">        available.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            msg (`Msg | list[Msg] | None`):</span>
+<span class="sd">                The input message to the agent.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">knowledge</span> <span class="ow">and</span> <span class="n">msg</span><span class="p">:</span>
+            <span class="c1"># Prepare the user input query</span>
+            <span class="n">query</span> <span class="o">=</span> <span class="kc">None</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">msg</span><span class="p">,</span> <span class="n">Msg</span><span class="p">):</span>
+                <span class="n">query</span> <span class="o">=</span> <span class="n">msg</span><span class="o">.</span><span class="n">get_text_content</span><span class="p">()</span>
+            <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">msg</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
+                <span class="n">query</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">_</span><span class="o">.</span><span class="n">get_text_content</span><span class="p">()</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="n">msg</span><span class="p">)</span>
+
+            <span class="c1"># Skip if the query is empty</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">query</span><span class="p">:</span>
+                <span class="k">return</span>
+
+            <span class="c1"># Rewrite the query by the LLM if enabled</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">enable_rewrite_query</span><span class="p">:</span>
+                <span class="k">try</span><span class="p">:</span>
+                    <span class="n">rewrite_prompt</span> <span class="o">=</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">formatter</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+                        <span class="n">msgs</span><span class="o">=</span><span class="p">[</span>
+                            <span class="n">Msg</span><span class="p">(</span><span class="s2">&quot;system&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">sys_prompt</span><span class="p">,</span> <span class="s2">&quot;system&quot;</span><span class="p">),</span>
+                            <span class="o">*</span><span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">memory</span><span class="o">.</span><span class="n">get_memory</span><span class="p">(),</span>
+                            <span class="n">Msg</span><span class="p">(</span>
+                                <span class="s2">&quot;user&quot;</span><span class="p">,</span>
+                                <span class="s2">&quot;&lt;system-hint&gt;Now you need to rewrite &quot;</span>
+                                <span class="s2">&quot;the above user query to be more specific and &quot;</span>
+                                <span class="s2">&quot;concise for knowledge retrieval. For &quot;</span>
+                                <span class="s2">&quot;example, rewrite the query &#39;what happened &quot;</span>
+                                <span class="s2">&quot;last day&#39; to &#39;what happened on 2023-10-01&#39; &quot;</span>
+                                <span class="s2">&quot;(assuming today is 2023-10-02).&quot;</span>
+                                <span class="s2">&quot;&lt;/system-hint&gt;&quot;</span><span class="p">,</span>
+                                <span class="s2">&quot;user&quot;</span><span class="p">,</span>
+                            <span class="p">),</span>
+                        <span class="p">],</span>
+                    <span class="p">)</span>
+                    <span class="n">stream_tmp</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">stream</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">stream</span> <span class="o">=</span> <span class="kc">False</span>
+                    <span class="n">res</span> <span class="o">=</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="p">(</span>
+                        <span class="n">rewrite_prompt</span><span class="p">,</span>
+                        <span class="n">structured_model</span><span class="o">=</span><span class="n">_QueryRewriteModel</span><span class="p">,</span>
+                    <span class="p">)</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">stream</span> <span class="o">=</span> <span class="n">stream_tmp</span>
+                    <span class="k">if</span> <span class="n">res</span><span class="o">.</span><span class="n">metadata</span> <span class="ow">and</span> <span class="n">res</span><span class="o">.</span><span class="n">metadata</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;rewritten_query&quot;</span><span class="p">):</span>
+                        <span class="n">query</span> <span class="o">=</span> <span class="n">res</span><span class="o">.</span><span class="n">metadata</span><span class="p">[</span><span class="s2">&quot;rewritten_query&quot;</span><span class="p">]</span>
+
+                <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+                    <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span>
+                        <span class="s2">&quot;Skipping the query rewriting due to error: </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span>
+                        <span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">),</span>
+                    <span class="p">)</span>
+
+            <span class="n">docs</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">Document</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="k">for</span> <span class="n">kb</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">knowledge</span><span class="p">:</span>
+                <span class="c1"># retrieve the user input query</span>
+                <span class="n">docs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span>
+                    <span class="k">await</span> <span class="n">kb</span><span class="o">.</span><span class="n">retrieve</span><span class="p">(</span><span class="n">query</span><span class="o">=</span><span class="n">query</span><span class="p">),</span>
+                <span class="p">)</span>
+            <span class="k">if</span> <span class="n">docs</span><span class="p">:</span>
+                <span class="c1"># Rerank by the relevance score</span>
+                <span class="n">docs</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span>
+                    <span class="n">docs</span><span class="p">,</span>
+                    <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">doc</span><span class="p">:</span> <span class="n">doc</span><span class="o">.</span><span class="n">score</span> <span class="ow">or</span> <span class="mf">0.0</span><span class="p">,</span>
+                    <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                <span class="p">)</span>
+                <span class="c1"># Prepare the retrieved knowledge string</span>
+                <span class="n">retrieved_msg</span> <span class="o">=</span> <span class="n">Msg</span><span class="p">(</span>
+                    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;user&quot;</span><span class="p">,</span>
+                    <span class="n">content</span><span class="o">=</span><span class="p">[</span>
+                        <span class="n">TextBlock</span><span class="p">(</span>
+                            <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;text&quot;</span><span class="p">,</span>
+                            <span class="n">text</span><span class="o">=</span><span class="p">(</span>
+                                <span class="s2">&quot;&lt;retrieved_knowledge&gt;Use the following &quot;</span>
+                                <span class="s2">&quot;content from the knowledge base(s) if it&#39;s &quot;</span>
+                                <span class="s2">&quot;helpful:</span><span class="se">\n</span><span class="s2">&quot;</span>
+                            <span class="p">),</span>
+                        <span class="p">),</span>
+                        <span class="o">*</span><span class="p">[</span><span class="n">_</span><span class="o">.</span><span class="n">metadata</span><span class="o">.</span><span class="n">content</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="n">docs</span><span class="p">],</span>
+                        <span class="n">TextBlock</span><span class="p">(</span>
+                            <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;text&quot;</span><span class="p">,</span>
+                            <span class="n">text</span><span class="o">=</span><span class="s2">&quot;&lt;/retrieved_knowledge&gt;&quot;</span><span class="p">,</span>
+                        <span class="p">),</span>
+                    <span class="p">],</span>
+                    <span class="n">role</span><span class="o">=</span><span class="s2">&quot;user&quot;</span><span class="p">,</span>
+                <span class="p">)</span>
+                <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">print_hint_msg</span><span class="p">:</span>
+                    <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">print</span><span class="p">(</span><span class="n">retrieved_msg</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
+                <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">memory</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">retrieved_msg</span><span class="p">)</span></div>
 
 </pre></div>
         </article>
