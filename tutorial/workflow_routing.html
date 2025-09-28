@@ -510,10 +510,10 @@ The structured output:
     &quot;input&quot;: {
         &quot;demand&quot;: &quot;a quick sort function&quot;
     },
-    &quot;id&quot;: &quot;call_854bbe97912d4a438bcd64&quot;
+    &quot;id&quot;: &quot;call_b60f73c670464641a66ca4&quot;
 }
-PythonAgent: Here is a simple implementation of the quick sort algorithm in Python:
-```python
+PythonAgent: Here is a Python implementation of the quick sort algorithm:
+
 def quick_sort(arr):
     if len(arr) &lt;= 1:
         return arr
@@ -523,20 +523,28 @@ def quick_sort(arr):
         middle = [x for x in arr if x == pivot]
         right = [x for x in arr if x &gt; pivot]
         return quick_sort(left) + middle + quick_sort(right)
+
+You can use this function to sort a list of numbers. For example:
+
+```python
+unsorted_list = [3, 6, 8, 10, 1, 2, 1]
+sorted_list = quick_sort(unsorted_list)
+print(sorted_list)
 ```
-You can use this function to sort a list of numbers. For example, `quick_sort([3, 6, 8, 10, 1, 2, 1])` will return a sorted list `[1, 1, 2, 3, 6, 8, 10]`. Would you like to see an alternative version or do you need help with anything else?
+This will output the sorted list.
 system: {
     &quot;type&quot;: &quot;tool_result&quot;,
-    &quot;id&quot;: &quot;call_854bbe97912d4a438bcd64&quot;,
+    &quot;id&quot;: &quot;call_b60f73c670464641a66ca4&quot;,
     &quot;name&quot;: &quot;generate_python&quot;,
     &quot;output&quot;: [
         {
             &quot;type&quot;: &quot;text&quot;,
-            &quot;text&quot;: &quot;Here is a simple implementation of the quick sort algorithm in Python:\n```python\ndef quick_sort(arr):\n    if len(arr) &lt;= 1:\n        return arr\n    else:\n        pivot = arr[len(arr) // 2]\n        left = [x for x in arr if x &lt; pivot]\n        middle = [x for x in arr if x == pivot]\n        right = [x for x in arr if x &gt; pivot]\n        return quick_sort(left) + middle + quick_sort(right)\n```\nYou can use this function to sort a list of numbers. For example, `quick_sort([3, 6, 8, 10, 1, 2, 1])` will return a sorted list `[1, 1, 2, 3, 6, 8, 10]`. Would you like to see an alternative version or do you need help with anything else?&quot;
+            &quot;text&quot;: &quot;Here is a Python implementation of the quick sort algorithm:\n\ndef quick_sort(arr):\n    if len(arr) &lt;= 1:\n        return arr\n    else:\n        pivot = arr[len(arr) // 2]\n        left = [x for x in arr if x &lt; pivot]\n        middle = [x for x in arr if x == pivot]\n        right = [x for x in arr if x &gt; pivot]\n        return quick_sort(left) + middle + quick_sort(right)\n\nYou can use this function to sort a list of numbers. For example:\n\n```python\nunsorted_list = [3, 6, 8, 10, 1, 2, 1]\nsorted_list = quick_sort(unsorted_list)\nprint(sorted_list)\n```\nThis will output the sorted list.&quot;
         }
     ]
 }
-Router: Here is a simple implementation of the quick sort algorithm in Python:
+Router: Here is a Python implementation of the quick sort algorithm:
+
 ```python
 def quick_sort(arr):
     if len(arr) &lt;= 1:
@@ -548,10 +556,18 @@ def quick_sort(arr):
         right = [x for x in arr if x &gt; pivot]
         return quick_sort(left) + middle + quick_sort(right)
 ```
-You can use this function to sort a list of numbers. For example, `quick_sort([3, 6, 8, 10, 1, 2, 1])` will return a sorted list `[1, 1, 2, 3, 6, 8, 10]`. Would you like to see an alternative version or do you need help with anything else?
+
+You can use this function to sort a list of numbers. For example:
+
+```python
+unsorted_list = [3, 6, 8, 10, 1, 2, 1]
+sorted_list = quick_sort(unsorted_list)
+print(sorted_list)
+```
+This will output the sorted list.
 </pre></div>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 22.034 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 17.688 seconds)</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-tutorial-workflow-routing-py">
 <div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
 <p><a class="reference download internal" download="" href="../_downloads/3266c75280f96697c4cc46d7d55a3ac8/workflow_routing.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">workflow_routing.ipynb</span></code></a></p>

@@ -330,7 +330,7 @@ In ``Toolkit``, the ``call_tool_function`` method takes a tool use block as inpu
  .. code-block:: none
 
     Tool Response:
-    ToolResponse(content=[{'type': 'text', 'text': "Searching for 'AgentScope' with API key 'xxx'"}], metadata=None, stream=False, is_last=True, is_interrupted=False, id='2025-09-28 12:22:35.871_9d3f6b')
+    ToolResponse(content=[{'type': 'text', 'text': "Searching for 'AgentScope' with API key 'xxx'"}], metadata=None, stream=False, is_last=True, is_interrupted=False, id='2025-09-28 12:32:03.952_3df772')
 
 
 
@@ -495,7 +495,7 @@ An example of async tool function that can be interrupted is as follows:
  .. code-block:: none
 
     Tool Response:
-    ToolResponse(content=[{'type': 'text', 'text': '<system-info>The tool call has been interrupted by the user.</system-info>'}], metadata=None, stream=True, is_last=True, is_interrupted=True, id='2025-09-28 12:22:36.875_9067b8')
+    ToolResponse(content=[{'type': 'text', 'text': '<system-info>The tool call has been interrupted by the user.</system-info>'}], metadata=None, stream=True, is_last=True, is_interrupted=True, id='2025-09-28 12:32:04.956_4227d4')
     The interrupted flag:
     True
 
@@ -510,7 +510,7 @@ By this way, the agent can observe what the tool has returned before the interru
 The example of interrupting a streaming tool function is as follows:
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 251-303
+.. GENERATED FROM PYTHON SOURCE LINES 251-304
 
 .. code-block:: Python
 
@@ -526,6 +526,7 @@ The example of interrupting a streaming tool function is as follows:
                     text="1234",
                 ),
             ],
+            stream=True,
         )
 
         # Simulate interruption
@@ -575,18 +576,18 @@ The example of interrupting a streaming tool function is as follows:
  .. code-block:: none
 
     Chunk 0:
-    ToolResponse(content=[{'type': 'text', 'text': '1234'}], metadata=None, stream=False, is_last=True, is_interrupted=False, id='2025-09-28 12:22:36.878_3080b0')
+    ToolResponse(content=[{'type': 'text', 'text': '1234'}], metadata=None, stream=True, is_last=True, is_interrupted=False, id='2025-09-28 12:32:04.959_f35e05')
     The interrupted flag:  False 
 
     Chunk 1:
-    ToolResponse(content=[{'type': 'text', 'text': '1234'}, {'type': 'text', 'text': '<system-info>The tool call has been interrupted by the user.</system-info>'}], metadata=None, stream=False, is_last=True, is_interrupted=True, id='2025-09-28 12:22:36.878_3080b0')
+    ToolResponse(content=[{'type': 'text', 'text': '1234'}, {'type': 'text', 'text': '<system-info>The tool call has been interrupted by the user.</system-info>'}], metadata=None, stream=True, is_last=True, is_interrupted=True, id='2025-09-28 12:32:04.959_f35e05')
     The interrupted flag:  True 
 
 
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 304-323
+.. GENERATED FROM PYTHON SOURCE LINES 305-324
 
 Automatic Tool Management
 -------------------------------------
@@ -608,7 +609,7 @@ Note there is a special group called ``basic``, which is always activated and th
 Now we try to create a tool group named ``browser_use``, which contains some web browsing tools.
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 323-364
+.. GENERATED FROM PYTHON SOURCE LINES 324-365
 
 .. code-block:: Python
 
@@ -660,11 +661,11 @@ Now we try to create a tool group named ``browser_use``, which contains some web
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 365-366
+.. GENERATED FROM PYTHON SOURCE LINES 366-367
 
 If we check the tools JSON schema, we can only see the ``execute_python_code`` tool, because the ``browser_use`` group is not activated yet:
 
-.. GENERATED FROM PYTHON SOURCE LINES 366-370
+.. GENERATED FROM PYTHON SOURCE LINES 367-371
 
 .. code-block:: Python
 
@@ -711,11 +712,11 @@ If we check the tools JSON schema, we can only see the ``execute_python_code`` t
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 371-372
+.. GENERATED FROM PYTHON SOURCE LINES 372-373
 
 Use the ``update_tool_groups`` method to activate or deactivate tool groups:
 
-.. GENERATED FROM PYTHON SOURCE LINES 372-378
+.. GENERATED FROM PYTHON SOURCE LINES 373-379
 
 .. code-block:: Python
 
@@ -802,14 +803,14 @@ Use the ``update_tool_groups`` method to activate or deactivate tool groups:
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 379-383
+.. GENERATED FROM PYTHON SOURCE LINES 380-384
 
 Additionally, ``Toolkit`` provides a meta tool function named ``reset_equipped_tools``, taking the current group names as the argument to indicate which groups to activate:
 
 .. note:: In ``ReActAgent`` class, you can enable the meta tool function by setting ``enable_meta_tool=True`` in the constructor.
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 383-401
+.. GENERATED FROM PYTHON SOURCE LINES 384-402
 
 .. code-block:: Python
 
@@ -861,13 +862,13 @@ Additionally, ``Toolkit`` provides a meta tool function named ``reset_equipped_t
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 402-405
+.. GENERATED FROM PYTHON SOURCE LINES 403-406
 
 When agent calls the ``reset_equipped_tools`` function, the corresponding tool groups will be activated, and the tool response will
 contain the notes of the activated tool groups.
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 405-428
+.. GENERATED FROM PYTHON SOURCE LINES 406-429
 
 .. code-block:: Python
 
@@ -903,19 +904,19 @@ contain the notes of the activated tool groups.
  .. code-block:: none
 
     Text content in tool Response:
-    ToolResponse(content=[{'type': 'text', 'text': "Active tool groups successfully: ['browser_user']. You MUST follow these notes to use the tools:\n<notes>## About browser_use Tools\n1. Use ``navigate`` to open a web page.\n2. When requiring user authentication, ask the user for the credentials\n3. ...</notes>"}], metadata=None, stream=False, is_last=True, is_interrupted=False, id='2025-09-28 12:22:36.887_1b2202')
+    ToolResponse(content=[{'type': 'text', 'text': "Active tool groups successfully: ['browser_user']. You MUST follow these notes to use the tools:\n<notes>## About browser_use Tools\n1. Use ``navigate`` to open a web page.\n2. When requiring user authentication, ask the user for the credentials\n3. ...</notes>"}], metadata=None, stream=False, is_last=True, is_interrupted=False, id='2025-09-28 12:32:04.966_ff092a')
 
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 429-433
+.. GENERATED FROM PYTHON SOURCE LINES 430-434
 
 The toolkit also provides a method to gather the notes of the activated tool groups, and you can assemble it into your agent's system prompt.
 
 .. tip:: The automatic tool management feature is already implemented in the ``ReActAgent`` class, refer to the :ref:`agent` section for more details.
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 433-446
+.. GENERATED FROM PYTHON SOURCE LINES 434-447
 
 .. code-block:: Python
 
@@ -952,7 +953,7 @@ The toolkit also provides a method to gather the notes of the activated tool gro
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 447-453
+.. GENERATED FROM PYTHON SOURCE LINES 448-454
 
 Further Reading
 ---------------------
@@ -964,7 +965,7 @@ Further Reading
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 1.023 seconds)
+   **Total running time of the script:** (0 minutes 1.020 seconds)
 
 
 .. _sphx_glr_download_tutorial_task_tool.py:
