@@ -270,6 +270,10 @@
 <li class="toctree-l1"><a class="reference internal" href="../api/agentscope.memory.html">agentscope.memory</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/agentscope.tool.html">agentscope.tool</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/agentscope.mcp.html">agentscope.mcp</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/agentscope.embedding.html">agentscope.embedding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/agentscope.evaluate.html">agentscope.evaluate</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/agentscope.plan.html">agentscope.plan</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/agentscope.rag.html">agentscope.rag</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/agentscope.token.html">agentscope.token</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/agentscope.tracing.html">agentscope.tracing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/agentscope.session.html">agentscope.session</a></li>
@@ -685,7 +689,7 @@ Alice: 我们一起去吧。
     <span class="c1"># 我们使用 huggingface token 计数器用于 dashscope 模型。</span>
     <span class="n">token_counter</span> <span class="o">=</span> <span class="n">HuggingFaceTokenCounter</span><span class="p">(</span>
         <span class="s2">&quot;Qwen/Qwen2.5-VL-3B-Instruct&quot;</span><span class="p">,</span>
-        <span class="n">use_mirror</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">use_mirror</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
     <span class="p">)</span>
 
     <span class="k">return</span> <span class="k">await</span> <span class="n">token_counter</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="n">formatted_message</span><span class="p">)</span>
@@ -704,7 +708,7 @@ Alice: 我们一起去吧。
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;带截断的消息格式化示例。&quot;&quot;&quot;</span>
     <span class="n">token_counter</span> <span class="o">=</span> <span class="n">HuggingFaceTokenCounter</span><span class="p">(</span>
         <span class="n">pretrained_model_name_or_path</span><span class="o">=</span><span class="s2">&quot;Qwen/Qwen2.5-VL-3B-Instruct&quot;</span><span class="p">,</span>
-        <span class="n">use_mirror</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">use_mirror</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
     <span class="p">)</span>
     <span class="n">formatter</span> <span class="o">=</span> <span class="n">DashScopeMultiAgentFormatter</span><span class="p">(</span>
         <span class="n">token_counter</span><span class="o">=</span><span class="n">token_counter</span><span class="p">,</span>
@@ -781,7 +785,7 @@ Charlie: 没有，我们问问 Friday 吧。Friday，帮我找到最近的图书
 <li><p><a class="reference internal" href="task_token.html#token"><span class="std std-ref">Token 计数</span></a></p></li>
 <li><p><a class="reference internal" href="task_model.html#model"><span class="std std-ref">模型</span></a></p></li>
 </ul>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 8.067 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 1.970 seconds)</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-tutorial-task-prompt-py">
 <div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
 <p><a class="reference download internal" download="" href="../_downloads/dfe7448b311839d65e0e1c6dc9aeb195/task_prompt.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">task_prompt.ipynb</span></code></a></p>

@@ -269,6 +269,10 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../api/agentscope.memory.html">agentscope.memory</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../api/agentscope.tool.html">agentscope.tool</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../api/agentscope.mcp.html">agentscope.mcp</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/agentscope.embedding.html">agentscope.embedding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/agentscope.evaluate.html">agentscope.evaluate</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/agentscope.plan.html">agentscope.plan</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/agentscope.rag.html">agentscope.rag</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../api/agentscope.token.html">agentscope.token</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../api/agentscope.tracing.html">agentscope.tracing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../api/agentscope.session.html">agentscope.session</a></li>
@@ -317,7 +321,7 @@
 <span class="sd">&quot;&quot;&quot;Functional counterpart for Pipeline&quot;&quot;&quot;</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">asyncio</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">copy</span><span class="w"> </span><span class="kn">import</span> <span class="n">deepcopy</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Any</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Any</span><span class="p">,</span> <span class="n">AsyncGenerator</span><span class="p">,</span> <span class="n">Tuple</span><span class="p">,</span> <span class="n">Coroutine</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">..agent</span><span class="w"> </span><span class="kn">import</span> <span class="n">AgentBase</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">..message</span><span class="w"> </span><span class="kn">import</span> <span class="n">Msg</span>
 
@@ -422,6 +426,74 @@
         <span class="k">return</span> <span class="k">await</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">gather</span><span class="p">(</span><span class="o">*</span><span class="n">tasks</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="k">return</span> <span class="p">[</span><span class="k">await</span> <span class="n">agent</span><span class="p">(</span><span class="n">deepcopy</span><span class="p">(</span><span class="n">msg</span><span class="p">),</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="k">for</span> <span class="n">agent</span> <span class="ow">in</span> <span class="n">agents</span><span class="p">]</span></div>
+
+
+
+<div class="viewcode-block" id="stream_printing_messages">
+<a class="viewcode-back" href="../../../api/agentscope.pipeline.html#agentscope.pipeline.stream_printing_messages">[文档]</a>
+<span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">stream_printing_messages</span><span class="p">(</span>
+    <span class="n">agents</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">AgentBase</span><span class="p">],</span>
+    <span class="n">coroutine_task</span><span class="p">:</span> <span class="n">Coroutine</span><span class="p">,</span>
+    <span class="n">end_signal</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;[END]&quot;</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">AsyncGenerator</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="n">Msg</span><span class="p">,</span> <span class="nb">bool</span><span class="p">],</span> <span class="kc">None</span><span class="p">]:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;This pipeline will gather the printing messages from agents when</span>
+<span class="sd">    execute the given coroutine task, and yield them one by one.</span>
+<span class="sd">    Only the messages that are printed by `await self.print(msg)` in the agent</span>
+<span class="sd">    will be forwarded to the message queue and yielded by this pipeline.</span>
+
+<span class="sd">    .. note:: The boolean in the yielded tuple indicates whether the message</span>
+<span class="sd">     is the last **chunk** for a streaming message, not the last message</span>
+<span class="sd">     returned by the agent. That means, there&#39;ll be multiple tuples with</span>
+<span class="sd">     `is_last_chunk=True` if the agent prints multiple messages.</span>
+
+<span class="sd">    .. note:: The messages with the same ``id`` is considered as the same</span>
+<span class="sd">     message, e.g., the chunks of a streaming message.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        agents (`list[AgentBase]`):</span>
+<span class="sd">            A list of agents whose printing messages will be gathered and</span>
+<span class="sd">            yielded.</span>
+<span class="sd">        coroutine_task (`Coroutine`):</span>
+<span class="sd">            The coroutine task to be executed. This task should involve the</span>
+<span class="sd">            execution of the provided agents, so that their printing messages</span>
+<span class="sd">            can be captured and yielded.</span>
+<span class="sd">        end_signal (`str`, defaults to `&quot;[END]&quot;`):</span>
+<span class="sd">            A special signal to indicate the end of message streaming. When</span>
+<span class="sd">            this signal is received from the message queue, the generator will</span>
+<span class="sd">            stop yielding messages and exit the loop.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        `AsyncGenerator[Tuple[Msg, bool], None]`:</span>
+<span class="sd">            An async generator that yields tuples of (message, is_last_chunk).</span>
+<span class="sd">            The `is_last_chunk` boolean indicates whether the message is the</span>
+<span class="sd">            last chunk in a streaming message.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1"># Enable the message queue to get the intermediate messages</span>
+    <span class="n">queue</span> <span class="o">=</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">Queue</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">agent</span> <span class="ow">in</span> <span class="n">agents</span><span class="p">:</span>
+        <span class="c1"># Use one queue to gather messages from all agents</span>
+        <span class="n">agent</span><span class="o">.</span><span class="n">set_msg_queue_enabled</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">queue</span><span class="p">)</span>
+
+    <span class="c1"># Execute the agent asynchronously</span>
+    <span class="n">task</span> <span class="o">=</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">create_task</span><span class="p">(</span><span class="n">coroutine_task</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">task</span><span class="o">.</span><span class="n">done</span><span class="p">():</span>
+        <span class="k">await</span> <span class="n">queue</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="n">end_signal</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">task</span><span class="o">.</span><span class="n">add_done_callback</span><span class="p">(</span><span class="k">lambda</span> <span class="n">_</span><span class="p">:</span> <span class="n">queue</span><span class="o">.</span><span class="n">put_nowait</span><span class="p">(</span><span class="n">end_signal</span><span class="p">))</span>
+
+    <span class="c1"># Receive the messages from the agent&#39;s message queue</span>
+    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="c1"># The message obj, and a boolean indicating whether it&#39;s the last chunk</span>
+        <span class="c1"># in a streaming message</span>
+        <span class="n">printing_msg</span> <span class="o">=</span> <span class="k">await</span> <span class="n">queue</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+
+        <span class="c1"># End the loop when the message is None</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">printing_msg</span><span class="p">,</span> <span class="nb">str</span><span class="p">)</span> <span class="ow">and</span> <span class="n">printing_msg</span> <span class="o">==</span> <span class="n">end_signal</span><span class="p">:</span>
+            <span class="k">break</span>
+
+        <span class="k">yield</span> <span class="n">printing_msg</span></div>
 
 </pre></div>
         </article>

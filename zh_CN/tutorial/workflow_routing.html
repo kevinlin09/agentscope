@@ -270,6 +270,10 @@
 <li class="toctree-l1"><a class="reference internal" href="../api/agentscope.memory.html">agentscope.memory</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/agentscope.tool.html">agentscope.tool</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/agentscope.mcp.html">agentscope.mcp</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/agentscope.embedding.html">agentscope.embedding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/agentscope.evaluate.html">agentscope.evaluate</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/agentscope.plan.html">agentscope.plan</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/agentscope.rag.html">agentscope.rag</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/agentscope.token.html">agentscope.token</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/agentscope.tracing.html">agentscope.tracing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/agentscope.session.html">agentscope.session</a></li>
@@ -403,7 +407,7 @@ to download the full example code.</p>
 <span class="n">asyncio</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">example_router_explicit</span><span class="p">())</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Router: 好的，我将帮您创作一首诗。
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Router: 好的，我将为您创作一首诗。
 结构化输出：
 {
     &quot;your_choice&quot;: &quot;Content Generation&quot;,
@@ -506,9 +510,9 @@ to download the full example code.</p>
     &quot;input&quot;: {
         &quot;demand&quot;: &quot;需要一个快速排序函数&quot;
     },
-    &quot;id&quot;: &quot;call_91e52d2db1674bd19b47ce&quot;
+    &quot;id&quot;: &quot;call_997c45ea8b5f4a8ca11bc4&quot;
 }
-PythonAgent: 这是一个使用 Python 编写的快速排序函数。快速排序是一种高效的排序算法，它使用了分而治之的策略来递归地把数组分成更小的部分来进行排序。
+PythonAgent: 这是一个使用Python实现的快速排序算法的函数。快速排序是一种高效的排序算法，它使用了分治策略来递归地将列表分成更小的部分来进行排序。
 
 ```python
 def quicksort(arr):
@@ -520,25 +524,31 @@ def quicksort(arr):
         middle = [x for x in arr if x == pivot]
         right = [x for x in arr if x &gt; pivot]
         return quicksort(left) + middle + quicksort(right)
-
-# 示例
-print(quicksort([3,6,8,10,1,2,1]))
-# 输出: [1, 1, 2, 3, 6, 8, 10]
 ```
 
-这个函数首先检查输入数组 `arr` 的长度。如果长度小于等于 1，那么就直接返回数组，因为它已经是排好序的（或者为空）。然后选择一个基准值 `pivot`，通常选择数组中间位置的元素。接着创建两个列表，一个用来存储所有比 `pivot` 小的元素，另一个用来存储所有比 `pivot` 大的元素。最后，对这两个列表进行递归排序，并将结果与包含所有等于 `pivot` 的元素的列表连接起来。
+你可以使用这个`quicksort`函数来对一个整数列表进行排序。例如:
+
+```python
+unsorted_list = [3, 6, 8, 10, 1, 2, 1]
+sorted_list = quicksort(unsorted_list)
+print(sorted_list)
+```
+
+这将会输出排序后的列表。
 system: {
     &quot;type&quot;: &quot;tool_result&quot;,
-    &quot;id&quot;: &quot;call_91e52d2db1674bd19b47ce&quot;,
+    &quot;id&quot;: &quot;call_997c45ea8b5f4a8ca11bc4&quot;,
     &quot;name&quot;: &quot;generate_python&quot;,
     &quot;output&quot;: [
         {
             &quot;type&quot;: &quot;text&quot;,
-            &quot;text&quot;: &quot;这是一个使用 Python 编写的快速排序函数。快速排序是一种高效的排序算法，它使用了分而治之的策略来递归地把数组分成更小的部分来进行排序。\n\n```python\ndef quicksort(arr):\n    if len(arr) &lt;= 1:\n        return arr\n    else:\n        pivot = arr[len(arr) // 2]\n        left = [x for x in arr if x &lt; pivot]\n        middle = [x for x in arr if x == pivot]\n        right = [x for x in arr if x &gt; pivot]\n        return quicksort(left) + middle + quicksort(right)\n\n# 示例\nprint(quicksort([3,6,8,10,1,2,1]))\n# 输出: [1, 1, 2, 3, 6, 8, 10]\n```\n\n这个函数首先检查输入数组 `arr` 的长度。如果长度小于等于 1，那么就直接返回数组，因为它已经是排好序的（或者为空）。然后选择一个基准值 `pivot`，通常选择数组中间位置的元素。接着创建两个列表，一个用来存储所有比 `pivot` 小的元素，另一个用来存储所有比 `pivot` 大的元素。最后，对这两个列表进行递归排序，并将结果与包含所有等于 `pivot` 的元素的列表连接起来。&quot;
+            &quot;text&quot;: &quot;这是一个使用Python实现的快速排序算法的函数。快速排序是一种高效的排序算法，它使用了分治策略来递归地将列表分成更小的部分来进行排序。\n\n```python\ndef quicksort(arr):\n    if len(arr) &lt;= 1:\n        return arr\n    else:\n        pivot = arr[len(arr) // 2]\n        left = [x for x in arr if x &lt; pivot]\n        middle = [x for x in arr if x == pivot]\n        right = [x for x in arr if x &gt; pivot]\n        return quicksort(left) + middle + quicksort(right)\n```\n\n你可以使用这个`quicksort`函数来对一个整数列表进行排序。例如:\n\n```python\nunsorted_list = [3, 6, 8, 10, 1, 2, 1]\nsorted_list = quicksort(unsorted_list)\nprint(sorted_list)\n```\n\n这将会输出排序后的列表。&quot;
         }
     ]
 }
-Router: 这是一个使用 Python 编写的快速排序函数。快速排序是一种高效的排序算法，它采用了分而治之的策略来递归地将数组分成更小的部分来进行排序。
+Router: 这是一个使用 Python 实现的快速排序算法的函数。快速排序是一种高效的排序算法，它采用了分治策略来递归地将列表分割成更小的部分进行排序。
+
+这里是提供的快速排序函数代码：
 
 ```python
 def quicksort(arr):
@@ -550,16 +560,20 @@ def quicksort(arr):
         middle = [x for x in arr if x == pivot]
         right = [x for x in arr if x &gt; pivot]
         return quicksort(left) + middle + quicksort(right)
-
-# 示例
-print(quicksort([3,6,8,10,1,2,1]))
-# 输出: [1, 1, 2, 3, 6, 8, 10]
 ```
 
-这个函数首先检查输入数组 `arr` 的长度。如果长度小于等于 1，则直接返回数组，因为它已经是排好序的（或者为空）。然后选择一个基准值 `pivot`，通常选取数组中间位置的元素。接着创建两个列表，一个用来存储所有比 `pivot` 小的元素，另一个用来存储所有比 `pivot` 大的元素。最后，对这两个列表进行递归排序，并将结果与包含所有等于 `pivot` 的元素的列表连接起来。你可以使用这个函数对你自己的数据进行排序。
+你可以用这个 `quicksort` 函数对整数列表进行排序。例如:
+
+```python
+unsorted_list = [3, 6, 8, 10, 1, 2, 1]
+sorted_list = quicksort(unsorted_list)
+print(sorted_list)
+```
+
+执行这段代码将会输出排序后的列表。希望这对你有帮助！如果你有任何其他问题，请告诉我。
 </pre></div>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 24.353 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 21.277 seconds)</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-tutorial-workflow-routing-py">
 <div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
 <p><a class="reference download internal" download="" href="../_downloads/3266c75280f96697c4cc46d7d55a3ac8/workflow_routing.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">workflow_routing.ipynb</span></code></a></p>

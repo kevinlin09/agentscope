@@ -29,8 +29,9 @@
 - **MsgHub**: 用于多个智能体之间消息的广播
 - **sequential_pipeline** 和 **SequentialPipeline**: 以顺序方式执行多个智能体的函数式和类式实现
 - **fanout_pipeline** 和 **FanoutPipeline**: 将相同输入分发给多个智能体的函数式和类式实现
+- **stream_printing_messages**: 将智能体在回复过程中，调用 ``self.print`` 打印的消息转换为一个异步生成器
 
-.. GENERATED FROM PYTHON SOURCE LINES 16-25
+.. GENERATED FROM PYTHON SOURCE LINES 17-27
 
 .. code-block:: Python
 
@@ -41,7 +42,7 @@
     from agentscope.message import Msg
     from agentscope.model import DashScopeChatModel
     from agentscope.agent import ReActAgent
-    from agentscope.pipeline import MsgHub
+    from agentscope.pipeline import MsgHub, stream_printing_messages
 
 
 
@@ -50,7 +51,8 @@
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 26-36
+
+.. GENERATED FROM PYTHON SOURCE LINES 28-38
 
 使用 MsgHub 进行广播
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -63,7 +65,7 @@
 然后我们让 Alice、Bob 和 Charlie 通过自我介绍开始一个会议。需要注意的是 David 没有包含在这个会议中。
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 36-56
+.. GENERATED FROM PYTHON SOURCE LINES 38-58
 
 .. code-block:: Python
 
@@ -94,14 +96,14 @@
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 57-61
+.. GENERATED FROM PYTHON SOURCE LINES 59-63
 
 然后我们创建一个 ``MsgHub`` 上下文，并让他们自我介绍:
 
 .. hint:: ``announcement`` 中的消息将在进入 ``MsgHub`` 上下文时广播给所有参与者。
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 61-83
+.. GENERATED FROM PYTHON SOURCE LINES 63-85
 
 .. code-block:: Python
 
@@ -135,19 +137,19 @@
 
  .. code-block:: none
 
-    Alice: 您好，我叫Alice，今年50岁，是一名教师。很高兴认识您！
+    Alice: 您好，我叫Alice，今年50岁了，是一名教师。很高兴认识您！
     Bob: 您好，我叫Bob，今年35岁，是一名工程师。很高兴认识你，Alice！
     Charlie: 您好，我叫Charlie，今年28岁，是一名设计师。很高兴认识你们两位！
 
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 84-86
+.. GENERATED FROM PYTHON SOURCE LINES 86-88
 
 现在让我们检查 Bob、Charlie 和 David 是否收到了 Alice 的消息。
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 86-103
+.. GENERATED FROM PYTHON SOURCE LINES 88-105
 
 .. code-block:: Python
 
@@ -176,14 +178,14 @@
 
  .. code-block:: none
 
-    Bob: Alice 是我们刚刚提到的一位50岁的教师。她是我们这个对话中的一员。
-    Charlie: Alice 是一位50岁的教师。她之前介绍过自己，我们都是刚刚互相认识的。
-    David: 您提到的Alice可能是指很多不同的人，因为这是一个常见的名字。如果您能提供更多背景信息，比如她的全名、职业或者她所处的领域，我就能给您提供更准确的信息。
+    Bob: Alice是一位50岁的教师。我们在之前的对话中已经互相介绍过了。
+    Charlie: Alice 是一位50岁的教师。我们在之前的对话中已经互相介绍过了。
+    David: Alice 这个名字很常见，可能指很多人。如果您能提供更多的信息，比如她的职业或她所在的领域，我可以帮助您找到更准确的信息。
 
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 104-170
+.. GENERATED FROM PYTHON SOURCE LINES 106-173
 
 现在我们观察到 Bob 和 Charlie 知道 Alice 和她的职业，而 David 对
 Alice 一无所知，因为他没有包含在 ``MsgHub`` 上下文中。
@@ -218,10 +220,11 @@ Alice 一无所知，因为他没有包含在 ``MsgHub`` 上下文中。
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 管道是 AgentScope 中多智能体编排的一种语法糖。
 
-目前，AgentScope 提供了两种主要的管道实现：
+目前，AgentScope 提供三种管道，用于减轻开发者的负担：
 
 1. **顺序管道 (Sequential Pipeline)**: 按预定义顺序逐个执行智能体
 2. **扇出管道 (Fanout Pipeline)**: 将相同输入分发给多个智能体并收集它们的响应
+3. **流式获取打印消息 (stream printing messages)**: 将智能体在回复过程中，调用 ``self.print`` 打印的消息转换为一个异步生成器
 
 顺序管道
 ------------------------
@@ -252,7 +255,7 @@ Alice 一无所知，因为他没有包含在 ``MsgHub`` 上下文中。
     )
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 172-212
+.. GENERATED FROM PYTHON SOURCE LINES 175-215
 
 扇出管道
 ------------------------
@@ -295,7 +298,68 @@ Alice 一无所知，因为他没有包含在 ``MsgHub`` 上下文中。
 .. tip::
     通过结合 ``MsgHub`` 和 ``sequential_pipeline`` 或 ``fanout_pipeline``，你可以非常容易地创建更复杂的工作流。
 
-.. GENERATED FROM PYTHON SOURCE LINES 214-248
+.. GENERATED FROM PYTHON SOURCE LINES 217-226
+
+流式获取打印消息
+------------------------
+``stream_printing_messages`` 函数将智能体在回复过程中调用 ``self.print`` 打印的消息转换为一个异步生成器。
+可以帮助开发者快速以流式方式获取智能体的中间消息。
+
+该函数接受一个或多个智能体和一个协程任务作为输入，并返回一个异步生成器。
+该异步生成器返回一个二元组，包含执行协程任务过程中通过 ``await self.print(...)`` 打印的消息，以及一个布尔值，表示该消息是否为一组流式消息中的最后一个。
+
+需要注意的是，生成器返回的元组中，布尔值表示该消息是否为一组流式消息中的最后一个，而非此次智能体调用的最后一条消息。
+
+.. GENERATED FROM PYTHON SOURCE LINES 226-249
+
+.. code-block:: Python
+
+
+
+    async def run_example_pipeline() -> None:
+        """运行流式打印消息的示例。"""
+        agent = create_agent("Alice", 20, "student")
+
+        # 我们关闭agent的终端打印以避免输出混乱
+        agent.set_console_output_enabled(False)
+
+        async for msg, last in stream_printing_messages(
+            agents=[agent],
+            coroutine_task=agent(
+                Msg("user", "你好，你是谁？", "user"),
+            ),
+        ):
+            print(msg, last)
+            if last:
+                print()
+
+
+    asyncio.run(run_example_pipeline())
+
+
+
+
+
+
+.. rst-class:: sphx-glr-script-out
+
+ .. code-block:: none
+
+    Msg(id='LSwbgdRahCb4ZmzxnjohqL', name='Alice', content=[{'type': 'text', 'text': '你好'}], role='assistant', metadata=None, timestamp='2025-09-28 12:24:49.599', invocation_id='None') False
+    Msg(id='LSwbgdRahCb4ZmzxnjohqL', name='Alice', content=[{'type': 'text', 'text': '你好！我'}], role='assistant', metadata=None, timestamp='2025-09-28 12:24:49.599', invocation_id='None') False
+    Msg(id='LSwbgdRahCb4ZmzxnjohqL', name='Alice', content=[{'type': 'text', 'text': '你好！我叫'}], role='assistant', metadata=None, timestamp='2025-09-28 12:24:49.599', invocation_id='None') False
+    Msg(id='LSwbgdRahCb4ZmzxnjohqL', name='Alice', content=[{'type': 'text', 'text': '你好！我叫Alice，是一个'}], role='assistant', metadata=None, timestamp='2025-09-28 12:24:49.599', invocation_id='None') False
+    Msg(id='LSwbgdRahCb4ZmzxnjohqL', name='Alice', content=[{'type': 'text', 'text': '你好！我叫Alice，是一个20岁的学生'}], role='assistant', metadata=None, timestamp='2025-09-28 12:24:49.599', invocation_id='None') False
+    Msg(id='LSwbgdRahCb4ZmzxnjohqL', name='Alice', content=[{'type': 'text', 'text': '你好！我叫Alice，是一个20岁的学生。很高兴认识你！'}], role='assistant', metadata=None, timestamp='2025-09-28 12:24:49.599', invocation_id='None') False
+    Msg(id='LSwbgdRahCb4ZmzxnjohqL', name='Alice', content=[{'type': 'text', 'text': '你好！我叫Alice，是一个20岁的学生。很高兴认识你！我们聊点什么呢？'}], role='assistant', metadata=None, timestamp='2025-09-28 12:24:49.599', invocation_id='None') False
+    Msg(id='LSwbgdRahCb4ZmzxnjohqL', name='Alice', content=[{'type': 'text', 'text': '你好！我叫Alice，是一个20岁的学生。很高兴认识你！我们聊点什么呢？'}], role='assistant', metadata=None, timestamp='2025-09-28 12:24:49.599', invocation_id='None') False
+    Msg(id='LSwbgdRahCb4ZmzxnjohqL', name='Alice', content=[{'id': '2Lp9dNtHSz8iHwqPYtZhgw', 'type': 'tool_use', 'name': 'generate_response', 'input': {'response': '你好！我叫Alice，是一个20岁的学生。很高兴认识你！我们聊点什么呢？'}}], role='assistant', metadata=None, timestamp='2025-09-28 12:24:49.599', invocation_id='None') True
+
+
+
+
+
+.. GENERATED FROM PYTHON SOURCE LINES 250-284
 
 高级管道特性
 ~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -335,7 +399,7 @@ Alice 一无所知，因为他没有包含在 ``MsgHub`` 上下文中。
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 13.881 seconds)
+   **Total running time of the script:** (0 minutes 17.700 seconds)
 
 
 .. _sphx_glr_download_tutorial_task_pipeline.py:
