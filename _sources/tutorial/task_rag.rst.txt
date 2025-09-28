@@ -328,9 +328,9 @@ They can be used as follows:
  .. code-block:: none
 
     Retrieved Documents:
-    Document(metadata=DocMetadata(content={'type': 'text', 'text': "My father is Michael Doe, a doctor. I'm very proud of him. My mother is Sarah Doe, a teacher. She is very kind and always helps me with my studies."}, doc_id='84d9740607155242357481c1cd8eb8001a986cda3665aaac33329ab235458168', chunk_id=2, total_chunks=5), id='DGakv8uVvo9BhGDDD3SWBr', embedding=None, score=0.5657136536003619) 
+    Document(metadata=DocMetadata(content={'type': 'text', 'text': "My father is Michael Doe, a doctor. I'm very proud of him. My mother is Sarah Doe, a teacher. She is very kind and always helps me with my studies."}, doc_id='84d9740607155242357481c1cd8eb8001a986cda3665aaac33329ab235458168', chunk_id=2, total_chunks=5), id='kXAe656WWjgkvDkwZ66oBt', embedding=None, score=0.5657136536003619) 
 
-    Document(metadata=DocMetadata(content={'type': 'text', 'text': "I'm John Doe, 28 years old."}, doc_id='84d9740607155242357481c1cd8eb8001a986cda3665aaac33329ab235458168', chunk_id=0, total_chunks=5), id='6gs6QWPKZFT2zJk6oyRNef', embedding=None, score=0.5062624400117309) 
+    Document(metadata=DocMetadata(content={'type': 'text', 'text': "I'm John Doe, 28 years old."}, doc_id='84d9740607155242357481c1cd8eb8001a986cda3665aaac33329ab235458168', chunk_id=0, total_chunks=5), id='MApSDiXfjHxNjGGhtAJaGZ', embedding=None, score=0.5062624400117309) 
 
 
 
@@ -452,50 +452,48 @@ and providing a proper description for the tool.
  .. code-block:: none
 
     The first response: 
-    Friday: That's great! It's wonderful to have a best friend. How long have you and John Doe been friends? Do you have any special memories or activities that you two enjoy doing together?
+    Friday: That's great! It's wonderful to have a best friend. How long have you and John Doe been friends? Do you have any special memories or activities that you two enjoy together?
 
 
     The second response: 
-    Friday: I don't have that information at hand. Let me find out who John Doe's father is.
-    {
+    Friday: {
         "type": "tool_use",
-        "id": "call_8e200269ce7b43f1822d4f",
+        "id": "call_8b1932e7dd334526850978",
         "name": "retrieve_knowledge",
         "input": {
-            "query": "John Doe",
+            "query": "John Doe father",
             "limit": 5,
             "score_threshold": null
         }
     }
-
     system: {
         "type": "tool_result",
-        "id": "call_8e200269ce7b43f1822d4f",
+        "id": "call_8b1932e7dd334526850978",
         "name": "retrieve_knowledge",
         "output": [
             {
                 "type": "text",
-                "text": "Score: 0.6098412253895376, Content: I'm John Doe, 28 years old."
+                "text": "Score: 0.5653893900693138, Content: My father is Michael Doe, a doctor. I'm very proud of him. My mother is Sarah Doe, a teacher. She is very kind and always helps me with my studies."
             },
             {
                 "type": "text",
-                "text": "Score: 0.3938524395960227, Content: My father is Michael Doe, a doctor. I'm very proud of him. My mother is Sarah Doe, a teacher. She is very kind and always helps me with my studies."
+                "text": "Score: 0.4790107771624694, Content: I'm John Doe, 28 years old."
             },
             {
                 "type": "text",
-                "text": "Score: 0.3635699434462709, Content: My best friend is James Smith."
+                "text": "Score: 0.2473851245249162, Content: My best friend is James Smith."
             },
             {
                 "type": "text",
-                "text": "Score: 0.2941496002117967, Content: I live in San Francisco. I work at OpenAI as a software engineer. I love hiking and photography."
+                "text": "Score: 0.15979023413058244, Content: I live in San Francisco. I work at OpenAI as a software engineer. I love hiking and photography."
             },
             {
                 "type": "text",
-                "text": "Score: 0.24602470400550217, Content: I'm now a PhD student at Stanford University, majoring in Computer Science. My advisor is Prof. Jane Williams, who is a leading expert in artificial intelligence. I have published several papers in top conferences, such as NeurIPS and ICML."
+                "text": "Score: 0.15195164753879928, Content: I'm now a PhD student at Stanford University, majoring in Computer Science. My advisor is Prof. Jane Williams, who is a leading expert in artificial intelligence. I have published several papers in top conferences, such as NeurIPS and ICML."
             }
         ]
     }
-    Friday: According to the information I found, John Doe's father is Michael Doe, and he is a doctor. Would you like to know more about John or his family?
+    Friday: According to the information I found, John Doe's father is Michael Doe, who is a doctor. Would you like to know more about John or his family?
 
 
 
@@ -676,7 +674,7 @@ The example is the same as before, just using the ``ImageReader`` and
     Friday: Your name is Tony Stank.
 
     The image is attached in the agent's memory:
-    Msg(id='kmBEREApDgLoWhLeLYgRcD', name='user', content=[{'type': 'text', 'text': "<retrieved_knowledge>Use the following content from the knowledge base(s) if it's helpful:\n"}, {'type': 'image', 'source': {'type': 'url', 'url': './example.jpg'}}, {'type': 'text', 'text': '</retrieved_knowledge>'}], role='user', metadata=None, timestamp='2025-09-27 13:36:31.639', invocation_id='None')
+    Msg(id='B2hiYgWnu4jxmb6hHmqwVa', name='user', content=[{'type': 'text', 'text': "<retrieved_knowledge>Use the following content from the knowledge base(s) if it's helpful:\n"}, {'type': 'image', 'source': {'type': 'url', 'url': './example.jpg'}}, {'type': 'text', 'text': '</retrieved_knowledge>'}], role='user', metadata=None, timestamp='2025-09-28 12:22:32.052', invocation_id='None')
 
 
 
@@ -689,7 +687,7 @@ image.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 27.773 seconds)
+   **Total running time of the script:** (0 minutes 25.327 seconds)
 
 
 .. _sphx_glr_download_tutorial_task_rag.py:

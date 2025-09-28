@@ -270,6 +270,10 @@
 <li class="toctree-l1"><a class="reference internal" href="agentscope.memory.html">agentscope.memory</a></li>
 <li class="toctree-l1"><a class="reference internal" href="agentscope.tool.html">agentscope.tool</a></li>
 <li class="toctree-l1"><a class="reference internal" href="agentscope.mcp.html">agentscope.mcp</a></li>
+<li class="toctree-l1"><a class="reference internal" href="agentscope.embedding.html">agentscope.embedding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="agentscope.evaluate.html">agentscope.evaluate</a></li>
+<li class="toctree-l1"><a class="reference internal" href="agentscope.plan.html">agentscope.plan</a></li>
+<li class="toctree-l1"><a class="reference internal" href="agentscope.rag.html">agentscope.rag</a></li>
 <li class="toctree-l1"><a class="reference internal" href="agentscope.token.html">agentscope.token</a></li>
 <li class="toctree-l1"><a class="reference internal" href="agentscope.tracing.html">agentscope.tracing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="agentscope.session.html">agentscope.session</a></li>
@@ -604,6 +608,49 @@ If False, agents are executed sequentially.</p></li>
 </dl>
 </dd></dl>
 
+<dl class="py function">
+<dt class="sig sig-object py" id="agentscope.pipeline.stream_printing_messages">
+<em class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">stream_printing_messages</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">agents</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">coroutine_task</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">end_signal</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'[END]'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/agentscope/pipeline/_functional.html#stream_printing_messages"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentscope.pipeline.stream_printing_messages" title="Link to this definition">¶</a></dt>
+<dd><p>This pipeline will gather the printing messages from agents when
+execute the given coroutine task, and yield them one by one.
+Only the messages that are printed by <cite>await self.print(msg)</cite> in the agent
+will be forwarded to the message queue and yielded by this pipeline.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The boolean in the yielded tuple indicates whether the message
+is the last <strong>chunk</strong> for a streaming message, not the last message
+returned by the agent. That means, there’ll be multiple tuples with
+<cite>is_last_chunk=True</cite> if the agent prints multiple messages.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The messages with the same <code class="docutils literal notranslate"><span class="pre">id</span></code> is considered as the same
+message, e.g., the chunks of a streaming message.</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>agents</strong> (<cite>list[AgentBase]</cite>) – A list of agents whose printing messages will be gathered and
+yielded.</p></li>
+<li><p><strong>coroutine_task</strong> (<cite>Coroutine</cite>) – The coroutine task to be executed. This task should involve the
+execution of the provided agents, so that their printing messages
+can be captured and yielded.</p></li>
+<li><p><strong>end_signal</strong> (<cite>str</cite>, defaults to <cite>“[END]”</cite>) – A special signal to indicate the end of message streaming. When
+this signal is received from the message queue, the generator will
+stop yielding messages and exit the loop.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>An async generator that yields tuples of (message, is_last_chunk).
+The <cite>is_last_chunk</cite> boolean indicates whether the message is the
+last chunk in a streaming message.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><cite>AsyncGenerator[Tuple[Msg, bool], None]</cite></p>
+</dd>
+</dl>
+</dd></dl>
+
 </section>
 
         </article>
@@ -682,6 +729,7 @@ If False, agents are executed sequentially.</p></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#agentscope.pipeline.fanout_pipeline"><code class="docutils literal notranslate"><span class="pre">fanout_pipeline()</span></code></a></li>
+<li><a class="reference internal" href="#agentscope.pipeline.stream_printing_messages"><code class="docutils literal notranslate"><span class="pre">stream_printing_messages()</span></code></a></li>
 </ul>
 </li>
 </ul>

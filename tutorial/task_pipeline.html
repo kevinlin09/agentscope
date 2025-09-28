@@ -270,6 +270,10 @@
 <li class="toctree-l1"><a class="reference internal" href="../api/agentscope.memory.html">agentscope.memory</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/agentscope.tool.html">agentscope.tool</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/agentscope.mcp.html">agentscope.mcp</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/agentscope.embedding.html">agentscope.embedding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/agentscope.evaluate.html">agentscope.evaluate</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/agentscope.plan.html">agentscope.plan</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/agentscope.rag.html">agentscope.rag</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/agentscope.token.html">agentscope.token</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/agentscope.tracing.html">agentscope.tracing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/agentscope.session.html">agentscope.session</a></li>
@@ -332,6 +336,7 @@ as syntax sugar for chaining agents together, including</p>
 <li><p><strong>MsgHub</strong>: a message hub for broadcasting messages among multiple agents</p></li>
 <li><p><strong>sequential_pipeline</strong> and <strong>SequentialPipeline</strong>: a functional and class-based implementation that chains agents in a sequential manner</p></li>
 <li><p><strong>fanout_pipeline</strong> and <strong>FanoutPipeline</strong>: a functional and class-based implementation that distributes the same input to multiple agents</p></li>
+<li><p><strong>stream_printing_messages</strong>: a utility function that convert the printing messages from agent(s) into an async generator</p></li>
 </ul>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">os</span><span class="o">,</span><span class="w"> </span><span class="nn">asyncio</span>
 
@@ -339,7 +344,7 @@ as syntax sugar for chaining agents together, including</p>
 <span class="kn">from</span><span class="w"> </span><span class="nn">agentscope.message</span><span class="w"> </span><span class="kn">import</span> <span class="n">Msg</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">agentscope.model</span><span class="w"> </span><span class="kn">import</span> <span class="n">DashScopeChatModel</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">agentscope.agent</span><span class="w"> </span><span class="kn">import</span> <span class="n">ReActAgent</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">agentscope.pipeline</span><span class="w"> </span><span class="kn">import</span> <span class="n">MsgHub</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">agentscope.pipeline</span><span class="w"> </span><span class="kn">import</span> <span class="n">MsgHub</span><span class="p">,</span> <span class="n">stream_printing_messages</span>
 </pre></div>
 </div>
 <section id="broadcasting-with-msghub">
@@ -396,9 +401,9 @@ Note David is not included in this meeting.</p>
 <span class="n">asyncio</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">example_broadcast_message</span><span class="p">())</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Alice: Hello, I&#39;m Alice, a 50-year-old teacher with a passion for education and fostering young minds.
-Bob: Hello, I&#39;m Bob, a 35-year-old engineer with a knack for solving complex problems and designing innovative solutions.
-Charlie: Hello, I&#39;m Charlie, a 28-year-old designer with a creative flair for bringing ideas to life through visual and interactive designs.
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Alice: Hello, I&#39;m Alice, a 50-year-old teacher with a passion for helping students learn and grow.
+Bob: Hello, I&#39;m Bob, a 35-year-old engineer who enjoys solving complex problems and designing innovative solutions.
+Charlie: Hello, I&#39;m Charlie, a 28-year-old designer who loves creating visually appealing and functional designs.
 </pre></div>
 </div>
 <p>Now let’s check if Bob, Charlie and David received Alice’s message.</p>
@@ -418,9 +423,9 @@ Charlie: Hello, I&#39;m Charlie, a 28-year-old designer with a creative flair fo
 <span class="n">asyncio</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">check_broadcast_message</span><span class="p">())</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Bob: Alice is a 50-year-old teacher who is passionate about education and fostering young minds.
-Charlie: Alice is a 50-year-old teacher who is passionate about education and nurturing young minds.
-David: I don&#39;t have specific information about an Alice you&#39;re referring to, as there could be many people with that name. Could you provide more context or details about which Alice you&#39;re asking about?
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Bob: Alice is a 50-year-old teacher who is passionate about helping students learn and grow.
+Charlie: Alice is a 50-year-old teacher who is passionate about helping students learn and grow.
+David: I don&#39;t have specific information about an Alice without more context. Could you provide more details, such as where you heard about her or in what field she might be involved?
 </pre></div>
 </div>
 <p>Now we observe that Bob and Charlie know Alice and her profession, while David has no idea
@@ -455,10 +460,11 @@ about Alice since he is not included in the <code class="docutils literal notran
 <section id="id2">
 <h2>Pipeline<a class="headerlink" href="#id2" title="Link to this heading">¶</a></h2>
 <p>Pipeline serves as a syntax sugar for multi-agent orchestration.</p>
-<p>Currently, AgentScope provides two main pipeline implementations:</p>
+<p>Currently, AgentScope provides three main pipeline implementations:</p>
 <ol class="arabic simple">
 <li><p><strong>Sequential Pipeline</strong>: Execute agents one by one in a predefined order</p></li>
 <li><p><strong>Fanout Pipeline</strong>: Distribute the same input to multiple agents and collect their responses</p></li>
+<li><p><strong>Stream Printing Messages</strong>: Convert the printing messages from an agent into an async generator</p></li>
 </ol>
 <section id="sequential-pipeline">
 <h3>Sequential Pipeline<a class="headerlink" href="#sequential-pipeline" title="Link to this heading">¶</a></h3>
@@ -530,6 +536,44 @@ becomes the input of the next agent.</p>
 <p>By combining <code class="docutils literal notranslate"><span class="pre">MsgHub</span></code> and <code class="docutils literal notranslate"><span class="pre">sequential_pipeline</span></code> or <code class="docutils literal notranslate"><span class="pre">fanout_pipeline</span></code>, you can create more complex workflows very easily.</p>
 </div>
 </section>
+<section id="stream-printing-messages">
+<h3>Stream Printing Messages<a class="headerlink" href="#stream-printing-messages" title="Link to this heading">¶</a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">stream_printing_messages</span></code> function converts the printing messages from agent(s) into an async generator.
+It will help you to obtain the intermediate messages from the agent(s) in a streaming way.</p>
+<p>It accepts a list of agents and a coroutine task, then returns an async generator that yields tuples of <code class="docutils literal notranslate"><span class="pre">(Msg,</span> <span class="pre">bool)</span></code>,
+containing the printing message during execution of the coroutine task.</p>
+<p>Note the messages with the same <code class="docutils literal notranslate"><span class="pre">id</span></code> are considered as the same message, and the <code class="docutils literal notranslate"><span class="pre">last</span></code> flag indicates whether it’s the last chunk of this message.</p>
+<p>Taking the following code snippet as an example:</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">run_example_pipeline</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Run an example of streaming printing messages.&quot;&quot;&quot;</span>
+    <span class="n">agent</span> <span class="o">=</span> <span class="n">create_agent</span><span class="p">(</span><span class="s2">&quot;Alice&quot;</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="s2">&quot;student&quot;</span><span class="p">)</span>
+
+    <span class="c1"># We disable the terminal printing to avoid messy outputs</span>
+    <span class="n">agent</span><span class="o">.</span><span class="n">set_console_output_enabled</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+
+    <span class="k">async</span> <span class="k">for</span> <span class="n">msg</span><span class="p">,</span> <span class="n">last</span> <span class="ow">in</span> <span class="n">stream_printing_messages</span><span class="p">(</span>
+        <span class="n">agents</span><span class="o">=</span><span class="p">[</span><span class="n">agent</span><span class="p">],</span>
+        <span class="n">coroutine_task</span><span class="o">=</span><span class="n">agent</span><span class="p">(</span>
+            <span class="n">Msg</span><span class="p">(</span><span class="s2">&quot;user&quot;</span><span class="p">,</span> <span class="s2">&quot;Hello, who are you?&quot;</span><span class="p">,</span> <span class="s2">&quot;user&quot;</span><span class="p">),</span>
+        <span class="p">),</span>
+    <span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">msg</span><span class="p">,</span> <span class="n">last</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">last</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">()</span>
+
+
+<span class="n">asyncio</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">run_example_pipeline</span><span class="p">())</span>
+</pre></div>
+</div>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Msg(id=&#39;JmVy6e8NJKAg9N6j7f2GKx&#39;, name=&#39;Alice&#39;, content=[{&#39;type&#39;: &#39;text&#39;, &#39;text&#39;: &#39;Hi&#39;}], role=&#39;assistant&#39;, metadata=None, timestamp=&#39;2025-09-28 12:19:32.257&#39;, invocation_id=&#39;None&#39;) False
+Msg(id=&#39;JmVy6e8NJKAg9N6j7f2GKx&#39;, name=&#39;Alice&#39;, content=[{&#39;type&#39;: &#39;text&#39;, &#39;text&#39;: &quot;Hi there! I&#39;m Alice&quot;}], role=&#39;assistant&#39;, metadata=None, timestamp=&#39;2025-09-28 12:19:32.257&#39;, invocation_id=&#39;None&#39;) False
+Msg(id=&#39;JmVy6e8NJKAg9N6j7f2GKx&#39;, name=&#39;Alice&#39;, content=[{&#39;type&#39;: &#39;text&#39;, &#39;text&#39;: &quot;Hi there! I&#39;m Alice, a 20-year-old&quot;}], role=&#39;assistant&#39;, metadata=None, timestamp=&#39;2025-09-28 12:19:32.257&#39;, invocation_id=&#39;None&#39;) False
+Msg(id=&#39;JmVy6e8NJKAg9N6j7f2GKx&#39;, name=&#39;Alice&#39;, content=[{&#39;type&#39;: &#39;text&#39;, &#39;text&#39;: &quot;Hi there! I&#39;m Alice, a 20-year-old student. Nice to meet&quot;}], role=&#39;assistant&#39;, metadata=None, timestamp=&#39;2025-09-28 12:19:32.257&#39;, invocation_id=&#39;None&#39;) False
+Msg(id=&#39;JmVy6e8NJKAg9N6j7f2GKx&#39;, name=&#39;Alice&#39;, content=[{&#39;type&#39;: &#39;text&#39;, &#39;text&#39;: &quot;Hi there! I&#39;m Alice, a 20-year-old student. Nice to meet you!&quot;}], role=&#39;assistant&#39;, metadata=None, timestamp=&#39;2025-09-28 12:19:32.257&#39;, invocation_id=&#39;None&#39;) False
+Msg(id=&#39;JmVy6e8NJKAg9N6j7f2GKx&#39;, name=&#39;Alice&#39;, content=[{&#39;type&#39;: &#39;text&#39;, &#39;text&#39;: &quot;Hi there! I&#39;m Alice, a 20-year-old student. Nice to meet you!&quot;}], role=&#39;assistant&#39;, metadata=None, timestamp=&#39;2025-09-28 12:19:32.257&#39;, invocation_id=&#39;None&#39;) True
+</pre></div>
+</div>
+</section>
 </section>
 <section id="advanced-pipeline-features">
 <h2>Advanced Pipeline Features<a class="headerlink" href="#advanced-pipeline-features" title="Link to this heading">¶</a></h2>
@@ -564,7 +608,7 @@ becomes the input of the next agent.</p>
 </pre></div>
 </div>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 12.710 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 15.704 seconds)</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-tutorial-task-pipeline-py">
 <div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
 <p><a class="reference download internal" download="" href="../_downloads/a841049f564cf5f9c0fea523e59490f5/task_pipeline.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">task_pipeline.ipynb</span></code></a></p>
@@ -643,6 +687,7 @@ becomes the input of the next agent.</p>
 <li><a class="reference internal" href="#id2">Pipeline</a><ul>
 <li><a class="reference internal" href="#sequential-pipeline">Sequential Pipeline</a></li>
 <li><a class="reference internal" href="#fanout-pipeline">Fanout Pipeline</a></li>
+<li><a class="reference internal" href="#stream-printing-messages">Stream Printing Messages</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#advanced-pipeline-features">Advanced Pipeline Features</a></li>

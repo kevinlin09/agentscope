@@ -269,6 +269,10 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../api/agentscope.memory.html">agentscope.memory</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../api/agentscope.tool.html">agentscope.tool</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../api/agentscope.mcp.html">agentscope.mcp</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/agentscope.embedding.html">agentscope.embedding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/agentscope.evaluate.html">agentscope.evaluate</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/agentscope.plan.html">agentscope.plan</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/agentscope.rag.html">agentscope.rag</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../api/agentscope.token.html">agentscope.token</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../api/agentscope.tracing.html">agentscope.tracing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../api/agentscope.session.html">agentscope.session</a></li>
@@ -317,12 +321,13 @@
 <span class="sd">&quot;&quot;&quot;The agent base class in agentscope.&quot;&quot;&quot;</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">asyncio</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">asyncio</span><span class="w"> </span><span class="kn">import</span> <span class="n">Task</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">asyncio</span><span class="w"> </span><span class="kn">import</span> <span class="n">Task</span><span class="p">,</span> <span class="n">Queue</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">collections</span><span class="w"> </span><span class="kn">import</span> <span class="n">OrderedDict</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Callable</span><span class="p">,</span> <span class="n">Any</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">base64</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">shortuuid</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing_extensions</span><span class="w"> </span><span class="kn">import</span> <span class="n">deprecated</span>
 
 <span class="kn">from</span><span class="w"> </span><span class="nn">._agent_meta</span><span class="w"> </span><span class="kn">import</span> <span class="n">_AgentMeta</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">.._logging</span><span class="w"> </span><span class="kn">import</span> <span class="n">logger</span>
@@ -484,7 +489,12 @@
 
         <span class="c1"># We add this variable in case developers want to disable the console</span>
         <span class="c1"># output of the agent, e.g., in a production environment.</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_disable_console_output</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></div>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_disable_console_output</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>
+
+        <span class="c1"># The streaming message queue used to export the messages as a</span>
+        <span class="c1"># generator</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_disable_msg_queue</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">msg_queue</span> <span class="o">=</span> <span class="kc">None</span></div>
 
 
 <div class="viewcode-block" id="AgentBase.observe">
@@ -525,6 +535,9 @@
 <span class="sd">                Whether this is the last one in streaming messages. For</span>
 <span class="sd">                non-streaming message, this should always be `True`.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_disable_msg_queue</span><span class="p">:</span>
+            <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">msg_queue</span><span class="o">.</span><span class="n">put</span><span class="p">((</span><span class="n">msg</span><span class="p">,</span> <span class="n">last</span><span class="p">))</span>
+
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_disable_console_output</span><span class="p">:</span>
             <span class="k">return</span>
 
@@ -986,10 +999,55 @@
 
 <div class="viewcode-block" id="AgentBase.disable_console_output">
 <a class="viewcode-back" href="../../../api/agentscope.agent.html#agentscope.agent.AgentBase.disable_console_output">[docs]</a>
+    <span class="nd">@deprecated</span><span class="p">(</span><span class="s2">&quot;Please use set_console_output_enabled() instead.&quot;</span><span class="p">)</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">disable_console_output</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;This function will disable the console output of the agent, e.g.</span>
 <span class="sd">        in a production environment to avoid messy logs.&quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_disable_console_output</span> <span class="o">=</span> <span class="kc">True</span></div>
+
+
+<div class="viewcode-block" id="AgentBase.set_console_output_enabled">
+<a class="viewcode-back" href="../../../api/agentscope.agent.html#agentscope.agent.AgentBase.set_console_output_enabled">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">set_console_output_enabled</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">enabled</span><span class="p">:</span> <span class="nb">bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Enable or disable the console output of the agent. E.g. in a</span>
+<span class="sd">        production environment, you may want to disable the console output to</span>
+<span class="sd">        avoid messy logs.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            enabled (`bool`):</span>
+<span class="sd">                If `True`, enable the console output. If `False`, disable</span>
+<span class="sd">                the console output.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_disable_console_output</span> <span class="o">=</span> <span class="ow">not</span> <span class="n">enabled</span></div>
+
+
+<div class="viewcode-block" id="AgentBase.set_msg_queue_enabled">
+<a class="viewcode-back" href="../../../api/agentscope.agent.html#agentscope.agent.AgentBase.set_msg_queue_enabled">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">set_msg_queue_enabled</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">enabled</span><span class="p">:</span> <span class="nb">bool</span><span class="p">,</span>
+        <span class="n">queue</span><span class="p">:</span> <span class="n">Queue</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Enable or disable the message queue for streaming outputs.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            enabled (`bool`):</span>
+<span class="sd">                If `True`, enable the message queue to allow streaming</span>
+<span class="sd">                outputs. If `False`, disable the message queue.</span>
+<span class="sd">            queue (`Queue | None`, optional):</span>
+<span class="sd">                The queue instance that will be used to initialize the</span>
+<span class="sd">                message queue when `enable` is `True`.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">enabled</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">queue</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">msg_queue</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">msg_queue</span> <span class="o">=</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">Queue</span><span class="p">(</span><span class="n">maxsize</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">msg_queue</span> <span class="o">=</span> <span class="n">queue</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">msg_queue</span> <span class="o">=</span> <span class="kc">None</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_disable_msg_queue</span> <span class="o">=</span> <span class="ow">not</span> <span class="n">enabled</span></div>
 </div>
 
 </pre></div>

@@ -270,6 +270,10 @@
 <li class="toctree-l1"><a class="reference internal" href="../api/agentscope.memory.html">agentscope.memory</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/agentscope.tool.html">agentscope.tool</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/agentscope.mcp.html">agentscope.mcp</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/agentscope.embedding.html">agentscope.embedding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/agentscope.evaluate.html">agentscope.evaluate</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/agentscope.plan.html">agentscope.plan</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/agentscope.rag.html">agentscope.rag</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/agentscope.token.html">agentscope.token</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/agentscope.tracing.html">agentscope.tracing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/agentscope.session.html">agentscope.session</a></li>
@@ -517,9 +521,9 @@ Specifically, the agents within the same <code class="docutils literal notransla
 <span class="n">asyncio</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">example_msghub</span><span class="p">())</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Alice: Hello! I&#39;m Alice, a student with a passion for learning and exploring new things. It&#39;s nice to meet you. Could you tell me a little bit about yourself?
-Bob: Hello Alice! I&#39;m Bob, also a student. I enjoy diving into the world of technology and science. It&#39;s great to meet someone who loves learning as much as I do. What kind of things are you currently exploring or interested in?
-Charlie: Hey Alice and Bob, I&#39;m Charlie! It&#39;s awesome to meet fellow students who are into learning. I have a bit of an artistic side, loving to draw and paint, but I&#39;m also really into history and how it shapes our world. What subjects or hobbies do you find most engaging?
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Alice: Hi there! I&#39;m Alice, a student. Nice to meet you! Could you tell me a bit about yourself?
+Bob: Hello Alice! I&#39;m Bob, also a student. It&#39;s great to meet you. What do you like to do in your free time?
+Charlie: Hey Bob, nice to meet you too! I like reading and playing video games when I&#39;m not studying. How about you?
 </pre></div>
 </div>
 <p>Now we print the memory of Alice to check if her memory is updated correctly.</p>
@@ -537,9 +541,9 @@ Charlie: Hey Alice and Bob, I&#39;m Charlie! It&#39;s awesome to meet fellow stu
 system: Now you meet each other with a brief self-introduction.
 Alice: None
 system: None
-Alice: Hello! I&#39;m Alice, a student with a passion for learning and exploring new things. It&#39;s nice to meet you. Could you tell me a little bit about yourself?
-Bob: Hello Alice! I&#39;m Bob, also a student. I enjoy diving into the world of technology and science. It&#39;s great to meet someone who loves learning as much as I do. What kind of things are you currently exploring or interested in?
-Charlie: Hey Alice and Bob, I&#39;m Charlie! It&#39;s awesome to meet fellow students who are into learning. I have a bit of an artistic side, loving to draw and paint, but I&#39;m also really into history and how it shapes our world. What subjects or hobbies do you find most engaging?
+Alice: Hi there! I&#39;m Alice, a student. Nice to meet you! Could you tell me a bit about yourself?
+Bob: Hello Alice! I&#39;m Bob, also a student. It&#39;s great to meet you. What do you like to do in your free time?
+Charlie: Hey Bob, nice to meet you too! I like reading and playing video games when I&#39;m not studying. How about you?
 </pre></div>
 </div>
 </section>
@@ -550,7 +554,7 @@ Charlie: Hey Alice and Bob, I&#39;m Charlie! It&#39;s awesome to meet fellow stu
 <li><p><a class="reference internal" href="task_prompt.html#prompt"><span class="std std-ref">Prompt Formatter</span></a></p></li>
 <li><p><a class="reference internal" href="task_pipeline.html#pipeline"><span class="std std-ref">Pipeline</span></a></p></li>
 </ul>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 10.366 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 6.748 seconds)</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-tutorial-workflow-conversation-py">
 <div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
 <p><a class="reference download internal" download="" href="../_downloads/6fc2f5ac2a455c83476d717ce963aa17/workflow_conversation.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">workflow_conversation.ipynb</span></code></a></p>

@@ -29,8 +29,9 @@ as syntax sugar for chaining agents together, including
 - **MsgHub**: a message hub for broadcasting messages among multiple agents
 - **sequential_pipeline** and **SequentialPipeline**: a functional and class-based implementation that chains agents in a sequential manner
 - **fanout_pipeline** and **FanoutPipeline**: a functional and class-based implementation that distributes the same input to multiple agents
+- **stream_printing_messages**: a utility function that convert the printing messages from agent(s) into an async generator
 
-.. GENERATED FROM PYTHON SOURCE LINES 16-25
+.. GENERATED FROM PYTHON SOURCE LINES 17-27
 
 .. code-block:: Python
 
@@ -41,7 +42,7 @@ as syntax sugar for chaining agents together, including
     from agentscope.message import Msg
     from agentscope.model import DashScopeChatModel
     from agentscope.agent import ReActAgent
-    from agentscope.pipeline import MsgHub
+    from agentscope.pipeline import MsgHub, stream_printing_messages
 
 
 
@@ -50,7 +51,8 @@ as syntax sugar for chaining agents together, including
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 26-38
+
+.. GENERATED FROM PYTHON SOURCE LINES 28-40
 
 Broadcasting with MsgHub
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -65,7 +67,7 @@ Here we create four agents: Alice, Bob, Charlie and David.
 Then we start a meeting with Alice, Bob and Charlie by introducing themselves.
 Note David is not included in this meeting.
 
-.. GENERATED FROM PYTHON SOURCE LINES 38-58
+.. GENERATED FROM PYTHON SOURCE LINES 40-60
 
 .. code-block:: Python
 
@@ -96,14 +98,14 @@ Note David is not included in this meeting.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 59-63
+.. GENERATED FROM PYTHON SOURCE LINES 61-65
 
 Then we start a meeting and let them introduce themselves without manual message passing:
 
 .. hint:: The message in ``announcement`` will be broadcasted to all participants when entering the ``MsgHub`` context.
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 63-85
+.. GENERATED FROM PYTHON SOURCE LINES 65-87
 
 .. code-block:: Python
 
@@ -137,19 +139,19 @@ Then we start a meeting and let them introduce themselves without manual message
 
  .. code-block:: none
 
-    Alice: Hello, I'm Alice, a 50-year-old teacher with a passion for education and fostering young minds.
-    Bob: Hello, I'm Bob, a 35-year-old engineer with a knack for solving complex problems and designing innovative solutions.
-    Charlie: Hello, I'm Charlie, a 28-year-old designer with a creative flair for bringing ideas to life through visual and interactive designs.
+    Alice: Hello, I'm Alice, a 50-year-old teacher with a passion for helping students learn and grow.
+    Bob: Hello, I'm Bob, a 35-year-old engineer who enjoys solving complex problems and designing innovative solutions.
+    Charlie: Hello, I'm Charlie, a 28-year-old designer who loves creating visually appealing and functional designs.
 
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 86-88
+.. GENERATED FROM PYTHON SOURCE LINES 88-90
 
 Now let's check if Bob, Charlie and David received Alice's message.
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 88-105
+.. GENERATED FROM PYTHON SOURCE LINES 90-107
 
 .. code-block:: Python
 
@@ -178,14 +180,14 @@ Now let's check if Bob, Charlie and David received Alice's message.
 
  .. code-block:: none
 
-    Bob: Alice is a 50-year-old teacher who is passionate about education and fostering young minds.
-    Charlie: Alice is a 50-year-old teacher who is passionate about education and nurturing young minds.
-    David: I don't have specific information about an Alice you're referring to, as there could be many people with that name. Could you provide more context or details about which Alice you're asking about?
+    Bob: Alice is a 50-year-old teacher who is passionate about helping students learn and grow.
+    Charlie: Alice is a 50-year-old teacher who is passionate about helping students learn and grow.
+    David: I don't have specific information about an Alice without more context. Could you provide more details, such as where you heard about her or in what field she might be involved?
 
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 106-173
+.. GENERATED FROM PYTHON SOURCE LINES 108-176
 
 Now we observe that Bob and Charlie know Alice and her profession, while David has no idea
 about Alice since he is not included in the ``MsgHub`` context.
@@ -220,10 +222,11 @@ Pipeline
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Pipeline serves as a syntax sugar for multi-agent orchestration.
 
-Currently, AgentScope provides two main pipeline implementations:
+Currently, AgentScope provides three main pipeline implementations:
 
 1. **Sequential Pipeline**: Execute agents one by one in a predefined order
 2. **Fanout Pipeline**: Distribute the same input to multiple agents and collect their responses
+3. **Stream Printing Messages**: Convert the printing messages from an agent into an async generator
 
 Sequential Pipeline
 ------------------------
@@ -255,7 +258,7 @@ For example, the two following code snippets are equivalent:
     )
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 175-215
+.. GENERATED FROM PYTHON SOURCE LINES 178-231
 
 Fanout Pipeline
 ------------------------
@@ -298,10 +301,69 @@ For example, the two following code snippets are equivalent:
 .. tip::
     By combining ``MsgHub`` and ``sequential_pipeline`` or ``fanout_pipeline``, you can create more complex workflows very easily.
 
-.. GENERATED FROM PYTHON SOURCE LINES 217-251
+
+Stream Printing Messages
+-------------------------------------
+The ``stream_printing_messages`` function converts the printing messages from agent(s) into an async generator.
+It will help you to obtain the intermediate messages from the agent(s) in a streaming way.
+
+It accepts a list of agents and a coroutine task, then returns an async generator that yields tuples of ``(Msg, bool)``,
+containing the printing message during execution of the coroutine task.
+
+Note the messages with the same ``id`` are considered as the same message, and the ``last`` flag indicates whether it's the last chunk of this message.
+
+Taking the following code snippet as an example:
+
+.. GENERATED FROM PYTHON SOURCE LINES 231-254
+
+.. code-block:: Python
+
+
+
+    async def run_example_pipeline() -> None:
+        """Run an example of streaming printing messages."""
+        agent = create_agent("Alice", 20, "student")
+
+        # We disable the terminal printing to avoid messy outputs
+        agent.set_console_output_enabled(False)
+
+        async for msg, last in stream_printing_messages(
+            agents=[agent],
+            coroutine_task=agent(
+                Msg("user", "Hello, who are you?", "user"),
+            ),
+        ):
+            print(msg, last)
+            if last:
+                print()
+
+
+    asyncio.run(run_example_pipeline())
+
+
+
+
+
+
+.. rst-class:: sphx-glr-script-out
+
+ .. code-block:: none
+
+    Msg(id='JmVy6e8NJKAg9N6j7f2GKx', name='Alice', content=[{'type': 'text', 'text': 'Hi'}], role='assistant', metadata=None, timestamp='2025-09-28 12:19:32.257', invocation_id='None') False
+    Msg(id='JmVy6e8NJKAg9N6j7f2GKx', name='Alice', content=[{'type': 'text', 'text': "Hi there! I'm Alice"}], role='assistant', metadata=None, timestamp='2025-09-28 12:19:32.257', invocation_id='None') False
+    Msg(id='JmVy6e8NJKAg9N6j7f2GKx', name='Alice', content=[{'type': 'text', 'text': "Hi there! I'm Alice, a 20-year-old"}], role='assistant', metadata=None, timestamp='2025-09-28 12:19:32.257', invocation_id='None') False
+    Msg(id='JmVy6e8NJKAg9N6j7f2GKx', name='Alice', content=[{'type': 'text', 'text': "Hi there! I'm Alice, a 20-year-old student. Nice to meet"}], role='assistant', metadata=None, timestamp='2025-09-28 12:19:32.257', invocation_id='None') False
+    Msg(id='JmVy6e8NJKAg9N6j7f2GKx', name='Alice', content=[{'type': 'text', 'text': "Hi there! I'm Alice, a 20-year-old student. Nice to meet you!"}], role='assistant', metadata=None, timestamp='2025-09-28 12:19:32.257', invocation_id='None') False
+    Msg(id='JmVy6e8NJKAg9N6j7f2GKx', name='Alice', content=[{'type': 'text', 'text': "Hi there! I'm Alice, a 20-year-old student. Nice to meet you!"}], role='assistant', metadata=None, timestamp='2025-09-28 12:19:32.257', invocation_id='None') True
+
+
+
+
+
+.. GENERATED FROM PYTHON SOURCE LINES 255-289
 
 Advanced Pipeline Features
-~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Additionally, for reusability, we also provide a class-based implementation:
 
@@ -338,7 +400,7 @@ Additionally, for reusability, we also provide a class-based implementation:
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 12.710 seconds)
+   **Total running time of the script:** (0 minutes 15.704 seconds)
 
 
 .. _sphx_glr_download_tutorial_task_pipeline.py:

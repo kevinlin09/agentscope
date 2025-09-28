@@ -396,7 +396,7 @@ Taking OpenAIFormatter as an example, we first calculate the total number of tok
         # We use huggingface token counter for dashscope models.
         token_counter = HuggingFaceTokenCounter(
             "Qwen/Qwen2.5-VL-3B-Instruct",
-            use_mirror=True,
+            use_mirror=False,
         )
 
         return await token_counter.count(formatted_message)
@@ -435,7 +435,7 @@ Then we set the maximum token limit to 20 tokens less than the total number of t
         """Example of how to format messages with truncation."""
         token_counter = HuggingFaceTokenCounter(
             pretrained_model_name_or_path="Qwen/Qwen2.5-VL-3B-Instruct",
-            use_mirror=True,
+            use_mirror=False,
         )
         formatter = DashScopeMultiAgentFormatter(
             token_counter=token_counter,
@@ -513,7 +513,7 @@ Further Reading
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 9.928 seconds)
+   **Total running time of the script:** (0 minutes 1.632 seconds)
 
 
 .. _sphx_glr_download_tutorial_task_prompt.py:
