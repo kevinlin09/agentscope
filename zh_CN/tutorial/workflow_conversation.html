@@ -512,10 +512,9 @@ Charlie: 我也是！顺便说一下，我是 Charlie。
 <span class="n">asyncio</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">example_msghub</span><span class="p">())</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Alice: 大家好，我叫Alice，是一名学生。很高兴认识大家！我喜欢阅读、学习新事物和参加户外活动。希望我们能够友好相处，也期待与大家共同度过愉快的时光。你们都有什么兴趣爱好呢？
-Bob: 大家好，我叫Bob，也是一名学生。很高兴见到你们！我的兴趣爱好包括玩电子游戏、看电影以及和朋友们一起出去玩。Alice，你的兴趣听起来很有趣，我也挺喜欢户外活动的。其他人呢，你们有什么爱好？
-Charlie: 大家好，我叫Charlie，同样是一名学生。我对科技和编程很感兴趣，平时喜欢捣鼓一些小项目，也热衷于解决难题。Alice你提到你喜欢学习新事物，不知道有没有什么特别的主题是你最近在探索的？而Bob，听起来我们可能在空闲时间的选择上不太一样，不过我觉得交流不同的兴趣也很有意思。很高兴认识你们！
-Charlie: 嗨，大家看起来都已经相互了解了一些。我叫Charlie，是这里的一名学生，对技术充满热情，特别是编程。平时我喜欢自己动手做一些小项目，也爱挑战各种智力游戏。Alice，你说你喜欢学习新事物，最近有没有哪个领域让你特别着迷？至于Bob，虽然我们的休闲方式似乎有所不同，但我认为分享彼此的兴趣是很棒的事情。非常高兴能遇见你们两位！
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Alice: 大家好，我叫Alice，是一名学生。我喜欢阅读、学习新知识和与朋友们一起度过美好时光。很高兴认识大家！你们呢？可以分享一下关于你们自己的事情吗？
+Bob: 大家好，我叫Bob，同样也是一名学生。我对科技和编程特别感兴趣，平时喜欢捣鼓一些小项目。我也热爱户外活动，比如徒步和骑行。很高兴遇见你们！
+Charlie: 大家好，我是Charlie，也是一名学生。我对音乐和艺术很感兴趣，平时喜欢弹吉他和画画。我也非常喜欢旅行，探索不同的文化和美食。很高兴能认识你们！
 </pre></div>
 </div>
 <p>现在我们打印 Alice 的记忆，检查她的记忆是否正确更新。</p>
@@ -535,18 +534,18 @@ Charlie: 嗨，大家看起来都已经相互了解了一些。我叫Charlie，�
 system: &quot;现在大家互相认识一下，简单自我介绍。&quot;
 Alice: [
     {
-        &quot;id&quot;: &quot;8jErdQJNYbiUudGZNAHTuA&quot;,
+        &quot;id&quot;: &quot;RdiRvYyoFgqZnA7GA7ABs5&quot;,
         &quot;type&quot;: &quot;tool_use&quot;,
         &quot;name&quot;: &quot;generate_response&quot;,
         &quot;input&quot;: {
-            &quot;response&quot;: &quot;大家好，我叫Alice，是一名学生。很高兴认识大家！我喜欢阅读、学习新事物和参加户外活动。希望我们能够友好相处，也期待与大家共同度过愉快的时光。你们都有什么兴趣爱好呢？&quot;
+            &quot;response&quot;: &quot;大家好，我叫Alice，是一名学生。我喜欢阅读、学习新知识和与朋友们一起度过美好时光。很高兴认识大家！你们呢？可以分享一下关于你们自己的事情吗？&quot;
         }
     }
 ]
 system: [
     {
         &quot;type&quot;: &quot;tool_result&quot;,
-        &quot;id&quot;: &quot;8jErdQJNYbiUudGZNAHTuA&quot;,
+        &quot;id&quot;: &quot;RdiRvYyoFgqZnA7GA7ABs5&quot;,
         &quot;name&quot;: &quot;generate_response&quot;,
         &quot;output&quot;: [
             {
@@ -556,9 +555,9 @@ system: [
         ]
     }
 ]
-Alice: &quot;大家好，我叫Alice，是一名学生。很高兴认识大家！我喜欢阅读、学习新事物和参加户外活动。希望我们能够友好相处，也期待与大家共同度过愉快的时光。你们都有什么兴趣爱好呢？&quot;
-Bob: &quot;大家好，我叫Bob，也是一名学生。很高兴见到你们！我的兴趣爱好包括玩电子游戏、看电影以及和朋友们一起出去玩。Alice，你的兴趣听起来很有趣，我也挺喜欢户外活动的。其他人呢，你们有什么爱好？&quot;
-Charlie: &quot;嗨，大家看起来都已经相互了解了一些。我叫Charlie，是这里的一名学生，对技术充满热情，特别是编程。平时我喜欢自己动手做一些小项目，也爱挑战各种智力游戏。Alice，你说你喜欢学习新事物，最近有没有哪个领域让你特别着迷？至于Bob，虽然我们的休闲方式似乎有所不同，但我认为分享彼此的兴趣是很棒的事情。非常高兴能遇见你们两位！&quot;
+Alice: &quot;大家好，我叫Alice，是一名学生。我喜欢阅读、学习新知识和与朋友们一起度过美好时光。很高兴认识大家！你们呢？可以分享一下关于你们自己的事情吗？&quot;
+Bob: &quot;大家好，我叫Bob，同样也是一名学生。我对科技和编程特别感兴趣，平时喜欢捣鼓一些小项目。我也热爱户外活动，比如徒步和骑行。很高兴遇见你们！&quot;
+Charlie: &quot;大家好，我是Charlie，也是一名学生。我对音乐和艺术很感兴趣，平时喜欢弹吉他和画画。我也非常喜欢旅行，探索不同的文化和美食。很高兴能认识你们！&quot;
 </pre></div>
 </div>
 </section>
@@ -569,7 +568,7 @@ Charlie: &quot;嗨，大家看起来都已经相互了解了一些。我叫Charl
 <li><p><a class="reference internal" href="task_prompt.html#prompt"><span class="std std-ref">提示词格式化</span></a></p></li>
 <li><p><a class="reference internal" href="task_pipeline.html#pipeline"><span class="std std-ref">管道 (Pipeline)</span></a></p></li>
 </ul>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 17.805 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 8.231 seconds)</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-tutorial-workflow-conversation-py">
 <div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
 <p><a class="reference download internal" download="" href="../_downloads/6fc2f5ac2a455c83476d717ce963aa17/workflow_conversation.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">workflow_conversation.ipynb</span></code></a></p>

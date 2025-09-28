@@ -173,16 +173,16 @@ AgentScope 在 ``agentscope.agent`` 模块下提供了开箱即用的 ReAct 智�
 
     Jarvis: {
         "type": "tool_use",
-        "id": "call_d4d6f1cc51d94398acf86d",
+        "id": "call_de68b93bc7d040ebbbc73b",
         "name": "execute_python_code",
         "input": {
             "code": "print('Hello World')",
-            "timeout": 5
+            "timeout": 300
         }
     }
     system: {
         "type": "tool_result",
-        "id": "call_d4d6f1cc51d94398acf86d",
+        "id": "call_de68b93bc7d040ebbbc73b",
         "name": "execute_python_code",
         "output": [
             {
@@ -191,11 +191,7 @@ AgentScope 在 ``agentscope.agent`` 模块下提供了开箱即用的 ReAct 智�
             }
         ]
     }
-    Jarvis: 成功运行了 Python 代码，输出为：
-
-    ```
-    Hello World
-    ```
+    Jarvis: 你的 Python 代码已经成功运行，并打印出了 "Hello World"。
 
 
 
@@ -317,7 +313,7 @@ AgentScope 在 ``agentscope.agent`` 模块下提供了开箱即用的 ReAct 智�
 
  .. code-block:: none
 
-    Friday: 我是Friday，一个虚拟助手，旨在帮助回答问题、提供信息和完成各种任务。就像名字所暗示的那样，我被设计成友好且乐于助人。有什么我可以帮您的吗？
+    Friday: 我是Friday，一个虚拟助手，旨在帮助回答问题、提供信息和完成各种任务。有什么我可以帮您的？
 
 
 

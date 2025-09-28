@@ -334,7 +334,7 @@ AgentScope 在 ``agentscope.tool`` 模块下提供了几个内置工具函数，
  .. code-block:: none
 
     工具响应：
-    ToolResponse(content=[{'type': 'text', 'text': "正在使用 API 密钥 'xxx' 搜索 'AgentScope'"}], metadata=None, stream=False, is_last=True, is_interrupted=False, id='2025-09-28 12:28:20.131_67df5e')
+    ToolResponse(content=[{'type': 'text', 'text': "正在使用 API 密钥 'xxx' 搜索 'AgentScope'"}], metadata=None, stream=False, is_last=True, is_interrupted=False, id='2025-09-28 12:37:24.703_7c091b')
 
 
 
@@ -499,7 +499,7 @@ Toolkit 允许通过调用 ``set_extended_model`` 方法动态扩展工具函数
  .. code-block:: none
 
     工具响应：
-    ToolResponse(content=[{'type': 'text', 'text': '<system-info>The tool call has been interrupted by the user.</system-info>'}], metadata=None, stream=True, is_last=True, is_interrupted=True, id='2025-09-28 12:28:21.135_5d3b84')
+    ToolResponse(content=[{'type': 'text', 'text': '<system-info>The tool call has been interrupted by the user.</system-info>'}], metadata=None, stream=True, is_last=True, is_interrupted=True, id='2025-09-28 12:37:25.707_da1427')
     中断标志：
     True
 
@@ -514,7 +514,7 @@ Toolkit 允许通过调用 ``set_extended_model`` 方法动态扩展工具函数
 中断流式工具函数的示例如下：
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 255-307
+.. GENERATED FROM PYTHON SOURCE LINES 255-308
 
 .. code-block:: Python
 
@@ -530,6 +530,7 @@ Toolkit 允许通过调用 ``set_extended_model`` 方法动态扩展工具函数
                     text="1234",
                 ),
             ],
+            stream=True,
         )
 
         # 模拟中断
@@ -579,18 +580,18 @@ Toolkit 允许通过调用 ``set_extended_model`` 方法动态扩展工具函数
  .. code-block:: none
 
     块 0：
-    ToolResponse(content=[{'type': 'text', 'text': '1234'}], metadata=None, stream=False, is_last=True, is_interrupted=False, id='2025-09-28 12:28:21.138_9e7ef1')
+    ToolResponse(content=[{'type': 'text', 'text': '1234'}], metadata=None, stream=True, is_last=True, is_interrupted=False, id='2025-09-28 12:37:25.709_49d6d7')
     中断标志： False 
 
     块 1：
-    ToolResponse(content=[{'type': 'text', 'text': '1234'}, {'type': 'text', 'text': '<system-info>The tool call has been interrupted by the user.</system-info>'}], metadata=None, stream=False, is_last=True, is_interrupted=True, id='2025-09-28 12:28:21.138_9e7ef1')
+    ToolResponse(content=[{'type': 'text', 'text': '1234'}, {'type': 'text', 'text': '<system-info>The tool call has been interrupted by the user.</system-info>'}], metadata=None, stream=True, is_last=True, is_interrupted=True, id='2025-09-28 12:37:25.709_49d6d7')
     中断标志： True 
 
 
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 308-327
+.. GENERATED FROM PYTHON SOURCE LINES 309-328
 
 自动工具管理
 -------------------------------------
@@ -612,7 +613,7 @@ Toolkit 允许通过调用 ``set_extended_model`` 方法动态扩展工具函数
 现在我们尝试创建一个名为 ``browser_use`` 的工具组，其中包含一些网页浏览工具。
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 327-369
+.. GENERATED FROM PYTHON SOURCE LINES 328-370
 
 .. code-block:: Python
 
@@ -665,11 +666,11 @@ Toolkit 允许通过调用 ``set_extended_model`` 方法动态扩展工具函数
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 370-371
+.. GENERATED FROM PYTHON SOURCE LINES 371-372
 
 此时 ``browser_use`` 未被激活，如果我们检查工具 JSON schema，只能看到 ``execute_python_code`` 工具：
 
-.. GENERATED FROM PYTHON SOURCE LINES 371-375
+.. GENERATED FROM PYTHON SOURCE LINES 372-376
 
 .. code-block:: Python
 
@@ -716,11 +717,11 @@ Toolkit 允许通过调用 ``set_extended_model`` 方法动态扩展工具函数
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 376-377
+.. GENERATED FROM PYTHON SOURCE LINES 377-378
 
 使用 ``update_tool_groups`` 方法激活或停用工具组：
 
-.. GENERATED FROM PYTHON SOURCE LINES 377-383
+.. GENERATED FROM PYTHON SOURCE LINES 378-384
 
 .. code-block:: Python
 
@@ -807,7 +808,7 @@ Toolkit 允许通过调用 ``set_extended_model`` 方法动态扩展工具函数
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 384-389
+.. GENERATED FROM PYTHON SOURCE LINES 385-390
 
 此外，``Toolkit`` 提供了一个名为 ``reset_equipped_tools`` 的元工具函数，它会将所有组名（除了 "basic"）作为一个 bool 型的参数，
 让智能体调用该工具来决定要激活哪些工具组：
@@ -815,7 +816,7 @@ Toolkit 允许通过调用 ``set_extended_model`` 方法动态扩展工具函数
 .. note:: 在 ``ReActAgent`` 类的实现中，只需要在构造函数中将 ``enable_meta_tool`` 设置为 ``True`` 即可启用元工具函数。
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 389-407
+.. GENERATED FROM PYTHON SOURCE LINES 390-408
 
 .. code-block:: Python
 
@@ -867,12 +868,12 @@ Toolkit 允许通过调用 ``set_extended_model`` 方法动态扩展工具函数
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 408-410
+.. GENERATED FROM PYTHON SOURCE LINES 409-411
 
 当智能体调用 ``reset_equipped_tools`` 时，对应工具组将被激活，同时返回的结果中将包含工具的使用注意事项。
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 410-432
+.. GENERATED FROM PYTHON SOURCE LINES 411-433
 
 .. code-block:: Python
 
@@ -916,14 +917,14 @@ Toolkit 允许通过调用 ``set_extended_model`` 方法动态扩展工具函数
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 433-437
+.. GENERATED FROM PYTHON SOURCE LINES 434-438
 
 此外，``Toolkit`` 还通过 ``get_activated_notes`` 函数提供已经被激活了的工具组的 notes，开发者也可以将其组装到智能体的系统提示中，从而达到动态管理工具的作用。
 
 .. tip:: 自动工具管理功能已在 ``ReActAgent`` 类中实现，有关更多详细信息，请参考 :ref:`agent` 部分。
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 437-450
+.. GENERATED FROM PYTHON SOURCE LINES 438-451
 
 .. code-block:: Python
 
@@ -960,7 +961,7 @@ Toolkit 允许通过调用 ``set_extended_model`` 方法动态扩展工具函数
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 451-457
+.. GENERATED FROM PYTHON SOURCE LINES 452-458
 
 进一步阅读
 ---------------------
