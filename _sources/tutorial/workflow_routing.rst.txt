@@ -110,11 +110,11 @@ Initialize a routing agent
 
  .. code-block:: none
 
-    Router: Sure, I can help with that. Could you give me a theme or some elements you'd like to include in the poem?
+    Router: Sure, I can help with that. Could you give me a bit more information? Such as the theme, style, or any specific elements you would like to include in the poem?
     The structured output:
     {
         "your_choice": "Content Generation",
-        "task_description": null
+        "task_description": "Write a poem based on user's preferences."
     }
 
 
@@ -247,9 +247,9 @@ After that, we define a routing agent and equip it with the above tool functions
         "input": {
             "demand": "a quick sort function"
         },
-        "id": "call_d8dd6c9f995d4d0581f241"
+        "id": "call_a00bdf459ab943dba1c43f"
     }
-    PythonAgent: Here is a simple implementation of the quick sort algorithm in Python. This function sorts the elements in place.
+    PythonAgent: Here is a Python implementation of the quick sort algorithm. This function sorts a list in ascending order.
 
     ```python
     def quick_sort(arr):
@@ -263,19 +263,19 @@ After that, we define a routing agent and equip it with the above tool functions
             return quick_sort(left) + middle + quick_sort(right)
     ```
 
-    If you want to see an in-place version that doesn't use extra space, let me know and I'll provide that as well.
+    You can use this function by passing a list to it, like so: `sorted_list = quick_sort([3, 6, 8, 10, 1, 2, 1])`. The returned `sorted_list` will be `[1, 1, 2, 3, 6, 8, 10]`.
     system: {
         "type": "tool_result",
-        "id": "call_d8dd6c9f995d4d0581f241",
+        "id": "call_a00bdf459ab943dba1c43f",
         "name": "generate_python",
         "output": [
             {
                 "type": "text",
-                "text": "Here is a simple implementation of the quick sort algorithm in Python. This function sorts the elements in place.\n\n```python\ndef quick_sort(arr):\n    if len(arr) <= 1:\n        return arr\n    else:\n        pivot = arr[len(arr) // 2]\n        left = [x for x in arr if x < pivot]\n        middle = [x for x in arr if x == pivot]\n        right = [x for x in arr if x > pivot]\n        return quick_sort(left) + middle + quick_sort(right)\n```\n\nIf you want to see an in-place version that doesn't use extra space, let me know and I'll provide that as well."
+                "text": "Here is a Python implementation of the quick sort algorithm. This function sorts a list in ascending order.\n\n```python\ndef quick_sort(arr):\n    if len(arr) <= 1:\n        return arr\n    else:\n        pivot = arr[len(arr) // 2]\n        left = [x for x in arr if x < pivot]\n        middle = [x for x in arr if x == pivot]\n        right = [x for x in arr if x > pivot]\n        return quick_sort(left) + middle + quick_sort(right)\n```\n\nYou can use this function by passing a list to it, like so: `sorted_list = quick_sort([3, 6, 8, 10, 1, 2, 1])`. The returned `sorted_list` will be `[1, 1, 2, 3, 6, 8, 10]`."
             }
         ]
     }
-    Router: The generated Python code for a quick sort function is as follows. This version of the quick sort algorithm does not sort in place but rather uses additional lists to manage the elements that are less than, equal to, or greater than the pivot.
+    Router: Here is a Python implementation of the quick sort algorithm. This function sorts a list in ascending order.
 
     ```python
     def quick_sort(arr):
@@ -289,7 +289,7 @@ After that, we define a routing agent and equip it with the above tool functions
             return quick_sort(left) + middle + quick_sort(right)
     ```
 
-    If you would like an in-place version that doesn't use extra space, please let me know and I can provide that too.
+    You can use this function by passing a list to it, like so: `sorted_list = quick_sort([3, 6, 8, 10, 1, 2, 1])`. The returned `sorted_list` will be `[1, 1, 2, 3, 6, 8, 10]`.
 
 
 
@@ -297,7 +297,7 @@ After that, we define a routing agent and equip it with the above tool functions
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 24.844 seconds)
+   **Total running time of the script:** (0 minutes 30.054 seconds)
 
 
 .. _sphx_glr_download_tutorial_workflow_routing.py:

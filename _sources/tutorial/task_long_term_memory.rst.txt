@@ -185,7 +185,7 @@ manage long-term memory through tool calls.
 
  .. code-block:: none
 
-    Friday: Staying in homestays can be a wonderful experience as it allows you to immerse yourself in the local culture and lifestyle. In Hangzhou, there are many charming homestays that offer not just a place to stay but also an opportunity to interact with locals and learn more about their way of living.
+    Friday: Staying in homestays can be a wonderful experience as they often provide a more personal and local feel than traditional hotels. You might get to interact closely with the hosts and learn about their culture and lifestyle. In Hangzhou, there are many homestay options that offer unique experiences. Would you like some recommendations on popular areas or specific homestays that are well-reviewed by travelers?
 
 
 
@@ -221,7 +221,7 @@ Then we clear the short-term memory and ask the agent about the user's preferenc
 
  .. code-block:: none
 
-    Friday: You like staying in homestays when traveling to Hangzhou.
+    Friday: You prefer staying in homestays when traveling to Hangzhou.
 
 
 
@@ -264,7 +264,7 @@ Further Reading
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 26.938 seconds)
+   **Total running time of the script:** (0 minutes 31.617 seconds)
 
 
 .. _sphx_glr_download_tutorial_task_long_term_memory.py:

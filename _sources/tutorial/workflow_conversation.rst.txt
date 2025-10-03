@@ -281,9 +281,10 @@ Specifically, the agents within the same ``MsgHub`` will receive messages from o
  .. code-block:: none
 
     Alice: Hi there, I'm Alice. Nice to meet you! Could you tell me a bit about yourself?
-    Bob: Hi Alice, I'm Bob. It's great to meet you too! I'm a student currently studying computer science. What about you? What do you like to do in your free time?
-    Charlie: Alice: That's cool, Bob! I'm actually working as a graphic designer. In my free time, I enjoy hiking and painting. It's always relaxing to be out in nature or lost in the colors on my canvas. How about you? Any hobbies besides your studies?
-    Charlie: That sounds really nice, Alice! Apart from diving into my computer science coursework, I love playing video games and I'm also getting into photography. It's fun to capture moments and play around with editing.
+    Bob: Hi Alice, I'm Bob. It's nice to meet you too! I'm a student currently studying computer science and I'm really into technology and programming. What about you? What are you up to these days?
+    Charlie: Alice: That's really cool, Bob! I'm actually working as a graphic designer and I love everything related to art and design. It's always fascinating to see how tech and design can come together in projects.
+    Bob: Absolutely, Alice! The integration between technology and design is becoming more and more important. Do you often work on projects that involve both?
+    Charlie: Yeah, quite often actually! Lately, I've been working on interactive web designs where user experience is key. It's amazing how much coding knowledge can enhance the design process. Do you ever get to apply your programming skills to creative projects, Bob?
 
 
 
@@ -321,8 +322,8 @@ Now we print the memory of Alice to check if her memory is updated correctly.
     Alice: None
     system: None
     Alice: Hi there, I'm Alice. Nice to meet you! Could you tell me a bit about yourself?
-    Bob: Hi Alice, I'm Bob. It's great to meet you too! I'm a student currently studying computer science. What about you? What do you like to do in your free time?
-    Charlie: That sounds really nice, Alice! Apart from diving into my computer science coursework, I love playing video games and I'm also getting into photography. It's fun to capture moments and play around with editing.
+    Bob: Hi Alice, I'm Bob. It's nice to meet you too! I'm a student currently studying computer science and I'm really into technology and programming. What about you? What are you up to these days?
+    Charlie: Yeah, quite often actually! Lately, I've been working on interactive web designs where user experience is key. It's amazing how much coding knowledge can enhance the design process. Do you ever get to apply your programming skills to creative projects, Bob?
 
 
 
@@ -339,7 +340,7 @@ Further Reading
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 8.349 seconds)
+   **Total running time of the script:** (0 minutes 14.746 seconds)
 
 
 .. _sphx_glr_download_tutorial_workflow_conversation.py:
