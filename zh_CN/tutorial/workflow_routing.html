@@ -407,11 +407,11 @@ to download the full example code.</p>
 <span class="n">asyncio</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">example_router_explicit</span><span class="p">())</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Router: 好的，我来帮您写一首诗。
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Router: 好的，我将帮您创作一首诗。
 结构化输出：
 {
     &quot;your_choice&quot;: &quot;Content Generation&quot;,
-    &quot;task_description&quot;: &quot;用户需要一首诗&quot;
+    &quot;task_description&quot;: null
 }
 </pre></div>
 </div>
@@ -510,9 +510,9 @@ to download the full example code.</p>
     &quot;input&quot;: {
         &quot;demand&quot;: &quot;需要一个快速排序函数&quot;
     },
-    &quot;id&quot;: &quot;call_a41b93c2176c444b923c0d&quot;
+    &quot;id&quot;: &quot;call_93679211e3bb44ff846a72&quot;
 }
-PythonAgent: 这是一个使用 Python 编写的快速排序函数。快速排序是一种高效的排序算法，采用分治策略来把一个序列分为较小和较大的两个子序列，然后递归地排序两个子序列。
+PythonAgent: 这是一个使用 Python 实现的快速排序算法的函数。该函数采用了递归的方法来对列表进行排序：
 
 ```python
 def quicksort(arr):
@@ -525,24 +525,25 @@ def quicksort(arr):
         right = [x for x in arr if x &gt; pivot]
         return quicksort(left) + middle + quicksort(right)
 
-# 示例
-print(quicksort([3,6,8,10,1,2,1]))
-# 输出: [1, 1, 2, 3, 6, 8, 10]
+# 使用示例
+unsorted_list = [3, 6, 8, 10, 1, 2, 1]
+sorted_list = quicksort(unsorted_list)
+print(sorted_list)
 ```
 
-这段代码定义了一个 `quicksort` 函数，它接受一个列表 `arr` 作为参数，并返回一个新的已排序列表。如果您想要在原地对数组进行排序而不创建新的列表，我们可以实现一个稍微不同的版本。需要我展示如何在原地执行快速排序吗？
+当你运行这段代码，它将打印出一个排好序的列表。你可以用任何列表去替换 `unsorted_list` 来测试这个函数。如果你有任何问题或需要进一步的帮助，请告诉我！
 system: {
     &quot;type&quot;: &quot;tool_result&quot;,
-    &quot;id&quot;: &quot;call_a41b93c2176c444b923c0d&quot;,
+    &quot;id&quot;: &quot;call_93679211e3bb44ff846a72&quot;,
     &quot;name&quot;: &quot;generate_python&quot;,
     &quot;output&quot;: [
         {
             &quot;type&quot;: &quot;text&quot;,
-            &quot;text&quot;: &quot;这是一个使用 Python 编写的快速排序函数。快速排序是一种高效的排序算法，采用分治策略来把一个序列分为较小和较大的两个子序列，然后递归地排序两个子序列。\n\n```python\ndef quicksort(arr):\n    if len(arr) &lt;= 1:\n        return arr\n    else:\n        pivot = arr[len(arr) // 2]\n        left = [x for x in arr if x &lt; pivot]\n        middle = [x for x in arr if x == pivot]\n        right = [x for x in arr if x &gt; pivot]\n        return quicksort(left) + middle + quicksort(right)\n\n# 示例\nprint(quicksort([3,6,8,10,1,2,1]))\n# 输出: [1, 1, 2, 3, 6, 8, 10]\n```\n\n这段代码定义了一个 `quicksort` 函数，它接受一个列表 `arr` 作为参数，并返回一个新的已排序列表。如果您想要在原地对数组进行排序而不创建新的列表，我们可以实现一个稍微不同的版本。需要我展示如何在原地执行快速排序吗？&quot;
+            &quot;text&quot;: &quot;这是一个使用 Python 实现的快速排序算法的函数。该函数采用了递归的方法来对列表进行排序：\n\n```python\ndef quicksort(arr):\n    if len(arr) &lt;= 1:\n        return arr\n    else:\n        pivot = arr[len(arr) // 2]\n        left = [x for x in arr if x &lt; pivot]\n        middle = [x for x in arr if x == pivot]\n        right = [x for x in arr if x &gt; pivot]\n        return quicksort(left) + middle + quicksort(right)\n\n# 使用示例\nunsorted_list = [3, 6, 8, 10, 1, 2, 1]\nsorted_list = quicksort(unsorted_list)\nprint(sorted_list)\n```\n\n当你运行这段代码，它将打印出一个排好序的列表。你可以用任何列表去替换 `unsorted_list` 来测试这个函数。如果你有任何问题或需要进一步的帮助，请告诉我！&quot;
         }
     ]
 }
-Router: 这是一个使用 Python 编写的快速排序函数。快速排序是一种高效的排序算法，采用分治策略来把一个序列分为较小和较大的两个子序列，然后递归地排序两个子序列。
+Router: 这是一个使用 Python 实现的快速排序算法的函数。该函数采用了递归的方法来对列表进行排序：
 
 ```python
 def quicksort(arr):
@@ -555,15 +556,16 @@ def quicksort(arr):
         right = [x for x in arr if x &gt; pivot]
         return quicksort(left) + middle + quicksort(right)
 
-# 示例
-print(quicksort([3,6,8,10,1,2,1]))
-# 输出: [1, 1, 2, 3, 6, 8, 10]
+# 使用示例
+unsorted_list = [3, 6, 8, 10, 1, 2, 1]
+sorted_list = quicksort(unsorted_list)
+print(sorted_list)
 ```
 
-这段代码定义了一个 `quicksort` 函数，它接受一个列表 `arr` 作为参数，并返回一个新的已排序列表。如果您想要在原地对数组进行排序而不创建新的列表，请告诉我，我可以为您提供相应的实现。
+当你运行这段代码，它将打印出一个排好序的列表。你可以用任何列表去替换 `unsorted_list` 来测试这个函数。如果你有任何问题或需要进一步的帮助，请告诉我！
 </pre></div>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 41.141 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 20.011 seconds)</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-tutorial-workflow-routing-py">
 <div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
 <p><a class="reference download internal" download="" href="../_downloads/3266c75280f96697c4cc46d7d55a3ac8/workflow_routing.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">workflow_routing.ipynb</span></code></a></p>

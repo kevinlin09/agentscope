@@ -110,11 +110,11 @@ Routing
 
  .. code-block:: none
 
-    Router: 好的，我来帮您写一首诗。
+    Router: 好的，我将帮您创作一首诗。
     结构化输出：
     {
         "your_choice": "Content Generation",
-        "task_description": "用户需要一首诗"
+        "task_description": null
     }
 
 
@@ -247,9 +247,9 @@ Routing
         "input": {
             "demand": "需要一个快速排序函数"
         },
-        "id": "call_a41b93c2176c444b923c0d"
+        "id": "call_93679211e3bb44ff846a72"
     }
-    PythonAgent: 这是一个使用 Python 编写的快速排序函数。快速排序是一种高效的排序算法，采用分治策略来把一个序列分为较小和较大的两个子序列，然后递归地排序两个子序列。
+    PythonAgent: 这是一个使用 Python 实现的快速排序算法的函数。该函数采用了递归的方法来对列表进行排序：
 
     ```python
     def quicksort(arr):
@@ -262,24 +262,25 @@ Routing
             right = [x for x in arr if x > pivot]
             return quicksort(left) + middle + quicksort(right)
 
-    # 示例
-    print(quicksort([3,6,8,10,1,2,1]))
-    # 输出: [1, 1, 2, 3, 6, 8, 10]
+    # 使用示例
+    unsorted_list = [3, 6, 8, 10, 1, 2, 1]
+    sorted_list = quicksort(unsorted_list)
+    print(sorted_list)
     ```
 
-    这段代码定义了一个 `quicksort` 函数，它接受一个列表 `arr` 作为参数，并返回一个新的已排序列表。如果您想要在原地对数组进行排序而不创建新的列表，我们可以实现一个稍微不同的版本。需要我展示如何在原地执行快速排序吗？
+    当你运行这段代码，它将打印出一个排好序的列表。你可以用任何列表去替换 `unsorted_list` 来测试这个函数。如果你有任何问题或需要进一步的帮助，请告诉我！
     system: {
         "type": "tool_result",
-        "id": "call_a41b93c2176c444b923c0d",
+        "id": "call_93679211e3bb44ff846a72",
         "name": "generate_python",
         "output": [
             {
                 "type": "text",
-                "text": "这是一个使用 Python 编写的快速排序函数。快速排序是一种高效的排序算法，采用分治策略来把一个序列分为较小和较大的两个子序列，然后递归地排序两个子序列。\n\n```python\ndef quicksort(arr):\n    if len(arr) <= 1:\n        return arr\n    else:\n        pivot = arr[len(arr) // 2]\n        left = [x for x in arr if x < pivot]\n        middle = [x for x in arr if x == pivot]\n        right = [x for x in arr if x > pivot]\n        return quicksort(left) + middle + quicksort(right)\n\n# 示例\nprint(quicksort([3,6,8,10,1,2,1]))\n# 输出: [1, 1, 2, 3, 6, 8, 10]\n```\n\n这段代码定义了一个 `quicksort` 函数，它接受一个列表 `arr` 作为参数，并返回一个新的已排序列表。如果您想要在原地对数组进行排序而不创建新的列表，我们可以实现一个稍微不同的版本。需要我展示如何在原地执行快速排序吗？"
+                "text": "这是一个使用 Python 实现的快速排序算法的函数。该函数采用了递归的方法来对列表进行排序：\n\n```python\ndef quicksort(arr):\n    if len(arr) <= 1:\n        return arr\n    else:\n        pivot = arr[len(arr) // 2]\n        left = [x for x in arr if x < pivot]\n        middle = [x for x in arr if x == pivot]\n        right = [x for x in arr if x > pivot]\n        return quicksort(left) + middle + quicksort(right)\n\n# 使用示例\nunsorted_list = [3, 6, 8, 10, 1, 2, 1]\nsorted_list = quicksort(unsorted_list)\nprint(sorted_list)\n```\n\n当你运行这段代码，它将打印出一个排好序的列表。你可以用任何列表去替换 `unsorted_list` 来测试这个函数。如果你有任何问题或需要进一步的帮助，请告诉我！"
             }
         ]
     }
-    Router: 这是一个使用 Python 编写的快速排序函数。快速排序是一种高效的排序算法，采用分治策略来把一个序列分为较小和较大的两个子序列，然后递归地排序两个子序列。
+    Router: 这是一个使用 Python 实现的快速排序算法的函数。该函数采用了递归的方法来对列表进行排序：
 
     ```python
     def quicksort(arr):
@@ -292,12 +293,13 @@ Routing
             right = [x for x in arr if x > pivot]
             return quicksort(left) + middle + quicksort(right)
 
-    # 示例
-    print(quicksort([3,6,8,10,1,2,1]))
-    # 输出: [1, 1, 2, 3, 6, 8, 10]
+    # 使用示例
+    unsorted_list = [3, 6, 8, 10, 1, 2, 1]
+    sorted_list = quicksort(unsorted_list)
+    print(sorted_list)
     ```
 
-    这段代码定义了一个 `quicksort` 函数，它接受一个列表 `arr` 作为参数，并返回一个新的已排序列表。如果您想要在原地对数组进行排序而不创建新的列表，请告诉我，我可以为您提供相应的实现。
+    当你运行这段代码，它将打印出一个排好序的列表。你可以用任何列表去替换 `unsorted_list` 来测试这个函数。如果你有任何问题或需要进一步的帮助，请告诉我！
 
 
 
@@ -305,7 +307,7 @@ Routing
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 41.141 seconds)
+   **Total running time of the script:** (0 minutes 20.011 seconds)
 
 
 .. _sphx_glr_download_tutorial_workflow_routing.py:
