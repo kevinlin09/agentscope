@@ -280,9 +280,9 @@ Specifically, the agents within the same ``MsgHub`` will receive messages from o
 
  .. code-block:: none
 
-    Alice: Hi there, I'm Alice. Nice to meet you! Could you tell me a bit about yourself?
-    Bob: Hi Alice, I'm Bob. It's great to meet you too! I'm a student currently studying computer science and I enjoy playing video games and hiking in my free time. What about you?
-    Charlie: Hi Bob, I'm Charlie. It's nice to meet you! I'm also a student and I'm into sports, especially basketball. Besides that, I like to read and learn about new technology. How do you find your studies in computer science?
+    Alice: Hi there! I'm Alice, a student who's always eager to learn new things and meet new people. Nice to meet you! Could you tell me a bit about yourself?
+    Bob: Hi Alice, I'm Bob. I'm also a student and like you, I enjoy learning and making new friends. It's great to meet someone who is as enthusiastic about discovering new things. What kind of subjects or activities do you usually engage in?
+    Charlie: Alice: That's great, Bob! I'm really into science and technology. I love doing experiments and coding projects in my free time. I also enjoy reading, especially sci-fi and fantasy books. What about you? Do you have any particular interests or hobbies?
 
 
 
@@ -319,9 +319,9 @@ Now we print the memory of Alice to check if her memory is updated correctly.
     system: Now you meet each other with a brief self-introduction.
     Alice: None
     system: None
-    Alice: Hi there, I'm Alice. Nice to meet you! Could you tell me a bit about yourself?
-    Bob: Hi Alice, I'm Bob. It's great to meet you too! I'm a student currently studying computer science and I enjoy playing video games and hiking in my free time. What about you?
-    Charlie: Hi Bob, I'm Charlie. It's nice to meet you! I'm also a student and I'm into sports, especially basketball. Besides that, I like to read and learn about new technology. How do you find your studies in computer science?
+    Alice: Hi there! I'm Alice, a student who's always eager to learn new things and meet new people. Nice to meet you! Could you tell me a bit about yourself?
+    Bob: Hi Alice, I'm Bob. I'm also a student and like you, I enjoy learning and making new friends. It's great to meet someone who is as enthusiastic about discovering new things. What kind of subjects or activities do you usually engage in?
+    Charlie: Alice: That's great, Bob! I'm really into science and technology. I love doing experiments and coding projects in my free time. I also enjoy reading, especially sci-fi and fantasy books. What about you? Do you have any particular interests or hobbies?
 
 
 
@@ -338,7 +338,7 @@ Further Reading
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 9.921 seconds)
+   **Total running time of the script:** (0 minutes 10.553 seconds)
 
 
 .. _sphx_glr_download_tutorial_workflow_conversation.py:

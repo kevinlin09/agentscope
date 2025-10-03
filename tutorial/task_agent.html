@@ -509,7 +509,7 @@ they will be executed in parallel by the <code class="docutils literal notransla
 </div>
 <div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Jarvis: {
     &quot;type&quot;: &quot;tool_use&quot;,
-    &quot;id&quot;: &quot;call_0fd2e6e1b0254b6e9f77cd&quot;,
+    &quot;id&quot;: &quot;call_396d9fa5b53449508aae93&quot;,
     &quot;name&quot;: &quot;example_tool_function&quot;,
     &quot;input&quot;: {
         &quot;tag&quot;: &quot;tag1&quot;
@@ -517,7 +517,7 @@ they will be executed in parallel by the <code class="docutils literal notransla
 }
 Jarvis: {
     &quot;type&quot;: &quot;tool_use&quot;,
-    &quot;id&quot;: &quot;call_563e63c592214ec4942a44&quot;,
+    &quot;id&quot;: &quot;call_93e57469a2dc4351bacb4f&quot;,
     &quot;name&quot;: &quot;example_tool_function&quot;,
     &quot;input&quot;: {
         &quot;tag&quot;: &quot;tag2&quot;
@@ -525,30 +525,30 @@ Jarvis: {
 }
 system: {
     &quot;type&quot;: &quot;tool_result&quot;,
-    &quot;id&quot;: &quot;call_0fd2e6e1b0254b6e9f77cd&quot;,
+    &quot;id&quot;: &quot;call_396d9fa5b53449508aae93&quot;,
     &quot;name&quot;: &quot;example_tool_function&quot;,
     &quot;output&quot;: [
         {
             &quot;type&quot;: &quot;text&quot;,
-            &quot;text&quot;: &quot;Tag tag1 started at 12:29:54.712482 and ended at 12:29:57.715752. &quot;
+            &quot;text&quot;: &quot;Tag tag1 started at 08:56:44.722454 and ended at 08:56:47.725722. &quot;
         }
     ]
 }
 system: {
     &quot;type&quot;: &quot;tool_result&quot;,
-    &quot;id&quot;: &quot;call_563e63c592214ec4942a44&quot;,
+    &quot;id&quot;: &quot;call_93e57469a2dc4351bacb4f&quot;,
     &quot;name&quot;: &quot;example_tool_function&quot;,
     &quot;output&quot;: [
         {
             &quot;type&quot;: &quot;text&quot;,
-            &quot;text&quot;: &quot;Tag tag2 started at 12:29:54.712564 and ended at 12:29:57.716279. &quot;
+            &quot;text&quot;: &quot;Tag tag2 started at 08:56:44.722546 and ended at 08:56:47.726414. &quot;
         }
     ]
 }
-Jarvis: The &#39;example_tool_function&#39; has been called with two different tags, &#39;tag1&#39; and &#39;tag2&#39;, and they have executed in parallel. Here are the details:
+Jarvis: The function &#39;example_tool_function&#39; was called in parallel with two different tags.
 
-- For &#39;tag1&#39;: It started at 12:29:54.712482 and ended at 12:29:57.715752.
-- For &#39;tag2&#39;: It started at 12:29:54.712564 and ended at 12:29:57.716279.
+For the tag &#39;tag1&#39;, it started at 08:56:44.722454 and ended at 08:56:47.725722.
+For the tag &#39;tag2&#39;, it started at 08:56:44.722546 and ended at 08:56:47.726414.
 </pre></div>
 </div>
 </section>
@@ -604,15 +604,17 @@ Then we can get the structured output from the <code class="docutils literal not
 <span class="n">asyncio</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">example_structured_output</span><span class="p">())</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Jarvis: Albert Einstein was a renowned physicist who developed the theory of relativity, one of the two pillars of modern physics. He was born in 1879 and passed away in 1955 at the age of 76. Einstein has received numerous honors, including the Nobel Prize in Physics in 1921 for his services to theoretical physics and his discovery of the law of the photoelectric effect.
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Jarvis: Albert Einstein was a renowned physicist who developed the theory of relativity, one of the two pillars of modern physics. He is best known for his mass–energy equivalence formula E = mc2.
 
 The structured output:
 {
     &quot;name&quot;: &quot;Albert Einstein&quot;,
-    &quot;description&quot;: &quot;A renowned physicist who developed the theory of relativity&quot;,
+    &quot;description&quot;: &quot;A theoretical physicist who developed the theory of relativity and mass-energy equivalence formula E=mc^2.&quot;,
     &quot;age&quot;: 76,
     &quot;honor&quot;: [
-        &quot;Nobel Prize in Physics (1921)&quot;
+        &quot;Nobel Prize in Physics (1921)&quot;,
+        &quot;Copley Medal (1925)&quot;,
+        &quot;Max Planck Medal (1929)&quot;
     ]
 }
 </pre></div>
@@ -701,7 +703,7 @@ We summarize the agent under <code class="docutils literal notranslate"><span cl
 <li><p><a class="reference internal" href="task_tool.html#tool"><span class="std std-ref">Tool</span></a></p></li>
 <li><p><a class="reference internal" href="task_hook.html#hook"><span class="std std-ref">Agent Hooks</span></a></p></li>
 </ul>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 16.253 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 20.695 seconds)</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-tutorial-task-agent-py">
 <div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
 <p><a class="reference download internal" download="" href="../_downloads/7dec07e2c813e72e1dad091b3ac4913a/task_agent.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">task_agent.ipynb</span></code></a></p>
