@@ -550,7 +550,7 @@
         <span class="c1"># Register the current_plan state for state management</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">register_state</span><span class="p">(</span>
             <span class="s2">&quot;current_plan&quot;</span><span class="p">,</span>
-            <span class="n">custom_to_json</span><span class="o">=</span><span class="k">lambda</span> <span class="n">_</span><span class="p">:</span> <span class="n">_</span><span class="o">.</span><span class="n">model_dump_json</span><span class="p">()</span> <span class="k">if</span> <span class="n">_</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
+            <span class="n">custom_to_json</span><span class="o">=</span><span class="k">lambda</span> <span class="n">_</span><span class="p">:</span> <span class="n">_</span><span class="o">.</span><span class="n">model_dump</span><span class="p">()</span> <span class="k">if</span> <span class="n">_</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
             <span class="n">custom_from_json</span><span class="o">=</span><span class="k">lambda</span> <span class="n">_</span><span class="p">:</span> <span class="n">Plan</span><span class="o">.</span><span class="n">model_validate</span><span class="p">(</span><span class="n">_</span><span class="p">)</span> <span class="k">if</span> <span class="n">_</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
         <span class="p">)</span></div>
 
