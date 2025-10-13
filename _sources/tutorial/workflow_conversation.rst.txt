@@ -280,11 +280,9 @@ Specifically, the agents within the same ``MsgHub`` will receive messages from o
 
  .. code-block:: none
 
-    Alice: Hi there, I'm Alice. Nice to meet you! Could you tell me a bit about yourself?
-    Bob: Hi Alice, I'm Bob. It's nice to meet you too! I'm a student currently studying computer science and I'm really into technology and programming. What about you? What are you up to these days?
-    Charlie: Alice: That's really cool, Bob! I'm actually working as a graphic designer and I love everything related to art and design. It's always fascinating to see how tech and design can come together in projects.
-    Bob: Absolutely, Alice! The integration between technology and design is becoming more and more important. Do you often work on projects that involve both?
-    Charlie: Yeah, quite often actually! Lately, I've been working on interactive web designs where user experience is key. It's amazing how much coding knowledge can enhance the design process. Do you ever get to apply your programming skills to creative projects, Bob?
+    Alice: Hello! I'm Alice, a student eager to learn and help out with any questions or tasks you might have. How can I assist you today?
+    Bob: Hello Alice, I'm Bob. Nice to meet you! I'm also a student and always ready to help out with problems or just chat about interesting topics. What brings you here today?
+    Charlie: Hi Bob, I'm Charlie, another student here. It's great to meet you both! I'm here to join in and see if there's anything I can help with or any interesting discussions I can be a part of. How about you, what are you up to?
 
 
 
@@ -321,9 +319,9 @@ Now we print the memory of Alice to check if her memory is updated correctly.
     system: Now you meet each other with a brief self-introduction.
     Alice: None
     system: None
-    Alice: Hi there, I'm Alice. Nice to meet you! Could you tell me a bit about yourself?
-    Bob: Hi Alice, I'm Bob. It's nice to meet you too! I'm a student currently studying computer science and I'm really into technology and programming. What about you? What are you up to these days?
-    Charlie: Yeah, quite often actually! Lately, I've been working on interactive web designs where user experience is key. It's amazing how much coding knowledge can enhance the design process. Do you ever get to apply your programming skills to creative projects, Bob?
+    Alice: Hello! I'm Alice, a student eager to learn and help out with any questions or tasks you might have. How can I assist you today?
+    Bob: Hello Alice, I'm Bob. Nice to meet you! I'm also a student and always ready to help out with problems or just chat about interesting topics. What brings you here today?
+    Charlie: Hi Bob, I'm Charlie, another student here. It's great to meet you both! I'm here to join in and see if there's anything I can help with or any interesting discussions I can be a part of. How about you, what are you up to?
 
 
 
@@ -340,7 +338,7 @@ Further Reading
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 14.746 seconds)
+   **Total running time of the script:** (0 minutes 9.114 seconds)
 
 
 .. _sphx_glr_download_tutorial_workflow_conversation.py:
