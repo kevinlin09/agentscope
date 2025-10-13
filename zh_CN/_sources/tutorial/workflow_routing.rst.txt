@@ -110,11 +110,11 @@ Routing
 
  .. code-block:: none
 
-    Router: 好的，我来为你创作一首诗。
+    Router: 好的，我将为您创作一首诗。
     结构化输出：
     {
         "your_choice": "Content Generation",
-        "task_description": "为用户写一首诗"
+        "task_description": null
     }
 
 
@@ -247,73 +247,75 @@ Routing
         "input": {
             "demand": "生成一个快速排序函数"
         },
-        "id": "call_307618542d6640db98fefb"
+        "id": "call_486269d6769e45ef8410f5"
     }
-    PythonAgent: 以下是一个使用 Python 编写的快速排序函数的示例。这个实现采用了一个递归的方法，选取列表中的第一个元素作为基准（pivot），然后将列表分为两部分：一部分包含所有小于基准的元素，另一部分包含所有大于或等于基准的元素。接着对这两部分再分别进行快速排序。
+    PythonAgent: 以下是一个使用 Python 编写的快速排序函数。这个实现采用 Lomuto 的分区方案，其中选择数组的最后一个元素作为基准值（pivot）。我将提供一个简单的快速排序算法实现。
 
     ```python
     def quicksort(arr):
-        # 递归的基本情况：如果数组长度为0或1，则不需要排序
         if len(arr) <= 1:
             return arr
         else:
-            # 选择基准值
-            pivot = arr[0]
-        
-            # 所有小于基准的元素组成的子数组
-            less = [i for i in arr[1:] if i < pivot]
-        
-            # 所有大于或等于基准的元素组成的子数组
-            greater_or_equal = [i for i in arr[1:] if i >= pivot]
-        
-            # 递归地对子数组进行快速排序，并连接结果
-            return quicksort(less) + [pivot] + quicksort(greater_or_equal)
-
-    # 示例
-    example_list = [3, 6, 8, 10, 1, 2, 1]
-    sorted_list = quicksort(example_list)
-    print('Sorted list:', sorted_list)
+            pivot = arr[-1]
+            smaller, equal, larger = [], [], []
+            for x in arr:
+                if x < pivot:
+                    smaller.append(x)
+                elif x == pivot:
+                    equal.append(x)
+                else:
+                    larger.append(x)
+            return quicksort(smaller) + equal + quicksort(larger)
     ```
 
-    您可以直接运行这段代码来测试快速排序功能。如果您需要一个不同的版本，比如使用随机选择的基准或者使用另一种方式来划分数组，请告诉我！
+    要使用这个函数，你只需要调用 `quicksort` 并传入一个整数列表或任何可比较对象的列表。例如：
+
+    ```python
+    unsorted_list = [3, 6, 8, 10, 1, 2, 1]
+    sorted_list = quicksort(unsorted_list)
+    print(sorted_list)
+    ```
+
+    这将会输出一个排序后的列表。如果你需要原地排序版本的快速排序或者有任何其他要求，请告诉我！
     system: {
         "type": "tool_result",
-        "id": "call_307618542d6640db98fefb",
+        "id": "call_486269d6769e45ef8410f5",
         "name": "generate_python",
         "output": [
             {
                 "type": "text",
-                "text": "以下是一个使用 Python 编写的快速排序函数的示例。这个实现采用了一个递归的方法，选取列表中的第一个元素作为基准（pivot），然后将列表分为两部分：一部分包含所有小于基准的元素，另一部分包含所有大于或等于基准的元素。接着对这两部分再分别进行快速排序。\n\n```python\ndef quicksort(arr):\n    # 递归的基本情况：如果数组长度为0或1，则不需要排序\n    if len(arr) <= 1:\n        return arr\n    else:\n        # 选择基准值\n        pivot = arr[0]\n        \n        # 所有小于基准的元素组成的子数组\n        less = [i for i in arr[1:] if i < pivot]\n        \n        # 所有大于或等于基准的元素组成的子数组\n        greater_or_equal = [i for i in arr[1:] if i >= pivot]\n        \n        # 递归地对子数组进行快速排序，并连接结果\n        return quicksort(less) + [pivot] + quicksort(greater_or_equal)\n\n# 示例\nexample_list = [3, 6, 8, 10, 1, 2, 1]\nsorted_list = quicksort(example_list)\nprint('Sorted list:', sorted_list)\n```\n\n您可以直接运行这段代码来测试快速排序功能。如果您需要一个不同的版本，比如使用随机选择的基准或者使用另一种方式来划分数组，请告诉我！"
+                "text": "以下是一个使用 Python 编写的快速排序函数。这个实现采用 Lomuto 的分区方案，其中选择数组的最后一个元素作为基准值（pivot）。我将提供一个简单的快速排序算法实现。\n\n```python\ndef quicksort(arr):\n    if len(arr) <= 1:\n        return arr\n    else:\n        pivot = arr[-1]\n        smaller, equal, larger = [], [], []\n        for x in arr:\n            if x < pivot:\n                smaller.append(x)\n            elif x == pivot:\n                equal.append(x)\n            else:\n                larger.append(x)\n        return quicksort(smaller) + equal + quicksort(larger)\n```\n\n要使用这个函数，你只需要调用 `quicksort` 并传入一个整数列表或任何可比较对象的列表。例如：\n\n```python\nunsorted_list = [3, 6, 8, 10, 1, 2, 1]\nsorted_list = quicksort(unsorted_list)\nprint(sorted_list)\n```\n\n这将会输出一个排序后的列表。如果你需要原地排序版本的快速排序或者有任何其他要求，请告诉我！"
             }
         ]
     }
-    Router: 以下是一个使用 Python 编写的快速排序函数的示例。这个实现采用了一个递归的方法，选取列表中的第一个元素作为基准（pivot），然后将列表分为两部分：一部分包含所有小于基准的元素，另一部分包含所有大于或等于基准的元素。接着对这两部分再分别进行快速排序。
+    Router: 以下是一个使用 Python 编写的快速排序函数。这个实现采用 Lomuto 的分区方案，其中选择数组的最后一个元素作为基准值（pivot）。我将提供一个简单的快速排序算法实现。
 
     ```python
     def quicksort(arr):
-        # 递归的基本情况：如果数组长度为0或1，则不需要排序
         if len(arr) <= 1:
             return arr
         else:
-            # 选择基准值
-            pivot = arr[0]
-        
-            # 所有小于基准的元素组成的子数组
-            less = [i for i in arr[1:] if i < pivot]
-        
-            # 所有大于或等于基准的元素组成的子数组
-            greater_or_equal = [i for i in arr[1:] if i >= pivot]
-        
-            # 递归地对子数组进行快速排序，并连接结果
-            return quicksort(less) + [pivot] + quicksort(greater_or_equal)
-
-    # 示例
-    example_list = [3, 6, 8, 10, 1, 2, 1]
-    sorted_list = quicksort(example_list)
-    print('Sorted list:', sorted_list)
+            pivot = arr[-1]
+            smaller, equal, larger = [], [], []
+            for x in arr:
+                if x < pivot:
+                    smaller.append(x)
+                elif x == pivot:
+                    equal.append(x)
+                else:
+                    larger.append(x)
+            return quicksort(smaller) + equal + quicksort(larger)
     ```
 
-    您可以直接运行这段代码来测试快速排序功能。如果您需要一个不同的版本，比如使用随机选择的基准或者使用另一种方式来划分数组，请告诉我！
+    要使用这个函数，你只需要调用 `quicksort` 并传入一个整数列表或任何可比较对象的列表。例如：
+
+    ```python
+    unsorted_list = [3, 6, 8, 10, 1, 2, 1]
+    sorted_list = quicksort(unsorted_list)
+    print(sorted_list)
+    ```
+
+    这将会输出一个排序后的列表。如果你需要原地排序版本的快速排序或者有任何其他要求，请告诉我！
 
 
 
@@ -321,7 +323,7 @@ Routing
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 28.484 seconds)
+   **Total running time of the script:** (0 minutes 22.549 seconds)
 
 
 .. _sphx_glr_download_tutorial_workflow_routing.py:
