@@ -15,7 +15,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-dataframe.css?v=2082cf3c" />
     <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?v=8dab3a3b" />
-    <link rel="stylesheet" type="text/css" href="../_static/css/gallery.css?v=2222c8ae" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/gallery.css?v=18ea14ae" />
     
     
 
@@ -442,22 +442,32 @@ to download the full example code.</p>
 </div>
 <div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Alice: 正方观点是：当圆A绕着圆B滚动一圈回到起点时，圆A总共会旋转3次。
 
-为了理解这个答案，我们可以考虑两个圆的周长。设圆B的半径为r，则圆B的周长是2πr。由于圆A的半径是圆B半径的1/3，即圆A的半径为r/3，那么圆A的周长就是2π(r/3) = 2πr/3。
+首先，我们需要理解这个问题背后的几何原理。假设圆B的半径为R，那么圆A的半径r = R/3。当圆A绕圆B外切滚动一周时，它的中心沿着一个以(2R)为半径的圆周运动。因此，圆A的中心走过的路径长度等于这个大圆的周长，即\(2\pi \times 2R = 4\pi R\)。
 
-当圆A绕着圆B外切滚动而没有相对滑动时，圆A走过的路径长度等于圆B的周长，也就是2πr。因为圆A自身的周长是2πr/3，所以它需要滚动3倍于自身周长的距离才能完成绕圆B一周的路径。因此，圆A在绕圆B一周的过程中会自转3圈。这就是我们的论点。
+对于圆A自身来说，要计算它绕自身轴线旋转了多少圈，我们可以通过比较圆A中心行进的距离与圆A自身的周长来得出。圆A的周长是\(2\pi r = 2\pi (R/3) = \frac{2\pi R}{3}\)。
+
+所以，圆A相对于其自身轴线的旋转次数为圆A中心行进距离除以其周长，即
+\[ \text{旋转次数} = \frac{4\pi R}{\frac{2\pi R}{3}} = \frac{4\pi R \cdot 3}{2\pi R} = 6 / 2 = 3\]
+
+故此，圆A绕圆B滚动一圈回到原点的过程中，圆A总共会自转3次。这考虑了圆A不仅在围绕圆B公转，同时也在自转的情况。
 Bob: 反方观点是：当圆A绕着圆B滚动一圈回到起点时，圆A总共会旋转4次。
 
-要理解这一点，我们需要考虑圆A在绕圆B滚动过程中所经历的两种旋转：
+首先，我们需要澄清一个概念：当圆A绕圆B滚动时，它同时经历两种运动。一种是围绕圆B的公转，另一种是圆A自身的自转。根据正方给出的数据，圆B的半径为R，圆A的半径为r = R/3。
 
-1. 第一种旋转是因为圆A沿着圆B的周长滚动而产生的。正如正方所提到的，如果圆B的半径为r，那么圆B的周长就是2πr。由于圆A的半径为r/3，所以它的周长是2πr/3。因此，为了沿圆B的周长走完全程，圆A需要自转3圈。
+当圆A绕圆B滚动一周时，它的中心沿着一个以(2R)为半径的圆周运动，这与正方所述相同。因此，圆A的中心走过的路径长度确实是\(4\pi R\)。
 
-2. 第二种旋转来自于这样一个事实：当一个圆围绕另一个圆外切滚动时，除了沿着路径滚动之外，它还会因为环绕运动而额外旋转一次。这是因为当圆A完成了一圈绕行后，它不仅覆盖了圆B的周长，还完成了相对于起始位置的一次完整旋转。
+然而，在计算圆A自转次数时，需要考虑的是圆A不仅在绕圆B公转，同时也在绕自己的轴线自转。当圆A完成一次公转，即沿着圆B外切滚动了一圈，它实际上会多转过一个完整的圆周，这是因为圆A始终保持着与圆B的接触点不变，而这个接触点相对于圆A自身的位置也发生了变化。这意味着除了跟随公转带来的旋转外，还有额外的一次自转。
 
-综合这两种旋转，我们得出结论：圆A绕圆B一周的过程中会自转3圈加上额外的1圈，即总共4圈。这就是我们的论点。
-Bob: 让我们来澄清一下这个旋转次数的问题。当圆A绕着圆B外切滚动一圈时，确实存在两种类型的转动。第一种是由于圆A沿圆B的周长滚动而产生的自转。如正方所述，圆A需要自转3圈才能覆盖圆B的周长。第二种是圆A作为整体绕着圆B中心旋转一周，这将导致圆A相对自身轴线再旋转一次。因此，圆A在绕圆B一周的过程中，实际上会自转3圈，并且由于绕圆心旋转而产生额外的1圈旋转。总结来说，圆A总共会旋转4次。
-Aggregator: 两位辩论者的观点都很有见地。Alice 强调了圆A绕着圆B外切滚动时，基于两个圆周长的差异，圆A需要自转3圈来覆盖圆B的整个周长。而Bob则指出了除了这3次自转之外，圆A还会有一次额外的整体旋转，因为它绕着圆B中心做了一次完整的公转。综合来看，当圆A绕着圆B滚动一圈回到起点时，它会经历3次自转加上1次公转，总共是4次旋转。
+所以，圆A的总旋转次数应该是：
+\[ \text{总旋转次数} = \frac{4\pi R}{\frac{2\pi R}{3}} + 1 = 6 / 2 + 1 = 3 + 1 = 4 \]
 
-辩论结束，正确答案是： 4次
+因此，当圆A绕圆B滚动一圈回到原点的过程中，考虑到圆A既公转又自转的情况，圆A总共会旋转4次。
+Bob: 反方观点认为，当圆A绕着圆B滚动一圈回到起点时，圆A总共会旋转4次。这里的关键在于理解圆A不仅随着其绕圆B的公转而旋转，还因为要保持与圆B的接触点不变，从而产生了额外的一次自转。因此，基于圆A中心行进的距离和圆A的周长进行计算后，再加上这次额外的自转，我们得出圆A绕圆B滚动一圈总共会旋转4次。
+Aggregator: 两位辩论者提出了关于圆A绕圆B滚动一圈回到起点时，圆A总共会旋转多少次的不同观点。正方Alice认为圆A会旋转3次，而反方Bob则认为是4次。在解决这个问题上，我们需要考虑的是圆A在绕着圆B公转的同时也在自转。根据几何关系，当圆A完成一次围绕圆B的公转时，它相对于地面（或圆B）的接触点确实会额外转动一次，这称为自旋滑移现象。
+
+所以，圆A除了跟随它的中心走过的路径长度而产生的3次旋转外，还会有1次因为保持与圆B接触而产生的额外自转。因此，综合考虑这两个因素，正确的答案是圆A总共会旋转4次。
+
+辩论结束，正确答案是： 圆A绕圆B滚动一圈回到起点时，总共会旋转4次。
 </pre></div>
 </div>
 <section id="id1">
@@ -466,7 +476,7 @@ Aggregator: 两位辩论者的观点都很有见地。Alice 强调了圆A绕着�
 <li><p><a class="reference internal" href="task_pipeline.html#pipeline"><span class="std std-ref">管道 (Pipeline)</span></a></p></li>
 </ul>
 <p id="emnlp-2024">Encouraging Divergent Thinking in Large Language Models through Multi-Agent Debate. EMNLP 2024.</p>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 29.361 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 45.390 seconds)</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-tutorial-workflow-multiagent-debate-py">
 <div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
 <p><a class="reference download internal" download="" href="../_downloads/4ddcd353f1389c1b465adca14e7ea420/workflow_multiagent_debate.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">workflow_multiagent_debate.ipynb</span></code></a></p>

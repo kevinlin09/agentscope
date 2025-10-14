@@ -15,7 +15,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-dataframe.css?v=2082cf3c" />
     <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?v=8dab3a3b" />
-    <link rel="stylesheet" type="text/css" href="../_static/css/gallery.css?v=2222c8ae" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/gallery.css?v=18ea14ae" />
     
     
 
@@ -343,9 +343,9 @@ to download the full example code.</p>
     &quot;type&quot;: &quot;tool_use&quot;,
     &quot;name&quot;: &quot;create_worker&quot;,
     &quot;input&quot;: {
-        &quot;task_description&quot;: &quot;在 Python 中编写并执行一个简单的 &#39;Hello, World!&#39; 程序，然后返回程序的输出。&quot;
+        &quot;task_description&quot;: &quot;在 Python 中编写并执行一个打印 &#39;Hello, World!&#39; 的简单程序。&quot;
     },
-    &quot;id&quot;: &quot;call_402d33b54da94946b9f3ad&quot;
+    &quot;id&quot;: &quot;call_bdb01c9399ef4d1397b3e7&quot;
 }
 Worker: {
     &quot;type&quot;: &quot;tool_use&quot;,
@@ -354,11 +354,11 @@ Worker: {
         &quot;code&quot;: &quot;print(&#39;Hello, World!&#39;)&quot;,
         &quot;timeout&quot;: 5
     },
-    &quot;id&quot;: &quot;call_ed8c3a7549744f9a924b67&quot;
+    &quot;id&quot;: &quot;call_96d2829f2172453eac5409&quot;
 }
 system: {
     &quot;type&quot;: &quot;tool_result&quot;,
-    &quot;id&quot;: &quot;call_ed8c3a7549744f9a924b67&quot;,
+    &quot;id&quot;: &quot;call_96d2829f2172453eac5409&quot;,
     &quot;name&quot;: &quot;execute_python_code&quot;,
     &quot;output&quot;: [
         {
@@ -367,27 +367,19 @@ system: {
         }
     ]
 }
-Worker: 这里是您的 &quot;Hello, World!&quot; 程序的输出：
-
-```
-Hello, World!
-```
+Worker: 程序已成功执行，并打印出了 &#39;Hello, World!&#39;。
 system: {
     &quot;type&quot;: &quot;tool_result&quot;,
-    &quot;id&quot;: &quot;call_402d33b54da94946b9f3ad&quot;,
+    &quot;id&quot;: &quot;call_bdb01c9399ef4d1397b3e7&quot;,
     &quot;name&quot;: &quot;create_worker&quot;,
     &quot;output&quot;: [
         {
             &quot;type&quot;: &quot;text&quot;,
-            &quot;text&quot;: &quot;这里是您的 \&quot;Hello, World!\&quot; 程序的输出：\n\n```\nHello, World!\n```&quot;
+            &quot;text&quot;: &quot;程序已成功执行，并打印出了 &#39;Hello, World!&#39;。&quot;
         }
     ]
 }
-Orchestrator: 您的 &quot;Hello, World!&quot; 程序在 Python 中执行的结果是：
-
-```
-Hello, World!
-```
+Orchestrator: 子智能体已经成功地在 Python 中执行了 &quot;Hello, World!&quot; 程序，并打印出了预期的问候语。
 </pre></div>
 </div>
 <div class="line-block">
@@ -470,7 +462,7 @@ Hello, World!
 <span class="n">asyncio</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">run_handoffs</span><span class="p">())</span>
 </pre></div>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 10.330 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 9.814 seconds)</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-tutorial-workflow-handoffs-py">
 <div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
 <p><a class="reference download internal" download="" href="../_downloads/91c90a0c5fa0aaee5502046f62e97d67/workflow_handoffs.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">workflow_handoffs.ipynb</span></code></a></p>

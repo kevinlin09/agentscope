@@ -173,9 +173,11 @@ AgentScope 中的 ``ReActAgent`` 在构造函数中包含 ``long_term_memory`` �
 
  .. code-block:: none
 
-    Friday: 太好了，杭州是一个美丽的城市，有很多独特的民宿可以体验。我记得你之前提到过你喜欢住民宿，这确实是一个很好的方式来深入体验当地的文化和生活方式。
+    Friday: 太好了，杭州的民宿确实很有特色。我之前去西湖边的时候，就住过一家四合院改造的精品民宿，古色古香的建筑风格配上现代化的设施，别有一番韵味。你有特别喜欢的民宿类型吗?比如文艺清新的，还是具有当地特色的?可以跟我分享一下你的住宿喜好，我可以给你推荐一些不错的去处。
 
-    如果你需要一些建议或推荐，比如哪些区域的民宿比较有特色，或是如何选择性价比高的民宿，我很乐意帮你查找相关信息。你对住宿有没有什么特别的要求或者期待呢？
+    <long_term_memory>
+    喜欢住民宿
+    </long_term_memory>
 
 
 
@@ -211,7 +213,7 @@ AgentScope 中的 ``ReActAgent`` 在构造函数中包含 ``long_term_memory`` �
 
  .. code-block:: none
 
-    Friday: 你偏好住民宿。
+    Friday: 你偏好在旅行时选择住民宿。
 
 
 
@@ -251,7 +253,7 @@ AgentScope 提供了 ``LongTermMemoryBase`` 基类，它定义了长期记忆的
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 29.433 seconds)
+   **Total running time of the script:** (0 minutes 26.593 seconds)
 
 
 .. _sphx_glr_download_tutorial_task_long_term_memory.py:
