@@ -15,7 +15,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-dataframe.css?v=2082cf3c" />
     <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?v=8dab3a3b" />
-    <link rel="stylesheet" type="text/css" href="../_static/css/gallery.css?v=2222c8ae" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/gallery.css?v=18ea14ae" />
     
     
 
@@ -343,22 +343,21 @@ First, we create a function to allow the orchestrator to create workers dynamica
     &quot;type&quot;: &quot;tool_use&quot;,
     &quot;name&quot;: &quot;create_worker&quot;,
     &quot;input&quot;: {
-        &quot;task_description&quot;: &quot;Execute the &#39;Hello, World!&#39; program in Python.&quot;
+        &quot;task_description&quot;: &quot;Print &#39;Hello, World!&#39; using Python.&quot;
     },
-    &quot;id&quot;: &quot;call_c85b8a337ced49d3b25d5c&quot;
+    &quot;id&quot;: &quot;call_0bbc5c911cf643bba03c85&quot;
 }
 Worker: {
     &quot;type&quot;: &quot;tool_use&quot;,
     &quot;name&quot;: &quot;execute_python_code&quot;,
     &quot;input&quot;: {
-        &quot;code&quot;: &quot;print(&#39;Hello, World!&#39;)&quot;,
-        &quot;timeout&quot;: 10
+        &quot;code&quot;: &quot;print(&#39;Hello, World!&#39;)&quot;
     },
-    &quot;id&quot;: &quot;call_41e9e1fdbd76430991ac24&quot;
+    &quot;id&quot;: &quot;call_619881170cda415095bfa1&quot;
 }
 system: {
     &quot;type&quot;: &quot;tool_result&quot;,
-    &quot;id&quot;: &quot;call_41e9e1fdbd76430991ac24&quot;,
+    &quot;id&quot;: &quot;call_619881170cda415095bfa1&quot;,
     &quot;name&quot;: &quot;execute_python_code&quot;,
     &quot;output&quot;: [
         {
@@ -367,23 +366,23 @@ system: {
         }
     ]
 }
-Worker: The &#39;Hello, World!&#39; program has been executed successfully in Python. Here is the output:
+Worker: The Python code has executed successfully and printed the message:
 
 ```
 Hello, World!
 ```
 system: {
     &quot;type&quot;: &quot;tool_result&quot;,
-    &quot;id&quot;: &quot;call_c85b8a337ced49d3b25d5c&quot;,
+    &quot;id&quot;: &quot;call_0bbc5c911cf643bba03c85&quot;,
     &quot;name&quot;: &quot;create_worker&quot;,
     &quot;output&quot;: [
         {
             &quot;type&quot;: &quot;text&quot;,
-            &quot;text&quot;: &quot;The &#39;Hello, World!&#39; program has been executed successfully in Python. Here is the output:\n\n```\nHello, World!\n```&quot;
+            &quot;text&quot;: &quot;The Python code has executed successfully and printed the message:\n\n```\nHello, World!\n```&quot;
         }
     ]
 }
-Orchestrator: The &#39;Hello, World!&#39; program has been executed successfully in Python. Here is the output:
+Orchestrator: The Python code has executed successfully and printed the message:
 ```
 Hello, World!
 ```
@@ -469,7 +468,7 @@ Hello, World!
 <span class="n">asyncio</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">run_handoffs</span><span class="p">())</span>
 </pre></div>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 9.908 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 8.956 seconds)</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-tutorial-workflow-handoffs-py">
 <div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
 <p><a class="reference download internal" download="" href="../_downloads/91c90a0c5fa0aaee5502046f62e97d67/workflow_handoffs.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">workflow_handoffs.ipynb</span></code></a></p>

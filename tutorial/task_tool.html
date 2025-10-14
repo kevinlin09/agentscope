@@ -15,7 +15,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-dataframe.css?v=2082cf3c" />
     <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?v=8dab3a3b" />
-    <link rel="stylesheet" type="text/css" href="../_static/css/gallery.css?v=2222c8ae" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/gallery.css?v=18ea14ae" />
     
     
 
@@ -526,7 +526,7 @@ openai_audio_to_text
 </pre></div>
 </div>
 <div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Tool Response:
-ToolResponse(content=[{&#39;type&#39;: &#39;text&#39;, &#39;text&#39;: &quot;Searching for &#39;AgentScope&#39; with API key &#39;xxx&#39;&quot;}], metadata=None, stream=False, is_last=True, is_interrupted=False, id=&#39;2025-10-13 09:35:05.759_be02eb&#39;)
+ToolResponse(content=[{&#39;type&#39;: &#39;text&#39;, &#39;text&#39;: &quot;Searching for &#39;AgentScope&#39; with API key &#39;xxx&#39;&quot;}], metadata=None, stream=False, is_last=True, is_interrupted=False, id=&#39;2025-10-14 07:12:26.572_6de8cf&#39;)
 </pre></div>
 </div>
 </section>
@@ -657,7 +657,7 @@ Besides, a flag <code class="docutils literal notranslate"><span class="pre">is_
 </pre></div>
 </div>
 <div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Tool Response:
-ToolResponse(content=[{&#39;type&#39;: &#39;text&#39;, &#39;text&#39;: &#39;&lt;system-info&gt;The tool call has been interrupted by the user.&lt;/system-info&gt;&#39;}], metadata=None, stream=True, is_last=True, is_interrupted=True, id=&#39;2025-10-13 09:35:06.763_bd83b8&#39;)
+ToolResponse(content=[{&#39;type&#39;: &#39;text&#39;, &#39;text&#39;: &#39;&lt;system-info&gt;The tool call has been interrupted by the user.&lt;/system-info&gt;&#39;}], metadata=None, stream=True, is_last=True, is_interrupted=True, id=&#39;2025-10-14 07:12:27.576_091e4c&#39;)
 The interrupted flag:
 True
 </pre></div>
@@ -718,11 +718,11 @@ By this way, the agent can observe what the tool has returned before the interru
 </pre></div>
 </div>
 <div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Chunk 0:
-ToolResponse(content=[{&#39;type&#39;: &#39;text&#39;, &#39;text&#39;: &#39;1234&#39;}], metadata=None, stream=True, is_last=True, is_interrupted=False, id=&#39;2025-10-13 09:35:06.766_4250cb&#39;)
+ToolResponse(content=[{&#39;type&#39;: &#39;text&#39;, &#39;text&#39;: &#39;1234&#39;}], metadata=None, stream=True, is_last=True, is_interrupted=False, id=&#39;2025-10-14 07:12:27.579_66e4ea&#39;)
 The interrupted flag:  False
 
 Chunk 1:
-ToolResponse(content=[{&#39;type&#39;: &#39;text&#39;, &#39;text&#39;: &#39;1234&#39;}, {&#39;type&#39;: &#39;text&#39;, &#39;text&#39;: &#39;&lt;system-info&gt;The tool call has been interrupted by the user.&lt;/system-info&gt;&#39;}], metadata=None, stream=True, is_last=True, is_interrupted=True, id=&#39;2025-10-13 09:35:06.766_4250cb&#39;)
+ToolResponse(content=[{&#39;type&#39;: &#39;text&#39;, &#39;text&#39;: &#39;1234&#39;}, {&#39;type&#39;: &#39;text&#39;, &#39;text&#39;: &#39;&lt;system-info&gt;The tool call has been interrupted by the user.&lt;/system-info&gt;&#39;}], metadata=None, stream=True, is_last=True, is_interrupted=True, id=&#39;2025-10-14 07:12:27.579_66e4ea&#39;)
 The interrupted flag:  True
 </pre></div>
 </div>
@@ -956,7 +956,7 @@ contain the notes of the activated tool groups.</p>
 </pre></div>
 </div>
 <div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Text content in tool Response:
-ToolResponse(content=[{&#39;type&#39;: &#39;text&#39;, &#39;text&#39;: &quot;Active tool groups successfully: [&#39;browser_user&#39;]. You MUST follow these notes to use the tools:\n&lt;notes&gt;## About browser_use Tools\n1. Use ``navigate`` to open a web page.\n2. When requiring user authentication, ask the user for the credentials\n3. ...&lt;/notes&gt;&quot;}], metadata=None, stream=False, is_last=True, is_interrupted=False, id=&#39;2025-10-13 09:35:06.774_9de480&#39;)
+ToolResponse(content=[{&#39;type&#39;: &#39;text&#39;, &#39;text&#39;: &quot;Active tool groups successfully: [&#39;browser_user&#39;]. You MUST follow these notes to use the tools:\n&lt;notes&gt;## About browser_use Tools\n1. Use ``navigate`` to open a web page.\n2. When requiring user authentication, ask the user for the credentials\n3. ...&lt;/notes&gt;&quot;}], metadata=None, stream=False, is_last=True, is_interrupted=False, id=&#39;2025-10-14 07:12:27.587_1497c5&#39;)
 </pre></div>
 </div>
 <p>The toolkit also provides a method to gather the notes of the activated tool groups, and you can assemble it into your agent’s system prompt.</p>
