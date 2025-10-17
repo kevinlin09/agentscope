@@ -6,7 +6,7 @@
 <link rel="index" title="Index" href="../genindex.html"><link rel="search" title="Search" href="../search.html"><link rel="next" title="Concurrent Agents" href="workflow_concurrent_agents.html"><link rel="prev" title="Conversation" href="workflow_conversation.html">
         <link rel="prefetch" href="../_static/logo.svg" as="image">
 
-    <!-- Generated with Sphinx 8.1.3 and Furo 2025.09.25 -->
+    <link rel="shortcut icon" href="../_static/logo.svg"><!-- Generated with Sphinx 8.1.3 and Furo 2025.09.25 -->
         <title>Multi-Agent Debate - AgentScope</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=d111a655" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?v=580074bf" />
@@ -24,18 +24,29 @@
   body {
     --color-code-background: #f2f2f2;
   --color-code-foreground: #1e1e1e;
+  --color-brand-primary: #2196f3;
+  --color-brand-content: #2196f3;
+  --color-admonition-background: #f8f9fa;
   
   }
   @media not print {
     body[data-theme="dark"] {
       --color-code-background: #202020;
   --color-code-foreground: #d0d0d0;
+  --color-link: #2196f3;
+  --color-link--hover: #2196f3;
+  --color-brand-primary: #64b5f6;
+  --color-brand-content: #64b5f6;
   
     }
     @media (prefers-color-scheme: dark) {
       body:not([data-theme="light"]) {
         --color-code-background: #202020;
   --color-code-foreground: #d0d0d0;
+  --color-link: #2196f3;
+  --color-link--hover: #2196f3;
+  --color-brand-primary: #64b5f6;
+  --color-brand-content: #64b5f6;
   
       }
     }
@@ -172,7 +183,7 @@
       </label>
     </div>
     <div class="header-center">
-      <a href="../index.html"><div class="brand">AgentScope</div></a>
+      <a href="../index.html"><div class="brand"><span style='font-weight: 700; color: #2196f3;'>AgentScope</span></div></a>
     </div>
     <div class="header-right">
       <div class="theme-toggle-container theme-toggle-header">
@@ -198,7 +209,7 @@
     <img class="sidebar-logo" src="../_static/logo.svg" alt="Logo"/>
   </div>
   
-  <span class="sidebar-brand-text">AgentScope</span>
+  <span class="sidebar-brand-text"><span style='font-weight: 700; color: #2196f3;'>AgentScope</span></span>
   
 </a><form class="sidebar-search-container" method="get" action="../search.html" role="search">
   <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
@@ -451,31 +462,33 @@ At each round a moderator agent will decide whether the correct answer can be ob
 <span class="n">asyncio</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">run_multiagent_debate</span><span class="p">())</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Alice: As the affirmative side, I will argue that when circle A, with a radius one-third of circle B, rolls around circle B without sliding, it will revolve 4 times in total by the time it returns to its starting point.
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Alice: As the affirmative side, I will argue that when a smaller circle A, whose radius is 1/3 of the larger circle B, rolls around the circumference of circle B without sliding, circle A will revolve 4 times in total by the time it returns to its starting point.
 
-To understand this, let&#39;s consider the following:
+To understand this, let&#39;s break down the problem. The circumference of a circle is given by \( C = 2\pi r \), where \( r \) is the radius of the circle. If we denote the radius of circle B as \( R \) and the radius of circle A as \( r \), then according to the problem, \( r = \frac{1}{3}R \).
 
-1. The circumference of a circle is given by \(C = 2\pi r\), where \(r\) is the radius.
-2. If the radius of circle B is \(R\), then the radius of circle A is \(\frac{1}{3}R\).
-3. The circumference of circle B is \(2\pi R\), and the circumference of circle A is \(2\pi \times \frac{1}{3}R = \frac{2\pi R}{3}\).
-4. When circle A rolls around circle B, it travels a distance equal to the circumference of circle B, which is \(2\pi R\).
-5. Since there is no relative sliding, the distance traveled by circle A is also the distance it has rolled along its own circumference. Therefore, the number of revolutions circle A makes while rolling around circle B is the distance traveled divided by the circumference of circle A, which is \(\frac{2\pi R}{\frac{2\pi R}{3}} = 3\).
+When circle A rolls around circle B, it travels a distance equal to the circumference of circle B, which is \( 2\pi R \). Since circle A has a radius of \( \frac{1}{3}R \), its own circumference is \( 2\pi \left(\frac{1}{3}R\right) = \frac{2\pi R}{3} \).
 
-However, we must also account for the fact that as circle A completes its path around circle B, it will have made an additional revolution due to the curvature of the path. This is because the center of circle A will have moved in a circular path around the center of circle B, which constitutes an extra rotation.
+The number of revolutions circle A makes while rolling around circle B can be calculated by dividing the total distance traveled (the circumference of circle B) by the circumference of circle A:
 
-Therefore, the total number of revolutions circle A makes is 3 (from the rolling) + 1 (from the circular path of the center) = 4.
+\[ \text{Number of Revolutions} = \frac{\text{Circumference of Circle B}}{\text{Circumference of Circle A}} = \frac{2\pi R}{\frac{2\pi R}{3}} = \frac{2\pi R \cdot 3}{2\pi R} = 3 \]
 
-This concludes my argument for the number of revolutions circle A will make.
-Bob: I understand the argument presented by the affirmative side, but I must respectfully disagree with the conclusion that circle A will revolve 4 times in total. The key point to consider here is the nature of the motion and how we count the revolutions.
+However, this calculation only accounts for the rotations due to the path length. We must also consider the rotation caused by the fact that circle A is revolving around circle B. As circle A completes one full trip around circle B, it will have completed an additional revolution due to this orbital motion. Therefore, the total number of revolutions is 3 (from the path length) plus 1 (from the orbit), which equals 4.
 
-When circle A rolls around the outside of circle B, it does indeed travel a distance equal to the circumference of circle B, which is \(2\pi R\). Given that the radius of circle A is \(\frac{1}{3}R\), its own circumference is \(\frac{2\pi R}{3}\). Therefore, as circle A rolls without sliding, it would complete exactly 3 of its own circumferences while traveling the full circumference of circle B.
+Hence, my stance is that circle A will revolve 4 times in total.
+Bob: As the negative side, I will argue that the number of revolutions circle A makes while rolling around circle B is actually 3, not 4.
 
-However, the additional revolution mentioned by the affirmative side, which is due to the circular path of the center of circle A, is already accounted for within these 3 revolutions. To see why, imagine marking a single point on the circumference of circle A. As circle A rolls around circle B, this point will touch the surface of circle B at various points along the way. By the time circle A has completed one trip around circle B, the marked point will have made contact with the starting point again, indicating that it has completed 3 full rotations relative to the ground (or the surface of circle B).
+To support this, let&#39;s revisit the problem and the calculations. The circumference of circle B is \(2\pi R\) and the circumference of circle A is \(\frac{2\pi R}{3}\). When circle A rolls without sliding around circle B, it indeed travels a distance equal to the circumference of circle B, which is \(2\pi R\).
 
-The apparent extra revolution comes from the perspective of an observer who is stationary relative to the center of circle B. From this viewpoint, the marked point on circle A will seem to have undergone an additional rotation because the entire circle A has rotated around the center of circle B. But this is not an additional physical revolution of the circle; rather, it&#39;s a result of the change in reference frame. The actual number of physical rotations of circle A about its own axis remains 3.
+The number of times circle A revolves due to the distance it has traveled is given by:
 
-Thus, my position is that when circle A completes a trip around circle B, it will have revolved 3 times, not 4.
-Aggregator: The debate has concluded, and after careful consideration of the arguments presented by both sides, the correct answer is that circle A will revolve 3 times in total as it rolls around circle B without sliding. The key point is that the additional apparent revolution due to the circular path of the center of circle A is a result of the change in the reference frame and not an extra physical revolution of the circle about its own axis. Therefore, the number of revolutions is exactly 3, which corresponds with the negative side&#39;s argument.
+\[ \text{Number of Revolutions} = \frac{\text{Circumference of Circle B}}{\text{Circumference of Circle A}} = \frac{2\pi R}{\frac{2\pi R}{3}} = 3 \]
+
+This calculation correctly accounts for the rotations of circle A as it rolls along the circumference of circle B. However, there is a common misconception that an additional revolution should be counted because circle A is also revolving around circle B. This is incorrect because the 3 revolutions already account for both the linear path (rolling) and the circular path (orbiting) of circle A around circle B.
+
+Think of it this way: if you were to roll a small coin around a larger one, when the small coin returns to its starting point, the point of contact with the larger coin would have touched every part of the smaller coin&#39;s circumference exactly three times. There is no need to add an extra revolution, as the relative motion between the two circles is fully accounted for in the 3 revolutions.
+
+Therefore, my stance is that circle A will revolve 3 times in total as it rolls around circle B and returns to its starting position.
+Aggregator: The debate has concluded and the correct answer is that circle A will revolve 3 times in total. The calculation of the number of revolutions is based on the ratio of the circumferences, which indeed gives us 3. The additional revolution that Alice mentioned is a common misconception; it is already included in the 3 revolutions as the smaller circle&#39;s point of contact with the larger circle will have touched every part of its circumference exactly three times by the time it returns to the starting point. Therefore, Bob&#39;s argument is correct.
 
 The debate is finished, and the correct answer is:  3
 </pre></div>
@@ -486,7 +499,7 @@ The debate is finished, and the correct answer is:  3
 <li><p><a class="reference internal" href="task_pipeline.html#pipeline"><span class="std std-ref">Pipeline</span></a></p></li>
 </ul>
 <p id="emnlp-2024">Encouraging Divergent Thinking in Large Language Models through Multi-Agent Debate. EMNLP 2024.</p>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 41.460 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 45.315 seconds)</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-tutorial-workflow-multiagent-debate-py">
 <div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
 <p><a class="reference download internal" download="" href="../_downloads/4ddcd353f1389c1b465adca14e7ea420/workflow_multiagent_debate.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">workflow_multiagent_debate.ipynb</span></code></a></p>
@@ -539,7 +552,24 @@ The debate is finished, and the correct answer is:  3
             
           </div>
           <div class="right-details">
-            
+            <div class="icons">
+              <a class="muted-link " href="https://github.com/agentscope-ai/agentscope" aria-label="GitHub">
+                <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path>
+                </svg>
+            </a>
+              <a class="muted-link " href="https://discord.gg/eYMpfnkG8h" aria-label="Discord">
+                <svg stroke="currentColor" fill="currentColor" stroke-width="0" t="1753331148815" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="5721" width="200" height="200">
+                    <path d="M723.903423 359.138018c-69.65045-52.952793-136.256577-51.476757-136.256576-51.476757l-6.088649 7.564685c83.027027 25.738378 121.127207 62.085766 121.127207 62.085766a387.459459 387.459459 0 0 0-145.297297-46.956397 418.179459 418.179459 0 0 0-98.340901 1.752793 73.801802 73.801802 0 0 1-7.564684 1.476036 357.385225 357.385225 0 0 0-110.702703 30.258739 278.786306 278.786306 0 0 0-28.782703 13.653333S353.049369 339.488288 440.873514 313.657658l-4.612613-6.088649s-66.513874-1.476036-136.164324 51.476757A654.252973 654.252973 0 0 0 230.630631 642.167928s40.867748 71.126486 148.341621 73.801802c0 0 16.697658-22.694054 31.827027-40.867748-62.085766-18.45045-84.77982-57.565405-84.77982-57.565405a130.998198 130.998198 0 0 0 13.653334 7.564684s0 1.568288 1.476036 1.568289c1.476036 1.476036 3.044324 1.476036 4.52036 3.044324a238.748829 238.748829 0 0 0 34.779099 16.605405 513.199279 513.199279 0 0 0 71.218739 21.218018 350.558559 350.558559 0 0 0 125.555315 0 329.894054 329.894054 0 0 0 69.650451-21.218018A247.328288 247.328288 0 0 0 702.685405 618.09009s-24.262342 39.391712-87.824144 57.565405c13.653333 18.45045 31.827027 39.299459 31.827027 39.29946 107.473874-2.952072 148.341622-73.801802 146.773334-72.602523a654.990991 654.990991 0 0 0-69.558199-283.214414zM421.131532 596.77982a54.705586 54.705586 0 0 1 0-109.042162 54.705586 54.705586 0 0 1 0 109.042162z m177.124324 0a54.705586 54.705586 0 1 1 49.908468-54.521081 52.491532 52.491532 0 0 1-49.908468 54.521081z" p-id="5722"></path><path d="M512 1024A512 512 0 1 1 1024 512 512.645766 512.645766 0 0 1 512 1024z m0-972.892252a461.261261 461.261261 0 1 0 461.261261 461.261261 461.261261 461.261261 0 0 0-461.261261-461.261261z" p-id="5723"></path>
+                </svg>
+            </a>
+              <a class="muted-link " href="https://qr.dingtalk.com/action/joingroup?code=v1,k1,OmDlBXpjW+I2vWjKDsjvI9dhcXjGZi3bQiojOq3dlDw=&_dt_no_comment=1&origin=11" aria-label="DingTalk">
+                <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+                    <path d="M512 0C229.205333 0 0 229.205333 0 512s229.205333 512 512 512 512-229.205333 512-512S794.794667 0 512 0z m237.312 480.810667c-1.109333 4.48-3.712 11.093333-7.424 18.986666h0.128l-0.426667 0.682667c-21.504 46.037333-77.610667 136.106667-77.610666 136.106667l-0.298667-0.597334-16.384 28.501334h79.018667l-150.912 200.917333 34.304-136.533333h-62.208l21.589333-90.282667c-17.493333 4.224-38.101333 10.026667-62.592 17.92 0 0-33.109333 19.370667-95.317333-37.333333 0 0-41.984-36.992-17.578667-46.165334 10.410667-3.925333 50.304-8.917333 81.706667-13.226666 42.410667-5.674667 68.48-8.789333 68.48-8.789334s-130.773333 2.005333-161.792-2.901333c-30.976-4.906667-70.4-56.704-78.805334-102.186667 0 0-12.970667-25.002667 27.904-13.226666 40.917333 11.818667 210.005333 46.08 210.005334 46.08S321.109333 411.434667 306.517333 394.922667c-14.634667-16.469333-43.093333-89.770667-39.424-134.869334 0 0 1.621333-11.221333 13.098667-8.192 0 0 162.602667 74.282667 273.792 114.986667 111.104 40.704 207.786667 61.397333 195.328 114.005333z" opacity=".65" p-id="6077"></path>
+                </svg>
+            </a>
+              
+            </div>
           </div>
         </div>
         

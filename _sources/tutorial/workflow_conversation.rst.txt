@@ -280,9 +280,9 @@ Specifically, the agents within the same ``MsgHub`` will receive messages from o
 
  .. code-block:: none
 
-    Alice: Hi there! I'm Alice, a student with a passion for learning and exploring new things. Nice to meet you! What about you? Could you tell me a little bit about yourself?
-    Bob: Hi Alice, I'm Bob. It's a pleasure to meet you. I'm also a student and I enjoy diving into various subjects, especially those related to technology and science. What are some of the things that interest you?
-    Charlie: Hello Alice and Bob, I'm Charlie. It's great to meet you both! I share a similar curiosity for learning and am particularly interested in the arts and humanities. What are some of your favorite subjects or hobbies?
+    Alice: Hi there, I'm Alice. It's nice to meet you! Could you tell me a little bit about yourself?
+    Bob: Hi Alice, I'm Bob. It's great to meet you too! I'm a student currently, and I enjoy learning new things, playing video games, and hanging out with friends. How about you?
+    Charlie: Hello Alice and Bob, I'm Charlie. It's a pleasure to meet you both! I'm also a student who loves diving into new subjects, and in my free time, I like to play sports and explore the outdoors. It sounds like we might have some common interests!
 
 
 
@@ -319,9 +319,9 @@ Now we print the memory of Alice to check if her memory is updated correctly.
     system: Now you meet each other with a brief self-introduction.
     Alice: None
     system: None
-    Alice: Hi there! I'm Alice, a student with a passion for learning and exploring new things. Nice to meet you! What about you? Could you tell me a little bit about yourself?
-    Bob: Hi Alice, I'm Bob. It's a pleasure to meet you. I'm also a student and I enjoy diving into various subjects, especially those related to technology and science. What are some of the things that interest you?
-    Charlie: Hello Alice and Bob, I'm Charlie. It's great to meet you both! I share a similar curiosity for learning and am particularly interested in the arts and humanities. What are some of your favorite subjects or hobbies?
+    Alice: Hi there, I'm Alice. It's nice to meet you! Could you tell me a little bit about yourself?
+    Bob: Hi Alice, I'm Bob. It's great to meet you too! I'm a student currently, and I enjoy learning new things, playing video games, and hanging out with friends. How about you?
+    Charlie: Hello Alice and Bob, I'm Charlie. It's a pleasure to meet you both! I'm also a student who loves diving into new subjects, and in my free time, I like to play sports and explore the outdoors. It sounds like we might have some common interests!
 
 
 
@@ -338,7 +338,7 @@ Further Reading
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 11.211 seconds)
+   **Total running time of the script:** (0 minutes 11.702 seconds)
 
 
 .. _sphx_glr_download_tutorial_workflow_conversation.py:
