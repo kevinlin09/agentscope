@@ -418,11 +418,11 @@ to download the full example code.</p>
 <span class="n">asyncio</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">example_router_explicit</span><span class="p">())</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Router: Sure, I can help you with that. Could you please tell me more about the theme or any specific elements you would like to include in your poem?
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Router: Sure, I can help with that. Could you please provide me with a theme or some elements you&#39;d like to include in the poem?
 The structured output:
 {
     &quot;your_choice&quot;: &quot;Content Generation&quot;,
-    &quot;task_description&quot;: &quot;Write a poem based on user&#39;s provided theme or elements.&quot;
+    &quot;task_description&quot;: &quot;Generate a poem based on user&#39;s provided theme or elements.&quot;
 }
 </pre></div>
 </div>
@@ -521,9 +521,9 @@ The structured output:
     &quot;input&quot;: {
         &quot;demand&quot;: &quot;a quick sort function&quot;
     },
-    &quot;id&quot;: &quot;call_f58244ac15564d3fb101c8&quot;
+    &quot;id&quot;: &quot;call_149e0ddf387e4f2cae9c2c&quot;
 }
-PythonAgent: Here is a Python implementation of the quick sort algorithm:
+PythonAgent: Here is a Python implementation of the quick sort algorithm. This function takes a list of numbers and sorts it in ascending order.
 
 ```python
 def quick_sort(arr):
@@ -535,26 +535,21 @@ def quick_sort(arr):
         middle = [x for x in arr if x == pivot]
         right = [x for x in arr if x &gt; pivot]
         return quick_sort(left) + middle + quick_sort(right)
-
-# Example usage:
-arr = [3,6,8,10,1,2,1]
-sorted_arr = quick_sort(arr)
-print(sorted_arr)
 ```
 
-This function will sort an array or list in ascending order. The example usage at the bottom shows how to call the `quick_sort` function with a list of numbers. If you need any further explanation or have another request, feel free to ask!
+You can use this function by passing an array to it, like `sorted_array = quick_sort([3, 6, 8, 10, 1, 2, 1])`.
 system: {
     &quot;type&quot;: &quot;tool_result&quot;,
-    &quot;id&quot;: &quot;call_f58244ac15564d3fb101c8&quot;,
+    &quot;id&quot;: &quot;call_149e0ddf387e4f2cae9c2c&quot;,
     &quot;name&quot;: &quot;generate_python&quot;,
     &quot;output&quot;: [
         {
             &quot;type&quot;: &quot;text&quot;,
-            &quot;text&quot;: &quot;Here is a Python implementation of the quick sort algorithm:\n\n```python\ndef quick_sort(arr):\n    if len(arr) &lt;= 1:\n        return arr\n    else:\n        pivot = arr[len(arr) // 2]\n        left = [x for x in arr if x &lt; pivot]\n        middle = [x for x in arr if x == pivot]\n        right = [x for x in arr if x &gt; pivot]\n        return quick_sort(left) + middle + quick_sort(right)\n\n# Example usage:\narr = [3,6,8,10,1,2,1]\nsorted_arr = quick_sort(arr)\nprint(sorted_arr)\n```\n\nThis function will sort an array or list in ascending order. The example usage at the bottom shows how to call the `quick_sort` function with a list of numbers. If you need any further explanation or have another request, feel free to ask!&quot;
+            &quot;text&quot;: &quot;Here is a Python implementation of the quick sort algorithm. This function takes a list of numbers and sorts it in ascending order.\n\n```python\ndef quick_sort(arr):\n    if len(arr) &lt;= 1:\n        return arr\n    else:\n        pivot = arr[len(arr) // 2]\n        left = [x for x in arr if x &lt; pivot]\n        middle = [x for x in arr if x == pivot]\n        right = [x for x in arr if x &gt; pivot]\n        return quick_sort(left) + middle + quick_sort(right)\n```\n\nYou can use this function by passing an array to it, like `sorted_array = quick_sort([3, 6, 8, 10, 1, 2, 1])`.&quot;
         }
     ]
 }
-Router: The quick sort function in Python has been generated for you. Here it is:
+Router: Here is a Python implementation of the quick sort algorithm. This function takes a list of numbers and sorts it in ascending order. You can use this function by passing an array to it, like `sorted_array = quick_sort([3, 6, 8, 10, 1, 2, 1])`.
 
 ```python
 def quick_sort(arr):
@@ -566,17 +561,10 @@ def quick_sort(arr):
         middle = [x for x in arr if x == pivot]
         right = [x for x in arr if x &gt; pivot]
         return quick_sort(left) + middle + quick_sort(right)
-
-# Example usage:
-arr = [3,6,8,10,1,2,1]
-sorted_arr = quick_sort(arr)
-print(sorted_arr)
 ```
-
-This function will sort an array or list in ascending order. The example provided at the bottom demonstrates how to use the `quick_sort` function with a list of numbers. If you have any other requests or need further explanation, feel free to ask!
 </pre></div>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (1 minutes 24.491 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 25.234 seconds)</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-tutorial-workflow-routing-py">
 <div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
 <p><a class="reference download internal" download="" href="../_downloads/3266c75280f96697c4cc46d7d55a3ac8/workflow_routing.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">workflow_routing.ipynb</span></code></a></p>
