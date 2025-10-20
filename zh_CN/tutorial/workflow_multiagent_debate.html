@@ -6,7 +6,7 @@
 <link rel="index" title="索引" href="../genindex.html"><link rel="search" title="搜索" href="../search.html"><link rel="next" title="Concurrent Agents" href="workflow_concurrent_agents.html"><link rel="prev" title="Conversation" href="workflow_conversation.html">
         <link rel="prefetch" href="../_static/logo.svg" as="image">
 
-    <!-- Generated with Sphinx 8.1.3 and Furo 2025.09.25 -->
+    <link rel="shortcut icon" href="../_static/logo.svg"><!-- Generated with Sphinx 8.1.3 and Furo 2025.09.25 -->
         <title>Multi-Agent Debate - AgentScope</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=d111a655" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?v=580074bf" />
@@ -24,18 +24,29 @@
   body {
     --color-code-background: #f2f2f2;
   --color-code-foreground: #1e1e1e;
+  --color-brand-primary: #2196f3;
+  --color-brand-content: #2196f3;
+  --color-admonition-background: #f8f9fa;
   
   }
   @media not print {
     body[data-theme="dark"] {
       --color-code-background: #202020;
   --color-code-foreground: #d0d0d0;
+  --color-link: #2196f3;
+  --color-link--hover: #2196f3;
+  --color-brand-primary: #64b5f6;
+  --color-brand-content: #64b5f6;
   
     }
     @media (prefers-color-scheme: dark) {
       body:not([data-theme="light"]) {
         --color-code-background: #202020;
   --color-code-foreground: #d0d0d0;
+  --color-link: #2196f3;
+  --color-link--hover: #2196f3;
+  --color-brand-primary: #64b5f6;
+  --color-brand-content: #64b5f6;
   
       }
     }
@@ -172,7 +183,7 @@
       </label>
     </div>
     <div class="header-center">
-      <a href="../index.html"><div class="brand">AgentScope</div></a>
+      <a href="../index.html"><div class="brand"><span style='font-weight: 700; color: #2196f3;'>AgentScope</span></div></a>
     </div>
     <div class="header-right">
       <div class="theme-toggle-container theme-toggle-header">
@@ -198,7 +209,7 @@
     <img class="sidebar-logo" src="../_static/logo.svg" alt="Logo"/>
   </div>
   
-  <span class="sidebar-brand-text">AgentScope</span>
+  <span class="sidebar-brand-text"><span style='font-weight: 700; color: #2196f3;'>AgentScope</span></span>
   
 </a><form class="sidebar-search-container" method="get" action="../search.html" role="search">
   <input class="sidebar-search" placeholder="搜索" name="q" aria-label="搜索">
@@ -442,32 +453,26 @@ to download the full example code.</p>
 </div>
 <div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Alice: 正方观点是：当圆A绕着圆B滚动一圈回到起点时，圆A总共会旋转3次。
 
-首先，我们需要理解这个问题背后的几何原理。假设圆B的半径为R，那么圆A的半径r = R/3。当圆A绕圆B外切滚动一周时，它的中心沿着一个以(2R)为半径的圆周运动。因此，圆A的中心走过的路径长度等于这个大圆的周长，即\(2\pi \times 2R = 4\pi R\)。
+为了理解这个答案，我们先来分析一下两个圆的相对运动。假设圆B固定不动，而圆A沿着圆B的边缘滚动。由于圆A的半径是圆B半径的1/3，这意味着圆B的周长是圆A周长的3倍。因此，当圆A绕圆B一周时，它所走过的距离正好等于圆B的周长，即圆A周长的3倍。
 
-对于圆A自身来说，要计算它绕自身轴线旋转了多少圈，我们可以通过比较圆A中心行进的距离与圆A自身的周长来得出。圆A的周长是\(2\pi r = 2\pi (R/3) = \frac{2\pi R}{3}\)。
+对于没有滑动的情况，圆A沿圆B的外缘滚动的距离等于它自己转动的周长数。因此，如果圆A移动了相当于自身周长3倍的距离，那么它将完成3个完整的自转。这是因为每次圆A滚过自己的一个周长，它就完成了1次旋转。所以，当它滚动了一个等于它自己周长3倍的距离后，它就完成了3次旋转。
 
-所以，圆A相对于其自身轴线的旋转次数为圆A中心行进距离除以其周长，即
-\[ \text{旋转次数} = \frac{4\pi R}{\frac{2\pi R}{3}} = \frac{4\pi R \cdot 3}{2\pi R} = 6 / 2 = 3\]
+此外，还需要考虑的是，当圆A绕圆B外部滚动一圈时，除了因为滚动而产生的旋转外，还会因为围绕圆B中心的公转而产生额外的一圈旋转。但根据无滑动条件下的几何关系，这个额外的旋转实际上已经被包含在之前的计算中了。
 
-故此，圆A绕圆B滚动一圈回到原点的过程中，圆A总共会自转3次。这考虑了圆A不仅在围绕圆B公转，同时也在自转的情况。
+综上所述，当圆A绕圆B滚动一圈回到起点时，圆A总共会旋转3次。
 Bob: 反方观点是：当圆A绕着圆B滚动一圈回到起点时，圆A总共会旋转4次。
 
-首先，我们需要澄清一个概念：当圆A绕圆B滚动时，它同时经历两种运动。一种是围绕圆B的公转，另一种是圆A自身的自转。根据正方给出的数据，圆B的半径为R，圆A的半径为r = R/3。
+让我们重新审视这个问题。首先，圆A的半径是圆B半径的1/3，这意味着如果圆B的半径是R，那么圆A的半径就是R/3。圆A沿着圆B外缘滚动一周所走过的距离等于圆B的周长，即 \(2\pi R\)。由于圆A的周长是 \(2\pi (R/3) = \frac{2\pi R}{3}\)，所以当圆A滚过 \(2\pi R\) 的距离时，它实际上要完成 \(2\pi R / (\frac{2\pi R}{3}) = 3\) 次自身的旋转。
 
-当圆A绕圆B滚动一周时，它的中心沿着一个以(2R)为半径的圆周运动，这与正方所述相同。因此，圆A的中心走过的路径长度确实是\(4\pi R\)。
+但是，这里有一个关键点需要考虑，那就是圆A除了自转之外，还围绕圆B的中心进行公转。每当一个物体绕另一个物体做圆周运动时，它都会经历一次额外的旋转，这被称为“公转”。因此，在这个情况下，圆A在完成3次自转的同时，还会因为绕圆B的中心旋转而额外旋转1次。
 
-然而，在计算圆A自转次数时，需要考虑的是圆A不仅在绕圆B公转，同时也在绕自己的轴线自转。当圆A完成一次公转，即沿着圆B外切滚动了一圈，它实际上会多转过一个完整的圆周，这是因为圆A始终保持着与圆B的接触点不变，而这个接触点相对于圆A自身的位置也发生了变化。这意味着除了跟随公转带来的旋转外，还有额外的一次自转。
+综合以上分析，圆A绕圆B滚动一圈回到起点时，不仅完成了3次自转，还进行了1次公转，总共旋转了4次。这就是反方的观点和理由。
+Bob: 经过进一步的思考，我同意正方的观点。当圆A绕着圆B滚动一圈时，虽然圆A确实完成了3个自身长度的旋转，但这个计算已经包含了圆A围绕圆B中心的那一次公转。换句话说，圆A的3次自转中最后一次旋转正好对应于它绕圆B完整的一圈，也就是所谓的公转。因此，圆A绕圆B滚动一圈回到起点时，总共会旋转3次而不是4次。
+Aggregator: 根据双方的辩论，他们都同意当圆A绕着圆B滚动一圈回到起点时，圆A总共会旋转3次。他们的解释基于圆A和圆B半径的关系以及无滑动条件下圆A沿圆B边缘滚动的几何关系。
 
-所以，圆A的总旋转次数应该是：
-\[ \text{总旋转次数} = \frac{4\pi R}{\frac{2\pi R}{3}} + 1 = 6 / 2 + 1 = 3 + 1 = 4 \]
+因此，我们可以得出结论：正方的观点是正确的。当圆A绕圆B滚动一圈回到起点时，圆A确实总共会旋转3次。
 
-因此，当圆A绕圆B滚动一圈回到原点的过程中，考虑到圆A既公转又自转的情况，圆A总共会旋转4次。
-Bob: 反方观点认为，当圆A绕着圆B滚动一圈回到起点时，圆A总共会旋转4次。这里的关键在于理解圆A不仅随着其绕圆B的公转而旋转，还因为要保持与圆B的接触点不变，从而产生了额外的一次自转。因此，基于圆A中心行进的距离和圆A的周长进行计算后，再加上这次额外的自转，我们得出圆A绕圆B滚动一圈总共会旋转4次。
-Aggregator: 两位辩论者提出了关于圆A绕圆B滚动一圈回到起点时，圆A总共会旋转多少次的不同观点。正方Alice认为圆A会旋转3次，而反方Bob则认为是4次。在解决这个问题上，我们需要考虑的是圆A在绕着圆B公转的同时也在自转。根据几何关系，当圆A完成一次围绕圆B的公转时，它相对于地面（或圆B）的接触点确实会额外转动一次，这称为自旋滑移现象。
-
-所以，圆A除了跟随它的中心走过的路径长度而产生的3次旋转外，还会有1次因为保持与圆B接触而产生的额外自转。因此，综合考虑这两个因素，正确的答案是圆A总共会旋转4次。
-
-辩论结束，正确答案是： 圆A绕圆B滚动一圈回到起点时，总共会旋转4次。
+辩论结束，正确答案是： 3次
 </pre></div>
 </div>
 <section id="id1">
@@ -476,7 +481,7 @@ Aggregator: 两位辩论者提出了关于圆A绕圆B滚动一圈回到起点时
 <li><p><a class="reference internal" href="task_pipeline.html#pipeline"><span class="std std-ref">管道 (Pipeline)</span></a></p></li>
 </ul>
 <p id="emnlp-2024">Encouraging Divergent Thinking in Large Language Models through Multi-Agent Debate. EMNLP 2024.</p>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 45.390 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 52.266 seconds)</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-tutorial-workflow-multiagent-debate-py">
 <div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
 <p><a class="reference download internal" download="" href="../_downloads/4ddcd353f1389c1b465adca14e7ea420/workflow_multiagent_debate.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">workflow_multiagent_debate.ipynb</span></code></a></p>
@@ -529,7 +534,24 @@ Aggregator: 两位辩论者提出了关于圆A绕圆B滚动一圈回到起点时
             
           </div>
           <div class="right-details">
-            
+            <div class="icons">
+              <a class="muted-link " href="https://github.com/agentscope-ai/agentscope" aria-label="GitHub">
+                <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path>
+                </svg>
+            </a>
+              <a class="muted-link " href="https://discord.gg/eYMpfnkG8h" aria-label="Discord">
+                <svg stroke="currentColor" fill="currentColor" stroke-width="0" t="1753331148815" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="5721" width="200" height="200">
+                    <path d="M723.903423 359.138018c-69.65045-52.952793-136.256577-51.476757-136.256576-51.476757l-6.088649 7.564685c83.027027 25.738378 121.127207 62.085766 121.127207 62.085766a387.459459 387.459459 0 0 0-145.297297-46.956397 418.179459 418.179459 0 0 0-98.340901 1.752793 73.801802 73.801802 0 0 1-7.564684 1.476036 357.385225 357.385225 0 0 0-110.702703 30.258739 278.786306 278.786306 0 0 0-28.782703 13.653333S353.049369 339.488288 440.873514 313.657658l-4.612613-6.088649s-66.513874-1.476036-136.164324 51.476757A654.252973 654.252973 0 0 0 230.630631 642.167928s40.867748 71.126486 148.341621 73.801802c0 0 16.697658-22.694054 31.827027-40.867748-62.085766-18.45045-84.77982-57.565405-84.77982-57.565405a130.998198 130.998198 0 0 0 13.653334 7.564684s0 1.568288 1.476036 1.568289c1.476036 1.476036 3.044324 1.476036 4.52036 3.044324a238.748829 238.748829 0 0 0 34.779099 16.605405 513.199279 513.199279 0 0 0 71.218739 21.218018 350.558559 350.558559 0 0 0 125.555315 0 329.894054 329.894054 0 0 0 69.650451-21.218018A247.328288 247.328288 0 0 0 702.685405 618.09009s-24.262342 39.391712-87.824144 57.565405c13.653333 18.45045 31.827027 39.299459 31.827027 39.29946 107.473874-2.952072 148.341622-73.801802 146.773334-72.602523a654.990991 654.990991 0 0 0-69.558199-283.214414zM421.131532 596.77982a54.705586 54.705586 0 0 1 0-109.042162 54.705586 54.705586 0 0 1 0 109.042162z m177.124324 0a54.705586 54.705586 0 1 1 49.908468-54.521081 52.491532 52.491532 0 0 1-49.908468 54.521081z" p-id="5722"></path><path d="M512 1024A512 512 0 1 1 1024 512 512.645766 512.645766 0 0 1 512 1024z m0-972.892252a461.261261 461.261261 0 1 0 461.261261 461.261261 461.261261 461.261261 0 0 0-461.261261-461.261261z" p-id="5723"></path>
+                </svg>
+            </a>
+              <a class="muted-link " href="https://qr.dingtalk.com/action/joingroup?code=v1,k1,OmDlBXpjW+I2vWjKDsjvI9dhcXjGZi3bQiojOq3dlDw=&_dt_no_comment=1&origin=11" aria-label="DingTalk">
+                <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+                    <path d="M512 0C229.205333 0 0 229.205333 0 512s229.205333 512 512 512 512-229.205333 512-512S794.794667 0 512 0z m237.312 480.810667c-1.109333 4.48-3.712 11.093333-7.424 18.986666h0.128l-0.426667 0.682667c-21.504 46.037333-77.610667 136.106667-77.610666 136.106667l-0.298667-0.597334-16.384 28.501334h79.018667l-150.912 200.917333 34.304-136.533333h-62.208l21.589333-90.282667c-17.493333 4.224-38.101333 10.026667-62.592 17.92 0 0-33.109333 19.370667-95.317333-37.333333 0 0-41.984-36.992-17.578667-46.165334 10.410667-3.925333 50.304-8.917333 81.706667-13.226666 42.410667-5.674667 68.48-8.789333 68.48-8.789334s-130.773333 2.005333-161.792-2.901333c-30.976-4.906667-70.4-56.704-78.805334-102.186667 0 0-12.970667-25.002667 27.904-13.226666 40.917333 11.818667 210.005333 46.08 210.005334 46.08S321.109333 411.434667 306.517333 394.922667c-14.634667-16.469333-43.093333-89.770667-39.424-134.869334 0 0 1.621333-11.221333 13.098667-8.192 0 0 162.602667 74.282667 273.792 114.986667 111.104 40.704 207.786667 61.397333 195.328 114.005333z" opacity=".65" p-id="6077"></path>
+                </svg>
+            </a>
+              
+            </div>
           </div>
         </div>
         
