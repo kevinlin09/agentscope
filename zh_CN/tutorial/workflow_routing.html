@@ -418,11 +418,11 @@ to download the full example code.</p>
 <span class="n">asyncio</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">example_router_explicit</span><span class="p">())</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Router: 好的，我将帮您创作一首诗。
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Router: 好的，我将为您创作一首诗。
 结构化输出：
 {
     &quot;your_choice&quot;: &quot;Content Generation&quot;,
-    &quot;task_description&quot;: null
+    &quot;task_description&quot;: &quot;用户请求创作一首诗&quot;
 }
 </pre></div>
 </div>
@@ -521,64 +521,74 @@ to download the full example code.</p>
     &quot;input&quot;: {
         &quot;demand&quot;: &quot;生成一个快速排序函数&quot;
     },
-    &quot;id&quot;: &quot;call_1088d4150939411cb1f77b&quot;
+    &quot;id&quot;: &quot;call_9a70c8e5e5874c868d3212&quot;
 }
-PythonAgent: 以下是一个使用 Python 编写的快速排序函数。这个实现采用了递归方法，并且使用了列表推导式来简化代码。
+PythonAgent: 下面是一个使用 Python 编写的快速排序函数。这个实现采用了一个递归的方法，并且选取了列表中的最后一个元素作为基准值（pivot）来进行排序。
 
 ```python
-def quicksort(arr):
+def quick_sort(arr):
     if len(arr) &lt;= 1:
         return arr
     else:
-        pivot = arr[0]
-        less_than_pivot = [x for x in arr[1:] if x &lt; pivot]
-        greater_than_pivot = [x for x in arr[1:] if x &gt;= pivot]
-        return quicksort(less_than_pivot) + [pivot] + quicksort(greater_than_pivot)
-
-# 示例数组
-example_array = [3, 6, 8, 10, 1, 2, 1]
-
-# 调用快速排序函数并打印结果
-sorted_array = quicksort(example_array)
-print(sorted_array)
+        pivot = arr.pop()
+        greater = []
+        lesser = []
+        for item in arr:
+            if item &gt; pivot:
+                greater.append(item)
+            else:
+                lesser.append(item)
+        return quick_sort(lesser) + [pivot] + quick_sort(greater)
 ```
 
-当你运行这段代码，它会输出一个排好序的数组。你可以将 `example_array` 替换为你想要排序的任何数组。如果你需要一个更优化的版本或者有其他特定需求，请告诉我！
+你可以用这个函数对一个整数列表进行排序，例如：
+```python
+unsorted_list = [3, 6, 8, 10, 1, 2, 1]
+sorted_list = quick_sort(unsorted_list)
+print(sorted_list)  # 输出应该是 [1, 1, 2, 3, 6, 8, 10]
+```
+
+如果你需要在原地排序或者有其他特殊需求，请告诉我，我可以提供相应的代码。
 system: {
     &quot;type&quot;: &quot;tool_result&quot;,
-    &quot;id&quot;: &quot;call_1088d4150939411cb1f77b&quot;,
+    &quot;id&quot;: &quot;call_9a70c8e5e5874c868d3212&quot;,
     &quot;name&quot;: &quot;generate_python&quot;,
     &quot;output&quot;: [
         {
             &quot;type&quot;: &quot;text&quot;,
-            &quot;text&quot;: &quot;以下是一个使用 Python 编写的快速排序函数。这个实现采用了递归方法，并且使用了列表推导式来简化代码。\n\n```python\ndef quicksort(arr):\n    if len(arr) &lt;= 1:\n        return arr\n    else:\n        pivot = arr[0]\n        less_than_pivot = [x for x in arr[1:] if x &lt; pivot]\n        greater_than_pivot = [x for x in arr[1:] if x &gt;= pivot]\n        return quicksort(less_than_pivot) + [pivot] + quicksort(greater_than_pivot)\n\n# 示例数组\nexample_array = [3, 6, 8, 10, 1, 2, 1]\n\n# 调用快速排序函数并打印结果\nsorted_array = quicksort(example_array)\nprint(sorted_array)\n```\n\n当你运行这段代码，它会输出一个排好序的数组。你可以将 `example_array` 替换为你想要排序的任何数组。如果你需要一个更优化的版本或者有其他特定需求，请告诉我！&quot;
+            &quot;text&quot;: &quot;下面是一个使用 Python 编写的快速排序函数。这个实现采用了一个递归的方法，并且选取了列表中的最后一个元素作为基准值（pivot）来进行排序。\n\n```python\ndef quick_sort(arr):\n    if len(arr) &lt;= 1:\n        return arr\n    else:\n        pivot = arr.pop()\n        greater = []\n        lesser = []\n        for item in arr:\n            if item &gt; pivot:\n                greater.append(item)\n            else:\n                lesser.append(item)\n        return quick_sort(lesser) + [pivot] + quick_sort(greater)\n```\n\n你可以用这个函数对一个整数列表进行排序，例如：\n```python\nunsorted_list = [3, 6, 8, 10, 1, 2, 1]\nsorted_list = quick_sort(unsorted_list)\nprint(sorted_list)  # 输出应该是 [1, 1, 2, 3, 6, 8, 10]\n```\n\n如果你需要在原地排序或者有其他特殊需求，请告诉我，我可以提供相应的代码。&quot;
         }
     ]
 }
-Router: 以下是一个使用 Python 编写的快速排序函数。这个实现采用了递归方法，并且使用了列表推导式来简化代码。
+Router: 下面是一个使用 Python 编写的快速排序函数。这个实现采用了一个递归的方法，并且选取了列表中的最后一个元素作为基准值（pivot）来进行排序。
 
 ```python
-def quicksort(arr):
+def quick_sort(arr):
     if len(arr) &lt;= 1:
         return arr
     else:
-        pivot = arr[0]
-        less_than_pivot = [x for x in arr[1:] if x &lt; pivot]
-        greater_than_pivot = [x for x in arr[1:] if x &gt;= pivot]
-        return quicksort(less_than_pivot) + [pivot] + quicksort(greater_than_pivot)
-
-# 示例数组
-example_array = [3, 6, 8, 10, 1, 2, 1]
-
-# 调用快速排序函数并打印结果
-sorted_array = quicksort(example_array)
-print(sorted_array)
+        pivot = arr.pop()
+        greater = []
+        lesser = []
+        for item in arr:
+            if item &gt; pivot:
+                greater.append(item)
+            else:
+                lesser.append(item)
+        return quick_sort(lesser) + [pivot] + quick_sort(greater)
 ```
 
-当你运行这段代码，它会输出一个排好序的数组。你可以将 `example_array` 替换为你想要排序的任何数组。如果你需要一个更优化的版本或者有其他特定需求，请告诉我！
+你可以用这个函数对一个整数列表进行排序，例如：
+```python
+unsorted_list = [3, 6, 8, 10, 1, 2, 1]
+sorted_list = quick_sort(unsorted_list)
+print(sorted_list)  # 输出应该是 [1, 1, 2, 3, 6, 8, 10]
+```
+
+如果你需要在原地排序或者有其他特殊需求，请告诉我，我可以提供相应的代码。
 </pre></div>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 31.124 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 20.470 seconds)</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-tutorial-workflow-routing-py">
 <div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
 <p><a class="reference download internal" download="" href="../_downloads/3266c75280f96697c4cc46d7d55a3ac8/workflow_routing.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">workflow_routing.ipynb</span></code></a></p>

@@ -504,16 +504,16 @@ to download the full example code.</p>
 </div>
 <div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Jarvis: {
     &quot;type&quot;: &quot;tool_use&quot;,
-    &quot;id&quot;: &quot;call_e4677abe014e455ba401c0&quot;,
+    &quot;id&quot;: &quot;call_81c715d2ce7843e0af3402&quot;,
     &quot;name&quot;: &quot;execute_python_code&quot;,
     &quot;input&quot;: {
         &quot;code&quot;: &quot;print(&#39;Hello World&#39;)&quot;,
-        &quot;timeout&quot;: 5
+        &quot;timeout&quot;: 300
     }
 }
 system: {
     &quot;type&quot;: &quot;tool_result&quot;,
-    &quot;id&quot;: &quot;call_e4677abe014e455ba401c0&quot;,
+    &quot;id&quot;: &quot;call_81c715d2ce7843e0af3402&quot;,
     &quot;name&quot;: &quot;execute_python_code&quot;,
     &quot;output&quot;: [
         {
@@ -522,8 +522,11 @@ system: {
         }
     ]
 }
-Jarvis: 根据您的请求，已经成功运行了 Python 代码。如上所示，输出结果为 &quot;Hello World&quot;。
-!
+Jarvis: 成功运行了 Python 代码，输出为：
+
+```
+Hello World
+```
 </pre></div>
 </div>
 </section>
@@ -642,7 +645,7 @@ Jarvis: 根据您的请求，已经成功运行了 Python 代码。如上所示�
 <span class="n">asyncio</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">run_custom_agent</span><span class="p">())</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Friday: 我是Friday，一个虚拟助手，旨在帮助回答问题、提供信息和支持。有什么我可以帮您的吗？
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Friday: 我是Friday，一个虚拟助手，旨在帮助回答问题、提供信息和完成各种任务。有什么我可以帮你的吗？
 </pre></div>
 </div>
 </section>
@@ -654,7 +657,7 @@ Jarvis: 根据您的请求，已经成功运行了 Python 代码。如上所示�
 <li><p><a class="reference internal" href="task_prompt.html#prompt"><span class="std std-ref">提示词格式化</span></a></p></li>
 <li><p><a class="reference internal" href="task_tool.html#tool"><span class="std std-ref">工具</span></a></p></li>
 </ul>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 7.569 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 7.191 seconds)</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-tutorial-quickstart-agent-py">
 <div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
 <p><a class="reference download internal" download="" href="../_downloads/aa553c3d61de8335d21a5136b32f5098/quickstart_agent.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">quickstart_agent.ipynb</span></code></a></p>
