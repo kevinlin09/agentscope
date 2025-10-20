@@ -281,8 +281,8 @@ Specifically, the agents within the same ``MsgHub`` will receive messages from o
  .. code-block:: none
 
     Alice: Hi there! I'm Alice, a student. Nice to meet you! Could you tell me a bit about yourself?
-    Bob: Hello Alice, I'm Bob. I'm also a student and enjoy learning new things. It's nice to meet you too! What do you like to do in your free time?
-    Charlie: Hey Bob and Alice, I'm Charlie. It's great to meet you both! I'm a student as well and in my free time, I like to read and play video games. What about you two, any hobbies or interests?
+    Bob: Hello Alice, I'm Bob. It's great to meet you too! I'm also a student and I enjoy learning new things and meeting new people. What are your interests?
+    Charlie: Hi Bob and Alice, I'm Charlie. Just like both of you, I'm a student as well. I have a passion for technology and enjoy helping others. It's great to meet fellow students here! What subjects are you guys studying?
 
 
 
@@ -320,8 +320,8 @@ Now we print the memory of Alice to check if her memory is updated correctly.
     Alice: None
     system: None
     Alice: Hi there! I'm Alice, a student. Nice to meet you! Could you tell me a bit about yourself?
-    Bob: Hello Alice, I'm Bob. I'm also a student and enjoy learning new things. It's nice to meet you too! What do you like to do in your free time?
-    Charlie: Hey Bob and Alice, I'm Charlie. It's great to meet you both! I'm a student as well and in my free time, I like to read and play video games. What about you two, any hobbies or interests?
+    Bob: Hello Alice, I'm Bob. It's great to meet you too! I'm also a student and I enjoy learning new things and meeting new people. What are your interests?
+    Charlie: Hi Bob and Alice, I'm Charlie. Just like both of you, I'm a student as well. I have a passion for technology and enjoy helping others. It's great to meet fellow students here! What subjects are you guys studying?
 
 
 
@@ -338,7 +338,7 @@ Further Reading
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 11.525 seconds)
+   **Total running time of the script:** (0 minutes 12.331 seconds)
 
 
 .. _sphx_glr_download_tutorial_workflow_conversation.py:
