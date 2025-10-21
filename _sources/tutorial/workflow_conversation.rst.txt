@@ -280,9 +280,9 @@ Specifically, the agents within the same ``MsgHub`` will receive messages from o
 
  .. code-block:: none
 
-    Alice: Hi there! I'm Alice, a student with a passion for learning and exploring new things. I enjoy reading, hiking, and meeting new people. How about you? What are your interests?
-    Bob: Hi Alice, I'm Bob. It's great to meet you! I'm also a student and I'm really into technology and gaming. When I'm not studying, you can find me playing video games or working on some tech projects. I like the outdoors too, so hiking sounds like a lot of fun. What kind of books do you like to read?
-    Charlie: Alice: That's cool, Bob! It's nice to meet a fellow tech enthusiast, even if it's not my main interest. I mostly read fiction and sometimes non-fiction related to science and psychology. I find it fascinating how the human mind works and how it can be so different from person to person. Do you have a favorite video game or a tech project that you're particularly proud of?
+    Alice: Hi there! I'm Alice, a student with a passion for learning and exploring new things. I love to read, and I'm really into science and technology. How about you? What are your interests?
+    Bob: Hi Alice, I'm Bob. It's great to meet you! I'm also a student, and I have a keen interest in history and literature. I enjoy playing sports, especially basketball, and I like to keep up with the latest movies and music. What kind of science and tech stuff are you into?
+    Charlie: Hi Alice and Bob, I'm Charlie, and I'm really into gaming and coding. I also like to dabble in a bit of creative writing on the side. It's great to meet you both! Alice, could you tell me more about the science and tech areas that interest you? And Bob, do you have a favorite historical period or literary genre?
 
 
 
@@ -319,9 +319,9 @@ Now we print the memory of Alice to check if her memory is updated correctly.
     system: Now you meet each other with a brief self-introduction.
     Alice: None
     system: None
-    Alice: Hi there! I'm Alice, a student with a passion for learning and exploring new things. I enjoy reading, hiking, and meeting new people. How about you? What are your interests?
-    Bob: Hi Alice, I'm Bob. It's great to meet you! I'm also a student and I'm really into technology and gaming. When I'm not studying, you can find me playing video games or working on some tech projects. I like the outdoors too, so hiking sounds like a lot of fun. What kind of books do you like to read?
-    Charlie: Alice: That's cool, Bob! It's nice to meet a fellow tech enthusiast, even if it's not my main interest. I mostly read fiction and sometimes non-fiction related to science and psychology. I find it fascinating how the human mind works and how it can be so different from person to person. Do you have a favorite video game or a tech project that you're particularly proud of?
+    Alice: Hi there! I'm Alice, a student with a passion for learning and exploring new things. I love to read, and I'm really into science and technology. How about you? What are your interests?
+    Bob: Hi Alice, I'm Bob. It's great to meet you! I'm also a student, and I have a keen interest in history and literature. I enjoy playing sports, especially basketball, and I like to keep up with the latest movies and music. What kind of science and tech stuff are you into?
+    Charlie: Hi Alice and Bob, I'm Charlie, and I'm really into gaming and coding. I also like to dabble in a bit of creative writing on the side. It's great to meet you both! Alice, could you tell me more about the science and tech areas that interest you? And Bob, do you have a favorite historical period or literary genre?
 
 
 
@@ -338,7 +338,7 @@ Further Reading
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 15.602 seconds)
+   **Total running time of the script:** (0 minutes 13.704 seconds)
 
 
 .. _sphx_glr_download_tutorial_workflow_conversation.py:
