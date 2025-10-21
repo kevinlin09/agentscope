@@ -405,6 +405,26 @@
                         <span class="p">),</span>
                     <span class="p">),</span>
                 <span class="p">)</span>
+            <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">content</span><span class="p">,</span> <span class="n">mcp</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">EmbeddedResource</span><span class="p">):</span>
+                <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span>
+                    <span class="n">content</span><span class="o">.</span><span class="n">resource</span><span class="p">,</span>
+                    <span class="n">mcp</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">TextResourceContents</span><span class="p">,</span>
+                <span class="p">):</span>
+                    <span class="n">as_content</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+                        <span class="n">TextBlock</span><span class="p">(</span>
+                            <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;text&quot;</span><span class="p">,</span>
+                            <span class="n">text</span><span class="o">=</span><span class="n">content</span><span class="o">.</span><span class="n">resource</span><span class="o">.</span><span class="n">model_dump_json</span><span class="p">(</span><span class="n">indent</span><span class="o">=</span><span class="mi">2</span><span class="p">),</span>
+                        <span class="p">),</span>
+                    <span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="c1"># TODO: support the BlobResourceContents in the future,</span>
+                    <span class="c1">#  which is a base64-encoded string representing the</span>
+                    <span class="c1">#  binary data</span>
+                    <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span>
+                        <span class="s2">&quot;Unsupported EmbeddedResource content type: </span><span class="si">%s</span><span class="s2">. &quot;</span>
+                        <span class="s2">&quot;Skipping this content.&quot;</span><span class="p">,</span>
+                        <span class="nb">type</span><span class="p">(</span><span class="n">content</span><span class="o">.</span><span class="n">resource</span><span class="p">),</span>
+                    <span class="p">)</span>
             <span class="k">else</span><span class="p">:</span>
                 <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span>
                     <span class="s2">&quot;Unsupported content type: </span><span class="si">%s</span><span class="s2">. Skipping this content.&quot;</span><span class="p">,</span>

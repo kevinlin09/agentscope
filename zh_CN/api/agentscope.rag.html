@@ -825,6 +825,121 @@ the full functionality of Qdrant.</p>
 </dd></dl>
 
 <dl class="py class">
+<dt class="sig sig-object py" id="agentscope.rag.MilvusLiteStore">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">MilvusLiteStore</span></span><a class="reference internal" href="../_modules/agentscope/rag/_store/_milvuslite_store.html#MilvusLiteStore"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#agentscope.rag.MilvusLiteStore" title="Link to this definition">¶</a></dt>
+<dd><p>基类：<a class="reference internal" href="#agentscope.rag.VDBStoreBase" title="agentscope.rag._store._store_base.VDBStoreBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">VDBStoreBase</span></code></a></p>
+<p>The Milvus Lite vector store implementation, supporting both local and
+remote Milvus instances.</p>
+<div class="admonition note">
+<p class="admonition-title">备注</p>
+<p>In Milvus Lite, we use the scalar fields to store the metadata,</p>
+</div>
+<p>including the document ID, chunk ID, and original content. The new
+MilvusClient API is used for simplified operations.</p>
+<div class="admonition note">
+<p class="admonition-title">备注</p>
+<p>Milvus Lite is not supported on Windows OS for now (2025-10-21).</p>
+</div>
+<dl class="py method">
+<dt class="sig sig-object py" id="agentscope.rag.MilvusLiteStore.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">uri</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">collection_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dimensions</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">distance</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'COSINE'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">token</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">client_kwargs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">collection_kwargs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/agentscope/rag/_store/_milvuslite_store.html#MilvusLiteStore.__init__"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#agentscope.rag.MilvusLiteStore.__init__" title="Link to this definition">¶</a></dt>
+<dd><p>Initialize the Milvus Lite vector store.</p>
+<dl class="field-list simple">
+<dt class="field-odd">参数<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>uri</strong> (<cite>str</cite>) -- The URI of the Milvus instance. For Milvus Lite, use a local
+file path like &quot;./milvus_demo.db&quot;. For remote Milvus server,
+use URI like &quot;<a class="reference external" href="http://localhost:19530">http://localhost:19530</a>&quot;.</p></li>
+<li><p><strong>collection_name</strong> (<cite>str</cite>) -- The name of the collection to store the embeddings.</p></li>
+<li><p><strong>dimensions</strong> (<cite>int</cite>) -- The dimension of the embeddings.</p></li>
+<li><p><strong>distance</strong> (<cite>Literal[&quot;COSINE&quot;, &quot;L2&quot;, &quot;IP&quot;]</cite>, default to &quot;COSINE&quot;) -- The distance metric to use for the collection. Can be one of
+&quot;COSINE&quot;, &quot;L2&quot;, or &quot;IP&quot;. Defaults to &quot;COSINE&quot;.</p></li>
+<li><p><strong>token</strong> (<cite>str</cite>, defaults to &quot;&quot;) -- The token for authentication when connecting to remote Milvus.
+Format: &quot;username:password&quot;. Not needed for Milvus Lite.</p></li>
+<li><p><strong>client_kwargs</strong> (<cite>dict[str, Any] | None</cite>, optional) -- Other keyword arguments for the Milvus client.</p></li>
+<li><p><strong>collection_kwargs</strong> (<cite>dict[str, Any] | None</cite>, optional) -- Other keyword arguments for creating the collection.</p></li>
+</ul>
+</dd>
+<dt class="field-even">返回类型<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="agentscope.rag.MilvusLiteStore.add">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">add</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">documents</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/agentscope/rag/_store/_milvuslite_store.html#MilvusLiteStore.add"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#agentscope.rag.MilvusLiteStore.add" title="Link to this definition">¶</a></dt>
+<dd><p>Add embeddings to the Milvus vector store.</p>
+<dl class="field-list simple">
+<dt class="field-odd">参数<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>documents</strong> (<cite>list[Document]</cite>) -- A list of embedding records to be recorded in the Milvus store.</p></li>
+<li><p><strong>**kwargs</strong> (<cite>Any</cite>) -- Additional arguments for the insert operation.</p></li>
+</ul>
+</dd>
+<dt class="field-even">返回类型<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="agentscope.rag.MilvusLiteStore.search">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">search</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">query_embedding</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limit</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">score_threshold</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/agentscope/rag/_store/_milvuslite_store.html#MilvusLiteStore.search"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#agentscope.rag.MilvusLiteStore.search" title="Link to this definition">¶</a></dt>
+<dd><p>Search relevant documents from the Milvus vector store.</p>
+<dl class="field-list simple">
+<dt class="field-odd">参数<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>query_embedding</strong> (<cite>Embedding</cite>) -- The embedding of the query text.</p></li>
+<li><p><strong>limit</strong> (<cite>int</cite>) -- The number of relevant documents to retrieve.</p></li>
+<li><p><strong>score_threshold</strong> (<cite>float | None</cite>, optional) -- The threshold of the score to filter the results.</p></li>
+<li><p><strong>**kwargs</strong> (<cite>Any</cite>) -- Additional arguments for the Milvus client search API.
+- filter (<cite>str</cite>): Expression to filter the search results.
+- output_fields (<cite>list[str]</cite>): Fields to include in results.</p></li>
+</ul>
+</dd>
+<dt class="field-even">返回类型<span class="colon">:</span></dt>
+<dd class="field-even"><p>list[<a class="reference internal" href="#agentscope.rag.Document" title="agentscope.rag._document.Document"><em>Document</em></a>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="agentscope.rag.MilvusLiteStore.delete">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">delete</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ids</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/agentscope/rag/_store/_milvuslite_store.html#MilvusLiteStore.delete"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#agentscope.rag.MilvusLiteStore.delete" title="Link to this definition">¶</a></dt>
+<dd><p>Delete documents from the Milvus vector store.</p>
+<dl class="field-list simple">
+<dt class="field-odd">参数<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ids</strong> (<cite>list[str] | None</cite>, optional) -- List of entity IDs to delete.</p></li>
+<li><p><strong>filter</strong> (<cite>str | None</cite>, optional) -- Expression to filter documents to delete.</p></li>
+<li><p><strong>**kwargs</strong> (<cite>Any</cite>) -- Additional arguments for the delete operation.</p></li>
+</ul>
+</dd>
+<dt class="field-even">返回类型<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="agentscope.rag.MilvusLiteStore.get_client">
+<span class="sig-name descname"><span class="pre">get_client</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/agentscope/rag/_store/_milvuslite_store.html#MilvusLiteStore.get_client"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#agentscope.rag.MilvusLiteStore.get_client" title="Link to this definition">¶</a></dt>
+<dd><p>Get the underlying Milvus client, so that developers can access
+the full functionality of Milvus.</p>
+<dl class="field-list simple">
+<dt class="field-odd">返回<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The underlying Milvus client.</p>
+</dd>
+<dt class="field-even">返回类型<span class="colon">:</span></dt>
+<dd class="field-even"><p><cite>MilvusClient</cite></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
 <dt class="sig sig-object py" id="agentscope.rag.KnowledgeBase">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">KnowledgeBase</span></span><a class="reference internal" href="../_modules/agentscope/rag/_knowledge_base.html#KnowledgeBase"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#agentscope.rag.KnowledgeBase" title="Link to this definition">¶</a></dt>
 <dd><p>基类：<code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
@@ -1104,6 +1219,14 @@ The threshold of the score to filter the results.</p></li>
 <li><a class="reference internal" href="#agentscope.rag.QdrantStore.search"><code class="docutils literal notranslate"><span class="pre">QdrantStore.search()</span></code></a></li>
 <li><a class="reference internal" href="#agentscope.rag.QdrantStore.delete"><code class="docutils literal notranslate"><span class="pre">QdrantStore.delete()</span></code></a></li>
 <li><a class="reference internal" href="#agentscope.rag.QdrantStore.get_client"><code class="docutils literal notranslate"><span class="pre">QdrantStore.get_client()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#agentscope.rag.MilvusLiteStore"><code class="docutils literal notranslate"><span class="pre">MilvusLiteStore</span></code></a><ul>
+<li><a class="reference internal" href="#agentscope.rag.MilvusLiteStore.__init__"><code class="docutils literal notranslate"><span class="pre">MilvusLiteStore.__init__()</span></code></a></li>
+<li><a class="reference internal" href="#agentscope.rag.MilvusLiteStore.add"><code class="docutils literal notranslate"><span class="pre">MilvusLiteStore.add()</span></code></a></li>
+<li><a class="reference internal" href="#agentscope.rag.MilvusLiteStore.search"><code class="docutils literal notranslate"><span class="pre">MilvusLiteStore.search()</span></code></a></li>
+<li><a class="reference internal" href="#agentscope.rag.MilvusLiteStore.delete"><code class="docutils literal notranslate"><span class="pre">MilvusLiteStore.delete()</span></code></a></li>
+<li><a class="reference internal" href="#agentscope.rag.MilvusLiteStore.get_client"><code class="docutils literal notranslate"><span class="pre">MilvusLiteStore.get_client()</span></code></a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#agentscope.rag.KnowledgeBase"><code class="docutils literal notranslate"><span class="pre">KnowledgeBase</span></code></a><ul>
