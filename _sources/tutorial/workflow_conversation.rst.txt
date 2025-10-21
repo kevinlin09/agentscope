@@ -280,9 +280,9 @@ Specifically, the agents within the same ``MsgHub`` will receive messages from o
 
  .. code-block:: none
 
-    Alice: Hello! I'm Alice, a student eager to learn and share knowledge. How about you? Could you tell me a little bit about yourself?
-    Bob: Hello Alice, I'm Bob. It's nice to meet you! I'm also a student and I enjoy diving into new subjects and exploring different ideas. What kind of knowledge are you interested in, and what brings you here today?
-    Charlie: Hello! I'm Charlie, and I'm here to assist both of you. It's great to meet enthusiastic learners like Alice and Bob. Alice, what specific areas are you interested in, and Bob, what subjects have you been exploring lately? And of course, how can I be of assistance to both of you today?
+    Alice: Hi there! I'm Alice, a student with a passion for learning and exploring new things. I enjoy reading, hiking, and meeting new people. How about you? What are your interests?
+    Bob: Hi Alice, I'm Bob. It's great to meet you! I'm also a student and I'm really into technology and gaming. When I'm not studying, you can find me playing video games or working on some tech projects. I like the outdoors too, so hiking sounds like a lot of fun. What kind of books do you like to read?
+    Charlie: Alice: That's cool, Bob! It's nice to meet a fellow tech enthusiast, even if it's not my main interest. I mostly read fiction and sometimes non-fiction related to science and psychology. I find it fascinating how the human mind works and how it can be so different from person to person. Do you have a favorite video game or a tech project that you're particularly proud of?
 
 
 
@@ -319,9 +319,9 @@ Now we print the memory of Alice to check if her memory is updated correctly.
     system: Now you meet each other with a brief self-introduction.
     Alice: None
     system: None
-    Alice: Hello! I'm Alice, a student eager to learn and share knowledge. How about you? Could you tell me a little bit about yourself?
-    Bob: Hello Alice, I'm Bob. It's nice to meet you! I'm also a student and I enjoy diving into new subjects and exploring different ideas. What kind of knowledge are you interested in, and what brings you here today?
-    Charlie: Hello! I'm Charlie, and I'm here to assist both of you. It's great to meet enthusiastic learners like Alice and Bob. Alice, what specific areas are you interested in, and Bob, what subjects have you been exploring lately? And of course, how can I be of assistance to both of you today?
+    Alice: Hi there! I'm Alice, a student with a passion for learning and exploring new things. I enjoy reading, hiking, and meeting new people. How about you? What are your interests?
+    Bob: Hi Alice, I'm Bob. It's great to meet you! I'm also a student and I'm really into technology and gaming. When I'm not studying, you can find me playing video games or working on some tech projects. I like the outdoors too, so hiking sounds like a lot of fun. What kind of books do you like to read?
+    Charlie: Alice: That's cool, Bob! It's nice to meet a fellow tech enthusiast, even if it's not my main interest. I mostly read fiction and sometimes non-fiction related to science and psychology. I find it fascinating how the human mind works and how it can be so different from person to person. Do you have a favorite video game or a tech project that you're particularly proud of?
 
 
 
@@ -338,7 +338,7 @@ Further Reading
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 11.651 seconds)
+   **Total running time of the script:** (0 minutes 15.602 seconds)
 
 
 .. _sphx_glr_download_tutorial_workflow_conversation.py:
