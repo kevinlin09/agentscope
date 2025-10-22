@@ -719,6 +719,10 @@ location, etc.</p></li>
 required.</p></li>
 <li><p>During memory recording, these parameters become metadata
 for the stored memories.</p></li>
+<li><p><strong>Important</strong>: mem0 will extract memories from messages
+containing role of &quot;user&quot; by default. If you want to
+extract memories from messages containing role of
+&quot;assistant&quot;, you need to provide <cite>agent_name</cite>.</p></li>
 <li><p>During memory retrieval, only memories with matching
 metadata values will be returned.</p></li>
 </ol>

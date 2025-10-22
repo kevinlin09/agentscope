@@ -110,11 +110,11 @@ Routing
 
  .. code-block:: none
 
-    Router: 好的，我将帮你创作一首诗。
+    Router: 好的，我将为您创作一首诗。
     结构化输出：
     {
         "your_choice": "Content Generation",
-        "task_description": "帮助用户写一首诗"
+        "task_description": null
     }
 
 
@@ -245,62 +245,75 @@ Routing
         "type": "tool_use",
         "name": "generate_python",
         "input": {
-            "demand": "需要一个快速排序函数"
+            "demand": "生成一个快速排序函数"
         },
-        "id": "call_aebee160d55544fab6f6bc"
+        "id": "call_1da6bb48bdd6470b9ff3aa"
     }
-    PythonAgent: 这是一个使用 Python 实现的快速排序算法的函数。快速排序是一种高效的排序方法，它使用分治策略来递归地将列表分为更小的部分。
+    PythonAgent: 下面是一个使用 Python 编写的快速排序函数。这个版本的快速排序使用了递归的方式，并且选取列表中的最后一个元素作为基准值（pivot）。当然，根据具体需求，你可以选择不同的方法来选取基准值。
+
     ```python
     def quicksort(arr):
         if len(arr) <= 1:
             return arr
-        pivot = arr[len(arr) // 2]
-        left = [x for x in arr if x < pivot]
-        middle = [x for x in arr if x == pivot]
-        right = [x for x in arr if x > pivot]
-        return quicksort(left) + middle + quicksort(right)
+        else:
+            # 选取基准值
+            pivot = arr.pop()
+            # 分别存储比基准值小和大的元素
+            less_than_pivot = []
+            greater_than_pivot = []
+        
+            for item in arr:
+                if item <= pivot:
+                    less_than_pivot.append(item)
+                else:
+                    greater_than_pivot.append(item)
+        
+            # 递归调用quicksort对小于和大于基准值的部分进行排序
+            return quicksort(less_than_pivot) + [pivot] + quicksort(greater_than_pivot)
+
+    # 示例
+    example_list = [3, 6, 8, 10, 1, 2, 1]
+    sorted_list = quicksort(example_list)
+    print(sorted_list)
     ```
 
-    你可以使用这个函数对一个整数列表进行排序，例如：
-    ```python
-    numbers = [3, 6, 8, 10, 1, 2, 1]
-    sorted_numbers = quicksort(numbers)
-    print(sorted_numbers)  # 输出应该是 [1, 1, 2, 3, 6, 8, 10]
-    ```
-    请确保在你的环境中可以运行这段代码。如果你有任何问题或者需要进一步的帮助，请告诉我！
+    这段代码定义了一个`quicksort`函数，它接受一个列表`arr`作为参数。如果列表长度为0或1，则直接返回该列表（因为它们已经是“排序好”的）。否则，从列表中移除最后一个元素作为基准值，并将剩余的元素分为两组：一组包含所有不大于基准值的元素，另一组则包含所有大于基准值的元素。然后，递归地对这两组元素应用快速排序，并将结果与基准值连接起来形成最终的排序列表。
+
+    您可以复制上述代码到Python环境中尝试运行，看看效果如何。如果您需要对这段代码进行修改或者想要了解更详细的解释，请告诉我！
     system: {
         "type": "tool_result",
-        "id": "call_aebee160d55544fab6f6bc",
+        "id": "call_1da6bb48bdd6470b9ff3aa",
         "name": "generate_python",
         "output": [
             {
                 "type": "text",
-                "text": "这是一个使用 Python 实现的快速排序算法的函数。快速排序是一种高效的排序方法，它使用分治策略来递归地将列表分为更小的部分。\n```python\ndef quicksort(arr):\n    if len(arr) <= 1:\n        return arr\n    pivot = arr[len(arr) // 2]\n    left = [x for x in arr if x < pivot]\n    middle = [x for x in arr if x == pivot]\n    right = [x for x in arr if x > pivot]\n    return quicksort(left) + middle + quicksort(right)\n```\n\n你可以使用这个函数对一个整数列表进行排序，例如：\n```python\nnumbers = [3, 6, 8, 10, 1, 2, 1]\nsorted_numbers = quicksort(numbers)\nprint(sorted_numbers)  # 输出应该是 [1, 1, 2, 3, 6, 8, 10]\n```\n请确保在你的环境中可以运行这段代码。如果你有任何问题或者需要进一步的帮助，请告诉我！"
+                "text": "下面是一个使用 Python 编写的快速排序函数。这个版本的快速排序使用了递归的方式，并且选取列表中的最后一个元素作为基准值（pivot）。当然，根据具体需求，你可以选择不同的方法来选取基准值。\n\n```python\ndef quicksort(arr):\n    if len(arr) <= 1:\n        return arr\n    else:\n        # 选取基准值\n        pivot = arr.pop()\n        # 分别存储比基准值小和大的元素\n        less_than_pivot = []\n        greater_than_pivot = []\n        \n        for item in arr:\n            if item <= pivot:\n                less_than_pivot.append(item)\n            else:\n                greater_than_pivot.append(item)\n        \n        # 递归调用quicksort对小于和大于基准值的部分进行排序\n        return quicksort(less_than_pivot) + [pivot] + quicksort(greater_than_pivot)\n\n# 示例\nexample_list = [3, 6, 8, 10, 1, 2, 1]\nsorted_list = quicksort(example_list)\nprint(sorted_list)\n```\n\n这段代码定义了一个`quicksort`函数，它接受一个列表`arr`作为参数。如果列表长度为0或1，则直接返回该列表（因为它们已经是“排序好”的）。否则，从列表中移除最后一个元素作为基准值，并将剩余的元素分为两组：一组包含所有不大于基准值的元素，另一组则包含所有大于基准值的元素。然后，递归地对这两组元素应用快速排序，并将结果与基准值连接起来形成最终的排序列表。\n\n您可以复制上述代码到Python环境中尝试运行，看看效果如何。如果您需要对这段代码进行修改或者想要了解更详细的解释，请告诉我！"
             }
         ]
     }
-    Router: 这是一个使用 Python 实现的快速排序算法的函数。快速排序是一种高效的排序方法，它使用分治策略来递归地将列表分为更小的部分。
+    Router: 下面是根据您的需求生成的 Python 快速排序函数：
 
     ```python
     def quicksort(arr):
         if len(arr) <= 1:
             return arr
-        pivot = arr[len(arr) // 2]
-        left = [x for x in arr if x < pivot]
-        middle = [x for x in arr if x == pivot]
-        right = [x for x in arr if x > pivot]
-        return quicksort(left) + middle + quicksort(right)
+        else:
+            # 选取列表中的最后一个元素作为基准值
+            pivot = arr.pop()
+            # 分别存储比基准值小和大的元素
+            less_than_pivot = [item for item in arr if item <= pivot]
+            greater_than_pivot = [item for item in arr if item > pivot]
+
+            # 对小于和大于基准值的部分进行递归排序，然后将结果与基准值连接起来
+            return quicksort(less_than_pivot) + [pivot] + quicksort(greater_than_pivot)
+
+    # 示例用法
+    example_list = [3, 6, 8, 10, 1, 2, 1]
+    sorted_list = quicksort(example_list)
+    print(sorted_list)  # 输出应该是 [1, 1, 2, 3, 6, 8, 10]
     ```
 
-    你可以使用这个函数对一个整数列表进行排序，例如：
-
-    ```python
-    numbers = [3, 6, 8, 10, 1, 2, 1]
-    sorted_numbers = quicksort(numbers)
-    print(sorted_numbers)  # 输出应该是 [1, 1, 2, 3, 6, 8, 10]
-    ```
-
-    请确保在你的环境中可以运行这段代码。如果你有任何问题或者需要进一步的帮助，请告诉我！
+    这段代码实现了快速排序算法，它使用了列表推导式来简化创建`less_than_pivot`和`greater_than_pivot`的过程。您可以直接在Python环境中运行这段代码查看效果。如果需要进一步的帮助或修改，请随时告诉我！
 
 
 
@@ -308,7 +321,7 @@ Routing
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 23.003 seconds)
+   **Total running time of the script:** (0 minutes 34.068 seconds)
 
 
 .. _sphx_glr_download_tutorial_workflow_routing.py:
