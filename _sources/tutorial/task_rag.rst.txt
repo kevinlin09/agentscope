@@ -328,9 +328,9 @@ They can be used as follows:
  .. code-block:: none
 
     Retrieved Documents:
-    Document(metadata=DocMetadata(content={'type': 'text', 'text': "My father is Michael Doe, a doctor. I'm very proud of him. My mother is Sarah Doe, a teacher. She is very kind and always helps me with my studies."}, doc_id='84d9740607155242357481c1cd8eb8001a986cda3665aaac33329ab235458168', chunk_id=2, total_chunks=5), id='gxKYCvGywYnAfCpVGi9aQL', embedding=None, score=0.5657136536003619) 
+    Document(metadata=DocMetadata(content={'type': 'text', 'text': "My father is Michael Doe, a doctor. I'm very proud of him. My mother is Sarah Doe, a teacher. She is very kind and always helps me with my studies."}, doc_id='84d9740607155242357481c1cd8eb8001a986cda3665aaac33329ab235458168', chunk_id=2, total_chunks=5), id='BEzswHz4brbundpNLp8Xnm', embedding=None, score=0.5657136536003619) 
 
-    Document(metadata=DocMetadata(content={'type': 'text', 'text': "I'm John Doe, 28 years old."}, doc_id='84d9740607155242357481c1cd8eb8001a986cda3665aaac33329ab235458168', chunk_id=0, total_chunks=5), id='9fTZRYncAHcMaHAM7cK7Xk', embedding=None, score=0.5062624400117309) 
+    Document(metadata=DocMetadata(content={'type': 'text', 'text': "I'm John Doe, 28 years old."}, doc_id='84d9740607155242357481c1cd8eb8001a986cda3665aaac33329ab235458168', chunk_id=0, total_chunks=5), id='6neneMGRoBitZiBwy9C2KS', embedding=None, score=0.5062624400117309) 
 
 
 
@@ -452,14 +452,14 @@ and providing a proper description for the tool.
  .. code-block:: none
 
     The first response: 
-    Friday: That's great to hear! It's wonderful to have a best friend like John Doe. Is there anything specific you'd like to share about your friendship or any special moments you've had together?
+    Friday: That's great to hear! It's wonderful to have a best friend. How long have you and John Doe been friends? Do you have any special memories or activities that you two enjoy doing together?
 
 
     The second response: 
-    Friday: I don't have that information at hand. Let me see if I can find out who John Doe's father is.
+    Friday: I don't have that information at hand. Let me find out who John Doe's father is.
     {
         "type": "tool_use",
-        "id": "call_72a219b7ade946e39a78ba",
+        "id": "call_d8999c10f118442187e919",
         "name": "retrieve_knowledge",
         "input": {
             "query": "John Doe father",
@@ -470,7 +470,7 @@ and providing a proper description for the tool.
 
     system: {
         "type": "tool_result",
-        "id": "call_72a219b7ade946e39a78ba",
+        "id": "call_d8999c10f118442187e919",
         "name": "retrieve_knowledge",
         "output": [
             {
@@ -495,7 +495,7 @@ and providing a proper description for the tool.
             }
         ]
     }
-    Friday: According to the information I found, John Doe's father is Michael Doe, who is a doctor. It seems that John is very proud of his father. Would you like to know more about John or his family?
+    Friday: According to the information I found, John Doe's father is Michael Doe, and he is a doctor. Would you like to know more about John or his family?
 
 
 
@@ -676,7 +676,7 @@ The example is the same as before, just using the ``ImageReader`` and
     Friday: Your name is Tony Stank.
 
     The image is attached in the agent's memory:
-    Msg(id='Qg55BvTYpb9gDReiXjtdBB', name='user', content=[{'type': 'text', 'text': "<retrieved_knowledge>Use the following content from the knowledge base(s) if it's helpful:\n"}, {'type': 'image', 'source': {'type': 'url', 'url': './example.jpg'}}, {'type': 'text', 'text': '</retrieved_knowledge>'}], role='user', metadata=None, timestamp='2025-10-21 06:53:44.060', invocation_id='None')
+    Msg(id='Z7u66T6Hy4DPF3fE3KxYuW', name='user', content=[{'type': 'text', 'text': "<retrieved_knowledge>Use the following content from the knowledge base(s) if it's helpful:\n"}, {'type': 'image', 'source': {'type': 'url', 'url': './example.jpg'}}, {'type': 'text', 'text': '</retrieved_knowledge>'}], role='user', metadata=None, timestamp='2025-10-22 12:27:20.942', invocation_id='None')
 
 
 
@@ -689,7 +689,7 @@ image.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 32.379 seconds)
+   **Total running time of the script:** (0 minutes 23.403 seconds)
 
 
 .. _sphx_glr_download_tutorial_task_rag.py:

@@ -433,8 +433,13 @@
 <span class="sd">               required.</span>
 <span class="sd">            2. During memory recording, these parameters become metadata</span>
 <span class="sd">               for the stored memories.</span>
-<span class="sd">            3. During memory retrieval, only memories with matching</span>
+<span class="sd">            3. **Important**: mem0 will extract memories from messages</span>
+<span class="sd">               containing role of &quot;user&quot; by default. If you want to</span>
+<span class="sd">               extract memories from messages containing role of</span>
+<span class="sd">               &quot;assistant&quot;, you need to provide `agent_name`.</span>
+<span class="sd">            4. During memory retrieval, only memories with matching</span>
 <span class="sd">               metadata values will be returned.</span>
+
 
 <span class="sd">            model (`ChatModelBase | None`, optional):</span>
 <span class="sd">                The chat model to use for the long-term memory. If</span>
@@ -602,20 +607,97 @@
 <span class="sd">            content (`list[str]`):</span>
 <span class="sd">                The content to remember, which is a list of strings.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># Multi-strategy recording approach to ensure content persistence:</span>
+        <span class="c1">#</span>
+        <span class="c1"># This method employs a three-tier fallback strategy to maximize</span>
+        <span class="c1"># successful memory recording:</span>
+        <span class="c1">#</span>
+        <span class="c1"># 1. Primary: Record as &quot;user&quot; role message</span>
+        <span class="c1">#    - This is the default approach for capturing user-related</span>
+        <span class="c1">#      content</span>
+        <span class="c1">#    - Mem0 extracts and infers memories from messages containing</span>
+        <span class="c1">#      role of &quot;user&quot;</span>
+        <span class="c1">#</span>
+        <span class="c1"># 2. Fallback (if agent_id exists): Record as &quot;assistant&quot; role</span>
+        <span class="c1">#    message</span>
+        <span class="c1">#    - Triggered when primary recording yields no results</span>
+        <span class="c1">#    - In this case, mem0 will use the AGENT_MEMORY_EXTRACTION_PROMPT</span>
+        <span class="c1">#      in mem0/mem0/configs/prompts.py to extract memories from</span>
+        <span class="c1">#      messages containing role of &quot;assistant&quot;, if agent_id is</span>
+        <span class="c1">#      provided, otherwise it will use the</span>
+        <span class="c1">#      USER_MEMORY_EXTRACTION_PROMPT in mem0/mem0/configs/prompts.py</span>
+        <span class="c1">#      to extract memories.</span>
+        <span class="c1">#</span>
+        <span class="c1"># 3. Last resort: Record as &quot;assistant&quot; with infer=False</span>
+        <span class="c1">#    - Used when both previous attempts yield no results</span>
+        <span class="c1">#    - Bypasses mem0&#39;s inference mechanism, which means no</span>
+        <span class="c1">#      inference is performed, mem0 will only record the content</span>
+        <span class="c1">#      as is.</span>
+        <span class="c1">#</span>
+        <span class="c1"># This graduated approach ensures that even if mem0&#39;s inference fails</span>
+        <span class="c1"># to extract meaningful memories, the raw content is still preserved.</span>
+
         <span class="k">try</span><span class="p">:</span>
             <span class="k">if</span> <span class="n">thinking</span><span class="p">:</span>
                 <span class="n">content</span> <span class="o">=</span> <span class="p">[</span><span class="n">thinking</span><span class="p">]</span> <span class="o">+</span> <span class="n">content</span>
 
+            <span class="c1"># Strategy 1: Record as user message first</span>
             <span class="n">results</span> <span class="o">=</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_mem0_record</span><span class="p">(</span>
                 <span class="p">[</span>
                     <span class="p">{</span>
-                        <span class="s2">&quot;role&quot;</span><span class="p">:</span> <span class="s2">&quot;assistant&quot;</span><span class="p">,</span>
+                        <span class="s2">&quot;role&quot;</span><span class="p">:</span> <span class="s2">&quot;user&quot;</span><span class="p">,</span>
                         <span class="s2">&quot;content&quot;</span><span class="p">:</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">content</span><span class="p">),</span>
-                        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;assistant&quot;</span><span class="p">,</span>
+                        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;user&quot;</span><span class="p">,</span>
                     <span class="p">},</span>
                 <span class="p">],</span>
                 <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
             <span class="p">)</span>
+
+            <span class="c1"># Strategy 2: Fallback to assistant message. In this case, if</span>
+            <span class="c1"># agent_id is provided, mem0 will use the</span>
+            <span class="c1"># AGENT_MEMORY_EXTRACTION_PROMPT in mem0/mem0/configs/prompts.py</span>
+            <span class="c1"># to extract memories from messages containing role of</span>
+            <span class="c1"># &quot;assistant&quot;. If agent_id is not provided, mem0 will still use</span>
+            <span class="c1"># the USER_MEMORY_EXTRACTION_PROMPT in</span>
+            <span class="c1"># mem0/mem0/configs/prompts.py to extract memories.</span>
+            <span class="k">if</span> <span class="p">(</span>
+                <span class="n">results</span>
+                <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">results</span><span class="p">,</span> <span class="nb">dict</span><span class="p">)</span>
+                <span class="ow">and</span> <span class="s2">&quot;results&quot;</span> <span class="ow">in</span> <span class="n">results</span>
+                <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">results</span><span class="p">[</span><span class="s2">&quot;results&quot;</span><span class="p">])</span> <span class="o">==</span> <span class="mi">0</span>
+            <span class="p">):</span>
+                <span class="n">results</span> <span class="o">=</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_mem0_record</span><span class="p">(</span>
+                    <span class="p">[</span>
+                        <span class="p">{</span>
+                            <span class="s2">&quot;role&quot;</span><span class="p">:</span> <span class="s2">&quot;assistant&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;content&quot;</span><span class="p">:</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">content</span><span class="p">),</span>
+                            <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;assistant&quot;</span><span class="p">,</span>
+                        <span class="p">},</span>
+                    <span class="p">],</span>
+                    <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
+                <span class="p">)</span>
+
+            <span class="c1"># Strategy 3: Last resort - direct recording without inference.</span>
+            <span class="c1"># In this case, mem0 will not use any prompts to extract</span>
+            <span class="c1"># memories, it will only record the content as is.</span>
+            <span class="k">if</span> <span class="p">(</span>
+                <span class="n">results</span>
+                <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">results</span><span class="p">,</span> <span class="nb">dict</span><span class="p">)</span>
+                <span class="ow">and</span> <span class="s2">&quot;results&quot;</span> <span class="ow">in</span> <span class="n">results</span>
+                <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">results</span><span class="p">[</span><span class="s2">&quot;results&quot;</span><span class="p">])</span> <span class="o">==</span> <span class="mi">0</span>
+            <span class="p">):</span>
+                <span class="n">results</span> <span class="o">=</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_mem0_record</span><span class="p">(</span>
+                    <span class="p">[</span>
+                        <span class="p">{</span>
+                            <span class="s2">&quot;role&quot;</span><span class="p">:</span> <span class="s2">&quot;assistant&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;content&quot;</span><span class="p">:</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">content</span><span class="p">),</span>
+                            <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;assistant&quot;</span><span class="p">,</span>
+                        <span class="p">},</span>
+                    <span class="p">],</span>
+                    <span class="n">infer</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                    <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
+                <span class="p">)</span>
+
             <span class="k">return</span> <span class="n">ToolResponse</span><span class="p">(</span>
                 <span class="n">content</span><span class="o">=</span><span class="p">[</span>
                     <span class="n">TextBlock</span><span class="p">(</span>
