@@ -670,42 +670,63 @@
 <span class="sd">            `ToolResponse`:</span>
 <span class="sd">                The response of the tool call.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># Validate the arguments first</span>
+        <span class="n">response</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">subtask_idx</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">subtask_idx</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">subtask_idx</span><span class="p">)</span>
+            <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+                <span class="k">pass</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">subtask_idx</span><span class="p">,</span> <span class="nb">int</span><span class="p">):</span>
+            <span class="n">response</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;Invalid type for argument &#39;subtask_idx&#39;. &quot;</span>
+                <span class="sa">f</span><span class="s2">&quot;Expected &#39;int&#39;, but got &#39;</span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">subtask_idx</span><span class="p">)</span><span class="si">}</span><span class="s2">&#39;.&quot;</span><span class="p">,</span>
+            <span class="p">)</span>
+
         <span class="k">if</span> <span class="n">action</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;add&quot;</span><span class="p">,</span> <span class="s2">&quot;revise&quot;</span><span class="p">,</span> <span class="s2">&quot;delete&quot;</span><span class="p">]:</span>
-            <span class="k">return</span> <span class="n">ToolResponse</span><span class="p">(</span>
-                <span class="n">content</span><span class="o">=</span><span class="p">[</span>
-                    <span class="n">TextBlock</span><span class="p">(</span>
-                        <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;text&quot;</span><span class="p">,</span>
-                        <span class="n">text</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Invalid action &#39;</span><span class="si">{</span><span class="n">action</span><span class="si">}</span><span class="s2">&#39;. Must be one of &quot;</span>
-                        <span class="s2">&quot;&#39;add&#39;, &#39;revise&#39;, &#39;delete&#39;.&quot;</span><span class="p">,</span>
-                    <span class="p">),</span>
-                <span class="p">],</span>
+            <span class="n">response</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;Invalid action &#39;</span><span class="si">{</span><span class="n">action</span><span class="si">}</span><span class="s2">&#39;. Must be one of &#39;add&#39;, &#39;revise&#39;, &quot;</span>
+                <span class="sa">f</span><span class="s2">&quot;&#39;delete&#39;.&quot;</span><span class="p">,</span>
             <span class="p">)</span>
 
         <span class="k">if</span> <span class="n">action</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;add&quot;</span><span class="p">,</span> <span class="s2">&quot;revise&quot;</span><span class="p">]</span> <span class="ow">and</span> <span class="n">subtask</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="k">return</span> <span class="n">ToolResponse</span><span class="p">(</span>
-                <span class="n">content</span><span class="o">=</span><span class="p">[</span>
-                    <span class="n">TextBlock</span><span class="p">(</span>
-                        <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;text&quot;</span><span class="p">,</span>
-                        <span class="n">text</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;The subtask must be provided when action is &quot;</span>
-                        <span class="sa">f</span><span class="s2">&quot;&#39;</span><span class="si">{</span><span class="n">action</span><span class="si">}</span><span class="s2">&#39;, but got None.&quot;</span><span class="p">,</span>
-                    <span class="p">),</span>
-                <span class="p">],</span>
+            <span class="n">response</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;The subtask must be provided when action is &#39;</span><span class="si">{</span><span class="n">action</span><span class="si">}</span><span class="s2">&#39;, &quot;</span>
+                <span class="s2">&quot;but got None.&quot;</span><span class="p">,</span>
             <span class="p">)</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">_validate_current_plan</span><span class="p">()</span>
 
         <span class="c1"># validate subtask_idx</span>
-        <span class="k">if</span> <span class="n">subtask_idx</span> <span class="o">&gt;=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">current_plan</span><span class="o">.</span><span class="n">subtasks</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">action</span> <span class="o">!=</span> <span class="s2">&quot;add&quot;</span> <span class="ow">and</span> <span class="n">subtask_idx</span> <span class="o">&gt;=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">current_plan</span><span class="o">.</span><span class="n">subtasks</span><span class="p">):</span>
+            <span class="n">response</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;Invalid subtask_idx &#39;</span><span class="si">{</span><span class="n">subtask_idx</span><span class="si">}</span><span class="s2">&#39; for action &#39;</span><span class="si">{</span><span class="n">action</span><span class="si">}</span><span class="s2">&#39;. &quot;</span>
+                <span class="sa">f</span><span class="s2">&quot;Must be between 0 &quot;</span>
+                <span class="sa">f</span><span class="s2">&quot;and </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">current_plan</span><span class="o">.</span><span class="n">subtasks</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">,</span>
+            <span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">action</span> <span class="o">==</span> <span class="s2">&quot;add&quot;</span> <span class="ow">and</span> <span class="ow">not</span> <span class="p">(</span>
+            <span class="mi">0</span> <span class="o">&lt;=</span> <span class="n">subtask_idx</span> <span class="o">&lt;=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">current_plan</span><span class="o">.</span><span class="n">subtasks</span><span class="p">)</span>
+        <span class="p">):</span>
+            <span class="n">response</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;Invalid subtask_idx &#39;</span><span class="si">{</span><span class="n">subtask_idx</span><span class="si">}</span><span class="s2">&#39; for action &#39;add&#39;. &quot;</span>
+                <span class="sa">f</span><span class="s2">&quot;Must be between 0 and </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">current_plan</span><span class="o">.</span><span class="n">subtasks</span><span class="p">)</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">,</span>
+            <span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">response</span><span class="p">:</span>
             <span class="k">return</span> <span class="n">ToolResponse</span><span class="p">(</span>
                 <span class="n">content</span><span class="o">=</span><span class="p">[</span>
                     <span class="n">TextBlock</span><span class="p">(</span>
                         <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;text&quot;</span><span class="p">,</span>
-                        <span class="n">text</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Invalid subtask_idx &#39;</span><span class="si">{</span><span class="n">subtask_idx</span><span class="si">}</span><span class="s2">&#39;. Must &quot;</span>
-                        <span class="sa">f</span><span class="s2">&quot;be between 0 and &quot;</span>
-                        <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">current_plan</span><span class="o">.</span><span class="n">subtasks</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">,</span>
+                        <span class="n">text</span><span class="o">=</span><span class="s2">&quot;Error: &quot;</span> <span class="o">+</span> <span class="n">response</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
                     <span class="p">),</span>
                 <span class="p">],</span>
             <span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">subtask</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="c1"># Convert to SubTask model if it&#39;s a dict</span>
+            <span class="n">subtask</span> <span class="o">=</span> <span class="n">SubTask</span><span class="o">.</span><span class="n">model_validate</span><span class="p">(</span><span class="n">subtask</span><span class="p">)</span>
 
         <span class="k">if</span> <span class="n">action</span> <span class="o">==</span> <span class="s2">&quot;delete&quot;</span><span class="p">:</span>
             <span class="n">subtask</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">current_plan</span><span class="o">.</span><span class="n">subtasks</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">subtask_idx</span><span class="p">)</span>
@@ -733,6 +754,7 @@
                 <span class="p">],</span>
             <span class="p">)</span>
 
+        <span class="c1"># revise</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">current_plan</span><span class="o">.</span><span class="n">subtasks</span><span class="p">[</span><span class="n">subtask_idx</span><span class="p">]</span> <span class="o">=</span> <span class="n">subtask</span>
         <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_trigger_plan_change_hooks</span><span class="p">()</span>
         <span class="k">return</span> <span class="n">ToolResponse</span><span class="p">(</span>
@@ -766,6 +788,23 @@
 <span class="sd">                specific outcome.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_validate_current_plan</span><span class="p">()</span>
+
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">subtask_idx</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">subtask_idx</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">subtask_idx</span><span class="p">)</span>
+            <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+                <span class="k">pass</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">subtask_idx</span><span class="p">,</span> <span class="nb">int</span><span class="p">):</span>
+            <span class="k">return</span> <span class="n">ToolResponse</span><span class="p">(</span>
+                <span class="n">content</span><span class="o">=</span><span class="p">[</span>
+                    <span class="n">TextBlock</span><span class="p">(</span>
+                        <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;text&quot;</span><span class="p">,</span>
+                        <span class="n">text</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Invalid type for argument &#39;subtask_idx&#39;. &quot;</span>
+                        <span class="sa">f</span><span class="s2">&quot;Expected &#39;int&#39;, but got &#39;</span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">subtask_idx</span><span class="p">)</span><span class="si">}</span><span class="s2">&#39;.&quot;</span><span class="p">,</span>
+                    <span class="p">),</span>
+                <span class="p">],</span>
+            <span class="p">)</span>
 
         <span class="k">if</span> <span class="ow">not</span> <span class="mi">0</span> <span class="o">&lt;=</span> <span class="n">subtask_idx</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">current_plan</span><span class="o">.</span><span class="n">subtasks</span><span class="p">):</span>
             <span class="k">return</span> <span class="n">ToolResponse</span><span class="p">(</span>
@@ -865,6 +904,23 @@
 <span class="sd">                &quot;There are 5 articles about xxx, they are\n- xxx\n- xxx\n...&quot;</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_validate_current_plan</span><span class="p">()</span>
+
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">subtask_idx</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">subtask_idx</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">subtask_idx</span><span class="p">)</span>
+            <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+                <span class="k">pass</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">subtask_idx</span><span class="p">,</span> <span class="nb">int</span><span class="p">):</span>
+            <span class="k">return</span> <span class="n">ToolResponse</span><span class="p">(</span>
+                <span class="n">content</span><span class="o">=</span><span class="p">[</span>
+                    <span class="n">TextBlock</span><span class="p">(</span>
+                        <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;text&quot;</span><span class="p">,</span>
+                        <span class="n">text</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Invalid type for argument &#39;subtask_idx&#39;. &quot;</span>
+                        <span class="sa">f</span><span class="s2">&quot;Expected &#39;int&#39;, but got &#39;</span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">subtask_idx</span><span class="p">)</span><span class="si">}</span><span class="s2">&#39;.&quot;</span><span class="p">,</span>
+                    <span class="p">),</span>
+                <span class="p">],</span>
+            <span class="p">)</span>
 
         <span class="k">if</span> <span class="ow">not</span> <span class="mi">0</span> <span class="o">&lt;=</span> <span class="n">subtask_idx</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">current_plan</span><span class="o">.</span><span class="n">subtasks</span><span class="p">):</span>
             <span class="k">return</span> <span class="n">ToolResponse</span><span class="p">(</span>
