@@ -280,9 +280,9 @@ Specifically, the agents within the same ``MsgHub`` will receive messages from o
 
  .. code-block:: none
 
-    Alice: Hi there! I'm Alice, a student currently pursuing my studies in computer science. I'm really into coding and exploring new technologies. How about you?
-    Bob: Hi Alice, nice to meet you! I'm Bob, and I'm also a student. I'm majoring in environmental science, but I have a keen interest in how technology can help us solve environmental issues. It's great to hear that you're into coding and new technologies; there's so much potential for collaboration between our fields!
-    Charlie: Nice to meet you both! I'm Charlie, a fellow student with a passion for mathematics and its applications in real-world problems. It's fascinating to see how Alice's coding skills and Bob's environmental science knowledge can come together to create innovative solutions. I'd love to hear more about your projects or ideas where you think math could be useful.
+    Alice: Hi there! I'm Alice, a student currently pursuing my studies in computer science. I'm really into coding and enjoy solving problems with technology. In my free time, I like to read, play video games, and work on personal projects. How about you? Could you tell me a little bit about yourself?
+    Bob: Hi Alice, nice to meet you! I'm Bob, and I'm also a student. I'm majoring in environmental science because I've always been passionate about nature and sustainability. When I'm not studying, I love to go hiking, do some photography, and I'm also part of a few clubs on campus that focus on green initiatives. It's great to hear you're into computer science; technology is so important for our future, especially in finding solutions for environmental challenges.
+    Charlie: Nice to meet you both, Alice and Bob! I'm Charlie, and I'm a student as well. I'm studying economics with a particular interest in how it can be used to understand and address social issues. In my free time, I enjoy reading about different cultures, playing chess, and volunteering at local community centers. It's really cool to see your passions for computer science and environmental science; there's so much we could learn from each other. How do you think your fields of study can intersect and support one another?
 
 
 
@@ -319,9 +319,9 @@ Now we print the memory of Alice to check if her memory is updated correctly.
     system: Now you meet each other with a brief self-introduction.
     Alice: None
     system: None
-    Alice: Hi there! I'm Alice, a student currently pursuing my studies in computer science. I'm really into coding and exploring new technologies. How about you?
-    Bob: Hi Alice, nice to meet you! I'm Bob, and I'm also a student. I'm majoring in environmental science, but I have a keen interest in how technology can help us solve environmental issues. It's great to hear that you're into coding and new technologies; there's so much potential for collaboration between our fields!
-    Charlie: Nice to meet you both! I'm Charlie, a fellow student with a passion for mathematics and its applications in real-world problems. It's fascinating to see how Alice's coding skills and Bob's environmental science knowledge can come together to create innovative solutions. I'd love to hear more about your projects or ideas where you think math could be useful.
+    Alice: Hi there! I'm Alice, a student currently pursuing my studies in computer science. I'm really into coding and enjoy solving problems with technology. In my free time, I like to read, play video games, and work on personal projects. How about you? Could you tell me a little bit about yourself?
+    Bob: Hi Alice, nice to meet you! I'm Bob, and I'm also a student. I'm majoring in environmental science because I've always been passionate about nature and sustainability. When I'm not studying, I love to go hiking, do some photography, and I'm also part of a few clubs on campus that focus on green initiatives. It's great to hear you're into computer science; technology is so important for our future, especially in finding solutions for environmental challenges.
+    Charlie: Nice to meet you both, Alice and Bob! I'm Charlie, and I'm a student as well. I'm studying economics with a particular interest in how it can be used to understand and address social issues. In my free time, I enjoy reading about different cultures, playing chess, and volunteering at local community centers. It's really cool to see your passions for computer science and environmental science; there's so much we could learn from each other. How do you think your fields of study can intersect and support one another?
 
 
 
@@ -338,7 +338,7 @@ Further Reading
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 11.032 seconds)
+   **Total running time of the script:** (0 minutes 18.273 seconds)
 
 
 .. _sphx_glr_download_tutorial_workflow_conversation.py:
