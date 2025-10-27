@@ -521,42 +521,68 @@ to download the full example code.</p>
     &quot;input&quot;: {
         &quot;demand&quot;: &quot;需要一个快速排序函数&quot;
     },
-    &quot;id&quot;: &quot;call_8ce3c6548cab4c488b4e03&quot;
+    &quot;id&quot;: &quot;call_199a94565037468fa07a54&quot;
 }
-system: {
-    &quot;type&quot;: &quot;tool_result&quot;,
-    &quot;id&quot;: &quot;call_8ce3c6548cab4c488b4e03&quot;,
-    &quot;name&quot;: &quot;generate_python&quot;,
-    &quot;output&quot;: [
-        {
-            &quot;type&quot;: &quot;text&quot;,
-            &quot;text&quot;: &quot;Error: [Errno 104] Connection reset by peer&quot;
-        }
-    ]
-}
-Router: 看起来在尝试生成代码时遇到了一个网络错误。别担心，让我直接在这里为你提供一个快速排序的 Python 代码示例：
+PythonAgent: 这是一个使用Python实现的快速排序函数。快速排序是一种高效的排序算法，它使用分治策略来递归地将列表划分为子列表并进行排序。
 
 ```python
 def quicksort(arr):
     if len(arr) &lt;= 1:
         return arr
-    pivot = arr[len(arr) // 2]
-    left = [x for x in arr if x &lt; pivot]
-    middle = [x for x in arr if x == pivot]
-    right = [x for x in arr if x &gt; pivot]
-    return quicksort(left) + middle + quicksort(right)
-
-# 示例数组
-example_array = [3,6,8,10,1,2,1]
-# 调用快速排序函数
-sorted_array = quicksort(example_array)
-print(sorted_array)
+    else:
+        pivot = arr[len(arr) // 2]
+        left = [x for x in arr if x &lt; pivot]
+        middle = [x for x in arr if x == pivot]
+        right = [x for x in arr if x &gt; pivot]
+        return quicksort(left) + middle + quicksort(right)
 ```
 
-你可以复制上面的代码到你的 Python 环境中运行。这段代码定义了一个`quicksort`函数，它接收一个列表作为输入参数，并返回一个新的排好序的列表。如果你有任何其他问题或者需要进一步的帮助，请告诉我！
+这个函数接受一个列表 `arr` 作为输入，并返回一个排序后的新列表。你可以用任何列表来调用这个函数以获取排序后的版本。例如:
+
+```python
+sorted_list = quicksort([3, 6, 8, 10, 1, 2, 1])
+print(sorted_list)
+# 输出: [1, 1, 2, 3, 6, 8, 10]
+```
+
+请注意，这个实现不是原地排序，因此会使用额外的空间来存储排序后的结果。如果你需要一个原地排序的版本，请告诉我。
+system: {
+    &quot;type&quot;: &quot;tool_result&quot;,
+    &quot;id&quot;: &quot;call_199a94565037468fa07a54&quot;,
+    &quot;name&quot;: &quot;generate_python&quot;,
+    &quot;output&quot;: [
+        {
+            &quot;type&quot;: &quot;text&quot;,
+            &quot;text&quot;: &quot;这是一个使用Python实现的快速排序函数。快速排序是一种高效的排序算法，它使用分治策略来递归地将列表划分为子列表并进行排序。\n\n```python\ndef quicksort(arr):\n    if len(arr) &lt;= 1:\n        return arr\n    else:\n        pivot = arr[len(arr) // 2]\n        left = [x for x in arr if x &lt; pivot]\n        middle = [x for x in arr if x == pivot]\n        right = [x for x in arr if x &gt; pivot]\n        return quicksort(left) + middle + quicksort(right)\n```\n\n这个函数接受一个列表 `arr` 作为输入，并返回一个排序后的新列表。你可以用任何列表来调用这个函数以获取排序后的版本。例如:\n\n```python\nsorted_list = quicksort([3, 6, 8, 10, 1, 2, 1])\nprint(sorted_list)\n# 输出: [1, 1, 2, 3, 6, 8, 10]\n```\n\n请注意，这个实现不是原地排序，因此会使用额外的空间来存储排序后的结果。如果你需要一个原地排序的版本，请告诉我。&quot;
+        }
+    ]
+}
+Router: 这是一个使用 Python 实现的快速排序函数。快速排序是一种高效的排序算法，它使用分治策略来递归地将列表划分为子列表并进行排序。
+
+```python
+def quicksort(arr):
+    if len(arr) &lt;= 1:
+        return arr
+    else:
+        pivot = arr[len(arr) // 2]
+        left = [x for x in arr if x &lt; pivot]
+        middle = [x for x in arr if x == pivot]
+        right = [x for x in arr if x &gt; pivot]
+        return quicksort(left) + middle + quicksort(right)
+```
+
+这个函数接受一个列表 `arr` 作为输入，并返回一个新的已排序列表。你可以用任何列表调用这个函数以获取排序后的版本。例如:
+
+```python
+sorted_list = quicksort([3, 6, 8, 10, 1, 2, 1])
+print(sorted_list)
+# 输出: [1, 1, 2, 3, 6, 8, 10]
+```
+
+请注意，此实现不是原地排序，因此会使用额外的空间来存储排序结果。如果你需要一个可以在原地排序的版本，请告诉我。
 </pre></div>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (5 minutes 1.461 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 23.237 seconds)</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-tutorial-workflow-routing-py">
 <div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
 <p><a class="reference download internal" download="" href="../_downloads/3266c75280f96697c4cc46d7d55a3ac8/workflow_routing.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">workflow_routing.ipynb</span></code></a></p>
