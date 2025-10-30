@@ -274,7 +274,7 @@ User-assistant 对话，也称为聊天机器人（chatbot），是最常见的�
 
     Alice: 大家好，我叫Alice，是一名学生。很高兴认识大家！
     Bob: 大家好，我叫Bob，也是一名学生。很高兴见到你们！
-    Charlie: 大家好，我叫Charlie，同样也是一名学生。很高兴能和你们相识！
+    Charlie: 大家好，我叫Charlie，同样也是一名学生。非常高兴能够认识你们！
 
 
 
@@ -313,7 +313,7 @@ User-assistant 对话，也称为聊天机器人（chatbot），是最常见的�
     system: "现在大家互相认识一下，简单自我介绍。"
     Alice: [
         {
-            "id": "Bbo6Je9PCJ4A8J2DxH2czk",
+            "id": "UkQDz7AttZYbZWRa8sPrJ7",
             "type": "tool_use",
             "name": "generate_response",
             "input": {
@@ -324,7 +324,7 @@ User-assistant 对话，也称为聊天机器人（chatbot），是最常见的�
     system: [
         {
             "type": "tool_result",
-            "id": "Bbo6Je9PCJ4A8J2DxH2czk",
+            "id": "UkQDz7AttZYbZWRa8sPrJ7",
             "name": "generate_response",
             "output": [
                 {
@@ -336,7 +336,7 @@ User-assistant 对话，也称为聊天机器人（chatbot），是最常见的�
     ]
     Alice: "大家好，我叫Alice，是一名学生。很高兴认识大家！"
     Bob: "大家好，我叫Bob，也是一名学生。很高兴见到你们！"
-    Charlie: "大家好，我叫Charlie，同样也是一名学生。很高兴能和你们相识！"
+    Charlie: "大家好，我叫Charlie，同样也是一名学生。非常高兴能够认识你们！"
 
 
 
@@ -353,7 +353,7 @@ User-assistant 对话，也称为聊天机器人（chatbot），是最常见的�
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 5.812 seconds)
+   **Total running time of the script:** (0 minutes 5.219 seconds)
 
 
 .. _sphx_glr_download_tutorial_workflow_conversation.py:
