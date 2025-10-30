@@ -110,11 +110,11 @@ Initialize a routing agent
 
  .. code-block:: none
 
-    Router: Of course, I can help with that! Could you please provide me with a theme or some elements you would like to see in your poem?
+    Router: Of course, I can help you with that. Could you please provide me with more details? Like the theme of the poem, the style you prefer, or any specific elements you want to include in it?
     The structured output:
     {
         "your_choice": "Content Generation",
-        "task_description": null
+        "task_description": "Write a poem based on user's requirements."
     }
 
 
@@ -247,12 +247,12 @@ After that, we define a routing agent and equip it with the above tool functions
         "input": {
             "demand": "a quick sort function"
         },
-        "id": "call_959117b9cc174478b999ff"
+        "id": "call_24249fb222654efb83e796"
     }
-    PythonAgent: Here is a quick sort function implemented in Python. This implementation uses the Lomuto partition scheme and it's a recursive approach.
+    PythonAgent: Here is a Python implementation of the quick sort algorithm:
 
     ```python
-    def quicksort(arr):
+    def quick_sort(arr):
         if len(arr) <= 1:
             return arr
         else:
@@ -260,33 +260,32 @@ After that, we define a routing agent and equip it with the above tool functions
             left = [x for x in arr if x < pivot]
             middle = [x for x in arr if x == pivot]
             right = [x for x in arr if x > pivot]
-            return quicksort(left) + middle + quicksort(right)
+            return quick_sort(left) + middle + quick_sort(right)
+
+    # Example usage:
+    arr = [3, 6, 8, 10, 1, 2, 1]
+    sorted_arr = quick_sort(arr)
+    print(sorted_arr)
     ```
 
-    You can use this function to sort a list of numbers. For example:
+    This function sorts an array by selecting a 'pivot' element from the array and partitioning the other elements into two sub-arrays, according to whether they are less than or greater than the pivot. The sub-arrays are then recursively sorted.
 
-    ```python
-    numbers = [3, 6, 8, 10, 1, 2, 1]
-    sorted_numbers = quicksort(numbers)
-    print(sorted_numbers)
-    ```
-
-    This will output the sorted list of numbers. Let me know if you need an in-place version or any other variation of the quick sort algorithm.
+    If you want to test this code, you can copy it and run it in your Python environment. If you have any specific requirements or need further explanation, feel free to ask!
     system: {
         "type": "tool_result",
-        "id": "call_959117b9cc174478b999ff",
+        "id": "call_24249fb222654efb83e796",
         "name": "generate_python",
         "output": [
             {
                 "type": "text",
-                "text": "Here is a quick sort function implemented in Python. This implementation uses the Lomuto partition scheme and it's a recursive approach.\n\n```python\ndef quicksort(arr):\n    if len(arr) <= 1:\n        return arr\n    else:\n        pivot = arr[len(arr) // 2]\n        left = [x for x in arr if x < pivot]\n        middle = [x for x in arr if x == pivot]\n        right = [x for x in arr if x > pivot]\n        return quicksort(left) + middle + quicksort(right)\n```\n\nYou can use this function to sort a list of numbers. For example:\n\n```python\nnumbers = [3, 6, 8, 10, 1, 2, 1]\nsorted_numbers = quicksort(numbers)\nprint(sorted_numbers)\n```\n\nThis will output the sorted list of numbers. Let me know if you need an in-place version or any other variation of the quick sort algorithm."
+                "text": "Here is a Python implementation of the quick sort algorithm:\n\n```python\ndef quick_sort(arr):\n    if len(arr) <= 1:\n        return arr\n    else:\n        pivot = arr[len(arr) // 2]\n        left = [x for x in arr if x < pivot]\n        middle = [x for x in arr if x == pivot]\n        right = [x for x in arr if x > pivot]\n        return quick_sort(left) + middle + quick_sort(right)\n\n# Example usage:\narr = [3, 6, 8, 10, 1, 2, 1]\nsorted_arr = quick_sort(arr)\nprint(sorted_arr)\n```\n\nThis function sorts an array by selecting a 'pivot' element from the array and partitioning the other elements into two sub-arrays, according to whether they are less than or greater than the pivot. The sub-arrays are then recursively sorted.\n\nIf you want to test this code, you can copy it and run it in your Python environment. If you have any specific requirements or need further explanation, feel free to ask!"
             }
         ]
     }
-    Router: Here is a quick sort function implemented in Python. This implementation uses the Lomuto partition scheme and it's a recursive approach.
+    Router: Here is a Python implementation of the quick sort algorithm:
 
     ```python
-    def quicksort(arr):
+    def quick_sort(arr):
         if len(arr) <= 1:
             return arr
         else:
@@ -294,18 +293,17 @@ After that, we define a routing agent and equip it with the above tool functions
             left = [x for x in arr if x < pivot]
             middle = [x for x in arr if x == pivot]
             right = [x for x in arr if x > pivot]
-            return quicksort(left) + middle + quicksort(right)
+            return quick_sort(left) + middle + quick_sort(right)
+
+    # Example usage:
+    arr = [3, 6, 8, 10, 1, 2, 1]
+    sorted_arr = quick_sort(arr)
+    print(sorted_arr)
     ```
 
-    You can use this function to sort a list of numbers. For example:
+    This function sorts an array by selecting a 'pivot' element from the array and partitioning the other elements into two sub-arrays, according to whether they are less than or greater than the pivot. The sub-arrays are then recursively sorted.
 
-    ```python
-    numbers = [3, 6, 8, 10, 1, 2, 1]
-    sorted_numbers = quicksort(numbers)
-    print(sorted_numbers)
-    ```
-
-    This will output the sorted list of numbers. Let me know if you need an in-place version or any other variation of the quick sort algorithm.
+    If you want to test this code, you can copy it and run it in your Python environment. If you have any specific requirements or need further explanation, feel free to ask!
 
 
 
@@ -313,7 +311,7 @@ After that, we define a routing agent and equip it with the above tool functions
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (1 minutes 21.907 seconds)
+   **Total running time of the script:** (0 minutes 25.507 seconds)
 
 
 .. _sphx_glr_download_tutorial_workflow_routing.py:

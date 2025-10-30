@@ -280,9 +280,10 @@ Specifically, the agents within the same ``MsgHub`` will receive messages from o
 
  .. code-block:: none
 
-    Alice: Hi there! I'm Alice, a student currently pursuing my studies in computer science. I'm really into coding and enjoy solving problems with technology. In my free time, I like to read, play video games, and work on personal projects. How about you? Could you tell me a little bit about yourself?
-    Bob: Hi Alice, nice to meet you! I'm Bob, and I'm also a student. I'm majoring in environmental science because I've always been passionate about nature and sustainability. When I'm not studying, I love to go hiking, do some photography, and I'm also part of a few clubs on campus that focus on green initiatives. It's great to hear you're into computer science; technology is so important for our future, especially in finding solutions for environmental challenges.
-    Charlie: Nice to meet you both, Alice and Bob! I'm Charlie, and I'm a student as well. I'm studying economics with a particular interest in how it can be used to understand and address social issues. In my free time, I enjoy reading about different cultures, playing chess, and volunteering at local community centers. It's really cool to see your passions for computer science and environmental science; there's so much we could learn from each other. How do you think your fields of study can intersect and support one another?
+    Alice: Hi there, I'm Alice. Nice to meet you! Could you tell me a bit about yourself?
+    Bob: Hi Alice, I'm Bob. It's great to meet you too! I'm a student currently studying computer science. What about you? What do you do?
+    Charlie: Alice: I work as a project manager in a tech company. It's always exciting to see how technology can solve real-world problems. How do you like your studies, Bob?
+    Charlie: I'm really enjoying my studies, Alice. Computer science is challenging but also very rewarding. There's always something new to learn, and I love the problem-solving aspect of it. Do you often use technology in managing your projects?
 
 
 
@@ -319,9 +320,9 @@ Now we print the memory of Alice to check if her memory is updated correctly.
     system: Now you meet each other with a brief self-introduction.
     Alice: None
     system: None
-    Alice: Hi there! I'm Alice, a student currently pursuing my studies in computer science. I'm really into coding and enjoy solving problems with technology. In my free time, I like to read, play video games, and work on personal projects. How about you? Could you tell me a little bit about yourself?
-    Bob: Hi Alice, nice to meet you! I'm Bob, and I'm also a student. I'm majoring in environmental science because I've always been passionate about nature and sustainability. When I'm not studying, I love to go hiking, do some photography, and I'm also part of a few clubs on campus that focus on green initiatives. It's great to hear you're into computer science; technology is so important for our future, especially in finding solutions for environmental challenges.
-    Charlie: Nice to meet you both, Alice and Bob! I'm Charlie, and I'm a student as well. I'm studying economics with a particular interest in how it can be used to understand and address social issues. In my free time, I enjoy reading about different cultures, playing chess, and volunteering at local community centers. It's really cool to see your passions for computer science and environmental science; there's so much we could learn from each other. How do you think your fields of study can intersect and support one another?
+    Alice: Hi there, I'm Alice. Nice to meet you! Could you tell me a bit about yourself?
+    Bob: Hi Alice, I'm Bob. It's great to meet you too! I'm a student currently studying computer science. What about you? What do you do?
+    Charlie: I'm really enjoying my studies, Alice. Computer science is challenging but also very rewarding. There's always something new to learn, and I love the problem-solving aspect of it. Do you often use technology in managing your projects?
 
 
 
@@ -338,7 +339,7 @@ Further Reading
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 18.273 seconds)
+   **Total running time of the script:** (0 minutes 15.065 seconds)
 
 
 .. _sphx_glr_download_tutorial_workflow_conversation.py:

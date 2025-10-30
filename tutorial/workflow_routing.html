@@ -418,11 +418,11 @@ to download the full example code.</p>
 <span class="n">asyncio</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">example_router_explicit</span><span class="p">())</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Router: Of course, I can help with that! Could you please provide me with a theme or some elements you would like to see in your poem?
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Router: Of course, I can help you with that. Could you please provide me with more details? Like the theme of the poem, the style you prefer, or any specific elements you want to include in it?
 The structured output:
 {
     &quot;your_choice&quot;: &quot;Content Generation&quot;,
-    &quot;task_description&quot;: null
+    &quot;task_description&quot;: &quot;Write a poem based on user&#39;s requirements.&quot;
 }
 </pre></div>
 </div>
@@ -521,12 +521,12 @@ The structured output:
     &quot;input&quot;: {
         &quot;demand&quot;: &quot;a quick sort function&quot;
     },
-    &quot;id&quot;: &quot;call_959117b9cc174478b999ff&quot;
+    &quot;id&quot;: &quot;call_24249fb222654efb83e796&quot;
 }
-PythonAgent: Here is a quick sort function implemented in Python. This implementation uses the Lomuto partition scheme and it&#39;s a recursive approach.
+PythonAgent: Here is a Python implementation of the quick sort algorithm:
 
 ```python
-def quicksort(arr):
+def quick_sort(arr):
     if len(arr) &lt;= 1:
         return arr
     else:
@@ -534,33 +534,32 @@ def quicksort(arr):
         left = [x for x in arr if x &lt; pivot]
         middle = [x for x in arr if x == pivot]
         right = [x for x in arr if x &gt; pivot]
-        return quicksort(left) + middle + quicksort(right)
+        return quick_sort(left) + middle + quick_sort(right)
+
+# Example usage:
+arr = [3, 6, 8, 10, 1, 2, 1]
+sorted_arr = quick_sort(arr)
+print(sorted_arr)
 ```
 
-You can use this function to sort a list of numbers. For example:
+This function sorts an array by selecting a &#39;pivot&#39; element from the array and partitioning the other elements into two sub-arrays, according to whether they are less than or greater than the pivot. The sub-arrays are then recursively sorted.
 
-```python
-numbers = [3, 6, 8, 10, 1, 2, 1]
-sorted_numbers = quicksort(numbers)
-print(sorted_numbers)
-```
-
-This will output the sorted list of numbers. Let me know if you need an in-place version or any other variation of the quick sort algorithm.
+If you want to test this code, you can copy it and run it in your Python environment. If you have any specific requirements or need further explanation, feel free to ask!
 system: {
     &quot;type&quot;: &quot;tool_result&quot;,
-    &quot;id&quot;: &quot;call_959117b9cc174478b999ff&quot;,
+    &quot;id&quot;: &quot;call_24249fb222654efb83e796&quot;,
     &quot;name&quot;: &quot;generate_python&quot;,
     &quot;output&quot;: [
         {
             &quot;type&quot;: &quot;text&quot;,
-            &quot;text&quot;: &quot;Here is a quick sort function implemented in Python. This implementation uses the Lomuto partition scheme and it&#39;s a recursive approach.\n\n```python\ndef quicksort(arr):\n    if len(arr) &lt;= 1:\n        return arr\n    else:\n        pivot = arr[len(arr) // 2]\n        left = [x for x in arr if x &lt; pivot]\n        middle = [x for x in arr if x == pivot]\n        right = [x for x in arr if x &gt; pivot]\n        return quicksort(left) + middle + quicksort(right)\n```\n\nYou can use this function to sort a list of numbers. For example:\n\n```python\nnumbers = [3, 6, 8, 10, 1, 2, 1]\nsorted_numbers = quicksort(numbers)\nprint(sorted_numbers)\n```\n\nThis will output the sorted list of numbers. Let me know if you need an in-place version or any other variation of the quick sort algorithm.&quot;
+            &quot;text&quot;: &quot;Here is a Python implementation of the quick sort algorithm:\n\n```python\ndef quick_sort(arr):\n    if len(arr) &lt;= 1:\n        return arr\n    else:\n        pivot = arr[len(arr) // 2]\n        left = [x for x in arr if x &lt; pivot]\n        middle = [x for x in arr if x == pivot]\n        right = [x for x in arr if x &gt; pivot]\n        return quick_sort(left) + middle + quick_sort(right)\n\n# Example usage:\narr = [3, 6, 8, 10, 1, 2, 1]\nsorted_arr = quick_sort(arr)\nprint(sorted_arr)\n```\n\nThis function sorts an array by selecting a &#39;pivot&#39; element from the array and partitioning the other elements into two sub-arrays, according to whether they are less than or greater than the pivot. The sub-arrays are then recursively sorted.\n\nIf you want to test this code, you can copy it and run it in your Python environment. If you have any specific requirements or need further explanation, feel free to ask!&quot;
         }
     ]
 }
-Router: Here is a quick sort function implemented in Python. This implementation uses the Lomuto partition scheme and it&#39;s a recursive approach.
+Router: Here is a Python implementation of the quick sort algorithm:
 
 ```python
-def quicksort(arr):
+def quick_sort(arr):
     if len(arr) &lt;= 1:
         return arr
     else:
@@ -568,21 +567,20 @@ def quicksort(arr):
         left = [x for x in arr if x &lt; pivot]
         middle = [x for x in arr if x == pivot]
         right = [x for x in arr if x &gt; pivot]
-        return quicksort(left) + middle + quicksort(right)
+        return quick_sort(left) + middle + quick_sort(right)
+
+# Example usage:
+arr = [3, 6, 8, 10, 1, 2, 1]
+sorted_arr = quick_sort(arr)
+print(sorted_arr)
 ```
 
-You can use this function to sort a list of numbers. For example:
+This function sorts an array by selecting a &#39;pivot&#39; element from the array and partitioning the other elements into two sub-arrays, according to whether they are less than or greater than the pivot. The sub-arrays are then recursively sorted.
 
-```python
-numbers = [3, 6, 8, 10, 1, 2, 1]
-sorted_numbers = quicksort(numbers)
-print(sorted_numbers)
-```
-
-This will output the sorted list of numbers. Let me know if you need an in-place version or any other variation of the quick sort algorithm.
+If you want to test this code, you can copy it and run it in your Python environment. If you have any specific requirements or need further explanation, feel free to ask!
 </pre></div>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (1 minutes 21.907 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 25.507 seconds)</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-tutorial-workflow-routing-py">
 <div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
 <p><a class="reference download internal" download="" href="../_downloads/3266c75280f96697c4cc46d7d55a3ac8/workflow_routing.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">workflow_routing.ipynb</span></code></a></p>
