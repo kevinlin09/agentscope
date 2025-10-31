@@ -422,7 +422,7 @@ to download the full example code.</p>
 结构化输出：
 {
     &quot;your_choice&quot;: &quot;Content Generation&quot;,
-    &quot;task_description&quot;: null
+    &quot;task_description&quot;: &quot;为用户写一首诗&quot;
 }
 </pre></div>
 </div>
@@ -521,12 +521,12 @@ to download the full example code.</p>
     &quot;input&quot;: {
         &quot;demand&quot;: &quot;生成一个快速排序函数&quot;
     },
-    &quot;id&quot;: &quot;call_bab8144e7b37472390c580&quot;
+    &quot;id&quot;: &quot;call_b24bd10497a14252a9329c&quot;
 }
-PythonAgent: 下面是一个使用 Python 编写的快速排序算法的实现。这个函数 `quick_sort` 接受一个列表作为输入，并返回一个新的已排序的列表。
+PythonAgent: 下面是一个使用 Python 编写的快速排序函数。这个函数采用了递归的方法来实现快速排序算法：
 
 ```python
-def quick_sort(arr):
+def quicksort(arr):
     if len(arr) &lt;= 1:
         return arr
     else:
@@ -534,33 +534,32 @@ def quick_sort(arr):
         left = [x for x in arr if x &lt; pivot]
         middle = [x for x in arr if x == pivot]
         right = [x for x in arr if x &gt; pivot]
-        return quick_sort(left) + middle + quick_sort(right)
-```
+        return quicksort(left) + middle + quicksort(right)
 
-你可以通过调用 `quick_sort` 并传入一个整数或任何可比较对象的列表来使用它，例如:
-
-```python
-unsorted_list = [3, 6, 8, 10, 1, 2, 1]
-sorted_list = quick_sort(unsorted_list)
+# 示例
+example_list = [3, 6, 8, 10, 1, 2, 1]
+sorted_list = quicksort(example_list)
 print(sorted_list)
 ```
 
-这段代码将输出一个升序排列的列表。如果你想要降序排列，你只需要稍微调整一下比较逻辑即可。
+这段代码定义了一个 `quicksort` 函数，它接受一个列表 `arr` 作为参数。如果列表长度为 0 或 1，则直接返回该列表（因为已经排序好了）。否则，选择列表中间的元素作为基准值（pivot），然后创建三个列表：`left` 包含所有小于基准值的元素，`middle` 包含所有等于基准值的元素，`right` 包含所有大于基准值的元素。接着对 `left` 和 `right` 列表进行递归排序，并将结果与 `middle` 列表合并起来。
+
+你可以用示例列表来测试这个快速排序函数。如果你想要在实际项目中使用快速排序，可能还需要考虑一些优化，比如就地分区以减少空间复杂度、处理重复元素等。
 system: {
     &quot;type&quot;: &quot;tool_result&quot;,
-    &quot;id&quot;: &quot;call_bab8144e7b37472390c580&quot;,
+    &quot;id&quot;: &quot;call_b24bd10497a14252a9329c&quot;,
     &quot;name&quot;: &quot;generate_python&quot;,
     &quot;output&quot;: [
         {
             &quot;type&quot;: &quot;text&quot;,
-            &quot;text&quot;: &quot;下面是一个使用 Python 编写的快速排序算法的实现。这个函数 `quick_sort` 接受一个列表作为输入，并返回一个新的已排序的列表。\n\n```python\ndef quick_sort(arr):\n    if len(arr) &lt;= 1:\n        return arr\n    else:\n        pivot = arr[len(arr) // 2]\n        left = [x for x in arr if x &lt; pivot]\n        middle = [x for x in arr if x == pivot]\n        right = [x for x in arr if x &gt; pivot]\n        return quick_sort(left) + middle + quick_sort(right)\n```\n\n你可以通过调用 `quick_sort` 并传入一个整数或任何可比较对象的列表来使用它，例如:\n\n```python\nunsorted_list = [3, 6, 8, 10, 1, 2, 1]\nsorted_list = quick_sort(unsorted_list)\nprint(sorted_list)\n```\n\n这段代码将输出一个升序排列的列表。如果你想要降序排列，你只需要稍微调整一下比较逻辑即可。&quot;
+            &quot;text&quot;: &quot;下面是一个使用 Python 编写的快速排序函数。这个函数采用了递归的方法来实现快速排序算法：\n\n```python\ndef quicksort(arr):\n    if len(arr) &lt;= 1:\n        return arr\n    else:\n        pivot = arr[len(arr) // 2]\n        left = [x for x in arr if x &lt; pivot]\n        middle = [x for x in arr if x == pivot]\n        right = [x for x in arr if x &gt; pivot]\n        return quicksort(left) + middle + quicksort(right)\n\n# 示例\nexample_list = [3, 6, 8, 10, 1, 2, 1]\nsorted_list = quicksort(example_list)\nprint(sorted_list)\n```\n\n这段代码定义了一个 `quicksort` 函数，它接受一个列表 `arr` 作为参数。如果列表长度为 0 或 1，则直接返回该列表（因为已经排序好了）。否则，选择列表中间的元素作为基准值（pivot），然后创建三个列表：`left` 包含所有小于基准值的元素，`middle` 包含所有等于基准值的元素，`right` 包含所有大于基准值的元素。接着对 `left` 和 `right` 列表进行递归排序，并将结果与 `middle` 列表合并起来。\n\n你可以用示例列表来测试这个快速排序函数。如果你想要在实际项目中使用快速排序，可能还需要考虑一些优化，比如就地分区以减少空间复杂度、处理重复元素等。&quot;
         }
     ]
 }
-Router: 下面是一个使用 Python 编写的快速排序算法的实现。这个函数 `quick_sort` 接受一个列表作为输入，并返回一个新的已排序的列表。
+Router: 下面是一个使用 Python 编写的快速排序函数。这个函数采用了递归的方法来实现快速排序算法：
 
 ```python
-def quick_sort(arr):
+def quicksort(arr):
     if len(arr) &lt;= 1:
         return arr
     else:
@@ -568,21 +567,20 @@ def quick_sort(arr):
         left = [x for x in arr if x &lt; pivot]
         middle = [x for x in arr if x == pivot]
         right = [x for x in arr if x &gt; pivot]
-        return quick_sort(left) + middle + quick_sort(right)
-```
+        return quicksort(left) + middle + quicksort(right)
 
-你可以通过调用 `quick_sort` 并传入一个整数或任何可比较对象的列表来使用它，例如:
-
-```python
-unsorted_list = [3, 6, 8, 10, 1, 2, 1]
-sorted_list = quick_sort(unsorted_list)
+# 示例
+example_list = [3, 6, 8, 10, 1, 2, 1]
+sorted_list = quicksort(example_list)
 print(sorted_list)
 ```
 
-这段代码将输出一个升序排列的列表。如果你想要降序排列，你只需要稍微调整一下比较逻辑即可。
+这段代码定义了一个 `quicksort` 函数，它接受一个列表 `arr` 作为参数。如果列表长度为 0 或 1，则直接返回该列表（因为已经排序好了）。否则，选择列表中间的元素作为基准值（pivot），然后创建三个列表：`left` 包含所有小于基准值的元素，`middle` 包含所有等于基准值的元素，`right` 包含所有大于基准值的元素。接着对 `left` 和 `right` 列表进行递归排序，并将结果与 `middle` 列表合并起来。
+
+你可以用示例列表来测试这个快速排序函数。如果你想要在实际项目中使用快速排序，可能还需要考虑一些优化，比如就地分区以减少空间复杂度、处理重复元素等。
 </pre></div>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 24.911 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 46.557 seconds)</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-tutorial-workflow-routing-py">
 <div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
 <p><a class="reference download internal" download="" href="../_downloads/3266c75280f96697c4cc46d7d55a3ac8/workflow_routing.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">workflow_routing.ipynb</span></code></a></p>

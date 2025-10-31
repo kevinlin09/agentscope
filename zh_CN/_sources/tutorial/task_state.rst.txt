@@ -230,44 +230,44 @@
 
  .. code-block:: none
 
-    Friday: 你好！有什么我能为你做的吗？
+    Friday: 你好！有什么我能帮助你的吗？
     生成回复后智能体的状态：
     {
         "memory": {
             "content": [
                 {
-                    "id": "VfqSHwKJdXZNPvXEpxq9oo",
+                    "id": "j5MzVL433nMpNqDTmfhkCY",
                     "name": "user",
                     "role": "user",
                     "content": "你好，智能体！",
                     "metadata": null,
-                    "timestamp": "2025-10-30 13:45:02.675"
+                    "timestamp": "2025-10-31 03:01:17.399"
                 },
                 {
-                    "id": "HBPBLokJfnBMazert9S9rg",
+                    "id": "Mqbf9HnFzymAdUPz4ueKcL",
                     "name": "Friday",
                     "role": "assistant",
                     "content": [
                         {
-                            "id": "nPDu3WXXajakJoTR56ZkaP",
+                            "id": "ej63cB8QKsYGHvstbFxRyW",
                             "type": "tool_use",
                             "name": "generate_response",
                             "input": {
-                                "response": "你好！有什么我能为你做的吗？"
+                                "response": "你好！有什么我能帮助你的吗？"
                             }
                         }
                     ],
                     "metadata": null,
-                    "timestamp": "2025-10-30 13:45:02.676"
+                    "timestamp": "2025-10-31 03:01:17.399"
                 },
                 {
-                    "id": "4tfdGfR5Y4SV5z3m5Ur95h",
+                    "id": "EEaegbvVrXD9qECasPEDYv",
                     "name": "system",
                     "role": "system",
                     "content": [
                         {
                             "type": "tool_result",
-                            "id": "nPDu3WXXajakJoTR56ZkaP",
+                            "id": "ej63cB8QKsYGHvstbFxRyW",
                             "name": "generate_response",
                             "output": [
                                 {
@@ -278,15 +278,15 @@
                         }
                     ],
                     "metadata": null,
-                    "timestamp": "2025-10-30 13:45:04.690"
+                    "timestamp": "2025-10-31 03:01:18.875"
                 },
                 {
-                    "id": "kP7bLLGE48UNia8b4nzFcC",
+                    "id": "eYVjB2AEENhCMsK3CGh8gC",
                     "name": "Friday",
                     "role": "assistant",
-                    "content": "你好！有什么我能为你做的吗？",
+                    "content": "你好！有什么我能帮助你的吗？",
                     "metadata": null,
-                    "timestamp": "2025-10-30 13:45:04.690"
+                    "timestamp": "2025-10-31 03:01:18.875"
                 }
             ]
         },
@@ -386,20 +386,20 @@ AgentScope 提供了 ``SessionBase`` 类，包含两个用于会话管理的抽�
         "memory": {
             "content": [
                 {
-                    "id": "XnbRAqyxFxDEqgnkZPqh79",
+                    "id": "kH2F93fKMKeXa3UXqvA5Km",
                     "name": "user",
                     "role": "user",
                     "content": "你好，智能体！",
                     "metadata": null,
-                    "timestamp": "2025-10-30 13:45:04.693"
+                    "timestamp": "2025-10-31 03:01:18.878"
                 },
                 {
-                    "id": "4PFKjc826X6ZZDAHcY22gP",
+                    "id": "GTyLbijo2dXvTmfcq6Z2uL",
                     "name": "Friday",
                     "role": "assistant",
                     "content": [
                         {
-                            "id": "i2qzdLCPi4V8SptMgCtiod",
+                            "id": "HUa5qtNERkX2MxbkX9xpYg",
                             "type": "tool_use",
                             "name": "generate_response",
                             "input": {
@@ -408,16 +408,16 @@ AgentScope 提供了 ``SessionBase`` 类，包含两个用于会话管理的抽�
                         }
                     ],
                     "metadata": null,
-                    "timestamp": "2025-10-30 13:45:04.693"
+                    "timestamp": "2025-10-31 03:01:18.878"
                 },
                 {
-                    "id": "PMxg7CmZmQ9cYjQcmSNubW",
+                    "id": "ckPfUVGwrSdAd4EEjm3r4A",
                     "name": "system",
                     "role": "system",
                     "content": [
                         {
                             "type": "tool_result",
-                            "id": "i2qzdLCPi4V8SptMgCtiod",
+                            "id": "HUa5qtNERkX2MxbkX9xpYg",
                             "name": "generate_response",
                             "output": [
                                 {
@@ -428,15 +428,15 @@ AgentScope 提供了 ``SessionBase`` 类，包含两个用于会话管理的抽�
                         }
                     ],
                     "metadata": null,
-                    "timestamp": "2025-10-30 13:45:06.147"
+                    "timestamp": "2025-10-31 03:01:20.310"
                 },
                 {
-                    "id": "nGfqy6RBoYwDrrwQiWN7y2",
+                    "id": "FBunVP5C9ynT4zjNF7NpjK",
                     "name": "Friday",
                     "role": "assistant",
                     "content": "你好！有什么我能帮助你的吗？",
                     "metadata": null,
-                    "timestamp": "2025-10-30 13:45:06.147"
+                    "timestamp": "2025-10-31 03:01:20.310"
                 }
             ]
         },
@@ -455,20 +455,20 @@ AgentScope 提供了 ``SessionBase`` 类，包含两个用于会话管理的抽�
         "memory": {
             "content": [
                 {
-                    "id": "XnbRAqyxFxDEqgnkZPqh79",
+                    "id": "kH2F93fKMKeXa3UXqvA5Km",
                     "name": "user",
                     "role": "user",
                     "content": "你好，智能体！",
                     "metadata": null,
-                    "timestamp": "2025-10-30 13:45:04.693"
+                    "timestamp": "2025-10-31 03:01:18.878"
                 },
                 {
-                    "id": "4PFKjc826X6ZZDAHcY22gP",
+                    "id": "GTyLbijo2dXvTmfcq6Z2uL",
                     "name": "Friday",
                     "role": "assistant",
                     "content": [
                         {
-                            "id": "i2qzdLCPi4V8SptMgCtiod",
+                            "id": "HUa5qtNERkX2MxbkX9xpYg",
                             "type": "tool_use",
                             "name": "generate_response",
                             "input": {
@@ -477,16 +477,16 @@ AgentScope 提供了 ``SessionBase`` 类，包含两个用于会话管理的抽�
                         }
                     ],
                     "metadata": null,
-                    "timestamp": "2025-10-30 13:45:04.693"
+                    "timestamp": "2025-10-31 03:01:18.878"
                 },
                 {
-                    "id": "PMxg7CmZmQ9cYjQcmSNubW",
+                    "id": "ckPfUVGwrSdAd4EEjm3r4A",
                     "name": "system",
                     "role": "system",
                     "content": [
                         {
                             "type": "tool_result",
-                            "id": "i2qzdLCPi4V8SptMgCtiod",
+                            "id": "HUa5qtNERkX2MxbkX9xpYg",
                             "name": "generate_response",
                             "output": [
                                 {
@@ -497,15 +497,15 @@ AgentScope 提供了 ``SessionBase`` 类，包含两个用于会话管理的抽�
                         }
                     ],
                     "metadata": null,
-                    "timestamp": "2025-10-30 13:45:06.147"
+                    "timestamp": "2025-10-31 03:01:20.310"
                 },
                 {
-                    "id": "nGfqy6RBoYwDrrwQiWN7y2",
+                    "id": "FBunVP5C9ynT4zjNF7NpjK",
                     "name": "Friday",
                     "role": "assistant",
                     "content": "你好！有什么我能帮助你的吗？",
                     "metadata": null,
-                    "timestamp": "2025-10-30 13:45:06.147"
+                    "timestamp": "2025-10-31 03:01:20.310"
                 }
             ]
         },
@@ -566,20 +566,20 @@ AgentScope 提供了 ``SessionBase`` 类，包含两个用于会话管理的抽�
             "memory": {
                 "content": [
                     {
-                        "id": "XnbRAqyxFxDEqgnkZPqh79",
+                        "id": "kH2F93fKMKeXa3UXqvA5Km",
                         "name": "user",
                         "role": "user",
                         "content": "你好，智能体！",
                         "metadata": null,
-                        "timestamp": "2025-10-30 13:45:04.693"
+                        "timestamp": "2025-10-31 03:01:18.878"
                     },
                     {
-                        "id": "4PFKjc826X6ZZDAHcY22gP",
+                        "id": "GTyLbijo2dXvTmfcq6Z2uL",
                         "name": "Friday",
                         "role": "assistant",
                         "content": [
                             {
-                                "id": "i2qzdLCPi4V8SptMgCtiod",
+                                "id": "HUa5qtNERkX2MxbkX9xpYg",
                                 "type": "tool_use",
                                 "name": "generate_response",
                                 "input": {
@@ -588,16 +588,16 @@ AgentScope 提供了 ``SessionBase`` 类，包含两个用于会话管理的抽�
                             }
                         ],
                         "metadata": null,
-                        "timestamp": "2025-10-30 13:45:04.693"
+                        "timestamp": "2025-10-31 03:01:18.878"
                     },
                     {
-                        "id": "PMxg7CmZmQ9cYjQcmSNubW",
+                        "id": "ckPfUVGwrSdAd4EEjm3r4A",
                         "name": "system",
                         "role": "system",
                         "content": [
                             {
                                 "type": "tool_result",
-                                "id": "i2qzdLCPi4V8SptMgCtiod",
+                                "id": "HUa5qtNERkX2MxbkX9xpYg",
                                 "name": "generate_response",
                                 "output": [
                                     {
@@ -608,15 +608,15 @@ AgentScope 提供了 ``SessionBase`` 类，包含两个用于会话管理的抽�
                             }
                         ],
                         "metadata": null,
-                        "timestamp": "2025-10-30 13:45:06.147"
+                        "timestamp": "2025-10-31 03:01:20.310"
                     },
                     {
-                        "id": "nGfqy6RBoYwDrrwQiWN7y2",
+                        "id": "FBunVP5C9ynT4zjNF7NpjK",
                         "name": "Friday",
                         "role": "assistant",
                         "content": "你好！有什么我能帮助你的吗？",
                         "metadata": null,
-                        "timestamp": "2025-10-30 13:45:06.147"
+                        "timestamp": "2025-10-31 03:01:20.310"
                     }
                 ]
             },
@@ -695,20 +695,20 @@ AgentScope 提供了 ``SessionBase`` 类，包含两个用于会话管理的抽�
         "memory": {
             "content": [
                 {
-                    "id": "XnbRAqyxFxDEqgnkZPqh79",
+                    "id": "kH2F93fKMKeXa3UXqvA5Km",
                     "name": "user",
                     "role": "user",
                     "content": "你好，智能体！",
                     "metadata": null,
-                    "timestamp": "2025-10-30 13:45:04.693"
+                    "timestamp": "2025-10-31 03:01:18.878"
                 },
                 {
-                    "id": "4PFKjc826X6ZZDAHcY22gP",
+                    "id": "GTyLbijo2dXvTmfcq6Z2uL",
                     "name": "Friday",
                     "role": "assistant",
                     "content": [
                         {
-                            "id": "i2qzdLCPi4V8SptMgCtiod",
+                            "id": "HUa5qtNERkX2MxbkX9xpYg",
                             "type": "tool_use",
                             "name": "generate_response",
                             "input": {
@@ -717,16 +717,16 @@ AgentScope 提供了 ``SessionBase`` 类，包含两个用于会话管理的抽�
                         }
                     ],
                     "metadata": null,
-                    "timestamp": "2025-10-30 13:45:04.693"
+                    "timestamp": "2025-10-31 03:01:18.878"
                 },
                 {
-                    "id": "PMxg7CmZmQ9cYjQcmSNubW",
+                    "id": "ckPfUVGwrSdAd4EEjm3r4A",
                     "name": "system",
                     "role": "system",
                     "content": [
                         {
                             "type": "tool_result",
-                            "id": "i2qzdLCPi4V8SptMgCtiod",
+                            "id": "HUa5qtNERkX2MxbkX9xpYg",
                             "name": "generate_response",
                             "output": [
                                 {
@@ -737,15 +737,15 @@ AgentScope 提供了 ``SessionBase`` 类，包含两个用于会话管理的抽�
                         }
                     ],
                     "metadata": null,
-                    "timestamp": "2025-10-30 13:45:06.147"
+                    "timestamp": "2025-10-31 03:01:20.310"
                 },
                 {
-                    "id": "nGfqy6RBoYwDrrwQiWN7y2",
+                    "id": "FBunVP5C9ynT4zjNF7NpjK",
                     "name": "Friday",
                     "role": "assistant",
                     "content": "你好！有什么我能帮助你的吗？",
                     "metadata": null,
-                    "timestamp": "2025-10-30 13:45:06.147"
+                    "timestamp": "2025-10-31 03:01:20.310"
                 }
             ]
         },
@@ -770,7 +770,7 @@ AgentScope 提供了 ``SessionBase`` 类，包含两个用于会话管理的抽�
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 3.483 seconds)
+   **Total running time of the script:** (0 minutes 2.922 seconds)
 
 
 .. _sphx_glr_download_tutorial_task_state.py:

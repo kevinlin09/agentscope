@@ -272,9 +272,10 @@ User-assistant 对话，也称为聊天机器人（chatbot），是最常见的�
 
  .. code-block:: none
 
-    Alice: 大家好，我叫Alice，是一名学生。很高兴认识大家！
-    Bob: 大家好，我叫Bob，也是一名学生。很高兴见到你们！
-    Charlie: 大家好，我叫Charlie，同样也是一名学生。非常高兴能够认识你们！
+    Alice: 大家好，我叫Alice，是一名学生。我喜欢阅读、学习新知识还有和朋友一起度过愉快的时光。很高兴认识大家！你们都有什么兴趣爱好呢？
+    Bob: 嗨，Alice！很高兴遇到你。我叫Bob，也是一名学生。我对科技和编程特别感兴趣，平时喜欢捣鼓一些小项目。我也热爱音乐，有空的时候会弹吉他放松一下。看来我们都是热爱学习的人呢！你最喜欢阅读哪类书籍？
+    Charlie: 嗨，Alice和Bob！我叫Charlie，同样是一名学生。我对历史和文化特别感兴趣，平时喜欢参观博物馆和阅读相关书籍。我还热爱旅行，希望能够走遍世界各地，体验不同的风土人情。我们都有各自的兴趣爱好呢！我觉得这样的交流很有趣。
+    Charlie: 我也同意，了解彼此的兴趣爱好让我们的对话更加有趣了。Alice，你最喜欢哪类书籍？是小说还是非小说类的作品？
 
 
 
@@ -313,18 +314,18 @@ User-assistant 对话，也称为聊天机器人（chatbot），是最常见的�
     system: "现在大家互相认识一下，简单自我介绍。"
     Alice: [
         {
-            "id": "UkQDz7AttZYbZWRa8sPrJ7",
+            "id": "gQcT7mmKtQ3SB43GJpC2uN",
             "type": "tool_use",
             "name": "generate_response",
             "input": {
-                "response": "大家好，我叫Alice，是一名学生。很高兴认识大家！"
+                "response": "大家好，我叫Alice，是一名学生。我喜欢阅读、学习新知识还有和朋友一起度过愉快的时光。很高兴认识大家！你们都有什么兴趣爱好呢？"
             }
         }
     ]
     system: [
         {
             "type": "tool_result",
-            "id": "UkQDz7AttZYbZWRa8sPrJ7",
+            "id": "gQcT7mmKtQ3SB43GJpC2uN",
             "name": "generate_response",
             "output": [
                 {
@@ -334,9 +335,9 @@ User-assistant 对话，也称为聊天机器人（chatbot），是最常见的�
             ]
         }
     ]
-    Alice: "大家好，我叫Alice，是一名学生。很高兴认识大家！"
-    Bob: "大家好，我叫Bob，也是一名学生。很高兴见到你们！"
-    Charlie: "大家好，我叫Charlie，同样也是一名学生。非常高兴能够认识你们！"
+    Alice: "大家好，我叫Alice，是一名学生。我喜欢阅读、学习新知识还有和朋友一起度过愉快的时光。很高兴认识大家！你们都有什么兴趣爱好呢？"
+    Bob: "嗨，Alice！很高兴遇到你。我叫Bob，也是一名学生。我对科技和编程特别感兴趣，平时喜欢捣鼓一些小项目。我也热爱音乐，有空的时候会弹吉他放松一下。看来我们都是热爱学习的人呢！你最喜欢阅读哪类书籍？"
+    Charlie: "我也同意，了解彼此的兴趣爱好让我们的对话更加有趣了。Alice，你最喜欢哪类书籍？是小说还是非小说类的作品？"
 
 
 
@@ -353,7 +354,7 @@ User-assistant 对话，也称为聊天机器人（chatbot），是最常见的�
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 5.219 seconds)
+   **Total running time of the script:** (0 minutes 13.694 seconds)
 
 
 .. _sphx_glr_download_tutorial_workflow_conversation.py:
