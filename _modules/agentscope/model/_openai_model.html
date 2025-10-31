@@ -367,6 +367,31 @@
     <span class="n">AsyncStream</span> <span class="o">=</span> <span class="s2">&quot;openai.types.chat.AsyncStream&quot;</span>
 
 
+<span class="k">def</span><span class="w"> </span><span class="nf">_format_audio_data_for_qwen_omni</span><span class="p">(</span><span class="n">messages</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">dict</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Qwen-omni uses OpenAI-compatible API but requires different audio</span>
+<span class="sd">    data format than OpenAI with &quot;data:;base64,&quot; prefix.</span>
+<span class="sd">    Refer to `Qwen-omni documentation</span>
+<span class="sd">    &lt;https://bailian.console.aliyun.com/?tab=doc#/doc/?type=model&amp;url=2867839&gt;`_</span>
+<span class="sd">    for more details.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        messages (`list[dict]`):</span>
+<span class="sd">            The list of message dictionaries from OpenAI formatter.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">for</span> <span class="n">msg</span> <span class="ow">in</span> <span class="n">messages</span><span class="p">:</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">msg</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;content&quot;</span><span class="p">),</span> <span class="nb">list</span><span class="p">):</span>
+            <span class="k">for</span> <span class="n">block</span> <span class="ow">in</span> <span class="n">msg</span><span class="p">[</span><span class="s2">&quot;content&quot;</span><span class="p">]:</span>
+                <span class="k">if</span> <span class="p">(</span>
+                    <span class="nb">isinstance</span><span class="p">(</span><span class="n">block</span><span class="p">,</span> <span class="nb">dict</span><span class="p">)</span>
+                    <span class="ow">and</span> <span class="s2">&quot;input_audio&quot;</span> <span class="ow">in</span> <span class="n">block</span>
+                    <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">block</span><span class="p">[</span><span class="s2">&quot;input_audio&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;data&quot;</span><span class="p">),</span> <span class="nb">str</span><span class="p">)</span>
+                <span class="p">):</span>
+                    <span class="k">if</span> <span class="ow">not</span> <span class="n">block</span><span class="p">[</span><span class="s2">&quot;input_audio&quot;</span><span class="p">][</span><span class="s2">&quot;data&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;http&quot;</span><span class="p">):</span>
+                        <span class="n">block</span><span class="p">[</span><span class="s2">&quot;input_audio&quot;</span><span class="p">][</span><span class="s2">&quot;data&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
+                            <span class="s2">&quot;data:;base64,&quot;</span> <span class="o">+</span> <span class="n">block</span><span class="p">[</span><span class="s2">&quot;input_audio&quot;</span><span class="p">][</span><span class="s2">&quot;data&quot;</span><span class="p">]</span>
+                        <span class="p">)</span>
+
+
 <div class="viewcode-block" id="OpenAIChatModel">
 <a class="viewcode-back" href="../../../api/agentscope.model.html#agentscope.model.OpenAIChatModel">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">OpenAIChatModel</span><span class="p">(</span><span class="n">ChatModelBase</span><span class="p">):</span>
@@ -490,6 +515,10 @@
                 <span class="s2">&quot;Each message in the &#39;messages&#39; list must contain a &#39;role&#39; &quot;</span>
                 <span class="s2">&quot;and &#39;content&#39; key for OpenAI API.&quot;</span><span class="p">,</span>
             <span class="p">)</span>
+
+        <span class="c1"># Qwen-omni requires different base64 audio format from openai</span>
+        <span class="k">if</span> <span class="s2">&quot;omni&quot;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">model_name</span><span class="o">.</span><span class="n">lower</span><span class="p">():</span>
+            <span class="n">_format_audio_data_for_qwen_omni</span><span class="p">(</span><span class="n">messages</span><span class="p">)</span>
 
         <span class="n">kwargs</span> <span class="o">=</span> <span class="p">{</span>
             <span class="s2">&quot;model&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">model_name</span><span class="p">,</span>
