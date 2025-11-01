@@ -390,6 +390,8 @@
 </li>
           <li><a href="api/agentscope.agent.html#agentscope.agent.UserInputBase.__call__">(UserInputBase method)</a>
 </li>
+          <li><a href="api/agentscope.rag.html#agentscope.rag.WordReader.__call__">(WordReader method)</a>
+</li>
         </ul></li>
         <li><a href="api/agentscope.evaluate.html#agentscope.evaluate.ACEAccuracy.__init__">__init__() (ACEAccuracy method)</a>
 
@@ -537,6 +539,8 @@
           <li><a href="api/agentscope.agent.html#agentscope.agent.UserAgent.__init__">(UserAgent method)</a>
 </li>
           <li><a href="api/agentscope.agent.html#agentscope.agent.UserInputData.__init__">(UserInputData method)</a>
+</li>
+          <li><a href="api/agentscope.rag.html#agentscope.rag.WordReader.__init__">(WordReader method)</a>
 </li>
         </ul></li>
     </ul></td>
@@ -1139,10 +1143,10 @@
 </li>
         <li><a href="api/agentscope.plan.html#agentscope.plan.PlanNotebook.get_current_hint">get_current_hint() (PlanNotebook method)</a>
 </li>
-    </ul></td>
-    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="api/agentscope.evaluate.html#agentscope.evaluate.ACEPhone.get_current_state">get_current_state() (ACEPhone method)</a>
 </li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="api/agentscope.rag.html#agentscope.rag.ImageReader.get_doc_id">get_doc_id() (ImageReader method)</a>
 
         <ul>
@@ -1151,6 +1155,8 @@
           <li><a href="api/agentscope.rag.html#agentscope.rag.ReaderBase.get_doc_id">(ReaderBase method)</a>
 </li>
           <li><a href="api/agentscope.rag.html#agentscope.rag.TextReader.get_doc_id">(TextReader method)</a>
+</li>
+          <li><a href="api/agentscope.rag.html#agentscope.rag.WordReader.get_doc_id">(WordReader method)</a>
 </li>
         </ul></li>
         <li><a href="api/agentscope.evaluate.html#agentscope.evaluate.EvaluatorStorageBase.get_evaluation_result">get_evaluation_result() (EvaluatorStorageBase method)</a>
@@ -1595,11 +1601,23 @@
         <ul>
           <li><a href="api/agentscope.memory.html#agentscope.memory.Mem0LongTermMemory.record">(Mem0LongTermMemory method)</a>
 </li>
+          <li><a href="api/agentscope.memory.html#agentscope.memory.ReMePersonalLongTermMemory.record">(ReMePersonalLongTermMemory method)</a>
+</li>
+          <li><a href="api/agentscope.memory.html#agentscope.memory.ReMeTaskLongTermMemory.record">(ReMeTaskLongTermMemory method)</a>
+</li>
+          <li><a href="api/agentscope.memory.html#agentscope.memory.ReMeToolLongTermMemory.record">(ReMeToolLongTermMemory method)</a>
+</li>
         </ul></li>
         <li><a href="api/agentscope.memory.html#agentscope.memory.LongTermMemoryBase.record_to_memory">record_to_memory() (LongTermMemoryBase method)</a>
 
         <ul>
           <li><a href="api/agentscope.memory.html#agentscope.memory.Mem0LongTermMemory.record_to_memory">(Mem0LongTermMemory method)</a>
+</li>
+          <li><a href="api/agentscope.memory.html#agentscope.memory.ReMePersonalLongTermMemory.record_to_memory">(ReMePersonalLongTermMemory method)</a>
+</li>
+          <li><a href="api/agentscope.memory.html#agentscope.memory.ReMeTaskLongTermMemory.record_to_memory">(ReMeTaskLongTermMemory method)</a>
+</li>
+          <li><a href="api/agentscope.memory.html#agentscope.memory.ReMeToolLongTermMemory.record_to_memory">(ReMeToolLongTermMemory method)</a>
 </li>
         </ul></li>
         <li><a href="api/agentscope.plan.html#agentscope.plan.PlanNotebook.recover_historical_plan">recover_historical_plan() (PlanNotebook method)</a>
@@ -1615,6 +1633,12 @@
         <li><a href="api/agentscope.module.html#agentscope.module.StateModule.register_state">register_state() (StateModule method)</a>
 </li>
         <li><a href="api/agentscope.tool.html#agentscope.tool.Toolkit.register_tool_function">register_tool_function() (Toolkit method)</a>
+</li>
+        <li><a href="api/agentscope.memory.html#agentscope.memory.ReMePersonalLongTermMemory">ReMePersonalLongTermMemory (class in agentscope.memory)</a>
+</li>
+        <li><a href="api/agentscope.memory.html#agentscope.memory.ReMeTaskLongTermMemory">ReMeTaskLongTermMemory (class in agentscope.memory)</a>
+</li>
+        <li><a href="api/agentscope.memory.html#agentscope.memory.ReMeToolLongTermMemory">ReMeToolLongTermMemory (class in agentscope.memory)</a>
 </li>
         <li><a href="api/agentscope.embedding.html#agentscope.embedding.EmbeddingCacheBase.remove">remove() (EmbeddingCacheBase method)</a>
 
@@ -1632,10 +1656,10 @@
 </li>
         <li><a href="api/agentscope.agent.html#agentscope.agent.AgentBase.remove_subscribers">remove_subscribers() (AgentBase method)</a>
 </li>
-        <li><a href="api/agentscope.tool.html#agentscope.tool.Toolkit.remove_tool_function">remove_tool_function() (Toolkit method)</a>
-</li>
     </ul></td>
     <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="api/agentscope.tool.html#agentscope.tool.Toolkit.remove_tool_function">remove_tool_function() (Toolkit method)</a>
+</li>
         <li><a href="api/agentscope.tool.html#agentscope.tool.Toolkit.remove_tool_groups">remove_tool_groups() (Toolkit method)</a>
 </li>
         <li><a href="api/agentscope.agent.html#agentscope.agent.AgentBase.reply">reply() (AgentBase method)</a>
@@ -1667,6 +1691,12 @@
 </li>
           <li><a href="api/agentscope.memory.html#agentscope.memory.MemoryBase.retrieve">(MemoryBase method)</a>
 </li>
+          <li><a href="api/agentscope.memory.html#agentscope.memory.ReMePersonalLongTermMemory.retrieve">(ReMePersonalLongTermMemory method)</a>
+</li>
+          <li><a href="api/agentscope.memory.html#agentscope.memory.ReMeTaskLongTermMemory.retrieve">(ReMeTaskLongTermMemory method)</a>
+</li>
+          <li><a href="api/agentscope.memory.html#agentscope.memory.ReMeToolLongTermMemory.retrieve">(ReMeToolLongTermMemory method)</a>
+</li>
           <li><a href="api/agentscope.rag.html#agentscope.rag.SimpleKnowledge.retrieve">(SimpleKnowledge method)</a>
 </li>
         </ul></li>
@@ -1674,6 +1704,12 @@
 
         <ul>
           <li><a href="api/agentscope.memory.html#agentscope.memory.Mem0LongTermMemory.retrieve_from_memory">(Mem0LongTermMemory method)</a>
+</li>
+          <li><a href="api/agentscope.memory.html#agentscope.memory.ReMePersonalLongTermMemory.retrieve_from_memory">(ReMePersonalLongTermMemory method)</a>
+</li>
+          <li><a href="api/agentscope.memory.html#agentscope.memory.ReMeTaskLongTermMemory.retrieve_from_memory">(ReMeTaskLongTermMemory method)</a>
+</li>
+          <li><a href="api/agentscope.memory.html#agentscope.memory.ReMeToolLongTermMemory.retrieve_from_memory">(ReMeToolLongTermMemory method)</a>
 </li>
         </ul></li>
         <li><a href="api/agentscope.rag.html#agentscope.rag.KnowledgeBase.retrieve_knowledge">retrieve_knowledge() (KnowledgeBase method)</a>
@@ -2126,9 +2162,11 @@
     <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="api/agentscope.plan.html#agentscope.plan.DefaultPlanToHint.when_a_subtask_in_progress">when_a_subtask_in_progress (DefaultPlanToHint attribute)</a>
 </li>
+        <li><a href="api/agentscope.plan.html#agentscope.plan.DefaultPlanToHint.when_no_subtask_in_progress">when_no_subtask_in_progress (DefaultPlanToHint attribute)</a>
+</li>
     </ul></td>
     <td style="width: 33%; vertical-align: top;"><ul>
-        <li><a href="api/agentscope.plan.html#agentscope.plan.DefaultPlanToHint.when_no_subtask_in_progress">when_no_subtask_in_progress (DefaultPlanToHint attribute)</a>
+        <li><a href="api/agentscope.rag.html#agentscope.rag.WordReader">WordReader (class in agentscope.rag)</a>
 </li>
         <li><a href="api/agentscope.tool.html#agentscope.tool.write_text_file">write_text_file() (in module agentscope.tool)</a>
 </li>
