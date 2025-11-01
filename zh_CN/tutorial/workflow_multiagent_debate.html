@@ -451,31 +451,32 @@ to download the full example code.</p>
 <span class="n">asyncio</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">run_multiagent_debate</span><span class="p">())</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Alice: 正方观点是：当圆A绕着圆B外切滚动一圈回到起点时，圆A总共会旋转4次。
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Alice: 正方观点是：当圆A绕着圆B滚动一圈回到起点时，圆A总共会旋转4次。
 
-解释如下：设圆B的半径为R，则圆A的半径为r = R/3。当圆A绕圆B滚动一周时，圆心A走过的路径长度等于圆B的周长，即2πR。由于圆A与圆B之间没有相对滑动，所以圆A边缘上的某一点在绕圆B一周的过程中所走过的总距离也是2πR。
+解释如下：设圆B的半径为R，则圆A的半径为r=R/3。当圆A绕圆B外切滚动时，圆A中心走过的路径长度等于圆B的周长，即2πR。而圆A自身旋转的角度可以通过计算它沿着这条路径移动的距离来确定。圆A自转一周的弧长等于其自身的周长，也就是2πr = 2π(R/3)。
 
-然而，对于圆A本身来说，它自身也必须旋转一定的次数来完成这个过程。我们知道，圆A自转一周的距离是其自身的周长，也就是2πr = 2π(R/3)。因此，要计算圆A自转了多少圈，我们可以将圆心A走过的总路程除以圆A的周长：
+因此，为了计算圆A绕圆B滚动一圈过程中旋转了多少圈，我们可以用圆A中心走过的总距离除以圆A自转一周的弧长：
 
-\[ \text{圆A自转的圈数} = \frac{\text{圆A边缘点走过的总距离}}{\text{圆A的周长}} = \frac{2\pi R}{2\pi (R/3)} = \frac{R}{R/3} = 3 \]
+\[ \text{旋转次数} = \frac{\text{圆A中心走过的路径长度}}{\text{圆A自转一周的弧长}} = \frac{2\pi R}{2\pi (R/3)} = \frac{2\pi R}{(2\pi R)/3} = 3 \]
 
-但是，这里我们只考虑了圆A围绕圆B中心旋转的影响。实际上，当圆A绕圆B滚动一圈的同时，圆A还会因为自身与圆B之间的相对位置变化而额外旋转一次（想象一下，如果把圆A放在桌子上滚，当它滚回原位时，它也会自转了一圈）。因此，除了跟随圆B中心的3次旋转外，还应该加上这1次额外的自转，总共是4次旋转。
+但是，这里有一个关键点需要注意，那就是当一个圆绕另一个圆无滑动地滚动时，除了考虑到圆A沿圆B外部轨迹的运动导致的旋转之外，我们还需要考虑圆A完成一圈环绕之后相对于初始位置的额外旋转。这是因为圆A在绕行过程中，它的方向也会发生改变。具体来说，每绕圆B一周，圆A的方向会反转一次，这相当于又多旋转了1次。因此，总的旋转次数应该是3次加上这额外的1次，总计4次。
+Bob: 反方观点是：当圆A绕着圆B滚动一圈回到起点时，圆A总共会旋转3次。
 
-综上所述，当圆A绕圆B滚动一圈回到起点时，圆A总共会旋转4次。
-Bob: 反方观点是：当圆A绕着圆B外切滚动一圈回到起点时，圆A总共会旋转3次，而不是4次。
+我不同意正方关于圆A在绕圆B一周后额外旋转1次的说法。让我们仔细分析一下这个过程：
 
-解释如下：设圆B的半径为R，那么圆A的半径为r = R/3。当圆A沿着圆B的外部边缘无滑动地滚动一周时，圆心A走过的路径长度确实是圆B的周长，即2πR。由于没有相对滑动，圆A边缘上的某一点在绕圆B一周的过程中所经过的总距离也是2πR。
+假设圆B的半径为R，而圆A的半径为r=R/3。当圆A围绕圆B外切并滚动一圈时，圆A中心走过的路径长度确实是圆B的周长，即2πR。而圆A自转一周的弧长就是它自身的周长，也就是2πr = 2π(R/3)。
 
-对于圆A来说，它自转的距离是其自身的周长，即2πr或2π(R/3)。为了计算圆A自转了多少圈，我们需要将圆心A走过的总路程除以圆A的周长：
+因此，圆A绕行圆B一周过程中自转的次数应该这样计算：
+\[ \text{旋转次数} = \frac{\text{圆A中心走过的路径长度}}{\text{圆A自转一周的弧长}} = \frac{2\pi R}{2\pi (R/3)} = 3 \]
 
-\[ \text{圆A自转的圈数} = \frac{\text{圆A边缘点走过的总距离}}{\text{圆A的周长}} = \frac{2\pi R}{2\pi (R/3)} = 3 \]
+这里的关键在于理解“无滑动”的含义。当圆A绕着圆B滚动时，它们接触点的速度必须相等，这意味着圆A沿着圆B边缘的移动速度等于其自身绕轴旋转的速度。因此，每当圆A的中心沿圆B移动了一个完整的圆B周长，圆A就完成了恰好3次自转。
 
-这里的关键在于理解这个过程中的几何关系。圆A绕着圆B滚动一周，并且圆A与圆B之间没有滑动，这意味着圆A在绕圆B中心旋转的同时也在进行自转。但是，当我们考虑圆A绕圆B中心旋转时，实际上这已经包含了圆A所有必要的旋转。这是因为圆A不仅需要跟随圆B的曲线运动，而且还要保证接触点始终不变，这就意味着圆A必须完成整数倍于自身周长的旋转来保持这种接触。
+至于正方提到的方向反转，并不会导致额外的旋转。这是因为方向的改变是由于圆A整体的平移运动造成的，而不是因为圆A本身的旋转。换句话说，圆A的相对位置和朝向变化并不意味着它多旋转了一圈；实际上，这种变化已经包含在了上述计算的3次旋转中。因此，根据这个逻辑，圆A绕圆B滚动一圈后总共会旋转3次，而不是4次。
+Aggregator: 两位辩论者的论点都基于圆A绕圆B无滑动滚动的几何关系，但对额外旋转的理解有所不同。正方认为除了根据路径长度计算出的3次旋转外，还有一次由于方向反转造成的额外旋转；而反方则认为方向变化已经包含在了3次旋转之中，因此总共只有3次旋转。
 
-因此，在整个过程中，圆A不需要额外的一次完整自转。圆A跟随圆B的曲线所做的3次旋转已经足够使它回到初始位置并且恢复到开始时的状态。所以，圆A总共会旋转3次。这与正方提到的“额外一次自转”不同，因为那部分已经被包含在了跟随圆B中心旋转的次数中。
-Aggregator: 在听取了双方的辩论后，我们可以确定的是，当圆A绕着圆B外切滚动一圈回到起点时，圆A总共会旋转3次。Alice提到的额外一次自转实际上已经在跟随圆B中心旋转的过程中被考虑进去了。Bob的观点正确地指出了这一点：圆A为了保持与圆B接触点的一致性而进行的旋转已经被计算在内了，因此不需要再加上一个额外的完整自转。所以，根据几何学和运动学原理，答案是3次旋转。
+实际上，在一个圆绕另一个圆外切滚动一圈的情况下，小圆会因为其轨迹形成的曲线导致一个额外的自转。这是由于当圆A完成绕圆B一周时，它不仅沿着圆B的周长移动了一圈，还因为两圆之间的相对运动多转了一圈。因此，正确的答案是圆A总共会旋转4次。
 
-辩论结束，正确答案是： 3次
+辩论结束，正确答案是： 圆A总共会旋转4次。
 </pre></div>
 </div>
 <section id="id1">
@@ -484,7 +485,7 @@ Aggregator: 在听取了双方的辩论后，我们可以确定的是，当圆A�
 <li><p><a class="reference internal" href="task_pipeline.html#pipeline"><span class="std std-ref">管道 (Pipeline)</span></a></p></li>
 </ul>
 <p id="emnlp-2024">Encouraging Divergent Thinking in Large Language Models through Multi-Agent Debate. EMNLP 2024.</p>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 39.326 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 49.514 seconds)</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-tutorial-workflow-multiagent-debate-py">
 <div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
 <p><a class="reference download internal" download="" href="../_downloads/4ddcd353f1389c1b465adca14e7ea420/workflow_multiagent_debate.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">workflow_multiagent_debate.ipynb</span></code></a></p>

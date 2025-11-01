@@ -865,6 +865,453 @@ location, etc.</p></li>
 
 </dd></dl>
 
+<dl class="py class">
+<dt class="sig sig-object py" id="agentscope.memory.ReMePersonalLongTermMemory">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">ReMePersonalLongTermMemory</span></span><a class="reference internal" href="../_modules/agentscope/memory/_reme/_reme_personal_long_term_memory.html#ReMePersonalLongTermMemory"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#agentscope.memory.ReMePersonalLongTermMemory" title="Link to this definition">¶</a></dt>
+<dd><p>基类：<code class="xref py py-class docutils literal notranslate"><span class="pre">ReMeLongTermMemoryBase</span></code></p>
+<p>Personal memory implementation using ReMe library.</p>
+<dl class="simple">
+<dt>Requirements:</dt><dd><p>Python 3.12 or greater is required to use ReMe.</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="agentscope.memory.ReMePersonalLongTermMemory.record_to_memory">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">record_to_memory</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">thinking</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">content</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/agentscope/memory/_reme/_reme_personal_long_term_memory.html#ReMePersonalLongTermMemory.record_to_memory"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#agentscope.memory.ReMePersonalLongTermMemory.record_to_memory" title="Link to this definition">¶</a></dt>
+<dd><p>Record important user information to long-term memory.</p>
+<p>Record important user information to long-term memory for future
+reference.</p>
+<p>Use this function to save user's personal information,
+preferences, habits, and facts that you may need in future
+conversations. This enables you to provide personalized and
+contextually relevant responses.</p>
+<p>When to record:</p>
+<ul class="simple">
+<li><p>User shares personal preferences (e.g., &quot;I prefer homestays
+when traveling&quot;)</p></li>
+<li><p>User mentions habits or routines (e.g., &quot;I start work at 9 AM&quot;)</p></li>
+<li><p>User states likes/dislikes (e.g., &quot;I enjoy drinking green tea&quot;)</p></li>
+<li><p>User provides personal facts (e.g., &quot;I work as a software
+engineer&quot;)</p></li>
+</ul>
+<p>What to record: Be specific and structured. Include who, when,
+where, what, why, and how when relevant.</p>
+<dl class="field-list simple">
+<dt class="field-odd">参数<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>thinking</strong> (<cite>str</cite>) -- Your reasoning about why this information is worth
+recording and how it might be useful later.</p></li>
+<li><p><strong>content</strong> (<cite>list[str]</cite>) -- List of specific facts to remember. Each string should be
+a clear, standalone piece of information. Examples:
+[&quot;User prefers homestays in Hangzhou&quot;, &quot;User likes
+visiting West Lake in the morning&quot;].</p></li>
+<li><p><strong>**kwargs</strong> (<cite>Any</cite>) -- Additional keyword arguments for the recording operation.</p></li>
+</ul>
+</dd>
+<dt class="field-even">返回<span class="colon">:</span></dt>
+<dd class="field-even"><p>Confirmation message indicating successful memory
+recording.</p>
+</dd>
+<dt class="field-odd">返回类型<span class="colon">:</span></dt>
+<dd class="field-odd"><p><cite>ToolResponse</cite></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="agentscope.memory.ReMePersonalLongTermMemory.retrieve_from_memory">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">retrieve_from_memory</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">keywords</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/agentscope/memory/_reme/_reme_personal_long_term_memory.html#ReMePersonalLongTermMemory.retrieve_from_memory"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#agentscope.memory.ReMePersonalLongTermMemory.retrieve_from_memory" title="Link to this definition">¶</a></dt>
+<dd><p>Search and retrieve relevant information from long-term memory.</p>
+<div class="admonition note">
+<p class="admonition-title">备注</p>
+<p>You should call this function BEFORE answering
+questions about the user's preferences, past information, or
+personal details. This ensures you provide accurate information
+based on stored memories rather than guessing.</p>
+</div>
+<p>Use this when:</p>
+<ul class="simple">
+<li><p>User asks &quot;what do I like?&quot;, &quot;what are my preferences?&quot;,
+&quot;what do you know about me?&quot;</p></li>
+<li><p>User asks about their past behaviors, habits, or stated
+preferences</p></li>
+<li><p>User refers to information they shared in previous
+conversations</p></li>
+<li><p>You need to personalize responses based on user's history</p></li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">参数<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>keywords</strong> (<cite>list[str]</cite>) -- Keywords to search for in memory. Be specific and use
+multiple keywords for better results. Examples:
+[&quot;travel preferences&quot;, &quot;Hangzhou&quot;], [&quot;work habits&quot;,
+&quot;morning routine&quot;], [&quot;food preferences&quot;, &quot;tea&quot;].</p></li>
+<li><p><strong>**kwargs</strong> (<cite>Any</cite>) -- Additional keyword arguments for the retrieval operation.</p></li>
+</ul>
+</dd>
+<dt class="field-even">返回<span class="colon">:</span></dt>
+<dd class="field-even"><p>Retrieved memories matching the keywords. If no memories
+found, you'll receive a message indicating that.</p>
+</dd>
+<dt class="field-odd">返回类型<span class="colon">:</span></dt>
+<dd class="field-odd"><p><cite>ToolResponse</cite></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="agentscope.memory.ReMePersonalLongTermMemory.record">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">record</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">msgs</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/agentscope/memory/_reme/_reme_personal_long_term_memory.html#ReMePersonalLongTermMemory.record"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#agentscope.memory.ReMePersonalLongTermMemory.record" title="Link to this definition">¶</a></dt>
+<dd><p>Record the content to the long-term memory.</p>
+<p>This method converts AgentScope messages to ReMe's format and
+records them using the personal memory flow.</p>
+<dl class="field-list simple">
+<dt class="field-odd">参数<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>msgs</strong> (<cite>list[Msg | None]</cite>) -- The messages to record to memory.</p></li>
+<li><p><strong>**kwargs</strong> (<cite>Any</cite>) -- Additional keyword arguments for the mem0 recording.</p></li>
+</ul>
+</dd>
+<dt class="field-even">返回类型<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="agentscope.memory.ReMePersonalLongTermMemory.retrieve">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">retrieve</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">msg</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/agentscope/memory/_reme/_reme_personal_long_term_memory.html#ReMePersonalLongTermMemory.retrieve"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#agentscope.memory.ReMePersonalLongTermMemory.retrieve" title="Link to this definition">¶</a></dt>
+<dd><p>Retrieve the content from the long-term memory.</p>
+<dl class="field-list simple">
+<dt class="field-odd">参数<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>msg</strong> (<cite>Msg | list[Msg] | None</cite>) -- The message to search for in the memory, which should be
+specific and concise, e.g. the person's name, the date, the
+location, etc.</p></li>
+<li><p><strong>**kwargs</strong> (<cite>Any</cite>) -- Additional keyword arguments.</p></li>
+</ul>
+</dd>
+<dt class="field-even">返回<span class="colon">:</span></dt>
+<dd class="field-even"><p>The retrieved memory as a string.</p>
+</dd>
+<dt class="field-odd">返回类型<span class="colon">:</span></dt>
+<dd class="field-odd"><p><cite>str</cite></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="agentscope.memory.ReMeTaskLongTermMemory">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">ReMeTaskLongTermMemory</span></span><a class="reference internal" href="../_modules/agentscope/memory/_reme/_reme_task_long_term_memory.html#ReMeTaskLongTermMemory"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#agentscope.memory.ReMeTaskLongTermMemory" title="Link to this definition">¶</a></dt>
+<dd><p>基类：<code class="xref py py-class docutils literal notranslate"><span class="pre">ReMeLongTermMemoryBase</span></code></p>
+<p>Task memory implementation using ReMe library.</p>
+<p>Task memory learns from execution trajectories and provides
+retrieval of relevant task experiences.</p>
+<dl class="simple">
+<dt>Requirements:</dt><dd><p>Python 3.12 or greater is required to use ReMe.</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="agentscope.memory.ReMeTaskLongTermMemory.record_to_memory">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">record_to_memory</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">thinking</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">content</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/agentscope/memory/_reme/_reme_task_long_term_memory.html#ReMeTaskLongTermMemory.record_to_memory"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#agentscope.memory.ReMeTaskLongTermMemory.record_to_memory" title="Link to this definition">¶</a></dt>
+<dd><p>Record task execution experiences and learnings.</p>
+<p>Record task execution experiences and learnings to long-term
+memory.</p>
+<p>Use this function to save valuable task-related knowledge that
+can help with future similar tasks. This enables learning from
+experience and improving over time.</p>
+<p>When to record:</p>
+<ul class="simple">
+<li><p>After solving technical problems or completing tasks</p></li>
+<li><p>When discovering useful techniques or approaches</p></li>
+<li><p>After implementing solutions with specific steps</p></li>
+<li><p>When learning best practices or important lessons</p></li>
+</ul>
+<p>What to record: Be detailed and actionable. Include:</p>
+<ul class="simple">
+<li><p>Task description and context</p></li>
+<li><p>Step-by-step execution details</p></li>
+<li><p>Specific techniques and methods used</p></li>
+<li><p>Results, outcomes, and effectiveness</p></li>
+<li><p>Lessons learned and considerations</p></li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">参数<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>thinking</strong> (<cite>str</cite>) -- Your reasoning about why this task experience is valuable
+and what makes it worth remembering for future reference.</p></li>
+<li><p><strong>content</strong> (<cite>list[str]</cite>) -- List of specific task insights to remember. Each string
+should be a clear, actionable piece of information.
+Examples: [&quot;Add indexes on WHERE clause columns to speed
+up queries&quot;, &quot;Use EXPLAIN ANALYZE to identify missing
+indexes&quot;].</p></li>
+<li><p><strong>**kwargs</strong> (<cite>Any</cite>) -- Additional keyword arguments. Can include 'score' (float)
+to indicate the quality/success of this approach
+(default: 1.0).</p></li>
+</ul>
+</dd>
+<dt class="field-even">返回<span class="colon">:</span></dt>
+<dd class="field-even"><p>Confirmation message indicating successful memory
+recording.</p>
+</dd>
+<dt class="field-odd">返回类型<span class="colon">:</span></dt>
+<dd class="field-odd"><p><cite>ToolResponse</cite></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="agentscope.memory.ReMeTaskLongTermMemory.retrieve_from_memory">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">retrieve_from_memory</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">keywords</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/agentscope/memory/_reme/_reme_task_long_term_memory.html#ReMeTaskLongTermMemory.retrieve_from_memory"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#agentscope.memory.ReMeTaskLongTermMemory.retrieve_from_memory" title="Link to this definition">¶</a></dt>
+<dd><p>Search and retrieve relevant task experiences.</p>
+<p>Search and retrieve relevant task experiences from long-term
+memory.</p>
+<p>IMPORTANT: You should call this function BEFORE attempting to
+solve problems or answer technical questions. This ensures you
+leverage experiences and proven solutions rather than
+starting from scratch.</p>
+<p>Use this when:
+- Asked to solve a technical problem or implement a solution
+- Asked for recommendations, best practices, or approaches
+- Asked &quot;what do you know about...?&quot; or &quot;have you seen this</p>
+<blockquote>
+<div><p>before?&quot;</p>
+</div></blockquote>
+<ul class="simple">
+<li><p>Dealing with tasks that may be similar to experiences</p></li>
+<li><p>Need to recall specific techniques or methods</p></li>
+</ul>
+<p>Benefits of retrieving first:
+- Learn from past successes and mistakes
+- Provide more accurate, battle-tested solutions
+- Avoid reinventing the wheel
+- Give consistent, informed recommendations</p>
+<dl class="field-list simple">
+<dt class="field-odd">参数<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>keywords</strong> (<cite>list[str]</cite>) -- Keywords describing the task or problem domain. Be
+specific and use technical terms. Examples:
+[&quot;database optimization&quot;, &quot;slow queries&quot;], [&quot;API design&quot;,
+&quot;rate limiting&quot;], [&quot;code refactoring&quot;, &quot;Python&quot;].</p></li>
+<li><p><strong>**kwargs</strong> (<cite>Any</cite>) -- Additional keyword arguments. Can include 'top_k' (int)
+to specify number of experiences to retrieve
+(default: 3).</p></li>
+</ul>
+</dd>
+<dt class="field-even">返回<span class="colon">:</span></dt>
+<dd class="field-even"><p>Retrieved task experiences and learnings. If no relevant
+experiences found, you'll receive a message indicating
+that.</p>
+</dd>
+<dt class="field-odd">返回类型<span class="colon">:</span></dt>
+<dd class="field-odd"><p><cite>ToolResponse</cite></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="agentscope.memory.ReMeTaskLongTermMemory.record">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">record</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">msgs</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/agentscope/memory/_reme/_reme_task_long_term_memory.html#ReMeTaskLongTermMemory.record"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#agentscope.memory.ReMeTaskLongTermMemory.record" title="Link to this definition">¶</a></dt>
+<dd><p>Record the content to the task memory.</p>
+<p>This method converts AgentScope messages to ReMe's format and
+records them as a task execution trajectory.</p>
+<dl class="field-list simple">
+<dt class="field-odd">参数<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>msgs</strong> (<cite>list[Msg | None]</cite>) -- The messages to record to memory.</p></li>
+<li><p><strong>**kwargs</strong> (<cite>Any</cite>) -- Additional keyword arguments for the recording.
+Can include 'score' (float) for trajectory scoring
+(default: 1.0).</p></li>
+</ul>
+</dd>
+<dt class="field-even">返回类型<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="agentscope.memory.ReMeTaskLongTermMemory.retrieve">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">retrieve</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">msg</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/agentscope/memory/_reme/_reme_task_long_term_memory.html#ReMeTaskLongTermMemory.retrieve"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#agentscope.memory.ReMeTaskLongTermMemory.retrieve" title="Link to this definition">¶</a></dt>
+<dd><p>Retrieve relevant task experiences from memory.</p>
+<dl class="field-list simple">
+<dt class="field-odd">参数<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>msg</strong> (<cite>Msg | list[Msg] | None</cite>) -- The message to search for relevant task experiences.</p></li>
+<li><p><strong>**kwargs</strong> (<cite>Any</cite>) -- Additional keyword arguments.</p></li>
+</ul>
+</dd>
+<dt class="field-even">返回<span class="colon">:</span></dt>
+<dd class="field-even"><p>The retrieved task experiences as a string.</p>
+</dd>
+<dt class="field-odd">返回类型<span class="colon">:</span></dt>
+<dd class="field-odd"><p><cite>str</cite></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="agentscope.memory.ReMeToolLongTermMemory">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">ReMeToolLongTermMemory</span></span><a class="reference internal" href="../_modules/agentscope/memory/_reme/_reme_tool_long_term_memory.html#ReMeToolLongTermMemory"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#agentscope.memory.ReMeToolLongTermMemory" title="Link to this definition">¶</a></dt>
+<dd><p>基类：<code class="xref py py-class docutils literal notranslate"><span class="pre">ReMeLongTermMemoryBase</span></code></p>
+<p>Tool memory implementation using ReMe library.</p>
+<p>Tool memory records tool execution results and generates usage
+guidelines from the execution history.</p>
+<dl class="simple">
+<dt>Requirements:</dt><dd><p>Python 3.12 or greater is required to use ReMe.</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="agentscope.memory.ReMeToolLongTermMemory.record_to_memory">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">record_to_memory</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">thinking</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">content</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/agentscope/memory/_reme/_reme_tool_long_term_memory.html#ReMeToolLongTermMemory.record_to_memory"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#agentscope.memory.ReMeToolLongTermMemory.record_to_memory" title="Link to this definition">¶</a></dt>
+<dd><p>Record tool execution results to build tool usage patterns.</p>
+<p>Record tool execution results to build a knowledge base of tool
+usage patterns.</p>
+<p>Use this function after successfully using tools to capture
+execution details, results, and performance metrics. Over time,
+this builds comprehensive usage guidelines and best practices
+for each tool.</p>
+<p>When to record:</p>
+<ul class="simple">
+<li><p>After successfully executing any tool</p></li>
+<li><p>After tool failures (to learn what doesn't work)</p></li>
+<li><p>When discovering effective parameter combinations</p></li>
+<li><p>After noteworthy tool usage patterns</p></li>
+</ul>
+<p>What to record: Each tool execution should include complete
+execution details.</p>
+<dl class="field-list simple">
+<dt class="field-odd">参数<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>thinking</strong> (<cite>str</cite>) -- Your reasoning about why this tool execution is worth
+recording. Mention what worked well, what could be
+improved, or lessons learned.</p></li>
+<li><p><strong>content</strong> (<cite>list[str]</cite>) -- <p>List of JSON strings, each representing a tool execution.
+Each JSON must have these fields:
+- create_time: Timestamp in format &quot;YYYY-MM-DD HH:MM:SS&quot;
+- tool_name: Name of the tool executed
+- input: Input parameters as a dict
+- output: Tool's output as a string
+- token_cost: Token cost (integer)
+- success: Whether execution succeeded (boolean)
+- time_cost: Execution time in seconds (float)</p>
+<p>Example: '{&quot;create_time&quot;: &quot;2024-01-01 10:00:00&quot;,
+&quot;tool_name&quot;: &quot;search&quot;, &quot;input&quot;: {&quot;query&quot;: &quot;Python&quot;},
+&quot;output&quot;: &quot;Found 10 results&quot;, &quot;token_cost&quot;: 100,
+&quot;success&quot;: true, &quot;time_cost&quot;: 1.2}'</p>
+</p></li>
+<li><p><strong>**kwargs</strong> (<cite>Any</cite>) -- Additional keyword arguments for the recording operation.</p></li>
+</ul>
+</dd>
+<dt class="field-even">返回<span class="colon">:</span></dt>
+<dd class="field-even"><p>Confirmation message with number of executions recorded
+and guidelines generated.</p>
+</dd>
+<dt class="field-odd">返回类型<span class="colon">:</span></dt>
+<dd class="field-odd"><p><cite>ToolResponse</cite></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="agentscope.memory.ReMeToolLongTermMemory.retrieve_from_memory">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">retrieve_from_memory</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">keywords</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/agentscope/memory/_reme/_reme_tool_long_term_memory.html#ReMeToolLongTermMemory.retrieve_from_memory"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#agentscope.memory.ReMeToolLongTermMemory.retrieve_from_memory" title="Link to this definition">¶</a></dt>
+<dd><p>Retrieve usage guidelines and best practices for tools.</p>
+<p>Retrieve usage guidelines and best practices for specific tools.</p>
+<div class="admonition note">
+<p class="admonition-title">备注</p>
+<p>You should call this function BEFORE using a tool,
+especially if you're uncertain about its proper usage or want to
+follow established best practices. This retrieves synthesized
+guidelines based on past tool executions.</p>
+</div>
+<p>Use this when:</p>
+<ul class="simple">
+<li><p>About to use a tool and want to know the best practices</p></li>
+<li><p>Uncertain about tool parameters or usage patterns</p></li>
+<li><p>Want to learn from past successful/failed tool executions</p></li>
+<li><p>User asks &quot;how should I use this tool?&quot; or &quot;what's the best
+way to...&quot;</p></li>
+<li><p>Need to understand tool performance characteristics or
+limitations</p></li>
+</ul>
+<p>Benefits of retrieving first:</p>
+<ul class="simple">
+<li><p>Learn from accumulated tool usage experience</p></li>
+<li><p>Avoid common mistakes and pitfalls</p></li>
+<li><p>Use optimal parameter combinations</p></li>
+<li><p>Understand tool performance and cost characteristics</p></li>
+<li><p>Follow established best practices</p></li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">参数<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>keywords</strong> (<cite>list[str]</cite>) -- List of tool names to retrieve guidelines for. Use the
+exact tool names. Examples: [&quot;search&quot;],
+[&quot;database_query&quot;, &quot;cache_get&quot;], [&quot;api_call&quot;].</p></li>
+<li><p><strong>**kwargs</strong> (<cite>Any</cite>) -- Additional keyword arguments for the retrieval operation.</p></li>
+</ul>
+</dd>
+<dt class="field-even">返回<span class="colon">:</span></dt>
+<dd class="field-even"><p>Retrieved usage guidelines and best practices for the
+specified tools. If no guidelines exist yet, you'll
+receive a message indicating that.</p>
+</dd>
+<dt class="field-odd">返回类型<span class="colon">:</span></dt>
+<dd class="field-odd"><p><cite>ToolResponse</cite></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="agentscope.memory.ReMeToolLongTermMemory.record">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">record</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">msgs</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/agentscope/memory/_reme/_reme_tool_long_term_memory.html#ReMeToolLongTermMemory.record"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#agentscope.memory.ReMeToolLongTermMemory.record" title="Link to this definition">¶</a></dt>
+<dd><p>Record the content to the tool memory.</p>
+<p>This method extracts content from messages and treats them as
+JSON strings representing tool_call_results, similar to
+record_to_memory.</p>
+<dl class="field-list simple">
+<dt class="field-odd">参数<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>msgs</strong> (<cite>list[Msg | None]</cite>) -- The messages to record to memory. Each message's content
+should be a JSON string or list of JSON strings
+representing tool_call_results.</p></li>
+<li><p><strong>**kwargs</strong> (<cite>Any</cite>) -- Additional keyword arguments for the recording.</p></li>
+</ul>
+</dd>
+<dt class="field-even">返回类型<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="agentscope.memory.ReMeToolLongTermMemory.retrieve">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">retrieve</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">msg</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/agentscope/memory/_reme/_reme_tool_long_term_memory.html#ReMeToolLongTermMemory.retrieve"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#agentscope.memory.ReMeToolLongTermMemory.retrieve" title="Link to this definition">¶</a></dt>
+<dd><p>Retrieve tool guidelines from memory.</p>
+<p>Retrieve tool guidelines from memory based on message content.</p>
+<dl class="field-list simple">
+<dt class="field-odd">参数<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>msg</strong> (<cite>Msg | list[Msg] | None</cite>) -- The message containing tool names or queries to
+retrieve guidelines for.</p></li>
+<li><p><strong>**kwargs</strong> (<cite>Any</cite>) -- Additional keyword arguments.</p></li>
+</ul>
+</dd>
+<dt class="field-even">返回<span class="colon">:</span></dt>
+<dd class="field-even"><p>The retrieved tool guidelines as a string.</p>
+</dd>
+<dt class="field-odd">返回类型<span class="colon">:</span></dt>
+<dd class="field-odd"><p><cite>str</cite></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
 </section>
 
         </article>
@@ -976,6 +1423,27 @@ location, etc.</p></li>
 <li><a class="reference internal" href="#agentscope.memory.Mem0LongTermMemory.retrieve_from_memory"><code class="docutils literal notranslate"><span class="pre">Mem0LongTermMemory.retrieve_from_memory()</span></code></a></li>
 <li><a class="reference internal" href="#agentscope.memory.Mem0LongTermMemory.record"><code class="docutils literal notranslate"><span class="pre">Mem0LongTermMemory.record()</span></code></a></li>
 <li><a class="reference internal" href="#agentscope.memory.Mem0LongTermMemory.retrieve"><code class="docutils literal notranslate"><span class="pre">Mem0LongTermMemory.retrieve()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#agentscope.memory.ReMePersonalLongTermMemory"><code class="docutils literal notranslate"><span class="pre">ReMePersonalLongTermMemory</span></code></a><ul>
+<li><a class="reference internal" href="#agentscope.memory.ReMePersonalLongTermMemory.record_to_memory"><code class="docutils literal notranslate"><span class="pre">ReMePersonalLongTermMemory.record_to_memory()</span></code></a></li>
+<li><a class="reference internal" href="#agentscope.memory.ReMePersonalLongTermMemory.retrieve_from_memory"><code class="docutils literal notranslate"><span class="pre">ReMePersonalLongTermMemory.retrieve_from_memory()</span></code></a></li>
+<li><a class="reference internal" href="#agentscope.memory.ReMePersonalLongTermMemory.record"><code class="docutils literal notranslate"><span class="pre">ReMePersonalLongTermMemory.record()</span></code></a></li>
+<li><a class="reference internal" href="#agentscope.memory.ReMePersonalLongTermMemory.retrieve"><code class="docutils literal notranslate"><span class="pre">ReMePersonalLongTermMemory.retrieve()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#agentscope.memory.ReMeTaskLongTermMemory"><code class="docutils literal notranslate"><span class="pre">ReMeTaskLongTermMemory</span></code></a><ul>
+<li><a class="reference internal" href="#agentscope.memory.ReMeTaskLongTermMemory.record_to_memory"><code class="docutils literal notranslate"><span class="pre">ReMeTaskLongTermMemory.record_to_memory()</span></code></a></li>
+<li><a class="reference internal" href="#agentscope.memory.ReMeTaskLongTermMemory.retrieve_from_memory"><code class="docutils literal notranslate"><span class="pre">ReMeTaskLongTermMemory.retrieve_from_memory()</span></code></a></li>
+<li><a class="reference internal" href="#agentscope.memory.ReMeTaskLongTermMemory.record"><code class="docutils literal notranslate"><span class="pre">ReMeTaskLongTermMemory.record()</span></code></a></li>
+<li><a class="reference internal" href="#agentscope.memory.ReMeTaskLongTermMemory.retrieve"><code class="docutils literal notranslate"><span class="pre">ReMeTaskLongTermMemory.retrieve()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#agentscope.memory.ReMeToolLongTermMemory"><code class="docutils literal notranslate"><span class="pre">ReMeToolLongTermMemory</span></code></a><ul>
+<li><a class="reference internal" href="#agentscope.memory.ReMeToolLongTermMemory.record_to_memory"><code class="docutils literal notranslate"><span class="pre">ReMeToolLongTermMemory.record_to_memory()</span></code></a></li>
+<li><a class="reference internal" href="#agentscope.memory.ReMeToolLongTermMemory.retrieve_from_memory"><code class="docutils literal notranslate"><span class="pre">ReMeToolLongTermMemory.retrieve_from_memory()</span></code></a></li>
+<li><a class="reference internal" href="#agentscope.memory.ReMeToolLongTermMemory.record"><code class="docutils literal notranslate"><span class="pre">ReMeToolLongTermMemory.record()</span></code></a></li>
+<li><a class="reference internal" href="#agentscope.memory.ReMeToolLongTermMemory.retrieve"><code class="docutils literal notranslate"><span class="pre">ReMeToolLongTermMemory.retrieve()</span></code></a></li>
 </ul>
 </li>
 </ul>

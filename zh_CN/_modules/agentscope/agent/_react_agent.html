@@ -826,6 +826,11 @@
                 <span class="p">):</span>
                     <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">print</span><span class="p">(</span><span class="n">tool_res_msg</span><span class="p">,</span> <span class="n">chunk</span><span class="o">.</span><span class="n">is_last</span><span class="p">)</span>
 
+                <span class="c1"># Raise the CancelledError to handle the interruption in the</span>
+                <span class="c1"># handle_interrupt function</span>
+                <span class="k">if</span> <span class="n">chunk</span><span class="o">.</span><span class="n">is_interrupted</span><span class="p">:</span>
+                    <span class="k">raise</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">CancelledError</span><span class="p">()</span>
+
                 <span class="c1"># Return message if generate_response is called successfully</span>
                 <span class="k">if</span> <span class="p">(</span>
                     <span class="n">tool_call</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">finish_function_name</span>
@@ -905,7 +910,10 @@
             <span class="s2">&quot;I noticed that you have interrupted me. What can I &quot;</span>
             <span class="s2">&quot;do for you?&quot;</span><span class="p">,</span>
             <span class="s2">&quot;assistant&quot;</span><span class="p">,</span>
-            <span class="n">metadata</span><span class="o">=</span><span class="p">{},</span>
+            <span class="n">metadata</span><span class="o">=</span><span class="p">{</span>
+                <span class="c1"># Expose this field to indicate the interruption</span>
+                <span class="s2">&quot;is_interrupted&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+            <span class="p">},</span>
         <span class="p">)</span>
 
         <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">print</span><span class="p">(</span><span class="n">response_msg</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>

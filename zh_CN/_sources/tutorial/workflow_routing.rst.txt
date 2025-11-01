@@ -247,9 +247,9 @@ Routing
         "input": {
             "demand": "生成一个快速排序函数"
         },
-        "id": "call_b24bd10497a14252a9329c"
+        "id": "call_a6b130dfb035452d96d110"
     }
-    PythonAgent: 下面是一个使用 Python 编写的快速排序函数。这个函数采用了递归的方法来实现快速排序算法：
+    PythonAgent: 下面是一个使用 Python 编写的快速排序算法的实现。这个函数使用了递归的方式来对列表进行排序。
 
     ```python
     def quicksort(arr):
@@ -261,28 +261,21 @@ Routing
             middle = [x for x in arr if x == pivot]
             right = [x for x in arr if x > pivot]
             return quicksort(left) + middle + quicksort(right)
-
-    # 示例
-    example_list = [3, 6, 8, 10, 1, 2, 1]
-    sorted_list = quicksort(example_list)
-    print(sorted_list)
     ```
 
-    这段代码定义了一个 `quicksort` 函数，它接受一个列表 `arr` 作为参数。如果列表长度为 0 或 1，则直接返回该列表（因为已经排序好了）。否则，选择列表中间的元素作为基准值（pivot），然后创建三个列表：`left` 包含所有小于基准值的元素，`middle` 包含所有等于基准值的元素，`right` 包含所有大于基准值的元素。接着对 `left` 和 `right` 列表进行递归排序，并将结果与 `middle` 列表合并起来。
-
-    你可以用示例列表来测试这个快速排序函数。如果你想要在实际项目中使用快速排序，可能还需要考虑一些优化，比如就地分区以减少空间复杂度、处理重复元素等。
+    你可以将这段代码复制并在你的 Python 环境中运行，然后调用 `quicksort` 函数传入一个整数列表来测试它。如果你需要在特定条件下使用的版本，比如使用不同的枢轴选择方法或者就地排序，请告诉我！
     system: {
         "type": "tool_result",
-        "id": "call_b24bd10497a14252a9329c",
+        "id": "call_a6b130dfb035452d96d110",
         "name": "generate_python",
         "output": [
             {
                 "type": "text",
-                "text": "下面是一个使用 Python 编写的快速排序函数。这个函数采用了递归的方法来实现快速排序算法：\n\n```python\ndef quicksort(arr):\n    if len(arr) <= 1:\n        return arr\n    else:\n        pivot = arr[len(arr) // 2]\n        left = [x for x in arr if x < pivot]\n        middle = [x for x in arr if x == pivot]\n        right = [x for x in arr if x > pivot]\n        return quicksort(left) + middle + quicksort(right)\n\n# 示例\nexample_list = [3, 6, 8, 10, 1, 2, 1]\nsorted_list = quicksort(example_list)\nprint(sorted_list)\n```\n\n这段代码定义了一个 `quicksort` 函数，它接受一个列表 `arr` 作为参数。如果列表长度为 0 或 1，则直接返回该列表（因为已经排序好了）。否则，选择列表中间的元素作为基准值（pivot），然后创建三个列表：`left` 包含所有小于基准值的元素，`middle` 包含所有等于基准值的元素，`right` 包含所有大于基准值的元素。接着对 `left` 和 `right` 列表进行递归排序，并将结果与 `middle` 列表合并起来。\n\n你可以用示例列表来测试这个快速排序函数。如果你想要在实际项目中使用快速排序，可能还需要考虑一些优化，比如就地分区以减少空间复杂度、处理重复元素等。"
+                "text": "下面是一个使用 Python 编写的快速排序算法的实现。这个函数使用了递归的方式来对列表进行排序。\n\n```python\ndef quicksort(arr):\n    if len(arr) <= 1:\n        return arr\n    else:\n        pivot = arr[len(arr) // 2]\n        left = [x for x in arr if x < pivot]\n        middle = [x for x in arr if x == pivot]\n        right = [x for x in arr if x > pivot]\n        return quicksort(left) + middle + quicksort(right)\n```\n\n你可以将这段代码复制并在你的 Python 环境中运行，然后调用 `quicksort` 函数传入一个整数列表来测试它。如果你需要在特定条件下使用的版本，比如使用不同的枢轴选择方法或者就地排序，请告诉我！"
             }
         ]
     }
-    Router: 下面是一个使用 Python 编写的快速排序函数。这个函数采用了递归的方法来实现快速排序算法：
+    Router: 下面是一个使用 Python 编写的快速排序算法的实现。这个函数使用了递归的方式来对列表进行排序。
 
     ```python
     def quicksort(arr):
@@ -294,16 +287,9 @@ Routing
             middle = [x for x in arr if x == pivot]
             right = [x for x in arr if x > pivot]
             return quicksort(left) + middle + quicksort(right)
-
-    # 示例
-    example_list = [3, 6, 8, 10, 1, 2, 1]
-    sorted_list = quicksort(example_list)
-    print(sorted_list)
     ```
 
-    这段代码定义了一个 `quicksort` 函数，它接受一个列表 `arr` 作为参数。如果列表长度为 0 或 1，则直接返回该列表（因为已经排序好了）。否则，选择列表中间的元素作为基准值（pivot），然后创建三个列表：`left` 包含所有小于基准值的元素，`middle` 包含所有等于基准值的元素，`right` 包含所有大于基准值的元素。接着对 `left` 和 `right` 列表进行递归排序，并将结果与 `middle` 列表合并起来。
-
-    你可以用示例列表来测试这个快速排序函数。如果你想要在实际项目中使用快速排序，可能还需要考虑一些优化，比如就地分区以减少空间复杂度、处理重复元素等。
+    你可以将这段代码复制并在你的 Python 环境中运行，然后调用 `quicksort` 函数传入一个整数列表来测试它。如果你需要在特定条件下使用的版本，比如使用不同的枢轴选择方法或者就地排序，请告诉我！
 
 
 
@@ -311,7 +297,7 @@ Routing
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 46.557 seconds)
+   **Total running time of the script:** (0 minutes 21.626 seconds)
 
 
 .. _sphx_glr_download_tutorial_workflow_routing.py:
