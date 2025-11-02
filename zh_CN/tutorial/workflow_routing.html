@@ -521,9 +521,9 @@ to download the full example code.</p>
     &quot;input&quot;: {
         &quot;demand&quot;: &quot;生成一个快速排序函数&quot;
     },
-    &quot;id&quot;: &quot;call_88b94e529f644acfb953a8&quot;
+    &quot;id&quot;: &quot;call_ef39f73dc920402390b773&quot;
 }
-PythonAgent: 下面是一个使用 Python 编写的快速排序函数。这个实现选择了列表中的第一个元素作为基准（pivot），然后将列表分为两部分，一部分包含所有小于基准的元素，另一部分包含所有大于或等于基准的元素。接着对这两部分递归地应用相同的过程。
+PythonAgent: 以下是一个使用 Python 编写的快速排序函数。这个实现采用了递归的方法，选取列表中的第一个元素作为基准值来划分数据。
 
 ```python
 def quicksort(arr):
@@ -531,56 +531,58 @@ def quicksort(arr):
     if len(arr) &lt;= 1:
         return arr
     else:
-        # 选择基准值
+        # 选取基准值，这里选择列表中的第一个元素
         pivot = arr[0]
-        # 小于基准值的元素
-        less = [i for i in arr[1:] if i &lt; pivot]
-        # 大于或等于基准值的元素
-        greater_or_equal = [i for i in arr[1:] if i &gt;= pivot]
-
-        # 递归排序左右子数组，并合并结果
-        return quicksort(less) + [pivot] + quicksort(greater_or_equal)
+        # 小于基准值的元素构成的子数组
+        less = [x for x in arr[1:] if x &lt;= pivot]
+        # 大于基准值的元素构成的子数组
+        greater = [x for x in arr[1:] if x &gt; pivot]
+        # 递归地对子数组进行快速排序，然后将结果与基准值合并
+        return quicksort(less) + [pivot] + quicksort(greater)
 
 # 示例
-example_list = [3, 6, 8, 10, 1, 2, 1]
-sorted_list = quicksort(example_list)
-print(&#39;Sorted list:&#39;, sorted_list)
+print(quicksort([3, 6, 8, 10, 1, 2, 1]))
+# 输出: [1, 1, 2, 3, 6, 8, 10]
 ```
 
-你可以复制这段代码到你的 Python 环境中运行它。如果你有任何问题或者需要进一步的帮助，请告诉我！
+这段代码定义了一个名为 `quicksort` 的函数，它接受一个列表 `arr` 作为参数，并返回一个新的已排序列表。如果你想要在原地排序而不创建新的列表，可以告诉我，我将提供一个不同的实现。
 system: {
     &quot;type&quot;: &quot;tool_result&quot;,
-    &quot;id&quot;: &quot;call_88b94e529f644acfb953a8&quot;,
+    &quot;id&quot;: &quot;call_ef39f73dc920402390b773&quot;,
     &quot;name&quot;: &quot;generate_python&quot;,
     &quot;output&quot;: [
         {
             &quot;type&quot;: &quot;text&quot;,
-            &quot;text&quot;: &quot;下面是一个使用 Python 编写的快速排序函数。这个实现选择了列表中的第一个元素作为基准（pivot），然后将列表分为两部分，一部分包含所有小于基准的元素，另一部分包含所有大于或等于基准的元素。接着对这两部分递归地应用相同的过程。\n\n```python\ndef quicksort(arr):\n    # 递归终止条件：如果数组长度小于等于1，则直接返回该数组\n    if len(arr) &lt;= 1:\n        return arr\n    else:\n        # 选择基准值\n        pivot = arr[0]\n        # 小于基准值的元素\n        less = [i for i in arr[1:] if i &lt; pivot]\n        # 大于或等于基准值的元素\n        greater_or_equal = [i for i in arr[1:] if i &gt;= pivot]\n        \n        # 递归排序左右子数组，并合并结果\n        return quicksort(less) + [pivot] + quicksort(greater_or_equal)\n\n# 示例\nexample_list = [3, 6, 8, 10, 1, 2, 1]\nsorted_list = quicksort(example_list)\nprint(&#39;Sorted list:&#39;, sorted_list)\n```\n\n你可以复制这段代码到你的 Python 环境中运行它。如果你有任何问题或者需要进一步的帮助，请告诉我！&quot;
+            &quot;text&quot;: &quot;以下是一个使用 Python 编写的快速排序函数。这个实现采用了递归的方法，选取列表中的第一个元素作为基准值来划分数据。\n\n```python\ndef quicksort(arr):\n    # 递归终止条件：如果数组长度小于等于1，则直接返回该数组\n    if len(arr) &lt;= 1:\n        return arr\n    else:\n        # 选取基准值，这里选择列表中的第一个元素\n        pivot = arr[0]\n        # 小于基准值的元素构成的子数组\n        less = [x for x in arr[1:] if x &lt;= pivot]\n        # 大于基准值的元素构成的子数组\n        greater = [x for x in arr[1:] if x &gt; pivot]\n        # 递归地对子数组进行快速排序，然后将结果与基准值合并\n        return quicksort(less) + [pivot] + quicksort(greater)\n\n# 示例\nprint(quicksort([3, 6, 8, 10, 1, 2, 1]))\n# 输出: [1, 1, 2, 3, 6, 8, 10]\n```\n\n这段代码定义了一个名为 `quicksort` 的函数，它接受一个列表 `arr` 作为参数，并返回一个新的已排序列表。如果你想要在原地排序而不创建新的列表，可以告诉我，我将提供一个不同的实现。&quot;
         }
     ]
 }
-Router: 下面是一个使用 Python 编写的快速排序函数。这个实现选择了列表中的第一个元素作为基准（pivot），然后将列表分为两部分，一部分包含所有小于基准的元素，另一部分包含所有大于或等于基准的元素。接着对这两部分递归地应用相同的过程。
+Router: 以下是一个使用 Python 编写的快速排序函数。这个实现采用了递归的方法，选取列表中的第一个元素作为基准值来划分数据。
 
 ```python
 def quicksort(arr):
+    # 递归终止条件：如果数组长度小于等于1，则直接返回该数组
     if len(arr) &lt;= 1:
         return arr
     else:
+        # 选取基准值，这里选择列表中的第一个元素
         pivot = arr[0]
-        less = [i for i in arr[1:] if i &lt; pivot]
-        greater_or_equal = [i for i in arr[1:] if i &gt;= pivot]
-        return quicksort(less) + [pivot] + quicksort(greater_or_equal)
+        # 小于基准值的元素构成的子数组
+        less = [x for x in arr[1:] if x &lt;= pivot]
+        # 大于基准值的元素构成的子数组
+        greater = [x for x in arr[1:] if x &gt; pivot]
+        # 递归地对子数组进行快速排序，然后将结果与基准值合并
+        return quicksort(less) + [pivot] + quicksort(greater)
 
 # 示例
-example_list = [3, 6, 8, 10, 1, 2, 1]
-sorted_list = quicksort(example_list)
-print(&#39;Sorted list:&#39;, sorted_list)
+print(quicksort([3, 6, 8, 10, 1, 2, 1]))
+# 输出: [1, 1, 2, 3, 6, 8, 10]
 ```
 
-你可以复制这段代码到你的 Python 环境中运行它。如果你有任何问题或者需要进一步的帮助，请告诉我！
+这段代码定义了一个名为 `quicksort` 的函数，它接受一个列表 `arr` 作为参数，并返回一个新的已排序列表。如果你想要在原地排序而不创建新的列表，请告诉我，我可以提供一个不同的实现。
 </pre></div>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 43.052 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 29.328 seconds)</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-tutorial-workflow-routing-py">
 <div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
 <p><a class="reference download internal" download="" href="../_downloads/3266c75280f96697c4cc46d7d55a3ac8/workflow_routing.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">workflow_routing.ipynb</span></code></a></p>

@@ -354,9 +354,9 @@ to download the full example code.</p>
     &quot;type&quot;: &quot;tool_use&quot;,
     &quot;name&quot;: &quot;create_worker&quot;,
     &quot;input&quot;: {
-        &quot;task_description&quot;: &quot;在 Python 中打印 &#39;Hello, World!&#39; 并返回结果。&quot;
+        &quot;task_description&quot;: &quot;在 Python 中编写并执行一个打印 &#39;Hello, World!&#39; 的简单脚本。&quot;
     },
-    &quot;id&quot;: &quot;call_4cb015021a4a4b2a9deaee&quot;
+    &quot;id&quot;: &quot;call_353c0b403368442f944ec3&quot;
 }
 Worker: {
     &quot;type&quot;: &quot;tool_use&quot;,
@@ -365,11 +365,11 @@ Worker: {
         &quot;code&quot;: &quot;print(&#39;Hello, World!&#39;)&quot;,
         &quot;timeout&quot;: 5
     },
-    &quot;id&quot;: &quot;call_b3f4d68c91b244fbbd5e02&quot;
+    &quot;id&quot;: &quot;call_1c84478bfc7b4dd8800d0b&quot;
 }
 system: {
     &quot;type&quot;: &quot;tool_result&quot;,
-    &quot;id&quot;: &quot;call_b3f4d68c91b244fbbd5e02&quot;,
+    &quot;id&quot;: &quot;call_1c84478bfc7b4dd8800d0b&quot;,
     &quot;name&quot;: &quot;execute_python_code&quot;,
     &quot;output&quot;: [
         {
@@ -378,27 +378,19 @@ system: {
         }
     ]
 }
-Worker: 代码执行成功，并打印出了 &#39;Hello, World!&#39;。下面是打印的结果：
-
-```
-Hello, World!
-```
+Worker: 成功执行了 Python 脚本，它打印出了 &#39;Hello, World!&#39;。
 system: {
     &quot;type&quot;: &quot;tool_result&quot;,
-    &quot;id&quot;: &quot;call_4cb015021a4a4b2a9deaee&quot;,
+    &quot;id&quot;: &quot;call_353c0b403368442f944ec3&quot;,
     &quot;name&quot;: &quot;create_worker&quot;,
     &quot;output&quot;: [
         {
             &quot;type&quot;: &quot;text&quot;,
-            &quot;text&quot;: &quot;代码执行成功，并打印出了 &#39;Hello, World!&#39;。下面是打印的结果：\n\n```\nHello, World!\n```&quot;
+            &quot;text&quot;: &quot;成功执行了 Python 脚本，它打印出了 &#39;Hello, World!&#39;。&quot;
         }
     ]
 }
-Orchestrator: 在 Python 中执行 &quot;Hello, World!&quot; 成功，打印结果如下：
-
-```
-Hello, World!
-```
+Orchestrator: 成功执行了 Python 脚本，它打印出了 &#39;Hello, World!&#39;。
 </pre></div>
 </div>
 <div class="line-block">
@@ -481,7 +473,7 @@ Hello, World!
 <span class="n">asyncio</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">run_handoffs</span><span class="p">())</span>
 </pre></div>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 8.402 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 9.160 seconds)</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-tutorial-workflow-handoffs-py">
 <div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
 <p><a class="reference download internal" download="" href="../_downloads/91c90a0c5fa0aaee5502046f62e97d67/workflow_handoffs.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">workflow_handoffs.ipynb</span></code></a></p>
