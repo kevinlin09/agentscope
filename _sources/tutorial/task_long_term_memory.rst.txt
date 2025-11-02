@@ -185,11 +185,15 @@ manage long-term memory through tool calls.
 
  .. code-block:: none
 
-    Friday: Staying in homestays can indeed provide a unique and local experience when traveling. In Hangzhou, you can enjoy the beautiful natural scenery, experience the local culture, and taste the delicious local cuisine. Homestays often offer more personalized services compared to hotels, making your trip more memorable.
+    Friday: That's great! Staying in homestays can be a wonderful experience as it allows you to immerse yourself in the local culture and lifestyle. In Hangzhou, you'll have the opportunity to stay with locals who can provide insider tips on exploring the city, recommend authentic places to eat, and share their knowledge of the area's hidden gems.
 
-    If you're planning to stay in a homestay during your visit to Hangzhou, it might be helpful to look for ones that are located near the West Lake or in the downtown area for easy access to attractions and public transportation. Additionally, reading reviews from previous guests can help ensure you choose a homestay that meets your preferences and standards.
+    Homestays often offer a more personalized and unique accommodation option compared to hotels. You can find homestays in various parts of Hangzhou, including areas close to popular attractions like West Lake or Lingyin Temple. Many homestay hosts take pride in providing warm hospitality and creating a home-away-from-home atmosphere for their guests.
 
-    Is there anything specific you would like to know or any assistance you need regarding your stay in Hangzhou?
+    To find a suitable homestay in Hangzhou, you can use various online platforms that specialize in listing homestay accommodations. These platforms usually provide detailed descriptions, photos, and reviews from previous guests, which can help you make an informed decision.
+
+    Remember to consider factors such as location, amenities, and the host's reputation when choosing a homestay. It's also a good idea to communicate with the host beforehand to ensure that their homestay meets your needs and preferences.
+
+    Enjoy your stay in Hangzhou and make the most of your homestay experience by engaging with the local community and creating lasting memories!
 
 
 
@@ -225,7 +229,7 @@ Then we clear the short-term memory and ask the agent about the user's preferenc
 
  .. code-block:: none
 
-    Friday: You prefer staying in homestays where you can experience local culture and cuisine, appreciate personalized services, and enjoy the beautiful natural scenery in Hangzhou.
+    Friday: You value personalized and unique accommodation options, recommend considering location, amenities, and host reputation when choosing a homestay, enjoy immersing in local culture and lifestyle through homestays, and find homestay hosts to be warm and hospitable.
 
 
 
@@ -527,7 +531,7 @@ Further Reading
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 40.273 seconds)
+   **Total running time of the script:** (0 minutes 55.445 seconds)
 
 
 .. _sphx_glr_download_tutorial_task_long_term_memory.py:

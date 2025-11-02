@@ -280,9 +280,9 @@ Specifically, the agents within the same ``MsgHub`` will receive messages from o
 
  .. code-block:: none
 
-    Alice: Hi there! I'm Alice, a student currently pursuing my studies. It's nice to meet you. Could you tell me a little bit about yourself?
-    Bob: Hi Alice, I'm Bob. I'm also a student and always eager to learn new things. It's great to meet you too. What are you studying?
-    Charlie: Alice: I'm majoring in Environmental Science. It's a field that really interests me because of its direct impact on our world. What about you, Bob? What's your major?
+    Alice: Hi there! I'm Alice, a student. Nice to meet you! Could you tell me a bit about yourself?
+    Bob: Hi Alice, I'm Bob. It's great to meet you as well. I'm also a student and I enjoy learning new things and meeting new people. What do you like to do in your free time?
+    Charlie: Hi Alice and Bob, I'm Charlie. It's a pleasure to meet you both. I too am a student and I'm passionate about technology and sports. When I'm not studying, you can usually find me playing basketball or working on some coding projects. What subjects are you guys interested in?
 
 
 
@@ -319,9 +319,9 @@ Now we print the memory of Alice to check if her memory is updated correctly.
     system: Now you meet each other with a brief self-introduction.
     Alice: None
     system: None
-    Alice: Hi there! I'm Alice, a student currently pursuing my studies. It's nice to meet you. Could you tell me a little bit about yourself?
-    Bob: Hi Alice, I'm Bob. I'm also a student and always eager to learn new things. It's great to meet you too. What are you studying?
-    Charlie: Alice: I'm majoring in Environmental Science. It's a field that really interests me because of its direct impact on our world. What about you, Bob? What's your major?
+    Alice: Hi there! I'm Alice, a student. Nice to meet you! Could you tell me a bit about yourself?
+    Bob: Hi Alice, I'm Bob. It's great to meet you as well. I'm also a student and I enjoy learning new things and meeting new people. What do you like to do in your free time?
+    Charlie: Hi Alice and Bob, I'm Charlie. It's a pleasure to meet you both. I too am a student and I'm passionate about technology and sports. When I'm not studying, you can usually find me playing basketball or working on some coding projects. What subjects are you guys interested in?
 
 
 
@@ -338,7 +338,7 @@ Further Reading
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 10.073 seconds)
+   **Total running time of the script:** (0 minutes 11.352 seconds)
 
 
 .. _sphx_glr_download_tutorial_workflow_conversation.py:

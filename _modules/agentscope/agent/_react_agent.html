@@ -559,15 +559,24 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">plan_notebook</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="k">if</span> <span class="n">plan_notebook</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">plan_notebook</span> <span class="o">=</span> <span class="n">plan_notebook</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">toolkit</span><span class="o">.</span><span class="n">create_tool_group</span><span class="p">(</span>
-                <span class="s2">&quot;plan_related&quot;</span><span class="p">,</span>
-                <span class="n">description</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">plan_notebook</span><span class="o">.</span><span class="n">description</span><span class="p">,</span>
-            <span class="p">)</span>
-            <span class="k">for</span> <span class="n">tool</span> <span class="ow">in</span> <span class="n">plan_notebook</span><span class="o">.</span><span class="n">list_tools</span><span class="p">():</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">toolkit</span><span class="o">.</span><span class="n">register_tool_function</span><span class="p">(</span>
-                    <span class="n">tool</span><span class="p">,</span>
-                    <span class="n">group_name</span><span class="o">=</span><span class="s2">&quot;plan_related&quot;</span><span class="p">,</span>
+            <span class="c1"># When enable_meta_tool is True, plan tools are in plan_related</span>
+            <span class="c1"># group and active by agent.</span>
+            <span class="c1"># Otherwise, plan tools in bassic group and always active.</span>
+            <span class="k">if</span> <span class="n">enable_meta_tool</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">toolkit</span><span class="o">.</span><span class="n">create_tool_group</span><span class="p">(</span>
+                    <span class="s2">&quot;plan_related&quot;</span><span class="p">,</span>
+                    <span class="n">description</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">plan_notebook</span><span class="o">.</span><span class="n">description</span><span class="p">,</span>
                 <span class="p">)</span>
+                <span class="k">for</span> <span class="n">tool</span> <span class="ow">in</span> <span class="n">plan_notebook</span><span class="o">.</span><span class="n">list_tools</span><span class="p">():</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">toolkit</span><span class="o">.</span><span class="n">register_tool_function</span><span class="p">(</span>
+                        <span class="n">tool</span><span class="p">,</span>
+                        <span class="n">group_name</span><span class="o">=</span><span class="s2">&quot;plan_related&quot;</span><span class="p">,</span>
+                    <span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">for</span> <span class="n">tool</span> <span class="ow">in</span> <span class="n">plan_notebook</span><span class="o">.</span><span class="n">list_tools</span><span class="p">():</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">toolkit</span><span class="o">.</span><span class="n">register_tool_function</span><span class="p">(</span>
+                        <span class="n">tool</span><span class="p">,</span>
+                    <span class="p">)</span>
 
         <span class="c1"># If print the reasoning hint messages</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">print_hint_msg</span> <span class="o">=</span> <span class="n">print_hint_msg</span>
