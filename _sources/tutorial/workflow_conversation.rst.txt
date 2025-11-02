@@ -281,8 +281,9 @@ Specifically, the agents within the same ``MsgHub`` will receive messages from o
  .. code-block:: none
 
     Alice: Hi there! I'm Alice, a student. Nice to meet you! Could you tell me a bit about yourself?
-    Bob: Hi Alice, I'm Bob. It's great to meet you as well. I'm also a student and I enjoy learning new things and meeting new people. What do you like to do in your free time?
-    Charlie: Hi Alice and Bob, I'm Charlie. It's a pleasure to meet you both. I too am a student and I'm passionate about technology and sports. When I'm not studying, you can usually find me playing basketball or working on some coding projects. What subjects are you guys interested in?
+    Bob: Hi Alice, I'm Bob. It's great to meet you too! I'm also a student. What subjects are you studying?
+    Charlie: Alice: I'm majoring in psychology and minoring in sociology. It's really interesting to learn about human behavior and social structures. How about you, Bob? What are you studying?
+    Charlie: That sounds fascinating, Alice! I'm actually studying computer science with a focus on artificial intelligence. I find it intriguing how we can create systems that can learn and adapt. Do you have any particular area in psychology or sociology that you're most passionate about?
 
 
 
@@ -320,8 +321,8 @@ Now we print the memory of Alice to check if her memory is updated correctly.
     Alice: None
     system: None
     Alice: Hi there! I'm Alice, a student. Nice to meet you! Could you tell me a bit about yourself?
-    Bob: Hi Alice, I'm Bob. It's great to meet you as well. I'm also a student and I enjoy learning new things and meeting new people. What do you like to do in your free time?
-    Charlie: Hi Alice and Bob, I'm Charlie. It's a pleasure to meet you both. I too am a student and I'm passionate about technology and sports. When I'm not studying, you can usually find me playing basketball or working on some coding projects. What subjects are you guys interested in?
+    Bob: Hi Alice, I'm Bob. It's great to meet you too! I'm also a student. What subjects are you studying?
+    Charlie: That sounds fascinating, Alice! I'm actually studying computer science with a focus on artificial intelligence. I find it intriguing how we can create systems that can learn and adapt. Do you have any particular area in psychology or sociology that you're most passionate about?
 
 
 
@@ -338,7 +339,7 @@ Further Reading
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 11.352 seconds)
+   **Total running time of the script:** (0 minutes 8.546 seconds)
 
 
 .. _sphx_glr_download_tutorial_workflow_conversation.py:
