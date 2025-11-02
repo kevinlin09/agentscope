@@ -272,9 +272,9 @@ User-assistant 对话，也称为聊天机器人（chatbot），是最常见的�
 
  .. code-block:: none
 
-    Alice: 大家好，我叫Alice，是一名学生。我喜欢阅读、学习新知识和与来自不同背景的人交流。很高兴认识大家！你们呢？可以分享一下关于你们自己的事情吗？
-    Bob: 大家好，我叫Bob，也是学生。我对科学和技术特别感兴趣，平时喜欢捣鼓一些小发明。我也很期待能和大家一起学习交流。你们有什么爱好吗？
-    Charlie: 嗨，Alice和Bob，我叫Charlie，同样是一名学生。我对音乐和艺术充满了热情，平时喜欢弹吉他和画画。我也很期待能和大家成为朋友，并且一起探索新事物。很高兴遇见你们！
+    Alice: 大家好，我叫Alice，是一名学生。我喜欢阅读、学习新知识和与朋友一起度过时光。很高兴认识大家！你们呢？可以分享一下关于你们自己的事情吗？
+    Bob: 大家好，我叫Bob，也是个学生。我对科学和技术很感兴趣，平时喜欢编程和探索最新的科技趋势。我也热爱户外活动，比如徒步和露营。很高兴见到你们！
+    Charlie: 大家好，我叫Charlie，同样也是一名学生。我对艺术和音乐特别感兴趣，平时喜欢画画和弹吉他。我也挺喜欢旅行，探索不同的文化和风景。很高兴认识你们两位！
 
 
 
@@ -313,18 +313,18 @@ User-assistant 对话，也称为聊天机器人（chatbot），是最常见的�
     system: "现在大家互相认识一下，简单自我介绍。"
     Alice: [
         {
-            "id": "MaSSPJ7gJTyUPEukMq3RPA",
+            "id": "HqwXspxpQvTrTJ3u6YKcmN",
             "type": "tool_use",
             "name": "generate_response",
             "input": {
-                "response": "大家好，我叫Alice，是一名学生。我喜欢阅读、学习新知识和与来自不同背景的人交流。很高兴认识大家！你们呢？可以分享一下关于你们自己的事情吗？"
+                "response": "大家好，我叫Alice，是一名学生。我喜欢阅读、学习新知识和与朋友一起度过时光。很高兴认识大家！你们呢？可以分享一下关于你们自己的事情吗？"
             }
         }
     ]
     system: [
         {
             "type": "tool_result",
-            "id": "MaSSPJ7gJTyUPEukMq3RPA",
+            "id": "HqwXspxpQvTrTJ3u6YKcmN",
             "name": "generate_response",
             "output": [
                 {
@@ -334,9 +334,9 @@ User-assistant 对话，也称为聊天机器人（chatbot），是最常见的�
             ]
         }
     ]
-    Alice: "大家好，我叫Alice，是一名学生。我喜欢阅读、学习新知识和与来自不同背景的人交流。很高兴认识大家！你们呢？可以分享一下关于你们自己的事情吗？"
-    Bob: "大家好，我叫Bob，也是学生。我对科学和技术特别感兴趣，平时喜欢捣鼓一些小发明。我也很期待能和大家一起学习交流。你们有什么爱好吗？"
-    Charlie: "嗨，Alice和Bob，我叫Charlie，同样是一名学生。我对音乐和艺术充满了热情，平时喜欢弹吉他和画画。我也很期待能和大家成为朋友，并且一起探索新事物。很高兴遇见你们！"
+    Alice: "大家好，我叫Alice，是一名学生。我喜欢阅读、学习新知识和与朋友一起度过时光。很高兴认识大家！你们呢？可以分享一下关于你们自己的事情吗？"
+    Bob: "大家好，我叫Bob，也是个学生。我对科学和技术很感兴趣，平时喜欢编程和探索最新的科技趋势。我也热爱户外活动，比如徒步和露营。很高兴见到你们！"
+    Charlie: "大家好，我叫Charlie，同样也是一名学生。我对艺术和音乐特别感兴趣，平时喜欢画画和弹吉他。我也挺喜欢旅行，探索不同的文化和风景。很高兴认识你们两位！"
 
 
 
@@ -353,7 +353,7 @@ User-assistant 对话，也称为聊天机器人（chatbot），是最常见的�
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 9.689 seconds)
+   **Total running time of the script:** (0 minutes 9.558 seconds)
 
 
 .. _sphx_glr_download_tutorial_workflow_conversation.py:
